@@ -1,0 +1,277 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{microtype}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+  urlcolor=blue
+}
+\setlist{nosep,leftmargin=1.5em}
+\renewcommand{\arraystretch}{1.18}
+\newcommand{\method}{\textsc{MemImpact}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\A}{\mathcal{A}}
+
+\title{\textbf{\method: Planner-Level Counterfactual Memory\\Auditing for Selective Verification}\\[0.5em]
+\large COMP7607A Natural Language Processing --- Group Project Proposal}
+\author{
+\begin{tabular}{ll}
+\multicolumn{2}{c}{\textbf{Team Members}}\\
+Cao Junjia & Student ID: 3036790730\\
+Zhang Yankai & Student ID: 3036806682\\
+Wu Hongyao & Student ID: 3036793196\\
+Kwan Tsz Hong & Student ID: 3036792350\\
+Wang Zicheng & Student ID: 3036790326
+\end{tabular}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Persistent memory allows large language model (LLM) agents to reuse preferences, facts, and experience across sessions, but a retrieved memory can be stale, misattributed, or misleading. Existing work has studied memory selection, write-time retention, post-hoc poisoning audits, and action-conditioned verification. We propose \method, a planner-level counterfactual auditing framework that asks a complementary question: \emph{does removing a memory cause the planner itself to propose a different action?} For each retrieved memory, \method compares paired agent rollouts with and without that memory, estimates its empirical effect on proposed actions after accounting for ordinary planner variability, and uses this signal together with provenance, action consequence, and verification cost to decide whether to proceed, verify, or abstain. Our main contribution is not counterfactual memory scoring or selective verification alone, both of which have prior art; it is a controlled study of whether planner re-execution provides additional value over memory-side and candidate-conditioned signals for online verification. We will evaluate the method in an executable tool-use environment augmented with persistent memory, using valid, stale, conflicting, misattributed, and irrelevant memories that either directly supply action arguments or indirectly influence action selection. Comparisons with always-proceed, always-verify, static, and AMV-Guard-style baselines will measure task success, harmful actions, safe-proceed recall, proceed coverage, verification cost, total computational cost, and latency. All experiments will use synthetic data, reproducible traces, held-out task families, and paired statistical analysis.
+\end{abstract}
+
+\section{Introduction}
+
+Long-lived LLM agents increasingly rely on persistent memory to preserve user preferences, environment facts, and execution traces across sessions \cite{packer2023memgpt,xu2025amem}. Memory can improve personalization and long-horizon performance, but its usefulness is not guaranteed by semantic relevance or successful retrieval. Retrieved experiences can propagate errors, induce misaligned replay, or remain confidently asserted after their original context has changed \cite{xiong2026memory,kwon2026confidence}. Recent benchmarks similarly show a gap between recalling updated evidence and acting correctly on it \cite{chao2026stale,he2026memoryarena}.
+
+A natural response is to verify memories before using them. However, verifying every retrieved item introduces model calls, tool use, latency, and potentially unnecessary user interruptions. The verification decision therefore depends not only on whether a memory appears reliable, but also on whether it materially affects the proposed action and whether the action's consequences justify additional checking.
+
+Several lines of prior work address adjacent parts of this problem. Causal Memory Intervention (CMI) selects memories by estimated causal usefulness \cite{srivastava2026cmi}. MemAudit attributes already-observed harmful behavior to poisoned memories through counterfactual replay \cite{tan2026memaudit}. ConMem uses prospective counterfactual scenarios for write-time retention decisions \cite{zhang2026conmem}. Decision-aware memory cards rank context using counterfactual-inspired utility \cite{guan2026cicl}. Most directly, AMV-Guard performs action-conditioned verification by extracting premises of a fixed candidate action and applying calibrated value of information \cite{wang2026amv}. These studies establish that counterfactual analysis and selective verification are not new by themselves.
+
+We instead focus on a narrower unresolved question: \textbf{can re-running the planner without a memory provide a useful online verification signal that is not available from static memory features or a fixed candidate action alone?} A candidate-conditioned audit asks which premises support the action already proposed. A planner-level audit asks whether the agent would have proposed a different action in the first place. The two signals need not coincide, especially when a memory changes destinations, constraints, tool arguments, or the plan itself.
+
+\section{Project Goal and Research Questions}
+
+\subsection{Goal}
+
+The project aims to design and evaluate \method, a cost-aware verification gate based on planner-level counterfactual memory audits. The intended outcome is an empirical assessment of when planner re-execution improves the reliability--cost trade-off of memory-augmented agents, rather than a claim that it universally improves all memory systems.
+
+\subsection{Research Questions}
+
+\begin{enumerate}[label=\textbf{RQ\arabic*:},leftmargin=3.2em]
+  \item \textbf{Critical-memory identification.} Does planner-level counterfactual auditing identify memories whose verification can change an unsafe or incorrect decision more accurately than static confidence, staleness, or candidate-conditioned signals?
+  \item \textbf{Reliability--cost trade-off.} Can selective verification guided by planner-level impact improve task success and reduce harmful actions while using fewer verification calls than verify-all policies and avoiding unnecessary abstention?
+  \item \textbf{Robustness and cost conditions.} How do the gains vary across memory failure types, direct versus indirect action dependence, action consequences, and the number of counterfactual rollouts?
+\end{enumerate}
+
+\subsection{Objectives}
+
+\begin{enumerate}
+  \item Implement a persistent-memory tool agent with a reversible sandbox and structured action logs.
+  \item Define an empirical planner-level memory-impact measure based on paired rollouts and an estimate of ordinary planner variability.
+  \item Build a selective verification policy that combines impact, provenance, action consequence, and verifier cost.
+  \item Construct a held-out evaluation suite with executable ground truth for actions and verification outcomes, including both direct-argument and indirect action-selection dependencies.
+  \item Compare against static and candidate-conditioned verification baselines under matched tasks, information, and verification budgets, while reporting total computational cost.
+\end{enumerate}
+
+\section{Related Work}
+
+\subsection{Persistent Memory and Memory Evaluation}
+
+MemGPT introduced operating-system-inspired context and memory management \cite{packer2023memgpt}, while A-MEM dynamically organizes structured memories and their links \cite{xu2025amem}. LongMemEval evaluates information extraction, multi-session reasoning, temporal reasoning, knowledge updates, and abstention in conversational assistants \cite{wu2025longmemeval}. MemoryArena moves beyond recall-centric evaluation by coupling memory acquisition and subsequent action in interdependent multi-session tasks \cite{he2026memoryarena}. STALE specifically demonstrates that models often fail to revise invalidated beliefs and adapt downstream behavior \cite{chao2026stale}. These benchmarks motivate evaluation at the level of decisions, not retrieval alone.
+
+Work on memory management further shows that agents tend to follow retrieved experiences, allowing both errors and misleading executions to propagate \cite{xiong2026memory}. Provenance-aware TierMem addresses a complementary cost problem by escalating from compressed summaries to raw logs when summary evidence is insufficient \cite{zhu2026tiermem}. Manufactured Confidence shows that consolidation can turn hedged statements into confident assertions and that a single load-bearing memory can drive consequential errors \cite{kwon2026confidence}. Our work retains provenance and uncertainty as inputs but focuses on measuring the planner's behavioral dependence on each retrieved memory.
+
+\subsection{Counterfactual Memory Selection and Auditing}
+
+CMI evaluates controlled memory interventions and selects memories based on causal usefulness in Causal-LoCoMo \cite{srivastava2026cmi}. MemAudit combines a counterfactual memory influence score with structural anomaly detection to identify poisoned records after harmful behavior has been observed \cite{tan2026memaudit}. ConMem evaluates candidate memories through synthesized future scenarios to make retention decisions \cite{zhang2026conmem}. CICL ranks files, traces, rules, and memories with counterfactual-inspired decision utility and compacts them into typed memory cards \cite{guan2026cicl}. These methods differ in their intervention target and stage of the memory lifecycle; none directly evaluates our proposed online gate based on planner re-execution for pre-action verification.
+
+AMV-Guard is the closest prior work. It extracts premises supporting a candidate action, calibrates the probability that those premises are wrong, and selects verification actions by bounded value of information \cite{wang2026amv}. Its evaluation deliberately uses candidate-fixed safety interventions rather than planner-reexecution labels. Our study isolates that missing signal by comparing planner-level rollouts with an AMV-Guard-style candidate-conditioned baseline.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Positioning of the proposed project relative to directly related work.}
+\label{tab:related}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.19\textwidth} >{\raggedright\arraybackslash}p{0.27\textwidth} >{\raggedright\arraybackslash}p{0.23\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Work} & \textbf{Primary objective} & \textbf{Intervention or decision object} & \textbf{Distinction of \method} \\
+\midrule
+CMI \cite{srivastava2026cmi} & Select useful memories for downstream answers & Memory inclusion and answer quality & Studies pre-action verification rather than memory selection alone \\
+MemAudit \cite{tan2026memaudit} & Identify poisoned memories after harmful behavior & Post-hoc counterfactual attribution & Targets online prevention and ordinary stale/conflicting memories as well as adversarial ones \\
+ConMem \cite{zhang2026conmem} & Improve write-time memory retention & Prospective synthetic scenarios & Evaluates an already retrieved memory at action time \\
+CICL \cite{guan2026cicl} & Rank and compress decision-relevant context & Counterfactual-inspired context utility & Uses actual planner rollouts rather than only judge-estimated utility \\
+AMV-Guard \cite{wang2026amv} & Verify premises of a fixed candidate action using VOI & Candidate-conditioned premise verification & Measures whether removing a memory changes the planner's proposed action \\
+\midrule
+\method\ (this project) & Allocate online verification by planner-level behavioral impact & Paired re-planning with and without each memory & Directly compares planner re-execution with static and candidate-conditioned signals \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Proposed Method}
+
+\subsection{Problem Setup}
+
+Let $x$ denote the current task state and let $\R=\{m_1,\ldots,m_k\}$ be the small set of memories retrieved for the current decision. Each $m_i$ contains text, provenance, timestamps, scope, and optional confidence or conflict metadata. The agent policy $\Pi$ produces a candidate plan or action sequence $a^{+}=\Pi(x,\R;\xi)$, where $\xi$ denotes decoding randomness. We focus on tool-using agents whose actions can be canonicalized into tool names and structured arguments \cite{yao2023react}.
+
+The verification gate has three terminal choices: \texttt{Proceed}, \texttt{Verify}, and, for high-consequence unresolved cases, \texttt{Abstain}. Verification may query an authoritative record, inspect raw provenance, call a read-only tool, or ask the user. If verification refutes a premise, the agent re-plans rather than executing the original action.
+
+\subsection{Planner-Level Counterfactual Audit}
+
+For each retrieved memory $m_i$, we construct a paired ablated rollout:
+\begin{equation}
+  a_i^{-}=\Pi\!\left(x,\R\setminus\{m_i\};\xi\right).
+\end{equation}
+The same seed or decoding configuration is used for the full and ablated runs where supported. To account for stochastic planning, we estimate the empirical action-flip rate over $S$ paired runs:
+\begin{equation}
+  \widehat{F}_i=\frac{1}{S}\sum_{s=1}^{S}
+  \mathbf{1}\!\left[\A\!\left(a^{+,(s)}\right)\neq
+  \A\!\left(a_i^{-,(s)}\right)\right],
+\end{equation}
+where $\A(\cdot)$ returns the canonical next action, and equivalence is checked using tool names and normalized arguments rather than raw text alone. When stochastic decoding requires $S>1$, pairwise comparisons among the existing full-memory runs provide a baseline flip rate $\widehat{F}_0$ without additional planner calls. We use the noise-adjusted signal
+\begin{equation}
+  \widetilde{F}_i=\max\left(0,\widehat{F}_i-\widehat{F}_0\right).
+\end{equation}
+The decoding configuration and $S$ will be selected during the pilot and frozen before testing; repeated calls will not be used when they are effectively deterministic.
+
+Where a low-cost executable model of the environment is available, an optional extension may measure the outcome shift
+\begin{equation}
+  \Delta_i=U(x,a^{+})-U(x,a_i^{-}),
+\end{equation}
+using a task utility $U$ defined by constraint satisfaction and action cost. Full environment execution is used for offline evaluation; it is not required for every online decision.
+
+This is an \emph{empirical counterfactual} estimate under controlled memory removal, not a claim of formal causal identification over all unobserved factors. Paired runs and held-out task families reduce, but cannot eliminate, planner stochasticity and model-specific confounding. Leave-one-out removal can also miss redundant memories: removing either of two copies may leave the action unchanged. A targeted redundancy stress subset will therefore include an all-remove diagnostic, reported separately from individual-memory attribution.
+
+\subsection{Selective Verification Policy}
+
+The gate ranks verification candidates using a bounded score of the form
+\begin{equation}
+  V_i=\frac{L(a^{+})\,q_i\left(\lambda_1\widetilde{F}_i+
+  \lambda_2\widetilde{\Delta}_i\right)}{c_i+\epsilon},
+\end{equation}
+where $L(a^{+})$ is the consequence of the proposed action, $q_i$ captures memory uncertainty from provenance, age, conflict, and epistemic status, $\widetilde{\Delta}_i$ is an optional outcome-shift estimate, and $c_i$ is the estimated verifier cost. The core study sets $\lambda_2=0$ and limits tuning to at most two decision parameters on development tasks. We will also test a simpler action-flip-only variant to determine whether the additional terms are necessary.
+
+To control overhead, counterfactual audits are triggered only for consequential candidate actions and at most $k$ retrieved memories. The gate verifies the highest-scoring candidates sequentially within a fixed budget. It proceeds when the estimated benefit is below the verification cost, and abstains only when an unresolved high-consequence premise prevents a safe action. The initial project scope does not automatically delete memories; it records verification outcomes and evidence links for later analysis.
+
+\section{Experimental Plan}
+
+\subsection{Environment and Memory Scenarios}
+
+The primary environment will be ToolSandbox \cite{lu2025toolsandbox}, augmented with a persistent memory layer and authoritative read-only verification tools. ToolSandbox provides stateful tool execution and dynamic trajectory evaluation, making it suitable for measuring the effect of memory interventions on actions. AppWorld \cite{trivedi2024appworld} remains an optional transfer environment outside the core scope.
+
+We will construct multi-session episodes with synthetic users and executable ground truth. Approximately 40 development episodes will use contact updates and reminder creation; 120 final test episodes will use messaging and reminder deletion. Related variants of a base scenario will remain in the same split. Core memory conditions will include:
+\begin{itemize}
+  \item \textbf{Valid:} current and correctly scoped memories, including old but still valid records;
+  \item \textbf{Stale:} previously valid memories superseded by newer authoritative records;
+  \item \textbf{Conflicting:} memories inconsistent with another retrieved source;
+  \item \textbf{Misattributed or over-generalized:} facts assigned to the wrong person or scope;
+  \item \textbf{Irrelevant but similar:} semantically related memories that should not affect the decision.
+\end{itemize}
+Adversarial memories are an optional stress extension rather than part of the core matrix.
+
+Each episode will also vary the \textbf{dependence type}: a \emph{direct} memory supplies a tool argument, such as a phone number, whereas an \emph{indirect} memory changes which action is selected without appearing verbatim in its arguments, such as a rule specifying which contact channel to use. This factor prevents the study from testing only hard premises that candidate-conditioned extraction can already identify. The test matrix is $2$ task families $\times$ $5$ memory conditions $\times$ $2$ consequence levels $\times$ $2$ dependence types $\times$ $3$ scenario variants, yielding 120 episodes. Action consequence will vary independently of memory correctness, for example by contrasting deletion of a routine reminder with deletion of a critical reminder.
+
+\subsection{Baselines}
+
+All methods will share the same base agent, initial candidate action, retrieved memory set, tools, and candidate tasks.
+\begin{enumerate}
+  \item \textbf{Always Proceed:} trust all retrieved memories without verification;
+  \item \textbf{Always Verify:} verify every retrieved candidate memory within the same verifier interface;
+  \item \textbf{Static Policy:} verify using confidence, age, provenance, and conflict features without counterfactual rollouts;
+  \item \textbf{AMV-Guard-style:} extract candidate-conditioned premises without planner re-execution.
+\end{enumerate}
+The AMV-Guard-style baseline will receive the same observable uncertainty, consequence, and verifier-cost features and use the same decision-handling rules as \method; only the planner-level impact signal will be replaced by its candidate-conditioned premise signal. It is an adaptation, not a claim of full reproduction. Relevance, CMI-style, and oracle references are optional extensions after the core comparison.
+
+\subsection{Ablation Studies}
+
+The required ablation is an action-flip-only variant that removes the additional uncertainty, consequence, and cost terms. The redundancy stress subset will separately report the all-remove diagnostic. Outcome-shift scoring, different memory counts, additional rollouts, and multi-step plans are extensions to be attempted only after the core results are complete. These comparisons will show whether a simpler policy captures most of the benefit and when planner re-execution is worth its overhead.
+
+\subsection{Evaluation Metrics}
+
+\begin{itemize}
+  \item \textbf{Task quality:} end-to-end task success and constraint-satisfaction rate;
+  \item \textbf{Safety and correctness:} harmful execution over all evaluated episodes, unsafe-action rate, and incorrect-memory acceptance rate;
+  \item \textbf{Coverage:} safe-proceed recall, proceed coverage, abstention rate, and unnecessary user-interruption rate;
+  \item \textbf{Critical-memory identification:} precision, recall, and ranking quality against verification-critical labels generated by separate offline verification-and-replanning trials;
+  \item \textbf{Efficiency:} verification calls per episode, total model/tool calls, input/output tokens, latency, and estimated monetary cost, including planning, auditing, retries, verification, and replanning;
+  \item \textbf{Counterfactual quality:} ordinary planner variability, noise-adjusted action-flip estimates, and their correlation with realized verification benefit.
+\end{itemize}
+Action changes alone will not be treated as correctness labels, and offline label-generation costs will be reported separately from deployed policy costs. We will report reliability--cost curves using total cost rather than selecting a single operating point that hides abstention or computational expenditure.
+
+\subsection{Controls and Statistical Analysis}
+
+The primary study will use one exact hosted model identifier and fixed decoding settings; a second backend is an optional extension. Prompts, retrieval results, and verifier implementations will be held fixed within each comparison. Cached full-memory and ablated planning outputs will be shared across \method, its action-flip-only variant, and verification-budget settings to reduce cost and unwanted variation. The primary comparison is \method\ versus the AMV-Guard-style baseline, with selective methods evaluated at one and three checks.
+
+Binary paired outcomes will be analyzed with McNemar's test where appropriate. Paired bootstrap intervals will be grouped by base scenario for task-level cost and utility differences; subgroup results with few cases will be treated as descriptive. Multiple observation seeds will be evaluated on a predefined subset, and confidence intervals will accompany effect sizes. Thresholds and weights will be fixed on development episodes before the final test.
+
+\subsection{Reproducibility, Ethics, and Safety}
+
+All users, memories, contacts, accounts, and transactions will be synthetic. Experiments will run in sandboxes with no real purchases, messages, or external side effects. We will release configuration files, prompts, data-generation rules, memory scenarios, raw traces, evaluation scripts, and a claim-to-artifact table linking each reported result to its logs. No human-subject data is planned. The agent will not be presented as providing a general safety guarantee; human approval remains necessary for genuinely irreversible actions.
+
+\section{Expected Outcomes and Limitations}
+
+The expected outputs are a working \method\ prototype, a reproducible memory-verification benchmark extension, and an empirical analysis of when planner-level counterfactual audits improve verification decisions. A negative result would also be informative: if candidate-conditioned or static signals match planner re-execution at lower cost, the experiments would identify where the additional computation is unjustified.
+
+The study has several anticipated limitations. Planner rollouts are expensive and may be unstable across backends. Counterfactual removal can change several aspects of a prompt at once, and memories may interact. In particular, leave-one-out auditing can assign zero impact to redundant memories even when their joint removal changes the action; the all-remove diagnostic exposes, but does not solve, this attribution problem. Noise adjustment estimates ordinary variability rather than eliminating it. Simulator-derived harm covers only encoded consequences, and the small number of synthetic task families limits subgroup precision and external validity. Verification tools may themselves be incomplete or stale, and the results may not transfer to open-ended real-world tasks. We will report these limitations explicitly and avoid treating the empirical action-flip score as a universal causal estimate or a standalone safety guarantee.
+
+\section{Work Plan}
+
+The detailed schedule will be finalized after the official submission timeline is announced. The project is organized into the following stages.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\textwidth}{p{0.24\textwidth}X}
+\toprule
+\textbf{Stage} & \textbf{Activities and deliverables} \\
+\midrule
+Literature review & Complete the focused literature review; finalize tool contracts, memory schema, and research protocol \\
+System implementation & Implement the persistent-memory agent, sandbox replay, and baseline policies \\
+Pilot study & Generate and manually audit pilot episodes; implement planner-level counterfactual rollouts \\
+Main experiments & Run the main comparisons and ablations; freeze thresholds before test evaluation \\
+Analysis and verification & Repeat key runs, analyze failures and cost, and verify reproducibility \\
+Final deliverables & Complete the report, presentation, and claim-to-artifact appendix \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\appendix
+\section{Literature Search and Review Protocol}
+\label{app:literature}
+
+The related-work review will combine targeted database search with backward and forward citation chasing. The initial sources are ACL Anthology, arXiv, OpenReview, Google Scholar, and Semantic Scholar. Search results will not be cited from snippets alone: the abstract, method, evaluation, and limitations of each directly relevant paper will be checked, and bibliographic metadata will be verified against arXiv, ACL Anthology, or the official publication page.
+
+\subsection{Search Queries}
+
+\begin{itemize}
+  \item \texttt{"agent memory" AND (counterfactual OR intervention OR ablation)}
+  \item \texttt{"persistent memory" AND (verification OR provenance OR grounding)}
+  \item \texttt{"memory selection" AND (downstream OR decision OR action)}
+  \item \texttt{"LLM agent" AND ("stale memory" OR "memory interference"}\allowbreak\ \texttt{OR "memory poisoning")}
+  \item \texttt{"value of information" AND ("LLM agent" OR "tool use")}
+  \item \texttt{(planner OR replanning) AND memory AND counterfactual}
+  \item \texttt{"agent memory" AND (benchmark OR evaluation) AND}\newline
+  \hspace*{1em}\texttt{(multi-session OR long-horizon)}
+\end{itemize}
+
+We will perform backward citation chasing from AMV-Guard, CMI, MemAudit, ConMem, CICL, TierMem, and MemoryArena, and forward citation chasing where the indexing service supports it. Search will be updated before the final report because several directly relevant works are recent preprints.
+
+\subsection{Inclusion and Exclusion Criteria}
+
+Included works should address at least one of the following: persistent memory in LLM agents; memory effects on downstream action; counterfactual memory intervention; provenance or verification; verification-cost allocation; or executable multi-session evaluation. Purely parametric knowledge editing, non-agentic long-context retrieval, and conversational recall without a decision component will be included only when needed for background. Peer-reviewed papers and preprints will be distinguished explicitly.
+
+\subsection{Evidence Extraction}
+
+For each directly relevant paper, we will record: full citation and publication status; memory lifecycle stage; intervention target; whether the planner is re-executed; whether verification occurs before action; environment and task split; baselines; quality and cost metrics; claimed limitations; and available code or data. This evidence table will be used to check that the final contribution remains distinct and that comparisons are made against the closest available methods rather than only generic memory baselines.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

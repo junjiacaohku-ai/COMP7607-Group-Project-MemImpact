@@ -1,0 +1,285 @@
+\documentclass[11pt]{article}
+
+\usepackage{times}
+\usepackage{xeCJK}
+\usepackage{microtype}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage{hyperref}
+
+\setCJKmainfont{PingFang SC}
+\setCJKsansfont{PingFang SC}
+\setCJKmonofont{Menlo}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\refname}{参考文献}
+\renewcommand{\tablename}{表}
+\renewcommand{\figurename}{图}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+  urlcolor=blue
+}
+\setlist{nosep,leftmargin=1.5em}
+\renewcommand{\arraystretch}{1.18}
+\newcommand{\method}{\textsc{MemImpact}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\A}{\mathcal{A}}
+
+\title{\textbf{\method：规划器级反事实记忆审计\\与选择性验证}\\[0.5em]
+\large COMP7607A 自然语言处理——小组项目计划书}
+\author{
+\begin{tabular}{ll}
+\multicolumn{2}{c}{\textbf{小组成员}}\\
+Cao Junjia & 学号：3036790730\\
+Zhang Yankai & 学号：3036806682\\
+Wu Hongyao & 学号：3036793196\\
+Kwan Tsz Hong & 学号：3036792350\\
+Wang Zicheng & 学号：3036790326
+\end{tabular}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+持久记忆使大语言模型（LLM）Agent 能够跨会话复用用户偏好、事实信息和既往经验，但被检索出的记忆可能已经过期、归属错误或具有误导性。现有研究已经覆盖记忆选择、写入阶段的保留决策、事后投毒审计以及动作条件下的验证。我们提出 \method，一个规划器级反事实审计框架，重点研究一个互补问题：\emph{移除某条记忆后，规划器本身是否会提出不同的动作？} 对每条被检索的记忆，\method\ 比较包含与移除该记忆时的配对 Agent 运行轨迹，在扣除规划器普通波动后估计其对候选动作的实际影响，并结合来源信息、动作后果和验证成本，决定继续执行、进行验证或暂缓行动。本项目的主要贡献并非单独提出反事实记忆评分或选择性验证——两者均已有相关研究——而是通过受控实验，检验规划器重新执行能否为在线验证提供超越静态记忆特征和候选动作条件信号的额外价值。我们将在加入持久记忆机制的可执行工具使用环境中开展评估，覆盖有效、过期、冲突、归属错误和无关记忆，并区分直接提供动作参数与间接影响动作选择两类依赖。实验将对比始终执行、始终验证、静态策略以及 AMV-Guard 式基线，并测量任务成功率、危险动作、安全执行召回率、执行覆盖率、验证成本、总计算成本和延迟。全部实验均使用合成数据、可复现轨迹、按任务族划分的数据集以及配对统计分析。
+\end{abstract}
+
+\section{引言}
+
+长期运行的 LLM Agent 越来越依赖持久记忆，以跨会话保存用户偏好、环境事实和执行轨迹 \cite{packer2023memgpt,xu2025amem}。记忆可以提升个性化能力和长程任务表现，但语义相关性或成功检索并不能保证记忆一定有用。被检索的经验可能传播错误、造成不恰当的经验重放，或在原始语境已经变化后仍以确定事实的形式被使用 \cite{xiong2026memory,kwon2026confidence}。近期基准测试同样表明，模型能够回忆起更新后的证据，并不意味着它能够基于这些证据采取正确行动 \cite{chao2026stale,he2026memoryarena}。
+
+一种自然的应对方式是在使用记忆前进行验证。然而，验证每个检索结果都会增加模型调用、工具调用和延迟，也可能带来不必要的用户打扰。因此，验证决策不仅取决于记忆看起来是否可靠，还取决于它是否实质影响候选动作，以及动作后果是否值得付出额外检查成本。
+
+已有研究从多个相邻方向处理这一问题。因果记忆干预（Causal Memory Intervention，CMI）根据估计的因果效用选择记忆 \cite{srivastava2026cmi}；MemAudit 通过反事实重放，将已经观察到的有害行为归因于被投毒的记忆 \cite{tan2026memaudit}；ConMem 使用前瞻性反事实场景辅助写入阶段的记忆保留决策 \cite{zhang2026conmem}；决策感知记忆卡利用反事实启发的效用对上下文进行排序 \cite{guan2026cicl}。与本项目最直接相关的是 AMV-Guard，它通过提取固定候选动作所依赖的前提，并应用校准后的信息价值，实现动作条件下的记忆验证 \cite{wang2026amv}。这些研究说明，反事实分析和选择性验证本身并不是新的研究概念。
+
+本项目聚焦于一个更具体、尚待检验的问题：\textbf{在移除某条记忆后重新运行规划器，能否提供一种不同于静态记忆特征和固定候选动作分析的在线验证信号？} 候选动作条件审计关注当前已经提出的动作依赖哪些前提，而规划器级审计关注如果没有这条记忆，Agent 最初是否会提出另一个动作。尤其在记忆会改变目的地、约束、工具参数或整体计划时，两种信号可能并不一致。
+
+\section{项目目标与研究问题}
+
+\subsection{项目目标}
+
+本项目旨在设计并评估 \method，一种基于规划器级反事实记忆审计的成本感知验证机制。项目将实证检验规划器重新执行在何种条件下能够改善记忆增强 Agent 的可靠性—成本权衡，而不是预设它能够普遍改善所有记忆系统。
+
+\subsection{研究问题}
+
+\begin{enumerate}[label=\textbf{RQ\arabic*：},leftmargin=3.2em]
+  \item \textbf{关键记忆识别。} 与静态置信度、时效性或候选动作条件信号相比，规划器级反事实审计能否更准确地识别那些“经过验证后可能改变错误或危险决策”的记忆？
+  \item \textbf{可靠性—成本权衡。} 由规划器级影响指导的选择性验证，能否提高任务成功率并减少危险动作，同时比全部验证策略使用更少的验证调用，并避免不必要的暂缓执行？
+  \item \textbf{鲁棒性与成本条件。} 方法收益如何随记忆失败类型、直接或间接动作依赖、动作后果以及反事实运行次数而变化？
+\end{enumerate}
+
+\subsection{具体目标}
+
+\begin{enumerate}
+  \item 实现一个具有可逆沙盒和结构化动作日志的持久记忆工具 Agent。
+  \item 基于配对运行轨迹和普通规划器波动，定义一种经验性的规划器级记忆影响度量。
+  \item 构建结合影响程度、来源信息、动作后果和验证成本的选择性验证策略。
+  \item 构建具有可执行标准答案和验证结果的 held-out 测试集，同时覆盖直接参数依赖与间接动作选择依赖。
+  \item 在相同任务、信息和验证预算下，与静态及候选动作条件验证基线进行比较，并报告总计算成本。
+\end{enumerate}
+
+\section{相关工作}
+
+\subsection{持久记忆与记忆评估}
+
+MemGPT 提出了受操作系统启发的上下文与记忆管理机制 \cite{packer2023memgpt}，A-MEM 则能够动态组织结构化记忆及其关联 \cite{xu2025amem}。LongMemEval 评估对话助手的信息提取、多会话推理、时间推理、知识更新和拒答能力 \cite{wu2025longmemeval}。MemoryArena 通过相互依赖的多会话任务，将记忆获取与后续行动结合起来，超越了仅以回忆为中心的评估方式 \cite{he2026memoryarena}。STALE 进一步表明，模型经常无法修正已经失效的信念，也难以据此调整后续行为 \cite{chao2026stale}。这些研究说明，记忆评估需要深入到决策层面，而不能只考察检索结果。
+
+记忆管理研究还发现，Agent 倾向于跟随被检索的经验，使错误和误导性执行过程不断传播 \cite{xiong2026memory}。具有来源感知能力的 TierMem 通过“摘要优先、证据不足时升级到原始日志”的方式，解决与之互补的证据成本问题 \cite{zhu2026tiermem}。Manufactured Confidence 指出，记忆整合可能将原本带有保留态度的表述改写为确定断言，而一条具有关键影响的记忆就可能驱动错误的后果性决策 \cite{kwon2026confidence}。本项目同样保留来源和不确定性信息，但重点测量规划器在行为上对每条被检索记忆的依赖程度。
+
+\subsection{反事实记忆选择与审计}
+
+CMI 通过受控记忆干预，在 Causal-LoCoMo 上根据因果效用选择记忆 \cite{srivastava2026cmi}。MemAudit 将反事实记忆影响分数与结构异常检测相结合，用于在有害行为发生后识别被投毒的记忆 \cite{tan2026memaudit}。ConMem 通过合成的未来场景评估候选记忆，以辅助记忆保留决策 \cite{zhang2026conmem}。CICL 使用反事实启发的决策效用，对文件、执行轨迹、规则和记忆进行排序，并将其压缩为带类型的记忆卡 \cite{guan2026cicl}。这些方法在干预对象和记忆生命周期阶段上各不相同，但并未直接评估本项目提出的、基于规划器重新执行的动作前在线验证机制。
+
+AMV-Guard 是与本项目最接近的工作。它提取候选动作所依赖的前提，校准这些前提为错误的概率，并通过有界信息价值选择验证动作 \cite{wang2026amv}。其评估刻意采用固定候选动作的安全干预，而不是规划器重新执行标签。本项目将规划器级运行轨迹与 AMV-Guard 式候选动作条件基线进行比较，以单独检验这一信号的价值。
+
+\begin{table}[t]
+\centering
+\small
+\caption{本项目与直接相关工作的定位差异}
+\label{tab:related}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.23\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{工作} & \textbf{主要目标} & \textbf{干预或决策对象} & \textbf{\method\ 的区别} \\
+\midrule
+CMI \cite{srivastava2026cmi} & 为下游回答选择有用记忆 & 记忆包含方式与回答质量 & 研究动作前验证，而不只是记忆选择 \\
+MemAudit \cite{tan2026memaudit} & 在有害行为发生后识别投毒记忆 & 事后反事实归因 & 面向在线预防，同时研究普通过期、冲突和对抗性记忆 \\
+ConMem \cite{zhang2026conmem} & 改进写入阶段的记忆保留 & 前瞻性合成场景 & 在动作发生时评估已被检索的记忆 \\
+CICL \cite{guan2026cicl} & 对决策相关上下文进行排序和压缩 & 反事实启发的上下文效用 & 使用实际规划器运行轨迹，而不只依赖评判器估计的效用 \\
+AMV-Guard \cite{wang2026amv} & 使用信息价值验证固定候选动作的前提 & 候选动作条件下的前提验证 & 测量移除记忆是否改变规划器提出的动作 \\
+\midrule
+\method{}（本项目） & 根据规划器级行为影响分配在线验证 & 包含与移除每条记忆时的配对重新规划 & 直接比较规划器重新执行、静态信号和候选动作条件信号 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{拟议方法}
+
+\subsection{问题设定}
+
+令 $x$ 表示当前任务状态，$\R=\{m_1,\ldots,m_k\}$ 表示为当前决策检索出的少量记忆。每条 $m_i$ 包含文本、来源、时间戳、适用范围，以及可选的置信度或冲突元数据。Agent 策略 $\Pi$ 生成候选计划或动作序列 $a^{+}=\Pi(x,\R;\xi)$，其中 $\xi$ 表示解码随机性。本项目关注工具使用 Agent，其动作可以规范化为工具名称和结构化参数 \cite{yao2023react}。
+
+验证机制具有三种终局选择：\texttt{Proceed}（继续执行）、\texttt{Verify}（验证），以及在后果严重且问题无法解决时选择 \texttt{Abstain}（暂缓执行）。验证可以查询权威记录、检查原始来源、调用只读工具或询问用户。如果验证否定了某项前提，Agent 将重新规划，而不是继续执行原动作。
+
+\subsection{规划器级反事实审计}
+
+对于每条被检索的记忆 $m_i$，构造一次配对移除运行：
+\begin{equation}
+  a_i^{-}=\Pi\!\left(x,\R\setminus\{m_i\};\xi\right)
+\end{equation}
+在系统支持的情况下，完整运行与移除运行使用相同随机种子或解码配置。为考虑规划过程的随机性，在 $S$ 次配对运行中估计经验动作改变率：
+\begin{equation}
+  \widehat{F}_i=\frac{1}{S}\sum_{s=1}^{S}
+  \mathbf{1}\!\left[\A\!\left(a^{+,(s)}\right)\neq
+  \A\!\left(a_i^{-,(s)}\right)\right],
+\end{equation}
+其中 $\A(\cdot)$ 返回规范化后的下一动作。动作等价性通过工具名称和规范化参数判断，而不是仅比较原始文本。当随机解码需要 $S>1$ 时，对已有的完整记忆运行结果进行两两比较，无需额外调用即可得到基线改变率 $\widehat{F}_0$。我们使用扣除噪声后的信号：
+\begin{equation}
+  \widetilde{F}_i=\max\left(0,\widehat{F}_i-\widehat{F}_0\right)
+\end{equation}
+解码配置和 $S$ 将在试点阶段确定并在正式测试前冻结；当重复调用实际上具有确定性时，不再进行无效重复。
+
+如果能够获得低成本、可执行的环境模型，可在扩展实验中进一步测量结果变化：
+\begin{equation}
+  \Delta_i=U(x,a^{+})-U(x,a_i^{-}),
+\end{equation}
+其中任务效用 $U$ 由约束满足程度和动作成本定义。完整环境执行用于离线评估，并不要求每次在线决策都执行。
+
+这里的估计是受控移除记忆条件下的\emph{经验反事实}估计，而不是对所有未观测因素进行正式因果识别。配对运行和按任务族划分的数据集可以减少、但不能完全消除规划随机性和模型特异性混杂。逐条移除还可能遗漏冗余记忆：当同一信息存在两份副本时，移除任意一份都可能不改变动作。因此，针对性的冗余记忆压力测试将加入全部移除诊断，并与单条记忆归因结果分开报告。
+
+\subsection{选择性验证策略}
+
+验证机制使用如下有界评分对候选验证对象排序：
+\begin{equation}
+  V_i=\frac{L(a^{+})\,q_i\left(\lambda_1\widetilde{F}_i+
+  \lambda_2\widetilde{\Delta}_i\right)}{c_i+\epsilon},
+\end{equation}
+其中，$L(a^{+})$ 表示候选动作的后果，$q_i$ 综合来源、时间、冲突和认知状态所反映的记忆不确定性，$\widetilde{\Delta}_i$ 是可选的结果变化估计，$c_i$ 是预计验证成本。核心实验设定 $\lambda_2=0$，并且只在开发任务上调节至多两个决策参数。实验还将测试仅使用动作改变率的简化版本，以判断额外项是否必要。
+
+为控制额外开销，仅对具有显著后果的候选动作触发反事实审计，并且每次最多审计 $k$ 条被检索的记忆。验证机制在固定预算内，按评分从高到低依次验证候选对象；当预计收益低于验证成本时继续执行；只有在后果严重且关键前提无法解决时才暂缓行动。项目初始范围不会自动删除记忆，而是记录验证结果和证据链接，供后续分析。
+
+\section{实验计划}
+
+\subsection{实验环境与记忆场景}
+
+主要实验环境为 ToolSandbox \cite{lu2025toolsandbox}，并在其上加入持久记忆层和权威的只读验证工具。ToolSandbox 提供有状态的工具执行和动态轨迹评估，适合测量记忆干预对动作的影响。AppWorld \cite{trivedi2024appworld} 仅作为核心范围之外的可选迁移环境。
+
+实验将构造包含合成用户和可执行标准答案的多会话任务。约 40 个开发 episode 使用联系人更新和提醒创建任务，120 个最终测试 episode 使用消息发送和提醒删除任务。同一基础场景的相关变体将放在同一数据集划分中。核心记忆条件包括：
+\begin{itemize}
+  \item \textbf{有效记忆：} 当前有效且适用范围正确的记忆，包括保存较久但仍有效的记录；
+  \item \textbf{过期记忆：} 曾经有效、但已被更新权威记录取代的记忆；
+  \item \textbf{冲突记忆：} 与另一检索来源不一致的记忆；
+  \item \textbf{归属错误或过度泛化：} 被分配给错误人物或适用范围的事实；
+  \item \textbf{相似但无关：} 在语义上相关、但不应影响当前决策的记忆。
+\end{itemize}
+对抗性记忆属于可选压力测试扩展，不包含在核心测试矩阵中。
+
+每个 episode 还将变化\textbf{依赖类型}：\emph{直接依赖}指记忆直接提供工具参数，例如电话号码；\emph{间接依赖}指记忆不出现在动作参数中，却会改变动作选择，例如规定应使用哪个联系渠道的规则。该因子避免实验只覆盖候选动作条件提取已经能够识别的硬前提。测试矩阵为 $2$ 个任务族 $\times$ $5$ 类记忆条件 $\times$ $2$ 个后果等级 $\times$ $2$ 类依赖类型 $\times$ $3$ 个场景变体，共 120 个 episode。动作后果将与记忆正误独立变化，例如对比删除普通提醒与删除关键提醒。
+
+\subsection{基线方法}
+
+所有方法共享相同的基础 Agent、初始候选动作、检索记忆集合、工具和候选任务。
+\begin{enumerate}
+  \item \textbf{始终执行：} 信任所有被检索的记忆，不进行验证；
+  \item \textbf{始终验证：} 在相同验证接口下验证所有候选记忆；
+  \item \textbf{静态策略：} 使用置信度、时间、来源和冲突特征决定验证，不运行反事实轨迹；
+  \item \textbf{AMV-Guard 式验证机制：} 使用候选动作条件的前提提取，不重新运行规划器。
+\end{enumerate}
+AMV-Guard 式基线将获得与 \method\ 相同的可观察不确定性、动作后果和验证成本特征，并使用相同的决策处理规则，仅以候选动作条件前提信号替换规划器级影响信号。该基线是适配实现，不声称完整复现原方法。相关性、CMI 式和 Oracle 参考仅作为核心比较完成后的可选扩展。
+
+\subsection{消融实验}
+
+必须完成的消融是仅使用动作改变率的版本，以移除额外的不确定性、后果和成本项。冗余记忆压力测试将单独报告全部移除诊断结果。结果变化评分、不同记忆数量、额外重复运行和多步计划均为核心结果完成后的扩展。这些比较将用于判断更简单的策略能否获得大部分收益，以及何时值得付出规划器重新执行的开销。
+
+\subsection{评价指标}
+
+\begin{itemize}
+  \item \textbf{任务质量：} 端到端任务成功率和约束满足率；
+  \item \textbf{安全性与正确性：} 实际危险执行数占全部评价 episode 的比例、不安全动作率和错误记忆接受率；
+  \item \textbf{覆盖率：} 安全执行召回率、执行覆盖率、暂缓执行率和不必要的用户打扰率；
+  \item \textbf{关键记忆识别：} 相对独立离线验证—重规划试验生成的关键验证标签，计算精确率、召回率和排序质量；
+  \item \textbf{效率：} 每个 episode 的验证调用次数、模型与工具总调用次数、输入/输出 Token、延迟和估计货币成本，包括规划、审计、重试、验证和重新规划；
+  \item \textbf{反事实质量：} 普通规划器波动、扣除噪声后的动作改变估计，以及其与实际验证收益的相关性。
+\end{itemize}
+动作改变本身不会被当作正确性标签，离线标签生成成本将与在线部署策略成本分开报告。实验将使用总成本绘制可靠性—成本曲线，而不是只选择一个隐藏暂缓执行或计算开销的工作点。
+
+\subsection{实验控制与统计分析}
+
+主要实验将使用一个确切的托管模型标识和固定解码配置，第二个后端仅作为可选扩展。每组比较内部将固定提示、检索结果和验证工具实现。完整记忆和移除记忆的规划输出将被缓存，并供 \method、仅动作改变消融和不同验证预算设置共享，以降低成本和非预期波动。主要比较为 \method\ 与 AMV-Guard 式基线，选择性方法分别在 1 次和 3 次验证预算下评价。
+
+对于适当的配对二元结果，使用 McNemar 检验；任务级成本和效用差异采用按基础场景分组的配对 bootstrap 置信区间，样本较少的子组结果仅作描述性分析。在预先确定的子集上评估多个观察种子，并同时报告效应量和置信区间。阈值和权重将在开发 episode 上确定，并在最终测试前冻结。
+
+\subsection{可复现性、伦理与安全}
+
+所有用户、记忆、联系人、账户和交易均为合成数据。实验将在沙盒中运行，不产生真实购买、消息发送或其他外部副作用。项目将公开配置文件、提示、数据生成规则、记忆场景、原始轨迹、评估脚本，以及将每项报告结果映射到对应日志的 claim-to-artifact 表。项目不计划使用人类受试者数据，也不会将 Agent 表述为通用安全保障；对于真实不可逆动作，仍需要人工批准。
+
+\section{预期结果与局限}
+
+预期产出包括一个可运行的 \method\ 原型、一个可复现的记忆验证基准扩展，以及对规划器级反事实审计何时能够改善验证决策的实证分析。阴性结果同样具有价值：如果候选动作条件信号或静态信号能够以更低成本达到规划器重新执行的效果，实验将说明哪些场景中额外计算并不值得。
+
+本研究存在若干预期局限。规划器运行轨迹成本较高，并可能随模型后端而变化。移除记忆可能同时改变提示中的多个方面，多条记忆之间也可能存在交互。特别是，当冗余记忆的联合移除能够改变动作时，逐条移除仍可能将每条记忆的影响都估计为零；全部移除诊断能够暴露这一问题，但不能解决个体归因问题。噪声调整只能估计普通波动，而不能将其完全消除。模拟器定义的危险仅覆盖已经编码的后果，少量合成任务族也会限制子组分析精度和外部有效性。验证工具自身可能不完整或过期，实验结果未必能够迁移到开放式真实任务。我们将明确报告这些局限，不会把经验动作改变率解释为普适的因果估计或独立的安全保证。
+
+\section{工作计划}
+
+详细时间安排将在正式提交时间公布后确定。项目暂按以下阶段组织。
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\textwidth}{p{0.24\textwidth}X}
+\toprule
+\textbf{阶段} & \textbf{主要工作与产出} \\
+\midrule
+文献调研 & 完成聚焦文献综述，确定工具接口、记忆结构和研究方案 \\
+系统实现 & 实现持久记忆 Agent、沙盒重放和基线策略 \\
+初步试点 & 生成并人工检查试点 episode，实现规划器级反事实运行轨迹 \\
+主要实验 & 运行主要对比与消融实验，并在测试评估前冻结阈值 \\
+分析与验证 & 重复关键运行，分析失败和成本，检查可复现性 \\
+最终交付 & 完成报告、展示和 claim-to-artifact 附录 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\appendix
+\section{文献检索与阅读方案}
+\label{app:literature}
+
+相关文献综述将结合定向数据库检索、向后引文追踪和向前引文追踪。初始检索来源包括 ACL Anthology、arXiv、OpenReview、Google Scholar 和 Semantic Scholar。不会仅凭搜索摘要引用论文：对每篇直接相关论文，都将检查摘要、方法、评估和局限，并通过 arXiv、ACL Anthology 或官方发表页面核验书目信息。
+
+\subsection{检索式}
+
+\begin{itemize}
+  \item \texttt{"agent memory" AND (counterfactual OR intervention OR ablation)}
+  \item \texttt{"persistent memory" AND (verification OR provenance OR grounding)}
+  \item \texttt{"memory selection" AND (downstream OR decision OR action)}
+  \item \texttt{"LLM agent" AND ("stale memory" OR "memory interference"}\newline
+  \hspace*{1em}\texttt{OR "memory poisoning")}
+  \item \texttt{"value of information" AND ("LLM agent" OR "tool use")}
+  \item \texttt{(planner OR replanning) AND memory AND counterfactual}
+  \item \texttt{"agent memory" AND (benchmark OR evaluation) AND}\newline
+  \hspace*{1em}\texttt{(multi-session OR long-horizon)}
+\end{itemize}
+
+将以 AMV-Guard、CMI、MemAudit、ConMem、CICL、TierMem 和 MemoryArena 为起点进行向后引文追踪，并在索引服务支持的情况下进行向前引文追踪。由于部分直接相关工作是近期预印本，最终报告前还会更新检索结果。
+
+\subsection{纳入与排除标准}
+
+纳入文献应至少涉及以下一个方面：LLM Agent 的持久记忆、记忆对下游动作的影响、反事实记忆干预、来源或验证、验证成本分配，或可执行的多会话评估。纯参数化知识编辑、非 Agent 的长上下文检索，以及不包含决策成分的对话回忆，仅在背景需要时纳入。同行评审论文和预印本将明确区分。
+
+\subsection{证据提取}
+
+对于每篇直接相关论文，将记录：完整引用与发表状态、记忆生命周期阶段、干预对象、是否重新运行规划器、是否在动作前验证、实验环境与数据划分、基线、质量和成本指标、论文声明的局限，以及是否有可用代码或数据。证据表将用于检查最终贡献是否仍然具有区分度，并确保实验与最接近的方法进行比较，而不是只选择通用记忆基线。
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
