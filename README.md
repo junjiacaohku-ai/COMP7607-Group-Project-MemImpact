@@ -121,6 +121,13 @@ python scripts/run_memimpact_smoke.py \
   --config configs/validation_matrix_v1.yaml
 ```
 
+运行分层 20-episode 开发 pilot（不是正式 held-out 配置）：
+
+```bash
+.venv/bin/python scripts/run_langgraph_comparison.py \
+  --config configs/dev_pilot_v1.yaml
+```
+
 为原 runner 或 LangGraph 运行生成独立离线关键记忆标签；runtime 默认从结果元数据识别：
 
 ```bash

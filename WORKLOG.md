@@ -380,3 +380,12 @@
 - 48 个 policy episodes 均纳入识别指标：MemImpact / flip-only / Static / AMV-style 均为 TP=4、FP=4、FN=0，precision=0.5、recall=1.0；Always Verify precision=0.167、recall=1.0；Always Proceed recall=0。
 - 重新分析后 paired bootstrap 数值不变；完整 LangGraph validation pilot 的配置、在线 trace、离线标签、识别指标、统计表和图已形成闭环。
 - 下一步：准备分层 20-episode 开发 pilot，用 LangGraph 运行并检查场景质量、泄漏、异常调用和实测成本，再决定正式配置冻结。
+
+## 2026-11-13：20-episode 开发 pilot 配置
+
+- 新增 `configs/dev_pilot_v1.yaml`，使用 LangGraph 批量入口、相同 Qwen 解码设置、S=3、验证预算 1 和六种策略。
+- 从 40 个开发 episodes 中按确定性规则分层选取 20 个：每个 dependence × memory condition × consequence 组合各 1 个；Sam 使用 low、Ava 使用 high。
+- 审核通过：五类记忆各 4 个，高／低后果各 10 个，直接／间接依赖各 10 个，四个基础场景组各 5 个；无重复路径或 scenario ID。
+- 所有场景均为 development、最多 3 条 Memory、工具均在导出的真实 schema 中；用户 Prompt 不含隐藏结果、Memory 条件或权威记录字段。
+- 配置明确标记 `status=development`、`frozen=false`，不是正式 held-out 或最终阈值冻结。
+- 下一步：真实运行该 pilot，检查失败 trace、场景区分度和实测成本后再冻结正式实验；根据既有删除矩阵粗略估计，本次实际共享调用的总规划量约 30–35 万 tokens，仅作预算参考。

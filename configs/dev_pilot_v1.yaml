@@ -1,0 +1,43 @@
+schema_version: 1
+config_id: dev_pilot_v1
+description: Stratified 20-episode development pilot; not the final frozen evaluation
+status: development
+frozen: false
+model: qwen3.8-flash
+temperature: 0.0
+samples: 3
+thinking: true
+verification_budget: 1
+max_planner_attempts: 2
+policies:
+  - memimpact
+  - memimpact_flip
+  - always_proceed
+  - always_verify
+  - static
+  - amv_guard
+scenarios:
+  - benchmark/dev/dev_direct_sam_valid_low.json
+  - benchmark/dev/dev_direct_ava_valid_high.json
+  - benchmark/dev/dev_direct_sam_stale_low.json
+  - benchmark/dev/dev_direct_ava_stale_high.json
+  - benchmark/dev/dev_direct_sam_conflicting_low.json
+  - benchmark/dev/dev_direct_ava_conflicting_high.json
+  - benchmark/dev/dev_direct_sam_misattributed_low.json
+  - benchmark/dev/dev_direct_ava_misattributed_high.json
+  - benchmark/dev/dev_direct_sam_irrelevant_low.json
+  - benchmark/dev/dev_direct_ava_irrelevant_high.json
+  - benchmark/dev/dev_indirect_sam_valid_low.json
+  - benchmark/dev/dev_indirect_ava_valid_high.json
+  - benchmark/dev/dev_indirect_sam_stale_low.json
+  - benchmark/dev/dev_indirect_ava_stale_high.json
+  - benchmark/dev/dev_indirect_sam_conflicting_low.json
+  - benchmark/dev/dev_indirect_ava_conflicting_high.json
+  - benchmark/dev/dev_indirect_sam_misattributed_low.json
+  - benchmark/dev/dev_indirect_ava_misattributed_high.json
+  - benchmark/dev/dev_indirect_sam_irrelevant_low.json
+  - benchmark/dev/dev_indirect_ava_irrelevant_high.json
+output_dir: results/policy_comparison
+bootstrap_resamples: 2000
+bootstrap_seed: 42
+toolsandbox_git_sha: c8571d7854316d2e1c5f288e59fe1e34e53f6dd1
