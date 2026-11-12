@@ -14,7 +14,7 @@ MemImpact 研究规划器级反事实记忆审计：逐条移除检索到的 Mem
 - 已生成 40 个带元数据的合成开发 episodes，并完成小规模真实模型对照；
 - 已保留正向、负向、失败与调试记录；
 - 已完成 Reminder Creation 的真实 Qwen pilot，并实现 Reminder Deletion validation pilot；
-- 已实现显式 LangGraph 状态图和跨进程 ToolSandbox worker，并通过真实 Qwen 删除场景 smoke test；
+- 已实现显式 LangGraph 状态图和跨进程 ToolSandbox worker，并完成八场景真实 Qwen 批量对照与跨 runtime 语义检查；
 - 尚未完成正式 held-out 测试、最终报告和展示；现有 bootstrap 仅用于小规模 pilot 描述。
 
 详细过程和实验路径见 [WORKLOG.md](WORKLOG.md)。
@@ -119,6 +119,12 @@ python scripts/run_memimpact_smoke.py \
 ```bash
 .venv/bin/python scripts/run_langgraph_comparison.py \
   --config configs/validation_matrix_v1.yaml
+```
+
+为原 runner 或 LangGraph 运行生成独立离线关键记忆标签；runtime 默认从结果元数据识别：
+
+```bash
+.venv/bin/python scripts/generate_critical_labels.py path/to/langgraph_run
 ```
 
 生成开发集：

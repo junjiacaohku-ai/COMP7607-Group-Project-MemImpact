@@ -358,3 +358,17 @@
 - 两套环境 `pip check`、Ruff 和 Python 编译通过；项目实际依赖的 ToolSandbox contact/messaging/reminder/schema 测试 17/17 通过。
 - 额外执行上游 `execution_environment_test.py` 时有 2 个既有断言失败：Python 3.10 的 SyntaxError  caret 格式变化，以及并行工具调用顺序假设；其余 17 项通过。本轮未修改上游代码，这两个失败不涉及项目使用的单工具顺序执行路径。
 - 下一步：用真实 Qwen 对同一冻结配置运行 LangGraph 批量对照，再生成分析；独立模型调用的语义差异需结合 trace 解释，不能要求逐动作必然相同。
+
+## 2026-11-13：LangGraph 八场景真实批量对照
+
+- 主分析结果：`results/policy_comparison/reminder_validation_matrix_v1_langgraph_20261113_003503/`；另一次完整重复运行 `002146` 保留原始记录，不与本次分析混合。
+- 元数据已核对：冻结配置 SHA-256、Prompt 和工具 schema 哈希、项目 commit `7e4a54b`、ToolSandbox commit 均匹配，运行时工作区无未提交修改。
+- MemImpact / flip-only：成功率均为 1.0、危险执行率均为 0，各 8 次验证、100 次逻辑规划调用、101 次 attempts；tokens 分别为 120,076 / 119,680，Planner 延迟约 388.0 / 382.6 秒。
+- Always Proceed：成功率 0.5、危险执行率 0.5，四个过期映射均误删无关提醒。
+- Always Verify / Static / AMV-style：成功率均为 1.0、危险执行率均为 0；Planner tokens 约 15.5k，延迟约 48–49 秒。
+- 唯一额外 attempt 位于 `validation_meeting_valid` 移除 `mem_coffee` 的 sample 1：首次工具参数 JSON 解析失败，第二次成功；错误和两次 token 成本均保留在共享 trace。
+- 已生成 CSV、JSON 和可靠性—成本图。MemImpact − AMV-style 的成功率及危险执行差均为 0；每 episode token 差为 +13,061.375，四组 paired bootstrap CI [12,835.25, 13,345.375]。该直接删除矩阵仍未显示可靠性收益。
+- 与原真实运行 `reminder_validation_matrix_v1_20261112_230027` 对照：48/48 episodes 的验证选择、最终动作、任务成功、危险执行和执行语义一致；40/48 包括反事实评分在内的完整投影也一致，其余 8 个仅 comparison 数值不同。
+- `generate_critical_labels.py` 现可按结果元数据自动选择 original/LangGraph runtime；LangGraph 新增 forced-memory 验证入口。确定性离线检查确认逐条强制验证正确，过期场景中仅 `mem_target` 将失败／危险结果纠正为成功／安全。
+- 当前 LangGraph 运行的真实离线标签尚未生成，因此现有 `critical_memory_metrics.json` 仍是零标签状态，不能作为识别效果结果。
+- 下一步：运行 LangGraph 离线标签生成并重新分析，之后进入 20 个开发 episodes pilot 和正式配置冻结。

@@ -1,0 +1,668 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "groceries"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"groceries\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2702.926,
+        "usage": {
+          "completion_tokens": 171,
+          "prompt_tokens": 903,
+          "total_tokens": 1074,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 903
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 141,
+            "text_tokens": 171
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "groceries"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2702.926,
+    "usage": {
+      "prompt_tokens": 903,
+      "completion_tokens": 171,
+      "total_tokens": 1074
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "buy groceries"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"buy groceries\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2812.777,
+        "usage": {
+          "completion_tokens": 157,
+          "prompt_tokens": 903,
+          "total_tokens": 1060,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 903
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 127,
+            "text_tokens": 157
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "buy groceries"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2812.777,
+    "usage": {
+      "prompt_tokens": 903,
+      "completion_tokens": 157,
+      "total_tokens": 1060
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "buy groceries"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"buy groceries\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2308.295,
+        "usage": {
+          "completion_tokens": 124,
+          "prompt_tokens": 903,
+          "total_tokens": 1027,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 903
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 94,
+            "text_tokens": 124
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "buy groceries"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2308.295,
+    "usage": {
+      "prompt_tokens": 903,
+      "completion_tokens": 124,
+      "total_tokens": 1027
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to buy groceries has ID 00000000-0000-4000-8000-000000001004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000001004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000001004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3880.441,
+        "usage": {
+          "completion_tokens": 217,
+          "prompt_tokens": 942,
+          "total_tokens": 1159,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 942
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 151,
+            "text_tokens": 217
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000001004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3880.441,
+    "usage": {
+      "prompt_tokens": 942,
+      "completion_tokens": 217,
+      "total_tokens": 1159
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to buy groceries has ID 00000000-0000-4000-8000-000000001004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000001004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000001004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4046.871,
+        "usage": {
+          "completion_tokens": 251,
+          "prompt_tokens": 942,
+          "total_tokens": 1193,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 942
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 185,
+            "text_tokens": 251
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000001004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4046.871,
+    "usage": {
+      "prompt_tokens": 942,
+      "completion_tokens": 251,
+      "total_tokens": 1193
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to buy groceries has ID 00000000-0000-4000-8000-000000001004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000001004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000001004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3369.054,
+        "usage": {
+          "completion_tokens": 204,
+          "prompt_tokens": 942,
+          "total_tokens": 1146,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 942
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 138,
+            "text_tokens": 204
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000001004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3369.054,
+    "usage": {
+      "prompt_tokens": 942,
+      "completion_tokens": 204,
+      "total_tokens": 1146
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to buy groceries has ID 00000000-0000-4000-8000-000000001004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000001004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000001004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4959.448,
+        "usage": {
+          "completion_tokens": 288,
+          "prompt_tokens": 943,
+          "total_tokens": 1231,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 943
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 222,
+            "text_tokens": 288
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000001004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4959.448,
+    "usage": {
+      "prompt_tokens": 943,
+      "completion_tokens": 288,
+      "total_tokens": 1231
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to buy groceries has ID 00000000-0000-4000-8000-000000001004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000001004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000001004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4419.877,
+        "usage": {
+          "completion_tokens": 273,
+          "prompt_tokens": 943,
+          "total_tokens": 1216,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 943
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 207,
+            "text_tokens": 273
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000001004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4419.877,
+    "usage": {
+      "prompt_tokens": 943,
+      "completion_tokens": 273,
+      "total_tokens": 1216
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to buy groceries has ID 00000000-0000-4000-8000-000000001004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000001004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000001004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3609.675,
+        "usage": {
+          "completion_tokens": 221,
+          "prompt_tokens": 943,
+          "total_tokens": 1164,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 943
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 155,
+            "text_tokens": 221
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000001004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3609.675,
+    "usage": {
+      "prompt_tokens": 943,
+      "completion_tokens": 221,
+      "total_tokens": 1164
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2
+  }
+]

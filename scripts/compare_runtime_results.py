@@ -80,25 +80,34 @@ def main() -> None:
     }
 
     differences = []
+    decision_outcome_differences = []
     for scenario_id, policy in shared_keys:
         reference_projection = semantic_projection(reference_rows[(scenario_id, policy)])
         candidate_projection = semantic_projection(candidate_rows[(scenario_id, policy)])
         fields = {
-            field: {"reference": reference_projection[field], "candidate": candidate_projection[field]}
+            field: {
+                "reference": reference_projection[field],
+                "candidate": candidate_projection[field],
+            }
             for field in reference_projection
             if reference_projection[field] != candidate_projection[field]
         }
         if fields:
-            differences.append(
-                {"scenario_id": scenario_id, "policy": policy, "fields": fields}
-            )
+            item = {"scenario_id": scenario_id, "policy": policy, "fields": fields}
+            differences.append(item)
+            if set(fields) - {"baseline_flip_rate", "comparisons"}:
+                decision_outcome_differences.append(item)
 
     report = {
         "reference_run": str(args.reference_run),
         "candidate_run": str(args.candidate_run),
         "matched_episodes": len(shared_keys),
         "semantically_equal_episodes": len(shared_keys) - len(differences),
-        "equivalent": not differences and not missing["reference_only"] and not missing["candidate_only"],
+        "decision_outcome_equal_episodes": len(shared_keys)
+        - len(decision_outcome_differences),
+        "equivalent": not differences
+        and not missing["reference_only"]
+        and not missing["candidate_only"],
         "missing": missing,
         "differences": differences,
         "cost_fields_excluded": [
@@ -108,7 +117,8 @@ def main() -> None:
         ],
         "interpretation": (
             "Strict equality is intended for matched deterministic planner inputs. "
-            "Independent model calls can legitimately produce different decisions."
+            "Independent model calls can legitimately produce different decisions. "
+            "Decision/outcome equality excludes baseline flip rates and comparison diagnostics."
         ),
     }
     output = args.output or args.candidate_run / "runtime_semantics.json"

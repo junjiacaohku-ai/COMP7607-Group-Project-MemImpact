@@ -1,0 +1,1460 @@
+{
+  "reference_run": "results/policy_comparison/reminder_validation_matrix_v1_20261112_230027",
+  "candidate_run": "results/policy_comparison/reminder_validation_matrix_v1_langgraph_20261113_003503",
+  "matched_episodes": 48,
+  "semantically_equal_episodes": 40,
+  "decision_outcome_equal_episodes": 48,
+  "equivalent": false,
+  "missing": {
+    "reference_only": [],
+    "candidate_only": []
+  },
+  "differences": [
+    {
+      "scenario_id": "validation_dentist_valid",
+      "policy": "memimpact",
+      "fields": {
+        "comparisons": {
+          "reference": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.9606164383561644
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ],
+          "candidate": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "dentist appointment"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.9606164383561644
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "validation_dentist_valid",
+      "policy": "memimpact_flip",
+      "fields": {
+        "comparisons": {
+          "reference": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.0
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ],
+          "candidate": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "book dentist appointment"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "dentist appointment"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.0
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001003"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "validation_groceries_valid",
+      "policy": "memimpact",
+      "fields": {
+        "comparisons": {
+          "reference": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.9606164383561644
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ],
+          "candidate": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "groceries"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.9606164383561644
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "validation_groceries_valid",
+      "policy": "memimpact_flip",
+      "fields": {
+        "comparisons": {
+          "reference": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.0
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ],
+          "candidate": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "groceries"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "buy groceries"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.0
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001004"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "validation_meeting_stale",
+      "policy": "memimpact",
+      "fields": {
+        "comparisons": {
+          "reference": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "project meeting"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 3.921232876712329
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ],
+          "candidate": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 3.921232876712329
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "validation_meeting_stale",
+      "policy": "memimpact_flip",
+      "fields": {
+        "comparisons": {
+          "reference": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "project meeting"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.0
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ],
+          "candidate": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.0
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000002002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "validation_meeting_valid",
+      "policy": "memimpact",
+      "fields": {
+        "comparisons": {
+          "reference": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.9606164383561644
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ],
+          "candidate": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "project meeting"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.9606164383561644
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "validation_meeting_valid",
+      "policy": "memimpact_flip",
+      "fields": {
+        "comparisons": {
+          "reference": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.0
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ],
+          "candidate": [
+            {
+              "removed_memory_id": "mem_target",
+              "ablated_actions": [
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "attend project meeting"
+                  }
+                },
+                {
+                  "tool_name": "search_reminder",
+                  "arguments": {
+                    "content": "project meeting"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 1.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 1.0,
+              "observable_uncertainty": 1.9606164383561644,
+              "selection_score": 1.0
+            },
+            {
+              "removed_memory_id": "mem_style",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.889269406392694,
+              "selection_score": 0.0
+            },
+            {
+              "removed_memory_id": "mem_coffee",
+              "ablated_actions": [
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                },
+                {
+                  "tool_name": "remove_reminder",
+                  "arguments": {
+                    "reminder_id": "00000000-0000-4000-8000-000000001002"
+                  }
+                }
+              ],
+              "raw_action_flip_rate": 0.0,
+              "baseline_flip_rate": 0.0,
+              "noise_adjusted_impact": 0.0,
+              "observable_uncertainty": 1.8374429223744293,
+              "selection_score": 0.0
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "cost_fields_excluded": [
+    "planner_attempts",
+    "planner_latency_ms",
+    "planner_token_usage"
+  ],
+  "interpretation": "Strict equality is intended for matched deterministic planner inputs. Independent model calls can legitimately produce different decisions. Decision/outcome equality excludes baseline flip rates and comparison diagnostics."
+}

@@ -3,8 +3,6 @@ import json
 from pathlib import Path
 
 from memimpact.core import CandidateAction
-from memimpact.episode import run_episode
-from memimpact.planner import CandidatePlanner
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCENARIO_DIRECTORIES = (
@@ -29,15 +27,60 @@ def main() -> None:
         description="Generate offline verification-critical memory labels for a comparison run"
     )
     parser.add_argument("run_directory", type=Path)
+    parser.add_argument("--runtime", choices=("original", "langgraph"))
     args = parser.parse_args()
     comparison_path = args.run_directory / "comparison_summary.json"
     comparison = json.loads(comparison_path.read_text(encoding="utf-8"))
-    planner = CandidatePlanner(
-        comparison["model"],
-        comparison["temperature"],
-        thinking=comparison["thinking"],
-        max_attempts=comparison.get("max_planner_attempts", 2),
-    )
+    runtime = args.runtime or comparison.get("runtime", "original")
+    if runtime == "langgraph":
+        from memimpact.langgraph_runtime import run_langgraph_episode
+        from memimpact.process_adapter import ToolSandboxProcessExecutor
+        from memimpact.schema_planner import SchemaCandidatePlanner
+
+        planner = SchemaCandidatePlanner(
+            comparison["model"],
+            comparison["temperature"],
+            thinking=comparison["thinking"],
+            max_attempts=comparison.get("max_planner_attempts", 2),
+        )
+        executor = ToolSandboxProcessExecutor()
+    else:
+        from memimpact.episode import run_episode
+        from memimpact.planner import CandidatePlanner
+
+        planner = CandidatePlanner(
+            comparison["model"],
+            comparison["temperature"],
+            thinking=comparison["thinking"],
+            max_attempts=comparison.get("max_planner_attempts", 2),
+        )
+
+    def run_label_episode(
+        fixture,
+        output_directory,
+        cached_full_runs,
+        forced_memory_id=None,
+    ):
+        if runtime == "langgraph":
+            return run_langgraph_episode(
+                fixture,
+                "always_proceed",
+                planner,
+                1,
+                executor,
+                verification_budget=1,
+                cached_full_runs=cached_full_runs,
+                forced_memory_id=forced_memory_id,
+            )
+        return run_episode(
+            fixture,
+            "always_proceed",
+            planner,
+            1,
+            output_directory,
+            cached_full_runs=cached_full_runs,
+            forced_memory_id=forced_memory_id,
+        )
 
     scenario_references = dict.fromkeys(comparison["scenarios"])
     label_counts = []
@@ -55,13 +98,10 @@ def main() -> None:
         cached_full = [
             (CandidateAction(**trace["action"]), trace) for trace in shared_traces
         ][:1]
-        baseline, _ = run_episode(
+        baseline, _ = run_label_episode(
             fixture,
-            "always_proceed",
-            planner,
-            1,
             scenario_directory / "offline_labels" / "baseline",
-            cached_full_runs=cached_full,
+            cached_full,
         )
         memory_results = []
         for memory in fixture["memories"]:
@@ -70,13 +110,10 @@ def main() -> None:
                 / "offline_labels"
                 / memory["memory_id"]
             )
-            result, traces = run_episode(
+            result, traces = run_label_episode(
                 fixture,
-                "always_proceed",
-                planner,
-                1,
                 output_directory,
-                cached_full_runs=cached_full,
+                cached_full,
                 forced_memory_id=memory["memory_id"],
             )
             critical = (
@@ -111,6 +148,7 @@ def main() -> None:
             )
         labels = {
             "scenario_id": scenario_id,
+            "runtime": runtime,
             "definition": (
                 "Verifying this memory turns the shared initial failed or harmful "
                 "outcome into a successful outcome without harmful execution"

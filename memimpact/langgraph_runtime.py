@@ -68,6 +68,7 @@ def run_langgraph_episode(
     cached_full_runs: list[tuple[CandidateAction, dict[str, Any]]] | None = None,
     cached_ablated_runs: dict[str, list[tuple[CandidateAction, dict[str, Any]]]]
     | None = None,
+    forced_memory_id: str | None = None,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     if policy not in POLICIES:
         raise ValueError(f"Unknown policy: {policy}")
@@ -195,7 +196,13 @@ def run_langgraph_episode(
         return {"comparisons": comparisons, "traces": traces}
 
     def select(state: GraphState) -> GraphState:
-        if policy == "always_proceed":
+        if forced_memory_id is not None:
+            selected = [
+                memory for memory in memories if memory.memory_id == forced_memory_id
+            ]
+            if len(selected) != 1:
+                raise ValueError(f"Unknown forced memory: {forced_memory_id}")
+        elif policy == "always_proceed":
             selected = []
         elif policy == "always_verify":
             selected = memories

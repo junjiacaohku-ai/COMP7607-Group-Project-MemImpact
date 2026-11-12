@@ -3,6 +3,7 @@
   "candidate_run": "results/runtime_semantics/messaging_lookup/langgraph",
   "matched_episodes": 6,
   "semantically_equal_episodes": 6,
+  "decision_outcome_equal_episodes": 6,
   "equivalent": true,
   "missing": {
     "reference_only": [],
@@ -14,5 +15,5 @@
     "planner_latency_ms",
     "planner_token_usage"
   ],
-  "interpretation": "Strict equality is intended for matched deterministic planner inputs. Independent model calls can legitimately produce different decisions."
+  "interpretation": "Strict equality is intended for matched deterministic planner inputs. Independent model calls can legitimately produce different decisions. Decision/outcome equality excludes baseline flip rates and comparison diagnostics."
 }
