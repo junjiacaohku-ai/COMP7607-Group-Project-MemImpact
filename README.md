@@ -14,7 +14,8 @@ MemImpact 研究规划器级反事实记忆审计：逐条移除检索到的 Mem
 - 已生成 40 个带元数据的合成开发 episodes，并完成小规模真实模型对照；
 - 已保留正向、负向、失败与调试记录；
 - 已完成 Reminder Creation 的真实 Qwen pilot，并实现 Reminder Deletion validation pilot；
-- 尚未完成正式 held-out 测试、统计置信区间、最终报告和展示。
+- 已实现显式 LangGraph 状态图和跨进程 ToolSandbox worker，并通过真实 Qwen 删除场景 smoke test；
+- 尚未完成正式 held-out 测试、最终报告和展示；现有 bootstrap 仅用于小规模 pilot 描述。
 
 详细过程和实验路径见 [WORKLOG.md](WORKLOG.md)。
 
@@ -59,6 +60,19 @@ python -m pip install -e . --no-deps
 c8571d7854316d2e1c5f288e59fe1e34e53f6dd1
 ```
 
+LangGraph 使用另一个独立环境，不要与 ToolSandbox 环境混装：
+
+```bash
+python3.10 -m venv .venv
+.venv/bin/python -m pip install -e . 'langgraph==1.2.20' 'PyYAML==6.0.1'
+```
+
+`configs/toolsandbox_tools.json` 已包含真实工具 schema。只有工具注册表变化时才需重新导出：
+
+```bash
+.venv-toolsandbox/bin/python scripts/export_tool_schemas.py
+```
+
 ## 模型配置
 
 当前使用百炼 `qwen3.8-flash` 和中国香港地域。请在本地终端设置环境变量，不要将凭据提交到仓库：
@@ -86,6 +100,18 @@ python scripts/run_qwen_toolsandbox.py --scenario wifi_off
 python scripts/run_memimpact_smoke.py \
   --scenario scenarios/pilot/stale_phone.json \
   --samples 3
+```
+
+运行真实 Qwen × LangGraph × ToolSandbox 删除场景：
+
+```bash
+.venv/bin/python scripts/run_langgraph_smoke.py \
+  --scenario benchmark/deletion_pilot/stale_target.json \
+  --policy memimpact \
+  --model qwen3.8-flash \
+  --temperature 0 \
+  --samples 3 \
+  --max-planner-attempts 2
 ```
 
 生成开发集：

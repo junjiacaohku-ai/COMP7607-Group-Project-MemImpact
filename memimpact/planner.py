@@ -1,4 +1,3 @@
-import hashlib
 import json
 import time
 from typing import Any
@@ -9,6 +8,7 @@ from tool_sandbox.tools.messaging import send_message_with_phone_number
 from tool_sandbox.tools.reminder import add_reminder, remove_reminder, search_reminder
 
 from memimpact.core import CandidateAction, MemoryRecord
+from memimpact.prompts import PLANNER_PROMPT_SHA256, PLANNER_SYSTEM_PROMPT
 from memimpact.qwen import make_qwen_client
 
 TOOL_REGISTRY = {
@@ -18,16 +18,6 @@ TOOL_REGISTRY = {
     "search_reminder": search_reminder,
     "remove_reminder": remove_reminder,
 }
-
-PLANNER_SYSTEM_PROMPT = (
-    "You are a planning-only agent. Propose exactly one next tool call "
-    "for the user's task. Use relevant retrieved memories, but do not "
-    "assume missing tool arguments. If required current information is "
-    "missing, propose an available read-only search tool instead of guessing. "
-    "Verified current evidence takes precedence over conflicting memories. "
-    "Do not execute tools or describe actions in natural language."
-)
-PLANNER_PROMPT_SHA256 = hashlib.sha256(PLANNER_SYSTEM_PROMPT.encode()).hexdigest()
 
 
 class PlannerError(ValueError):

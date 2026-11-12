@@ -1,0 +1,251 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to submit report has ID 00000000-0000-4000-8000-000000001001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000001001"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000001001\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 1933.648,
+        "usage": {
+          "completion_tokens": 173,
+          "prompt_tokens": 1015,
+          "total_tokens": 1188,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1015
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 107,
+            "text_tokens": 173
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000001001"
+          }
+        }
+      }
+    ],
+    "latency_ms": 1933.648,
+    "usage": {
+      "prompt_tokens": 1015,
+      "completion_tokens": 173,
+      "total_tokens": 1188
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to submit report has ID 00000000-0000-4000-8000-000000001001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000001001"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000001001\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3333.302,
+        "usage": {
+          "completion_tokens": 319,
+          "prompt_tokens": 1015,
+          "total_tokens": 1334,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1015
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 253,
+            "text_tokens": 319
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000001001"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3333.302,
+    "usage": {
+      "prompt_tokens": 1015,
+      "completion_tokens": 319,
+      "total_tokens": 1334
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to submit report has ID 00000000-0000-4000-8000-000000001001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000001001"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000001001\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2509.591,
+        "usage": {
+          "completion_tokens": 213,
+          "prompt_tokens": 1015,
+          "total_tokens": 1228,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1015
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 147,
+            "text_tokens": 213
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000001001"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2509.591,
+    "usage": {
+      "prompt_tokens": 1015,
+      "completion_tokens": 213,
+      "total_tokens": 1228
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2
+  }
+]

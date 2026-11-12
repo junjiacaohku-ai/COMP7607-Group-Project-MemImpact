@@ -1,0 +1,155 @@
+{
+  "search_contacts": {
+    "type": "function",
+    "function": {
+      "name": "search_contacts",
+      "description": "Search for a contact person based on provided arguments Each field has a search criteria of either\n1. Exact value matching\n2. Fuzzy string matching with a predefined threshold\nSearch results contains all contact entries that matched all criteria",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "person_id": {
+            "type": "string",
+            "description": "String format unique identifier for the contact person, will be exact matched"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of contact person, will be fuzzy matched"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "Phone number of contact person, will be exact matched"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Relationship between user and this contact, will be fuzzy matched"
+          },
+          "is_self": {
+            "type": "boolean",
+            "description": "If the requested contact corresponds to the current user. Will be exact matched"
+          }
+        },
+        "required": []
+      }
+    }
+  },
+  "send_message_with_phone_number": {
+    "type": "function",
+    "function": {
+      "name": "send_message_with_phone_number",
+      "description": "Send a message to a recipient using phone_number",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "phone_number": {
+            "type": "string",
+            "description": "String format phone number to send the message to"
+          },
+          "content": {
+            "type": "string",
+            "description": "Message payload text"
+          }
+        },
+        "required": [
+          "phone_number",
+          "content"
+        ]
+      }
+    }
+  },
+  "add_reminder": {
+    "type": "function",
+    "function": {
+      "name": "add_reminder",
+      "description": "Add a reminder",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "Content of the reminder"
+          },
+          "reminder_timestamp": {
+            "type": "number",
+            "description": "When the user wants to be reminded. Expressed in POSIX timestamp"
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Optional. Latitude of the location associated with this reminder"
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Optional. Longitude of the location associated with this reminder"
+          }
+        },
+        "required": [
+          "content",
+          "reminder_timestamp"
+        ]
+      }
+    }
+  },
+  "search_reminder": {
+    "type": "function",
+    "function": {
+      "name": "search_reminder",
+      "description": "Search for a reminder based on provided arguments Each field has a search criteria of either\n1. Exact value matching\n2. Fuzzy string matching with a predefined threshold\n3. Range matching timestamp with upperbound or lowerbound\nSearch results contains all reminder entries that matched all criteria",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "reminder_id": {
+            "type": "string",
+            "description": "String format unique identifier for the reminder person, will be exact matched"
+          },
+          "content": {
+            "type": "string",
+            "description": "Content of the reminder, will be fuzzy matched"
+          },
+          "creation_timestamp_lowerbound": {
+            "type": "number",
+            "description": "Lowerbound of the POSIX timestamp of the time the reminder is created."
+          },
+          "creation_timestamp_upperbound": {
+            "type": "number",
+            "description": "Upperbound of the POSIX timestamp of the time the reminder is created."
+          },
+          "reminder_timestamp_lowerbound": {
+            "type": "number",
+            "description": "Lowerbound of the POSIX timestamp of the time the reminder should be reminded."
+          },
+          "reminder_timestamp_upperbound": {
+            "type": "number",
+            "description": "Upperbound of the POSIX timestamp of the time the reminder should be reminded."
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Latitude of the location associated with the reminder. Will be exact matched."
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude of the location associated with the reminder. Will be exact matched."
+          }
+        },
+        "required": []
+      }
+    }
+  },
+  "remove_reminder": {
+    "type": "function",
+    "function": {
+      "name": "remove_reminder",
+      "description": "Remove a reminder given its unique identifier",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "reminder_id": {
+            "type": "string",
+            "description": "String format unique identifier of the reminder to be removed"
+          }
+        },
+        "required": [
+          "reminder_id"
+        ]
+      }
+    }
+  }
+}
