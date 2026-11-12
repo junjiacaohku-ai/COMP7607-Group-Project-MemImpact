@@ -27,6 +27,8 @@ scenarios/pilot/    早期手工调试场景，保留用于追溯
 benchmark/dev/      40 个合成开发 episodes 与 manifest
 benchmark/reminder_pilot/  Reminder Creation 有效／过期时间场景
 benchmark/deletion_pilot/  Reminder Deletion validation 场景
+benchmark/deletion_validation/  四组独立删除验证场景
+configs/            冻结的实验 YAML 配置
 results/            原始轨迹、结果汇总、表格和图
 proposal/           中英文 LaTeX proposal、PDF 和参考文献
 docs/               实施计划、组会材料和评审意见

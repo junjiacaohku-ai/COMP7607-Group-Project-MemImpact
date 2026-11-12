@@ -287,3 +287,13 @@
 - MemImpact − AMV-style 的任务成功率和危险执行差均为 0；总 token 差为 +12,950。
 - 本次只有 1 个基础场景组，bootstrap CI 为退化点估计，不能用于统计推断；仅用于验证分析流程。
 - 统一配置、运行元数据、离线标签、识别指标和统计输出链路已全部跑通。
+
+## 2026-11-12：四组独立 Reminder Deletion validation 矩阵
+
+- 新增 `scripts/generate_deletion_validation.py` 和 `benchmark/deletion_validation/`。
+- 生成 8 个 episodes：报告、项目会议、牙医预约、购物 4 个独立基础场景，各包含过期和有效目标映射。
+- 新增冻结配置 `configs/validation_matrix_v1.yaml`，使用相同模型、解码、预算、缓存和 bootstrap 设置。
+- `generate_critical_labels.py` 已支持新 validation 目录，且不依赖文件名等于 scenario ID。
+- 离线验证通过：8 个场景 × 6 种策略均可执行；过期场景中 Always Proceed 误删，其他策略均能纠正；有效场景均正确。
+- 相比此前仅 1 个基础组的 validation，本矩阵有 4 个基础场景组，可提供更合理但仍有限的 paired bootstrap 描述。
+- 下一步：提交该矩阵并运行真实 Qwen validation，再生成离线标签和统计输出。

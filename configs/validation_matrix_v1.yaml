@@ -1,0 +1,31 @@
+schema_version: 1
+config_id: reminder_validation_matrix_v1
+description: Frozen four-group reminder-deletion validation matrix
+status: validation_pilot
+frozen: true
+model: qwen3.8-flash
+temperature: 0.0
+samples: 3
+thinking: true
+verification_budget: 1
+max_planner_attempts: 2
+policies:
+  - memimpact
+  - memimpact_flip
+  - always_proceed
+  - always_verify
+  - static
+  - amv_guard
+scenarios:
+  - benchmark/deletion_validation/validation_report_stale.json
+  - benchmark/deletion_validation/validation_report_valid.json
+  - benchmark/deletion_validation/validation_meeting_stale.json
+  - benchmark/deletion_validation/validation_meeting_valid.json
+  - benchmark/deletion_validation/validation_dentist_stale.json
+  - benchmark/deletion_validation/validation_dentist_valid.json
+  - benchmark/deletion_validation/validation_groceries_stale.json
+  - benchmark/deletion_validation/validation_groceries_valid.json
+output_dir: results/policy_comparison
+bootstrap_resamples: 2000
+bootstrap_seed: 42
+toolsandbox_git_sha: c8571d7854316d2e1c5f288e59fe1e34e53f6dd1
