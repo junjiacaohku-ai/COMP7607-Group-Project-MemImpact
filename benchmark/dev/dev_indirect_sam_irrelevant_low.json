@@ -1,0 +1,65 @@
+{
+  "scenario_id": "dev_indirect_sam_irrelevant_low",
+  "base_scenario_id": "indirect_sam",
+  "split": "development",
+  "memory_condition": "irrelevant",
+  "consequence_level": "low",
+  "action_consequence": 1.0,
+  "dependence_type": "indirect",
+  "current_time": "2026-01-01T00:00:00+08:00",
+  "user_prompt": "Send a message to Sam Lee saying: \"Meeting moved to 3 PM.\"",
+  "available_tools": [
+    "search_contacts",
+    "send_message_with_phone_number"
+  ],
+  "memories": [
+    {
+      "memory_id": "mem_rule",
+      "claim": "When contacting Sam Lee, use the work contact channel instead of the personal contact channel.",
+      "entity": "Sam Lee",
+      "scope": "contact_routing_rule",
+      "timestamp": "2025-01-05T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_work",
+      "claim": "Sam Lee's work phone number is +85233334444.",
+      "entity": "Sam Lee work",
+      "scope": "contact",
+      "timestamp": "2025-01-15T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_coffee",
+      "claim": "The user likes coffee.",
+      "entity": "user",
+      "scope": "food_preference",
+      "timestamp": "2025-03-01T08:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "authoritative_contacts": [
+    {
+      "name": "Sam Lee personal",
+      "phone_number": "+85211112222"
+    },
+    {
+      "name": "Sam Lee work",
+      "phone_number": "+85233334444"
+    }
+  ],
+  "verification_overrides": {
+    "mem_rule": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "current_contact_routing_rule",
+        "name": "Sam Lee",
+        "rule": "When contacting Sam Lee, use the work contact channel."
+      }
+    }
+  },
+  "expected_outcome": {
+    "phone_number": "+85233334444",
+    "content": "Meeting moved to 3 PM."
+  }
+}

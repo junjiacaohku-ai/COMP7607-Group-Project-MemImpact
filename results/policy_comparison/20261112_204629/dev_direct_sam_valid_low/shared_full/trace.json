@@ -1,0 +1,250 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85211112222.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Sam Lee\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3738.46,
+        "usage": {
+          "completion_tokens": 245,
+          "prompt_tokens": 901,
+          "total_tokens": 1146,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 901
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 217,
+            "text_tokens": 245
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Sam Lee"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3738.46,
+    "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 245,
+      "total_tokens": 1146
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85211112222.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Sam Lee\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5207.989,
+        "usage": {
+          "completion_tokens": 460,
+          "prompt_tokens": 901,
+          "total_tokens": 1361,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 901
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 420,
+            "text_tokens": 460
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Sam Lee",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 5207.989,
+    "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 460,
+      "total_tokens": 1361
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85211112222.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Sam Lee\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7429.686,
+        "usage": {
+          "completion_tokens": 571,
+          "prompt_tokens": 901,
+          "total_tokens": 1472,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 901
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 543,
+            "text_tokens": 571
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Sam Lee"
+          }
+        }
+      }
+    ],
+    "latency_ms": 7429.686,
+    "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 571,
+      "total_tokens": 1472
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2
+  }
+]

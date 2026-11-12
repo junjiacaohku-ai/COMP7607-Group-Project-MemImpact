@@ -1,0 +1,254 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85298765432.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85298765432",
+        "content": "Meeting moved to 3 PM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Meeting moved to 3 PM.\",\"phone_number\":\"+85298765432\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6401.913,
+        "usage": {
+          "completion_tokens": 434,
+          "prompt_tokens": 901,
+          "total_tokens": 1335,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 901
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 372,
+            "text_tokens": 434
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85298765432",
+            "content": "Meeting moved to 3 PM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 6401.913,
+    "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 434,
+      "total_tokens": 1335
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85298765432.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85298765432",
+        "content": "Meeting moved to 3 PM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Meeting moved to 3 PM.\",\"phone_number\":\"+85298765432\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 12949.319,
+        "usage": {
+          "completion_tokens": 973,
+          "prompt_tokens": 901,
+          "total_tokens": 1874,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 901
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 911,
+            "text_tokens": 973
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85298765432",
+            "content": "Meeting moved to 3 PM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 12949.319,
+    "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 973,
+      "total_tokens": 1874
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85298765432.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85298765432",
+        "content": "Meeting moved to 3 PM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Meeting moved to 3 PM.\",\"phone_number\":\"+85298765432\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4417.154,
+        "usage": {
+          "completion_tokens": 231,
+          "prompt_tokens": 901,
+          "total_tokens": 1132,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 901
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 169,
+            "text_tokens": 231
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85298765432",
+            "content": "Meeting moved to 3 PM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 4417.154,
+    "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 231,
+      "total_tokens": 1132
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2
+  }
+]

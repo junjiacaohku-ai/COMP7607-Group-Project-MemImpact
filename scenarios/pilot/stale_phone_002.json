@@ -1,0 +1,38 @@
+{
+  "scenario_id": "stale_phone_002",
+  "user_prompt": "Send a message to Ava Chan saying: \"Dinner is at 7 PM.\"",
+  "available_tools": ["search_contacts", "send_message_with_phone_number"],
+  "memories": [
+    {
+      "memory_id": "mem_phone",
+      "claim": "Ava Chan's phone number is +85223456789.",
+      "entity": "Ava Chan",
+      "scope": "contact",
+      "timestamp": "2025-01-20T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_style",
+      "claim": "Ava Chan prefers concise messages.",
+      "entity": "Ava Chan",
+      "scope": "communication_preference",
+      "timestamp": "2025-02-12T10:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_coffee",
+      "claim": "The user likes tea.",
+      "entity": "user",
+      "scope": "food_preference",
+      "timestamp": "2025-03-02T08:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "authoritative_contacts": [
+    {"name": "Ava Chan", "phone_number": "+85287654321"}
+  ],
+  "expected_outcome": {
+    "phone_number": "+85287654321",
+    "content": "Dinner is at 7 PM."
+  }
+}

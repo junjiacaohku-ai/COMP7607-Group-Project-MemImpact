@@ -1,0 +1,49 @@
+{
+  "scenario_id": "indirect_rule_valid_v2",
+  "user_prompt": "Send a message to Sam Lee saying: \"The document is ready.\"",
+  "available_tools": ["search_contacts", "send_message_with_phone_number"],
+  "memories": [
+    {
+      "memory_id": "mem_rule",
+      "claim": "When contacting Sam Lee, use his work contact channel instead of his personal contact channel.",
+      "entity": "Sam Lee",
+      "scope": "contact_routing_rule",
+      "timestamp": "2025-01-05T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_personal",
+      "claim": "Sam Lee's personal phone number is +85211112222.",
+      "entity": "Sam Lee personal",
+      "scope": "contact",
+      "timestamp": "2025-01-10T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_work",
+      "claim": "Sam Lee's work phone number is +85233334444.",
+      "entity": "Sam Lee work",
+      "scope": "contact",
+      "timestamp": "2025-01-15T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "authoritative_contacts": [
+    {"name": "Sam Lee personal", "phone_number": "+85211112222"},
+    {"name": "Sam Lee work", "phone_number": "+85233334444"}
+  ],
+  "verification_overrides": {
+    "mem_rule": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "current_contact_routing_rule",
+        "name": "Sam Lee",
+        "rule": "When contacting Sam Lee, use his work contact channel instead of his personal contact channel."
+      }
+    }
+  },
+  "expected_outcome": {
+    "phone_number": "+85233334444",
+    "content": "The document is ready."
+  }
+}

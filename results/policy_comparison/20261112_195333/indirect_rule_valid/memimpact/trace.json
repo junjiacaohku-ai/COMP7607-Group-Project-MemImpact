@@ -1,0 +1,930 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For work-related messages, use Sam Lee's work contact channel instead of the personal channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85233334444",
+        "content": "The report is ready."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The report is ready.\",\"phone_number\":\"+85233334444\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 17521.572,
+        "usage": {
+          "completion_tokens": 1001,
+          "prompt_tokens": 931,
+          "total_tokens": 1932,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 931
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 941,
+            "text_tokens": 1001
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85233334444",
+            "content": "The report is ready."
+          }
+        }
+      }
+    ],
+    "latency_ms": 17521.572,
+    "usage": {
+      "prompt_tokens": 931,
+      "completion_tokens": 1001,
+      "total_tokens": 1932
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For work-related messages, use Sam Lee's work contact channel instead of the personal channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85233334444",
+        "content": "The report is ready."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The report is ready.\",\"phone_number\":\"+85233334444\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7828.927,
+        "usage": {
+          "completion_tokens": 506,
+          "prompt_tokens": 931,
+          "total_tokens": 1437,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 931
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 446,
+            "text_tokens": 506
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85233334444",
+            "content": "The report is ready."
+          }
+        }
+      }
+    ],
+    "latency_ms": 7828.927,
+    "usage": {
+      "prompt_tokens": 931,
+      "completion_tokens": 506,
+      "total_tokens": 1437
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For work-related messages, use Sam Lee's work contact channel instead of the personal channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85233334444",
+        "content": "The report is ready."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The report is ready.\",\"phone_number\":\"+85233334444\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4269.18,
+        "usage": {
+          "completion_tokens": 232,
+          "prompt_tokens": 931,
+          "total_tokens": 1163,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 931
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 172,
+            "text_tokens": 232
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85233334444",
+            "content": "The report is ready."
+          }
+        }
+      }
+    ],
+    "latency_ms": 4269.18,
+    "usage": {
+      "prompt_tokens": 931,
+      "completion_tokens": 232,
+      "total_tokens": 1163
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85233334444",
+        "content": "The report is ready."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The report is ready.\",\"phone_number\":\"+85233334444\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 8773.234,
+        "usage": {
+          "completion_tokens": 587,
+          "prompt_tokens": 845,
+          "total_tokens": 1432,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 845
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 527,
+            "text_tokens": 587
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85233334444",
+            "content": "The report is ready."
+          }
+        }
+      }
+    ],
+    "latency_ms": 8773.234,
+    "usage": {
+      "prompt_tokens": 845,
+      "completion_tokens": 587,
+      "total_tokens": 1432
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85233334444",
+        "content": "The report is ready."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The report is ready.\",\"phone_number\":\"+85233334444\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5720.31,
+        "usage": {
+          "completion_tokens": 362,
+          "prompt_tokens": 845,
+          "total_tokens": 1207,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 845
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 302,
+            "text_tokens": 362
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85233334444",
+            "content": "The report is ready."
+          }
+        }
+      }
+    ],
+    "latency_ms": 5720.31,
+    "usage": {
+      "prompt_tokens": 845,
+      "completion_tokens": 362,
+      "total_tokens": 1207
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85233334444",
+        "content": "The report is ready."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The report is ready.\",\"phone_number\":\"+85233334444\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 12514.271,
+        "usage": {
+          "completion_tokens": 721,
+          "prompt_tokens": 845,
+          "total_tokens": 1566,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 845
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 661,
+            "text_tokens": 721
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85233334444",
+            "content": "The report is ready."
+          }
+        }
+      }
+    ],
+    "latency_ms": 12514.271,
+    "usage": {
+      "prompt_tokens": 845,
+      "completion_tokens": 721,
+      "total_tokens": 1566
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For work-related messages, use Sam Lee's work contact channel instead of the personal channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Sam Lee\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 9995.329,
+        "usage": {
+          "completion_tokens": 570,
+          "prompt_tokens": 844,
+          "total_tokens": 1414,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 844
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 530,
+            "text_tokens": 570
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Sam Lee",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 9995.329,
+    "usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 570,
+      "total_tokens": 1414
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_personal",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For work-related messages, use Sam Lee's work contact channel instead of the personal channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85233334444",
+        "content": "The report is ready."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The report is ready.\",\"phone_number\":\"+85233334444\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5853.367,
+        "usage": {
+          "completion_tokens": 306,
+          "prompt_tokens": 844,
+          "total_tokens": 1150,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 844
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 246,
+            "text_tokens": 306
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85233334444",
+            "content": "The report is ready."
+          }
+        }
+      }
+    ],
+    "latency_ms": 5853.367,
+    "usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 306,
+      "total_tokens": 1150
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_personal",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For work-related messages, use Sam Lee's work contact channel instead of the personal channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Sam Lee\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7091.502,
+        "usage": {
+          "completion_tokens": 373,
+          "prompt_tokens": 844,
+          "total_tokens": 1217,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 844
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 345,
+            "text_tokens": 373
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Sam Lee"
+          }
+        }
+      }
+    ],
+    "latency_ms": 7091.502,
+    "usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 373,
+      "total_tokens": 1217
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_personal",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For work-related messages, use Sam Lee's work contact channel instead of the personal channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee",
+        "relationship": "work",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Sam Lee\",\"relationship\":\"work\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4986.15,
+        "usage": {
+          "completion_tokens": 243,
+          "prompt_tokens": 844,
+          "total_tokens": 1087,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 844
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 191,
+            "text_tokens": 243
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Sam Lee",
+            "relationship": "work",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 4986.15,
+    "usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 243,
+      "total_tokens": 1087
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For work-related messages, use Sam Lee's work contact channel instead of the personal channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee",
+        "relationship": "work"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Sam Lee\",\"relationship\":\"work\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4439.348,
+        "usage": {
+          "completion_tokens": 246,
+          "prompt_tokens": 844,
+          "total_tokens": 1090,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 844
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 206,
+            "text_tokens": 246
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Sam Lee",
+            "relationship": "work"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4439.348,
+    "usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 246,
+      "total_tokens": 1090
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For work-related messages, use Sam Lee's work contact channel instead of the personal channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Sam Lee\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4588.34,
+        "usage": {
+          "completion_tokens": 200,
+          "prompt_tokens": 844,
+          "total_tokens": 1044,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 844
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 172,
+            "text_tokens": 200
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Sam Lee"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4588.34,
+    "usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 200,
+      "total_tokens": 1044
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 2
+  }
+]

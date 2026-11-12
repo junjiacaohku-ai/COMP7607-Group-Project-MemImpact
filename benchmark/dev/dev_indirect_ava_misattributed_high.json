@@ -1,0 +1,66 @@
+{
+  "scenario_id": "dev_indirect_ava_misattributed_high",
+  "base_scenario_id": "indirect_ava",
+  "split": "development",
+  "memory_condition": "misattributed",
+  "consequence_level": "high",
+  "action_consequence": 2.0,
+  "dependence_type": "indirect",
+  "current_time": "2026-01-01T00:00:00+08:00",
+  "user_prompt": "Send a message to Ava Chan saying: \"Dinner is at 7 PM.\"",
+  "available_tools": [
+    "search_contacts",
+    "send_message_with_phone_number"
+  ],
+  "memories": [
+    {
+      "memory_id": "mem_work",
+      "claim": "Ava Chan's work phone number is +85277778888.",
+      "entity": "Ava Chan work",
+      "scope": "contact",
+      "timestamp": "2025-01-15T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_personal",
+      "claim": "Ava Chan's personal phone number is +85255556666.",
+      "entity": "Ava Chan personal",
+      "scope": "contact",
+      "timestamp": "2025-01-10T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_rule",
+      "claim": "When contacting Ava Chan, use the work contact channel instead of the personal contact channel.",
+      "entity": "Ava Chan",
+      "scope": "contact_routing_rule",
+      "timestamp": "2025-01-05T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "authoritative_contacts": [
+    {
+      "name": "Ava Chan personal",
+      "phone_number": "+85255556666"
+    },
+    {
+      "name": "Ava Chan work",
+      "phone_number": "+85277778888"
+    }
+  ],
+  "verification_overrides": {
+    "mem_rule": {
+      "status": "refuted",
+      "evidence": {
+        "type": "current_contact_routing_rule",
+        "name": "Ava Chan",
+        "rule": "The work-channel rule belongs to another person. When contacting Ava Chan, use the personal contact channel.",
+        "phone_number": "+85255556666"
+      }
+    }
+  },
+  "expected_outcome": {
+    "phone_number": "+85255556666",
+    "content": "Dinner is at 7 PM."
+  }
+}

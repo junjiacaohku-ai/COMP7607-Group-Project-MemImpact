@@ -1,0 +1,87 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_personal",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Sam Lee's work phone number is +85233334444.",
+        "entity": "Sam Lee work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Sam Lee's personal phone number is +85211112222.",
+        "entity": "Sam Lee personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Sam Lee, use his work contact channel instead of his personal contact channel.",
+        "entity": "Sam Lee",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85233334444",
+        "content": "The document is ready."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The document is ready.\",\"phone_number\":\"+85233334444\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4463.117,
+        "usage": {
+          "completion_tokens": 344,
+          "prompt_tokens": 928,
+          "total_tokens": 1272,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 928
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 284,
+            "text_tokens": 344
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85233334444",
+            "content": "The document is ready."
+          }
+        }
+      }
+    ],
+    "latency_ms": 4463.117,
+    "usage": {
+      "prompt_tokens": 928,
+      "completion_tokens": 344,
+      "total_tokens": 1272
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  }
+]

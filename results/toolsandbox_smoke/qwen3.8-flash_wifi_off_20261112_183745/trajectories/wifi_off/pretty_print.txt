@@ -1,0 +1,20 @@
+Note that User Simulator few shot messages have been omitted
+shape: (4, 8)
+┌─────────────┬────────┬─────────────┬─────────────┬─────────────┬────────────┬────────────┬────────────┐
+│ sandbox_mes ┆ sender ┆ recipient   ┆ content     ┆ openai_func ┆ tool_call_ ┆ tool_trace ┆ visible_to │
+│ sage_index  ┆ ---    ┆ ---         ┆ ---         ┆ tion_name   ┆ exception  ┆ ---        ┆ ---        │
+│ ---         ┆ enum   ┆ enum        ┆ str         ┆ ---         ┆ ---        ┆ list[str]  ┆ list[enum] │
+│ i32         ┆        ┆             ┆             ┆ str         ┆ str        ┆            ┆            │
+╞═════════════╪════════╪═════════════╪═════════════╪═════════════╪════════════╪════════════╪════════════╡
+│ 0           ┆ SYSTEM ┆ EXECUTION_E ┆ import json ┆ null        ┆ null       ┆ null       ┆ null       │
+│             ┆        ┆ NVIRONMENT  ┆ from tool_s ┆             ┆            ┆            ┆            │
+│             ┆        ┆             ┆ andbox.…    ┆             ┆            ┆            ┆            │
+│ 1           ┆ SYSTEM ┆ AGENT       ┆ Don't make  ┆ null        ┆ null       ┆ null       ┆ null       │
+│             ┆        ┆             ┆ assumptions ┆             ┆            ┆            ┆            │
+│             ┆        ┆             ┆ about w…    ┆             ┆            ┆            ┆            │
+│ 14          ┆ SYSTEM ┆ USER        ┆ You are no  ┆ null        ┆ null       ┆ null       ┆ null       │
+│             ┆        ┆             ┆ longer an   ┆             ┆            ┆            ┆            │
+│             ┆        ┆             ┆ assistant…  ┆             ┆            ┆            ┆            │
+│ 15          ┆ USER   ┆ AGENT       ┆ Turn off    ┆ null        ┆ null       ┆ null       ┆ null       │
+│             ┆        ┆             ┆ wifi        ┆             ┆            ┆            ┆            │
+└─────────────┴────────┴─────────────┴─────────────┴─────────────┴────────────┴────────────┴────────────┘

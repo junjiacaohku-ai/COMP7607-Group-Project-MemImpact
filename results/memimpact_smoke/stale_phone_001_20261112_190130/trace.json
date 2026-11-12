@@ -1,0 +1,279 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85212345678.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85212345678",
+        "content": "Meeting moved to 3 PM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Meeting moved to 3 PM.\",\"phone_number\":\"+85212345678\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "latency_ms": 17733.314,
+    "usage": {
+      "completion_tokens": 981,
+      "prompt_tokens": 901,
+      "total_tokens": 1882,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 901
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 919,
+        "text_tokens": 981
+      }
+    },
+    "condition": "full",
+    "removed_memory_id": null
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Sam Lee\"},\"tool_name\":\"search_contacts\"}",
+    "latency_ms": 2768.581,
+    "usage": {
+      "completion_tokens": 143,
+      "prompt_tokens": 816,
+      "total_tokens": 959,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 816
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 115,
+        "text_tokens": 143
+      }
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone"
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85212345678.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Sam Lee\"},\"tool_name\":\"search_contacts\"}",
+    "latency_ms": 4416.068,
+    "usage": {
+      "completion_tokens": 214,
+      "prompt_tokens": 828,
+      "total_tokens": 1042,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 828
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 186,
+        "text_tokens": 214
+      }
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style"
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85212345678.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85212345678",
+        "content": "Meeting moved to 3 PM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Meeting moved to 3 PM.\",\"phone_number\":\"+85212345678\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "latency_ms": 11640.091,
+    "usage": {
+      "completion_tokens": 656,
+      "prompt_tokens": 829,
+      "total_tokens": 1485,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 829
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 594,
+        "text_tokens": 656
+      }
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee"
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Sam Lee's phone number is +85212345678.",
+        "entity": "Sam Lee",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Sam Lee prefers brief messages.",
+        "entity": "Sam Lee",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "authoritative_contact_record",
+        "name": "Sam Lee",
+        "phone_number": "+85298765432"
+      }
+    ],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85298765432",
+        "content": "Meeting moved to 3 PM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Meeting moved to 3 PM.\",\"phone_number\":\"+85298765432\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "latency_ms": 3312.259,
+    "usage": {
+      "completion_tokens": 185,
+      "prompt_tokens": 933,
+      "total_tokens": 1118,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "text_tokens": 933
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 123,
+        "text_tokens": 185
+      }
+    },
+    "condition": "replan_after_refutation",
+    "removed_memory_id": null
+  }
+]

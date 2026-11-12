@@ -1,0 +1,70 @@
+{
+  "scenario_id": "stale_phone_001",
+  "model": "qwen3.8-flash",
+  "temperature": 0.0,
+  "full_action": {
+    "tool_name": "send_message_with_phone_number",
+    "arguments": {
+      "phone_number": "+85212345678",
+      "content": "Meeting moved to 3 PM."
+    }
+  },
+  "comparisons": [
+    {
+      "removed_memory_id": "mem_phone",
+      "full_action": {
+        "tool_name": "send_message_with_phone_number",
+        "arguments": {
+          "phone_number": "+85212345678",
+          "content": "Meeting moved to 3 PM."
+        }
+      },
+      "ablated_action": {
+        "tool_name": "search_contacts",
+        "arguments": {
+          "name": "Sam Lee"
+        }
+      },
+      "action_flip": true
+    },
+    {
+      "removed_memory_id": "mem_style",
+      "full_action": {
+        "tool_name": "send_message_with_phone_number",
+        "arguments": {
+          "phone_number": "+85212345678",
+          "content": "Meeting moved to 3 PM."
+        }
+      },
+      "ablated_action": {
+        "tool_name": "send_message_with_phone_number",
+        "arguments": {
+          "phone_number": "+85212345678",
+          "content": "Meeting moved to 3 PM."
+        }
+      },
+      "action_flip": false
+    },
+    {
+      "removed_memory_id": "mem_coffee",
+      "full_action": {
+        "tool_name": "send_message_with_phone_number",
+        "arguments": {
+          "phone_number": "+85212345678",
+          "content": "Meeting moved to 3 PM."
+        }
+      },
+      "ablated_action": {
+        "tool_name": "send_message_with_phone_number",
+        "arguments": {
+          "phone_number": "+85212345678",
+          "content": "Meeting moved to 3 PM."
+        }
+      },
+      "action_flip": false
+    }
+  ],
+  "flipped_memory_ids": [
+    "mem_phone"
+  ]
+}

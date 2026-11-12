@@ -1,0 +1,665 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_personal",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_personal",
+        "claim": "Ava Chan's personal phone number is +85255556666.",
+        "entity": "Ava Chan personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Ava Chan, use the work contact channel instead of the personal contact channel.",
+        "entity": "Ava Chan",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Ava Chan"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Ava Chan\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4012.068,
+        "usage": {
+          "completion_tokens": 251,
+          "prompt_tokens": 847,
+          "total_tokens": 1098,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 847
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 222,
+            "text_tokens": 251
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Ava Chan"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4012.068,
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 251,
+      "total_tokens": 1098
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_personal",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_personal",
+        "claim": "Ava Chan's personal phone number is +85255556666.",
+        "entity": "Ava Chan personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Ava Chan, use the work contact channel instead of the personal contact channel.",
+        "entity": "Ava Chan",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Ava Chan",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Ava Chan\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3910.77,
+        "usage": {
+          "completion_tokens": 200,
+          "prompt_tokens": 847,
+          "total_tokens": 1047,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 847
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 159,
+            "text_tokens": 200
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Ava Chan",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 3910.77,
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 200,
+      "total_tokens": 1047
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_personal",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_personal",
+        "claim": "Ava Chan's personal phone number is +85255556666.",
+        "entity": "Ava Chan personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Ava Chan, use the work contact channel instead of the personal contact channel.",
+        "entity": "Ava Chan",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Ava Chan"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Ava Chan\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3614.193,
+        "usage": {
+          "completion_tokens": 198,
+          "prompt_tokens": 847,
+          "total_tokens": 1045,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 847
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 169,
+            "text_tokens": 198
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Ava Chan"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3614.193,
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 198,
+      "total_tokens": 1045
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Ava Chan's work phone number is +85277778888.",
+        "entity": "Ava Chan work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Ava Chan, use the work contact channel instead of the personal contact channel.",
+        "entity": "Ava Chan",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Ava Chan"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Ava Chan\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6507.06,
+        "usage": {
+          "completion_tokens": 406,
+          "prompt_tokens": 847,
+          "total_tokens": 1253,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 847
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 377,
+            "text_tokens": 406
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Ava Chan"
+          }
+        }
+      }
+    ],
+    "latency_ms": 6507.06,
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 406,
+      "total_tokens": 1253
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_personal",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Ava Chan's work phone number is +85277778888.",
+        "entity": "Ava Chan work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Ava Chan, use the work contact channel instead of the personal contact channel.",
+        "entity": "Ava Chan",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Ava Chan"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Ava Chan\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4128.177,
+        "usage": {
+          "completion_tokens": 313,
+          "prompt_tokens": 847,
+          "total_tokens": 1160,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 847
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 284,
+            "text_tokens": 313
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Ava Chan"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4128.177,
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 313,
+      "total_tokens": 1160
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_personal",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Ava Chan's work phone number is +85277778888.",
+        "entity": "Ava Chan work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Ava Chan, use the work contact channel instead of the personal contact channel.",
+        "entity": "Ava Chan",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85277778888",
+        "content": "Dinner is at 7 PM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Dinner is at 7 PM.\",\"phone_number\":\"+85277778888\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5686.892,
+        "usage": {
+          "completion_tokens": 414,
+          "prompt_tokens": 847,
+          "total_tokens": 1261,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 847
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 351,
+            "text_tokens": 414
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85277778888",
+            "content": "Dinner is at 7 PM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 5686.892,
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 414,
+      "total_tokens": 1261
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_personal",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_personal"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Ava Chan's work phone number is +85277778888.",
+        "entity": "Ava Chan work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Ava Chan's personal phone number is +85255556666.",
+        "entity": "Ava Chan personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Ava Chan",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Ava Chan\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7257.372,
+        "usage": {
+          "completion_tokens": 507,
+          "prompt_tokens": 850,
+          "total_tokens": 1357,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 850
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 466,
+            "text_tokens": 507
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Ava Chan",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 7257.372,
+    "usage": {
+      "prompt_tokens": 850,
+      "completion_tokens": 507,
+      "total_tokens": 1357
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_personal"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Ava Chan's work phone number is +85277778888.",
+        "entity": "Ava Chan work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Ava Chan's personal phone number is +85255556666.",
+        "entity": "Ava Chan personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Ava Chan"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Ava Chan\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2992.739,
+        "usage": {
+          "completion_tokens": 192,
+          "prompt_tokens": 850,
+          "total_tokens": 1042,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 850
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 163,
+            "text_tokens": 192
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Ava Chan"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2992.739,
+    "usage": {
+      "prompt_tokens": 850,
+      "completion_tokens": 192,
+      "total_tokens": 1042
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_personal"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Ava Chan's work phone number is +85277778888.",
+        "entity": "Ava Chan work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Ava Chan's personal phone number is +85255556666.",
+        "entity": "Ava Chan personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Ava Chan"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Ava Chan\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4229.594,
+        "usage": {
+          "completion_tokens": 279,
+          "prompt_tokens": 850,
+          "total_tokens": 1129,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 850
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 250,
+            "text_tokens": 279
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Ava Chan"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4229.594,
+    "usage": {
+      "prompt_tokens": 850,
+      "completion_tokens": 279,
+      "total_tokens": 1129
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 2
+  }
+]

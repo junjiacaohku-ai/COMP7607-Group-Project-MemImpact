@@ -1,0 +1,254 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Ava Chan's phone number is +85223456789.",
+        "entity": "Ava Chan",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Ava Chan prefers brief messages.",
+        "entity": "Ava Chan",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85223456789",
+        "content": "Dinner is at 7 PM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Dinner is at 7 PM.\",\"phone_number\":\"+85223456789\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 8268.76,
+        "usage": {
+          "completion_tokens": 585,
+          "prompt_tokens": 906,
+          "total_tokens": 1491,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 906
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 522,
+            "text_tokens": 585
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85223456789",
+            "content": "Dinner is at 7 PM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 8268.76,
+    "usage": {
+      "prompt_tokens": 906,
+      "completion_tokens": 585,
+      "total_tokens": 1491
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Ava Chan's phone number is +85223456789.",
+        "entity": "Ava Chan",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Ava Chan prefers brief messages.",
+        "entity": "Ava Chan",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85223456789",
+        "content": "Dinner is at 7 PM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Dinner is at 7 PM.\",\"phone_number\":\"+85223456789\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 12142.405,
+        "usage": {
+          "completion_tokens": 899,
+          "prompt_tokens": 906,
+          "total_tokens": 1805,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 906
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 836,
+            "text_tokens": 899
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85223456789",
+            "content": "Dinner is at 7 PM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 12142.405,
+    "usage": {
+      "prompt_tokens": 906,
+      "completion_tokens": 899,
+      "total_tokens": 1805
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Ava Chan's phone number is +85223456789.",
+        "entity": "Ava Chan",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Ava Chan prefers brief messages.",
+        "entity": "Ava Chan",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Ava Chan",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Ava Chan\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5080.806,
+        "usage": {
+          "completion_tokens": 400,
+          "prompt_tokens": 906,
+          "total_tokens": 1306,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 906
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 359,
+            "text_tokens": 400
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Ava Chan",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 5080.806,
+    "usage": {
+      "prompt_tokens": 906,
+      "completion_tokens": 400,
+      "total_tokens": 1306
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2
+  }
+]
