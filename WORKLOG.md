@@ -370,5 +370,13 @@
 - 已生成 CSV、JSON 和可靠性—成本图。MemImpact − AMV-style 的成功率及危险执行差均为 0；每 episode token 差为 +13,061.375，四组 paired bootstrap CI [12,835.25, 13,345.375]。该直接删除矩阵仍未显示可靠性收益。
 - 与原真实运行 `reminder_validation_matrix_v1_20261112_230027` 对照：48/48 episodes 的验证选择、最终动作、任务成功、危险执行和执行语义一致；40/48 包括反事实评分在内的完整投影也一致，其余 8 个仅 comparison 数值不同。
 - `generate_critical_labels.py` 现可按结果元数据自动选择 original/LangGraph runtime；LangGraph 新增 forced-memory 验证入口。确定性离线检查确认逐条强制验证正确，过期场景中仅 `mem_target` 将失败／危险结果纠正为成功／安全。
-- 当前 LangGraph 运行的真实离线标签尚未生成，因此现有 `critical_memory_metrics.json` 仍是零标签状态，不能作为识别效果结果。
-- 下一步：运行 LangGraph 离线标签生成并重新分析，之后进入 20 个开发 episodes pilot 和正式配置冻结。
+- 当时 LangGraph 运行的真实离线标签尚未生成，初始 `critical_memory_metrics.json` 保持零标签状态；后续补充见下节。
+
+## 2026-11-13：LangGraph 离线标签与识别指标闭环
+
+- 已在 `reminder_validation_matrix_v1_langgraph_20261113_003503` 为 8 个场景生成真实离线标签，所有标签均记录 `runtime=langgraph`。
+- 四个过期场景的关键记忆均为 `mem_target`，四个有效场景均为空；与原 runner 的标签语义一致。
+- 离线标注共新增 4 次 Planner attempts、5,077 tokens，与在线成本分开记录；有效场景无需额外重规划。
+- 48 个 policy episodes 均纳入识别指标：MemImpact / flip-only / Static / AMV-style 均为 TP=4、FP=4、FN=0，precision=0.5、recall=1.0；Always Verify precision=0.167、recall=1.0；Always Proceed recall=0。
+- 重新分析后 paired bootstrap 数值不变；完整 LangGraph validation pilot 的配置、在线 trace、离线标签、识别指标、统计表和图已形成闭环。
+- 下一步：准备分层 20-episode 开发 pilot，用 LangGraph 运行并检查场景质量、泄漏、异常调用和实测成本，再决定正式配置冻结。
