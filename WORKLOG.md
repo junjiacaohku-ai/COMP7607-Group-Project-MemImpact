@@ -403,5 +403,14 @@
 - Static / AMV-style 在多个间接失败场景中确认具体号码为当前有效，却没有检查路由规则，属于“验证了一个真实前提但仍执行错误动作”。
 - 四个共享规划调用发生可恢复格式错误并各重试一次，涉及无标准 tool call 或参数 JSON 解析失败；所有错误、重试和成本均保存在 trace。
 - 已生成 CSV、分组表、图和 paired bootstrap。MemImpact − AMV-style 成功率差 +0.15，95% CI [−0.10, 0.40]；危险执行差 −0.15，CI [−0.40, 0.10]；只有 4 个基础场景组，不声称统计显著。
-- 当前配置仍为 development、未冻结；真实离线标签尚未生成，识别指标暂不解释。
-- 下一步：生成该运行的离线标签并重新分析，确认标签与失败机制后，再冻结正式测试配置；不因本轮结果回调评分或阈值。
+- 当前配置仍为 development、未冻结；运行后已补充真实离线标签，详见下节。
+
+## 2026-11-13：开发 pilot 离线标签与识别闭环
+
+- 已为 `dev_pilot_v1_langgraph_20261113_005405` 的 20 个场景生成真实 LangGraph 离线标签，并重新生成全部分析产物。
+- 关键记忆仅出现在：两个直接 misattributed 场景的 `mem_phone`，以及四个间接 stale/misattributed 场景的 `mem_rule`。其余场景为空标签。
+- 空标签不等于记忆文本正确，而是验证该记忆没有把同一次初始失败／危险结果转为成功／安全结果；例如部分 stale/conflicting 初始规划已通过查询或可见冲突得到正确结果。
+- 120 个 policy episodes 均纳入识别指标：MemImpact TP=5、FP=10、FN=1，precision=0.333、recall=0.833；flip-only precision=0.2、recall=0.5；Static / AMV-style 均为 precision=0.1、recall=0.333；Always Verify precision=0.1、recall=1.0。
+- 离线标注共使用 32 次 Planner attempts、40,517 tokens，与在线部署成本严格分开。
+- 标签结果与 trace 中的正向／负向机制一致；本轮没有修改评分、阈值或数据来追求更好结果。
+- 下一步：冻结模型、Prompt、预算、split 和正式测试矩阵，运行 held-out；开发结果只用于设计与诊断，不作为最终泛化结论。

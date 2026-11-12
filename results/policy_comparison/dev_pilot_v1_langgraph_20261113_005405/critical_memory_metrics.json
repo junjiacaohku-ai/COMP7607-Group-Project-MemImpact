@@ -1,4 +1,47 @@
 {
-  "labeled_policy_episodes": 0,
-  "by_policy": {}
+  "labeled_policy_episodes": 120,
+  "by_policy": {
+    "memimpact": {
+      "tp": 5,
+      "fp": 10,
+      "fn": 1,
+      "precision": 0.3333333333333333,
+      "recall": 0.8333333333333334
+    },
+    "memimpact_flip": {
+      "tp": 3,
+      "fp": 12,
+      "fn": 3,
+      "precision": 0.2,
+      "recall": 0.5
+    },
+    "always_proceed": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 6,
+      "precision": null,
+      "recall": 0.0
+    },
+    "always_verify": {
+      "tp": 6,
+      "fp": 54,
+      "fn": 0,
+      "precision": 0.1,
+      "recall": 1.0
+    },
+    "static": {
+      "tp": 2,
+      "fp": 18,
+      "fn": 4,
+      "precision": 0.1,
+      "recall": 0.3333333333333333
+    },
+    "amv_guard": {
+      "tp": 2,
+      "fp": 18,
+      "fn": 4,
+      "precision": 0.1,
+      "recall": 0.3333333333333333
+    }
+  }
 }
