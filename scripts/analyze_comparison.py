@@ -1,6 +1,7 @@
 import argparse
 import csv
 import json
+from collections import defaultdict
 from pathlib import Path
 
 import matplotlib
@@ -8,6 +9,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+
+from memimpact.statistics import paired_bootstrap
 
 POLICY_LABELS = {
     "memimpact": "MemImpact",
@@ -51,6 +54,38 @@ def total_verification_calls(row: dict) -> int:
     if "memory_verification_calls" in row:
         return row["verification_calls"]
     return memory_verification_calls(row) + lookup_calls(row)
+
+
+def critical_memory_metrics(run_directory: Path, episodes: list[dict]) -> dict:
+    counts = defaultdict(lambda: {"tp": 0, "fp": 0, "fn": 0})
+    labeled_episodes = 0
+    for row in episodes:
+        label_path = run_directory / row["scenario_id"] / "critical_labels.json"
+        if not label_path.exists():
+            continue
+        labels = json.loads(label_path.read_text(encoding="utf-8"))
+        expected = set(labels["critical_memory_ids"])
+        predicted = set(row["selected_memory_ids"])
+        counts[row["policy"]]["tp"] += len(predicted & expected)
+        counts[row["policy"]]["fp"] += len(predicted - expected)
+        counts[row["policy"]]["fn"] += len(expected - predicted)
+        labeled_episodes += 1
+    metrics = {}
+    for policy, count in counts.items():
+        precision_denominator = count["tp"] + count["fp"]
+        recall_denominator = count["tp"] + count["fn"]
+        metrics[policy] = {
+            **count,
+            "precision": (
+                count["tp"] / precision_denominator
+                if precision_denominator
+                else None
+            ),
+            "recall": (
+                count["tp"] / recall_denominator if recall_denominator else None
+            ),
+        }
+    return {"labeled_policy_episodes": labeled_episodes, "by_policy": metrics}
 
 
 def grouped_metrics(episodes: list[dict], group_field: str) -> list[dict]:
@@ -227,12 +262,40 @@ def main() -> None:
     fig.savefig(output_directory / "reliability_cost.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
 
+    critical_metrics = critical_memory_metrics(
+        args.comparison.parent, data["episodes"]
+    )
+    (output_directory / "critical_memory_metrics.json").write_text(
+        json.dumps(critical_metrics, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    bootstrap_results = []
+    if "memimpact" in policies:
+        for other in ("amv_guard", "static", "always_verify", "always_proceed"):
+            if other not in policies:
+                continue
+            for metric in ("task_success", "harmful_execution", "total_tokens"):
+                bootstrap_results.append(
+                    paired_bootstrap(
+                        data["episodes"],
+                        "memimpact",
+                        other,
+                        metric,
+                        data.get("bootstrap_resamples", 2000),
+                        data.get("bootstrap_seed", 42),
+                    )
+                )
+    (output_directory / "paired_bootstrap.json").write_text(
+        json.dumps(bootstrap_results, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+
     analysis = {
         "source": str(args.comparison),
         "model": data["model"],
         "paired_samples": data["paired_samples"],
         "cost_semantics": data.get("cost_semantics"),
         "policy_metrics": policy_summaries,
+        "critical_memory_metrics_file": "critical_memory_metrics.json",
+        "paired_bootstrap_file": "paired_bootstrap.json",
         "warning": "Small synthetic pilot; no statistical generalization is claimed.",
     }
     (output_directory / "analysis_summary.json").write_text(

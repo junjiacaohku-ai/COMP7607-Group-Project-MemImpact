@@ -1,13 +1,22 @@
 import argparse
 import datetime
+import hashlib
 import json
+import subprocess
 from pathlib import Path
 
+from memimpact.config import load_experiment_config
 from memimpact.core import MemoryRecord, remove_memory
 from memimpact.episode import MEMIMPACT_POLICIES, POLICIES, run_episode
-from memimpact.planner import TOOL_REGISTRY, CandidatePlanner, PlannerError
+from memimpact.planner import (
+    PLANNER_PROMPT_SHA256,
+    TOOL_REGISTRY,
+    CandidatePlanner,
+    PlannerError,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+TOOLSANDBOX_ROOT = PROJECT_ROOT / "third_party" / "ToolSandbox"
 
 
 def summarize_policy(rows: list[dict]) -> dict:
@@ -35,36 +44,109 @@ def summarize_policy(rows: list[dict]) -> dict:
     }
 
 
+def git_revision(path: Path) -> str:
+    return subprocess.check_output(
+        ["git", "-C", str(path), "rev-parse", "HEAD"], text=True
+    ).strip()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Compare MemImpact and baseline policies on matched scenarios"
     )
+    parser.add_argument("--config", type=Path)
     parser.add_argument("--scenarios", nargs="+", type=Path)
-    parser.add_argument("--policies", nargs="+", choices=POLICIES, default=POLICIES)
-    parser.add_argument("--model", default="qwen3.8-flash")
-    parser.add_argument("--temperature", type=float, default=0.0)
-    parser.add_argument("--samples", type=int, default=3)
-    parser.add_argument("--verification-budget", type=int, default=1)
-    parser.add_argument("--max-planner-attempts", type=int, default=2)
+    parser.add_argument("--policies", nargs="+", choices=POLICIES)
+    parser.add_argument("--model")
+    parser.add_argument("--temperature", type=float)
+    parser.add_argument("--samples", type=int)
+    parser.add_argument("--verification-budget", type=int)
+    parser.add_argument("--max-planner-attempts", type=int)
     parser.add_argument("--disable-thinking", action="store_true")
-    parser.add_argument(
-        "--output-dir", type=Path, default=PROJECT_ROOT / "results" / "policy_comparison"
-    )
+    parser.add_argument("--output-dir", type=Path)
     args = parser.parse_args()
-    scenario_paths = args.scenarios or sorted(
-        (PROJECT_ROOT / "benchmark" / "dev").glob("dev_*.json")
+
+    config = load_experiment_config(args.config) if args.config else None
+
+    def setting(name, current, default):
+        if current is not None:
+            return current
+        if config is not None:
+            return getattr(config, name)
+        return default
+
+    model = setting("model", args.model, "qwen3.8-flash")
+    temperature = setting("temperature", args.temperature, 0.0)
+    samples = setting("samples", args.samples, 3)
+    verification_budget = setting(
+        "verification_budget", args.verification_budget, 1
+    )
+    max_attempts = setting(
+        "max_planner_attempts", args.max_planner_attempts, 2
+    )
+    thinking = setting("thinking", None, True) and not args.disable_thinking
+    policies = args.policies or (config.policies if config else list(POLICIES))
+    scenario_paths = (
+        args.scenarios
+        or (config.scenario_paths(PROJECT_ROOT) if config else None)
+        or sorted((PROJECT_ROOT / "benchmark" / "dev").glob("dev_*.json"))
     )
     if not scenario_paths:
         raise ValueError("No scenarios found")
+    output_base = args.output_dir or PROJECT_ROOT / setting(
+        "output_dir", None, "results/policy_comparison"
+    )
+
+    actual_toolsandbox_sha = git_revision(TOOLSANDBOX_ROOT)
+    if config and actual_toolsandbox_sha != config.toolsandbox_git_sha:
+        raise RuntimeError("ToolSandbox revision does not match the frozen config")
 
     planner = CandidatePlanner(
-        args.model,
-        args.temperature,
-        thinking=not args.disable_thinking,
-        max_attempts=args.max_planner_attempts,
+        model,
+        temperature,
+        thinking=thinking,
+        max_attempts=max_attempts,
     )
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    run_directory = args.output_dir / timestamp
+    config_prefix = f"{config.config_id}_" if config else ""
+    run_directory = output_base / f"{config_prefix}{timestamp}"
+    run_directory.mkdir(parents=True, exist_ok=True)
+    resolved_config = (
+        config.model_dump()
+        if config
+        else {
+            "config_id": "ad_hoc",
+            "status": "development",
+            "frozen": False,
+            "model": model,
+            "temperature": temperature,
+            "samples": samples,
+            "thinking": thinking,
+            "verification_budget": verification_budget,
+            "max_planner_attempts": max_attempts,
+            "policies": policies,
+            "scenarios": [str(path) for path in scenario_paths],
+            "output_dir": str(output_base),
+        }
+    )
+    config_sha = hashlib.sha256(
+        json.dumps(resolved_config, sort_keys=True).encode()
+    ).hexdigest()
+    metadata = {
+        "resolved_config": resolved_config,
+        "config_sha256": config_sha,
+        "planner_prompt_sha256": PLANNER_PROMPT_SHA256,
+        "project_git_sha": git_revision(PROJECT_ROOT),
+        "project_has_uncommitted_changes": subprocess.run(
+            ["git", "-C", str(PROJECT_ROOT), "diff", "--quiet"], check=False
+        ).returncode
+        != 0,
+        "toolsandbox_git_sha": actual_toolsandbox_sha,
+    }
+    (run_directory / "run_metadata.json").write_text(
+        json.dumps(metadata, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+
     rows = []
     for scenario_path in scenario_paths:
         fixture = json.loads(scenario_path.read_text(encoding="utf-8"))
@@ -76,7 +158,7 @@ def main() -> None:
         shared_directory.mkdir(parents=True, exist_ok=True)
         cached_full_runs = []
         try:
-            for sample_index in range(args.samples):
+            for sample_index in range(samples):
                 action, trace = planner.plan(
                     fixture["user_prompt"],
                     memories=memories,
@@ -102,7 +184,7 @@ def main() -> None:
             encoding="utf-8",
         )
         cached_ablated_runs = None
-        if any(policy in MEMIMPACT_POLICIES for policy in args.policies):
+        if any(policy in MEMIMPACT_POLICIES for policy in policies):
             cached_ablated_runs = {}
             ablated_directory = run_directory / fixture["scenario_id"] / "shared_ablated"
             ablated_directory.mkdir(parents=True, exist_ok=True)
@@ -110,7 +192,7 @@ def main() -> None:
                 remaining = remove_memory(memories, memory.memory_id)
                 ablated_runs = []
                 try:
-                    for sample_index in range(args.samples):
+                    for sample_index in range(samples):
                         action, trace = planner.plan(
                             fixture["user_prompt"],
                             memories=remaining,
@@ -143,7 +225,7 @@ def main() -> None:
                 ),
                 encoding="utf-8",
             )
-        for policy in args.policies:
+        for policy in policies:
             output_directory = run_directory / fixture["scenario_id"] / policy
             output_directory.mkdir(parents=True, exist_ok=True)
             print(f"Running {fixture['scenario_id']} with {policy}", flush=True)
@@ -151,9 +233,9 @@ def main() -> None:
                 fixture,
                 policy,
                 planner,
-                args.samples,
+                samples,
                 output_directory,
-                args.verification_budget,
+                verification_budget,
                 cached_full_runs,
                 cached_ablated_runs,
             )
@@ -166,25 +248,31 @@ def main() -> None:
             rows.append(result)
 
     comparison = {
-        "model": args.model,
-        "temperature": args.temperature,
-        "thinking": not args.disable_thinking,
-        "paired_samples": args.samples,
-        "verification_budget": args.verification_budget,
+        "config_id": config.config_id if config else "ad_hoc",
+        "status": config.status if config else "development",
+        "frozen": config.frozen if config else False,
+        "config_sha256": config_sha,
+        "planner_prompt_sha256": PLANNER_PROMPT_SHA256,
+        "project_git_sha": metadata["project_git_sha"],
+        "toolsandbox_git_sha": actual_toolsandbox_sha,
+        "model": model,
+        "temperature": temperature,
+        "thinking": thinking,
+        "paired_samples": samples,
+        "verification_budget": verification_budget,
+        "bootstrap_resamples": setting("bootstrap_resamples", None, 2000),
+        "bootstrap_seed": setting("bootstrap_seed", None, 42),
         "cost_semantics": (
             "Per-policy costs are logical deployed costs. Shared cached calls are "
             "counted for each policy and do not represent total batch API spend."
         ),
         "scenarios": [path.name for path in scenario_paths],
         "by_policy": {
-            policy: summarize_policy(
-                [row for row in rows if row["policy"] == policy]
-            )
-            for policy in args.policies
+            policy: summarize_policy([row for row in rows if row["policy"] == policy])
+            for policy in policies
         },
         "episodes": rows,
     }
-    run_directory.mkdir(parents=True, exist_ok=True)
     (run_directory / "comparison_summary.json").write_text(
         json.dumps(comparison, indent=2, ensure_ascii=False), encoding="utf-8"
     )

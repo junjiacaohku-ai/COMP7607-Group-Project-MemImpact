@@ -1,0 +1,182 @@
+[
+  {
+    "left_policy": "memimpact",
+    "right_policy": "amv_guard",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus amv_guard",
+    "observed_difference": 0.3333333333333333,
+    "ci_95": [
+      0.0,
+      0.75
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "amv_guard",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus amv_guard",
+    "observed_difference": -0.3333333333333333,
+    "ci_95": [
+      -0.75,
+      0.0
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "amv_guard",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus amv_guard",
+    "observed_difference": 14267.0,
+    "ci_95": [
+      13707.25,
+      14782.0
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "static",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus static",
+    "observed_difference": 0.3333333333333333,
+    "ci_95": [
+      0.0,
+      0.75
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "static",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus static",
+    "observed_difference": -0.3333333333333333,
+    "ci_95": [
+      -0.75,
+      0.0
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "static",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus static",
+    "observed_difference": 14044.0,
+    "ci_95": [
+      13508.2,
+      14720.75
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_verify",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus always_verify",
+    "observed_difference": 0.0,
+    "ci_95": [
+      0.0,
+      0.0
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_verify",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus always_verify",
+    "observed_difference": 0.0,
+    "ci_95": [
+      0.0,
+      0.0
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_verify",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus always_verify",
+    "observed_difference": 14082.666666666666,
+    "ci_95": [
+      13443.0,
+      14744.25
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_proceed",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus always_proceed",
+    "observed_difference": 0.3333333333333333,
+    "ci_95": [
+      0.0,
+      0.75
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_proceed",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus always_proceed",
+    "observed_difference": -0.3333333333333333,
+    "ci_95": [
+      -0.75,
+      0.0
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_proceed",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus always_proceed",
+    "observed_difference": 14208.833333333334,
+    "ci_95": [
+      13618.4,
+      14777.8
+    ],
+    "matched_episodes": 6,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  }
+]

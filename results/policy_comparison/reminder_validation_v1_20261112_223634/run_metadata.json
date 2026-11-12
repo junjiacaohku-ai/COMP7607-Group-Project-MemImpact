@@ -1,0 +1,36 @@
+{
+  "resolved_config": {
+    "schema_version": 1,
+    "config_id": "reminder_validation_v1",
+    "description": "Frozen configuration for the reminder-deletion validation pilot",
+    "status": "validation_pilot",
+    "frozen": true,
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "samples": 3,
+    "thinking": true,
+    "verification_budget": 1,
+    "max_planner_attempts": 2,
+    "policies": [
+      "memimpact",
+      "memimpact_flip",
+      "always_proceed",
+      "always_verify",
+      "static",
+      "amv_guard"
+    ],
+    "scenarios": [
+      "benchmark/deletion_pilot/stale_target.json",
+      "benchmark/deletion_pilot/valid_target.json"
+    ],
+    "output_dir": "results/policy_comparison",
+    "bootstrap_resamples": 2000,
+    "bootstrap_seed": 42,
+    "toolsandbox_git_sha": "c8571d7854316d2e1c5f288e59fe1e34e53f6dd1"
+  },
+  "config_sha256": "0c2bb1c4fd0e151bdb840a463cb0d1123aac1c812882418a598d12a299c9ff55",
+  "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+  "project_git_sha": "ee1c960f28c43c5bc06f088637e22256ebd26138",
+  "project_has_uncommitted_changes": true,
+  "toolsandbox_git_sha": "c8571d7854316d2e1c5f288e59fe1e34e53f6dd1"
+}

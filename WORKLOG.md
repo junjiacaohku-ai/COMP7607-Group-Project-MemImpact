@@ -235,3 +235,55 @@
 - 删除结果进一步支持：直接目标 ID 依赖可由更便宜的验证策略处理；间接依赖和高 Planner 成本仍是核心研究边界。
 - 已生成并检查 CSV、JSON 分析和可靠性—成本图。
 - 这些结果仍标记为 validation pilot，不作为正式 held-out 结论。
+
+## 2026-11-12：统一实验配置与正式评价准备
+
+- 新增 `memimpact/config.py` 和 `configs/validation_pilot.yaml`，固定场景清单、模型、温度、样本数、思考模式、验证预算、策略和 bootstrap 参数。
+- `run_policy_comparison.py --config <yaml>` 支持冻结配置，同时保留原命令行方式。
+- 每次运行新增 `run_metadata.json`，保存解析后配置、配置 SHA-256、Prompt SHA-256、项目 Git commit、未提交状态及 ToolSandbox commit。
+- 若实际 ToolSandbox commit 与冻结配置不一致，运行会明确失败。
+- 新增 `scripts/generate_critical_labels.py`：在相同初始动作下逐条验证记忆，以是否将失败／危险结果转为正确且安全结果定义关键记忆。
+- 标签生成复用完整 runner，支持 refuted 后重规划和只读查询；离线成本排除共享初始规划，并与在线成本分开记录。
+- 新增 `memimpact/statistics.py`，实现按 base scenario 聚类的 paired bootstrap；主比较固定为 MemImpact − AMV-style。
+- 分析脚本新增 `critical_memory_metrics.json` 与 `paired_bootstrap.json`，现有无标签结果会显示零个已标注 policy episodes，不伪造标签。
+- 配置、Prompt 哈希、场景解析、bootstrap 和既有结果分析均通过离线检查；真实标签生成尚待运行。
+
+## 2026-11-12：真实 critical-memory 标签与统计输出
+
+- 已在 `results/policy_comparison/20261112_210643/` 为 6 个场景生成真实离线标签。
+- 只有 `dev_indirect_sam_stale_high` 和 `dev_indirect_ava_misattributed_low` 的关键记忆为 `mem_rule`；其余场景为空。
+- 离线标注额外使用 13 次 Planner attempts、15,565 tokens，已与在线策略成本分开记录。
+- 36 个 policy episodes 均已纳入识别指标：
+  - MemImpact / flip-only：TP=2、FP=2、FN=0，precision=0.5、recall=1.0。
+  - Always Verify：precision=0.111、recall=1.0。
+  - Static / AMV-style：precision=0、recall=0。
+  - Always Proceed 没有选择任何记忆；无预测时 precision 记为 null，recall=0。
+- 当前 precision 采用结果改善型离线标签，action flip 本身不等于关键记忆。
+- 主比较 MemImpact − AMV-style：任务成功率差 +0.333，95% bootstrap CI [0, 0.75]；危险执行率差 −0.333，CI [−0.75, 0]；总 token 差 +14,267，CI [13,707.25, 14,782]。
+- 只有 4 个基础场景组，成功率与危险执行区间较宽，不声称统计显著。
+- 已重新生成并检查 `critical_memory_metrics.json`、`paired_bootstrap.json`、分组表和图。
+
+## 2026-11-12：冻结配置 validation 启动
+
+- 下一阶段使用 `configs/validation_pilot.yaml`，不再依赖分散的命令行参数。
+- 本配置固定 `qwen3.8-flash`、temperature 0、S=3、开启思考、验证预算 1、最多两次 Planner attempts、六种策略、两个 Reminder Deletion validation 场景及 2000 次 bootstrap。
+- 目标是验证统一配置链路并生成完整 `run_metadata.json`；结果仍属于 validation pilot，不是正式 held-out。
+
+## 2026-11-12：冻结配置 validation 实际运行
+
+- 新结果：`results/policy_comparison/reminder_validation_v1_20261112_223634/`。
+- `run_metadata.json` 已核对：配置 SHA-256、Planner Prompt SHA-256、项目 commit `ee1c960`、ToolSandbox commit 和 frozen 配置均完整。
+- 运行时项目存在尚未提交的新配置／统计代码，因此 `project_has_uncommitted_changes=true`；该状态被如实保留。
+- 两种 MemImpact 均完成两个删除场景且无误删；Always Proceed 在过期映射中仍有危险执行，其他验证策略均成功。
+- 下一步：为该次运行生成独立离线标签、识别指标和 paired bootstrap，不与旧运行混用。
+
+## 2026-11-12：冻结配置的标签与统计闭环
+
+- 修复 `generate_critical_labels.py` 使用 scenario ID 推断文件名的问题，改为读取 `comparison_summary.json` 中记录的场景引用。
+- 回归检查确认 `stale_target.json` 和 `valid_target.json` 均能定位到正确场景及共享轨迹。
+- 新运行 `reminder_validation_v1_20261112_223634` 已生成独立标签和分析。
+- 过期映射的关键记忆为 `mem_target`；有效映射没有关键记忆。离线标注新增 1 次 Planner attempt、1,303 tokens。
+- MemImpact / flip-only / Static / AMV-style 的 precision 均为 0.5、recall 均为 1.0；Always Verify precision 为 0.167、recall 为 1.0。
+- MemImpact − AMV-style 的任务成功率和危险执行差均为 0；总 token 差为 +12,950。
+- 本次只有 1 个基础场景组，bootstrap CI 为退化点估计，不能用于统计推断；仅用于验证分析流程。
+- 统一配置、运行元数据、离线标签、识别指标和统计输出链路已全部跑通。

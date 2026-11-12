@@ -1,0 +1,25 @@
+schema_version: 1
+config_id: reminder_validation_v1
+description: Frozen configuration for the reminder-deletion validation pilot
+status: validation_pilot
+frozen: true
+model: qwen3.8-flash
+temperature: 0.0
+samples: 3
+thinking: true
+verification_budget: 1
+max_planner_attempts: 2
+policies:
+  - memimpact
+  - memimpact_flip
+  - always_proceed
+  - always_verify
+  - static
+  - amv_guard
+scenarios:
+  - benchmark/deletion_pilot/stale_target.json
+  - benchmark/deletion_pilot/valid_target.json
+output_dir: results/policy_comparison
+bootstrap_resamples: 2000
+bootstrap_seed: 42
+toolsandbox_git_sha: c8571d7854316d2e1c5f288e59fe1e34e53f6dd1

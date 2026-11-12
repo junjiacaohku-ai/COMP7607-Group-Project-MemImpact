@@ -52,6 +52,7 @@ def run_episode(
     verification_budget: int = 1,
     cached_full_runs: list[tuple[Any, dict[str, Any]]] | None = None,
     cached_ablated_runs: dict[str, list[tuple[Any, dict[str, Any]]]] | None = None,
+    forced_memory_id: str | None = None,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     if policy not in POLICIES:
         raise ValueError(f"Unknown policy: {policy}")
@@ -210,7 +211,13 @@ def run_episode(
         if task_family == "messaging"
         else {"reminder", "reminder_time", "reminder_target"}
     )
-    if policy == "always_proceed":
+    if forced_memory_id is not None:
+        selected_memories = [
+            memory for memory in memories if memory.memory_id == forced_memory_id
+        ]
+        if len(selected_memories) != 1:
+            raise ValueError(f"Unknown forced memory: {forced_memory_id}")
+    elif policy == "always_proceed":
         selected_memories = []
     elif policy == "always_verify":
         selected_memories = memories
