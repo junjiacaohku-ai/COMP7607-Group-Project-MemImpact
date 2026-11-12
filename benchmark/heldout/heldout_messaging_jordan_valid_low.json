@@ -1,0 +1,66 @@
+{
+  "scenario_id": "heldout_messaging_jordan_valid_low",
+  "base_scenario_id": "heldout_messaging_jordan",
+  "split": "heldout",
+  "memory_condition": "valid",
+  "consequence_level": "low",
+  "action_consequence": 1.0,
+  "dependence_type": "indirect",
+  "current_time": "2026-01-01T00:00:00+08:00",
+  "user_prompt": "Send a message to Jordan Ng saying: \"The deadline is now Friday noon.\"",
+  "available_tools": [
+    "search_contacts",
+    "send_message_with_phone_number"
+  ],
+  "memories": [
+    {
+      "memory_id": "mem_rule",
+      "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+      "entity": "Jordan Ng",
+      "scope": "contact_routing_rule",
+      "timestamp": "2025-01-05T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_personal",
+      "claim": "Jordan Ng's personal phone number is +85261010004.",
+      "entity": "Jordan Ng personal",
+      "scope": "contact",
+      "timestamp": "2025-01-10T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_work",
+      "claim": "Jordan Ng's work phone number is +85261020004.",
+      "entity": "Jordan Ng work",
+      "scope": "contact",
+      "timestamp": "2025-01-15T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "authoritative_contacts": [
+    {
+      "name": "Jordan Ng personal",
+      "phone_number": "+85261010004"
+    },
+    {
+      "name": "Jordan Ng work",
+      "phone_number": "+85261020004"
+    }
+  ],
+  "verification_overrides": {
+    "mem_rule": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "current_contact_routing_rule",
+        "name": "Jordan Ng",
+        "rule": "When contacting Jordan Ng, use the work contact channel."
+      }
+    }
+  },
+  "expected_outcome": {
+    "phone_number": "+85261020004",
+    "content": "The deadline is now Friday noon."
+  },
+  "task_family": "messaging"
+}

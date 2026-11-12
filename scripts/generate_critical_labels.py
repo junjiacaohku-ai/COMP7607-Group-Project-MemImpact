@@ -10,6 +10,7 @@ SCENARIO_DIRECTORIES = (
     "benchmark/reminder_pilot",
     "benchmark/deletion_pilot",
     "benchmark/deletion_validation",
+    "benchmark/heldout",
     "scenarios/pilot",
 )
 

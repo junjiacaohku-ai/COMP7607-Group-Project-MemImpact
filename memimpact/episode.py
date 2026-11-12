@@ -200,7 +200,12 @@ def run_episode(
     critical_scopes = (
         {"contact"}
         if task_family == "messaging"
-        else {"reminder", "reminder_time", "reminder_target"}
+        else {
+            "reminder",
+            "reminder_time",
+            "reminder_target",
+            "reminder_selection_rule",
+        }
     )
     if forced_memory_id is not None:
         selected_memories = [

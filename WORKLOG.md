@@ -414,3 +414,18 @@
 - 离线标注共使用 32 次 Planner attempts、40,517 tokens，与在线部署成本严格分开。
 - 标签结果与 trace 中的正向／负向机制一致；本轮没有修改评分、阈值或数据来追求更好结果。
 - 下一步：冻结模型、Prompt、预算、split 和正式测试矩阵，运行 held-out；开发结果只用于设计与诊断，不作为最终泛化结论。
+
+## 2026-11-13：120-episode held-out 矩阵与正式配置冻结
+
+- 新增 `scripts/generate_heldout_benchmark.py`、`benchmark/heldout/` 和 `configs/heldout_budget1_v1.yaml` / `heldout_budget3_v1.yaml`。
+- 数据规模为 2 个任务族 × 5 类 Memory × 2 个后果等级 × 6 个新基础变体 = 120 episodes；Messaging 与 Reminder Deletion 各 60 个。
+- 五类 Memory 各 24 个，高低后果各 60 个，直接／间接依赖各 60 个；共 12 个基础场景组，每个矩阵单元恰有 6 个变体。
+- 使用 6 个新联系人／消息场景和 6 个新提醒删除场景；held-out 与开发数据的联系人号码、提醒 ID 无重叠，任务内容也为新场景。
+- 间接删除新增 `reminder_selection_rule`：具体 reminder ID 可以真实有效，但选择规则仍可能过期或归错目标。两套 runtime 的 critical scope 已同步扩展。
+- 初次生成后审计发现 Messaging 缺少显式 `task_family` 字段，已在生成器中补齐并重写；另一次审计断言误写为 40 个矩阵单元，已修正为实际的 20 个，数据不变。
+- 配置固定 Qwen、Prompt、S=3、最多两次 attempts、六种策略、2000 次聚类 bootstrap 和相同场景顺序，分别使用选择性验证预算 1 和 3；`status=heldout`、`frozen=true`。
+- 代表性确定性回归覆盖直接／间接 Messaging、直接删除、间接过期删除和间接冲突删除，共 5 场景 × 6 策略 = 30 episodes，原 runner 与 LangGraph 30/30 完整语义一致。
+- 初次回归脚本在移除具体号码／ID 记忆后未正确退回查询，出现 StopIteration；已修正测试 Planner 分支并重跑。该失败不属于项目 runtime，过程如实记录。
+- 新增 `memimpact/evaluation.py` 和分析输出：proceed coverage、initial candidate safety、safe-proceed recall；既有开发 pilot 与删除矩阵已重新生成这些字段。Safe-proceed 的分母仅包含初始状态改变动作已经正确且安全的 episodes，初始只读查询不进入分母。
+- 当前只完成 held-out 数据与配置冻结，尚未调用真实模型运行正式测试，也没有任何 held-out 效果结论。
+- 预算参考：按 20-episode pilot 的实际规模外推，每份预算配置约需 200 万规划 tokens，两份额外预算实验合计约 400 万，实际以 trace 为准。下一步先运行 budget 1，再运行 budget 3，分别生成离线标签和分析。

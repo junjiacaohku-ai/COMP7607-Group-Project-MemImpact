@@ -29,7 +29,8 @@ benchmark/dev/      40 个合成开发 episodes 与 manifest
 benchmark/reminder_pilot/  Reminder Creation 有效／过期时间场景
 benchmark/deletion_pilot/  Reminder Deletion validation 场景
 benchmark/deletion_validation/  四组独立删除验证场景
-configs/            冻结的实验 YAML 配置
+benchmark/heldout/  120 个正式 held-out episodes 与 manifest（尚未运行）
+configs/            开发、validation 与冻结 held-out YAML 配置
 results/            原始轨迹、结果汇总、表格和图
 proposal/           中英文 LaTeX proposal、PDF 和参考文献
 docs/               实施计划、组会材料和评审意见
@@ -126,6 +127,16 @@ python scripts/run_memimpact_smoke.py \
 ```bash
 .venv/bin/python scripts/run_langgraph_comparison.py \
   --config configs/dev_pilot_v1.yaml
+```
+
+正式 held-out 数据与配置已冻结但尚未运行。分别使用预算 1 和 3；每次运行都应保存为独立目录：
+
+```bash
+.venv/bin/python scripts/run_langgraph_comparison.py \
+  --config configs/heldout_budget1_v1.yaml
+
+.venv/bin/python scripts/run_langgraph_comparison.py \
+  --config configs/heldout_budget3_v1.yaml
 ```
 
 为原 runner 或 LangGraph 运行生成独立离线关键记忆标签；runtime 默认从结果元数据识别：

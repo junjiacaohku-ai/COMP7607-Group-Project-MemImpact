@@ -96,7 +96,12 @@ def run_langgraph_episode(
             if task_family == "reminder_creation"
             else "reminder_id"
         )
-        critical_scopes = {"reminder", "reminder_time", "reminder_target"}
+        critical_scopes = {
+            "reminder",
+            "reminder_time",
+            "reminder_target",
+            "reminder_selection_rule",
+        }
 
     def plan_full(state: GraphState) -> GraphState:
         runs = []

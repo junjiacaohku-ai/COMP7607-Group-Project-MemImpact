@@ -1,0 +1,52 @@
+{
+  "scenario_id": "heldout_messaging_casey_valid_high",
+  "base_scenario_id": "heldout_messaging_casey",
+  "split": "heldout",
+  "memory_condition": "valid",
+  "consequence_level": "high",
+  "action_consequence": 2.0,
+  "dependence_type": "direct",
+  "current_time": "2026-01-01T00:00:00+08:00",
+  "user_prompt": "Send a message to Casey Lau saying: \"The venue has changed to Room 402.\"",
+  "available_tools": [
+    "search_contacts",
+    "send_message_with_phone_number"
+  ],
+  "memories": [
+    {
+      "memory_id": "mem_phone",
+      "claim": "Casey Lau's phone number is +85261010003.",
+      "entity": "Casey Lau",
+      "scope": "contact",
+      "timestamp": "2025-01-15T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_style",
+      "claim": "Casey Lau prefers brief messages.",
+      "entity": "Casey Lau",
+      "scope": "communication_preference",
+      "timestamp": "2025-02-10T10:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_coffee",
+      "claim": "The user likes coffee.",
+      "entity": "user",
+      "scope": "food_preference",
+      "timestamp": "2025-03-01T08:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "authoritative_contacts": [
+    {
+      "name": "Casey Lau",
+      "phone_number": "+85261010003"
+    }
+  ],
+  "expected_outcome": {
+    "phone_number": "+85261010003",
+    "content": "The venue has changed to Room 402."
+  },
+  "task_family": "messaging"
+}

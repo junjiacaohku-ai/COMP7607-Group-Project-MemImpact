@@ -1,7 +1,7 @@
-policy,episodes,task_success_rate,harmful_execution_rate,abstention_rate,verification_calls,memory_verification_calls,lookup_calls,tool_calls,planner_calls,planner_attempts,total_tokens,planner_latency_ms
-memimpact,20,0.95,0.05,0.0,23,15,8,28,253,257,314900,1291755.591
-memimpact_flip,20,0.85,0.15,0.0,24,15,9,29,252,256,311793,1258663.016
-always_proceed,20,0.7,0.3,0.0,9,0,9,29,29,29,38964,158553.836
-always_verify,20,1.0,0.0,0.0,62,60,2,22,34,34,42056,142797.198
-static,20,0.8,0.2,0.0,25,20,5,25,31,31,42574,181772.693
-amv_guard,20,0.8,0.2,0.0,24,20,4,24,31,31,39362,143601.595
+policy,episodes,task_success_rate,harmful_execution_rate,abstention_rate,verification_calls,memory_verification_calls,lookup_calls,tool_calls,planner_calls,planner_attempts,total_tokens,planner_latency_ms,proceed_coverage,safe_proceed_recall
+memimpact,20,0.95,0.05,0.0,23,15,8,28,253,257,314900,1291755.591,1.0,1.0
+memimpact_flip,20,0.85,0.15,0.0,24,15,9,29,252,256,311793,1258663.016,1.0,1.0
+always_proceed,20,0.7,0.3,0.0,9,0,9,29,29,29,38964,158553.836,1.0,1.0
+always_verify,20,1.0,0.0,0.0,62,60,2,22,34,34,42056,142797.198,1.0,1.0
+static,20,0.8,0.2,0.0,25,20,5,25,31,31,42574,181772.693,1.0,1.0
+amv_guard,20,0.8,0.2,0.0,24,20,4,24,31,31,39362,143601.595,1.0,1.0

@@ -1,0 +1,97 @@
+{
+  "scenario_id": "heldout_deletion_workout_conflicting_low",
+  "base_scenario_id": "heldout_deletion_workout",
+  "split": "heldout",
+  "task_family": "reminder_deletion",
+  "memory_condition": "conflicting",
+  "consequence_level": "low",
+  "action_consequence": 1.0,
+  "dependence_type": "indirect",
+  "current_time": "2026-01-01T00:00:00+08:00",
+  "user_prompt": "Delete the reminder to book the workout session using the mapping stored in memory.",
+  "available_tools": [
+    "remove_reminder",
+    "search_reminder"
+  ],
+  "memories": [
+    {
+      "memory_id": "mem_other",
+      "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+      "entity": "current reminder",
+      "scope": "reminder_target",
+      "timestamp": "2025-01-10T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_rule",
+      "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+      "entity": "user",
+      "scope": "reminder_selection_rule",
+      "timestamp": "2025-01-05T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_rule_conflict",
+      "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+      "entity": "user",
+      "scope": "reminder_selection_rule",
+      "timestamp": "2025-03-10T10:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "current_reminders": [
+    {
+      "reminder_id": "00000000-0000-4000-8000-000000005004",
+      "content": "Book the workout session",
+      "creation_timestamp": 1767225600.0,
+      "reminder_timestamp": 1773381600.0,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "reminder_id": "00000000-0000-4000-8000-000000006004",
+      "content": "Attend the guest lecture",
+      "creation_timestamp": 1767225600.0,
+      "reminder_timestamp": 1772694000.0,
+      "latitude": null,
+      "longitude": null
+    }
+  ],
+  "verification_overrides": {
+    "mem_target": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "authoritative_reminder_mapping",
+        "content": "Book the workout session",
+        "reminder_id": "00000000-0000-4000-8000-000000005004"
+      }
+    },
+    "mem_other": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "authoritative_reminder_mapping",
+        "content": "Attend the guest lecture",
+        "reminder_id": "00000000-0000-4000-8000-000000006004"
+      }
+    },
+    "mem_rule": {
+      "status": "refuted",
+      "evidence": {
+        "type": "authoritative_reminder_mapping",
+        "content": "Book the workout session",
+        "reminder_id": "00000000-0000-4000-8000-000000005004"
+      }
+    },
+    "mem_rule_conflict": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "authoritative_reminder_mapping",
+        "content": "Book the workout session",
+        "reminder_id": "00000000-0000-4000-8000-000000005004"
+      }
+    }
+  },
+  "expected_outcome": {
+    "reminder_id": "00000000-0000-4000-8000-000000005004"
+  }
+}

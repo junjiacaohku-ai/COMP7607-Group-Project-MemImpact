@@ -1,0 +1,67 @@
+{
+  "scenario_id": "heldout_messaging_quinn_stale_high",
+  "base_scenario_id": "heldout_messaging_quinn",
+  "split": "heldout",
+  "memory_condition": "stale",
+  "consequence_level": "high",
+  "action_consequence": 2.0,
+  "dependence_type": "indirect",
+  "current_time": "2026-01-01T00:00:00+08:00",
+  "user_prompt": "Send a message to Quinn Yeung saying: \"The slides are ready for review.\"",
+  "available_tools": [
+    "search_contacts",
+    "send_message_with_phone_number"
+  ],
+  "memories": [
+    {
+      "memory_id": "mem_rule",
+      "claim": "When contacting Quinn Yeung, use the work contact channel instead of the personal contact channel.",
+      "entity": "Quinn Yeung",
+      "scope": "contact_routing_rule",
+      "timestamp": "2025-01-05T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_personal",
+      "claim": "Quinn Yeung's personal phone number is +85261010006.",
+      "entity": "Quinn Yeung personal",
+      "scope": "contact",
+      "timestamp": "2025-01-10T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_work",
+      "claim": "Quinn Yeung's work phone number is +85261020006.",
+      "entity": "Quinn Yeung work",
+      "scope": "contact",
+      "timestamp": "2025-01-15T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "authoritative_contacts": [
+    {
+      "name": "Quinn Yeung personal",
+      "phone_number": "+85261010006"
+    },
+    {
+      "name": "Quinn Yeung work",
+      "phone_number": "+85261020006"
+    }
+  ],
+  "verification_overrides": {
+    "mem_rule": {
+      "status": "refuted",
+      "evidence": {
+        "type": "current_contact_routing_rule",
+        "name": "Quinn Yeung",
+        "rule": "When contacting Quinn Yeung, use the personal contact channel.",
+        "phone_number": "+85261010006"
+      }
+    }
+  },
+  "expected_outcome": {
+    "phone_number": "+85261010006",
+    "content": "The slides are ready for review."
+  },
+  "task_family": "messaging"
+}

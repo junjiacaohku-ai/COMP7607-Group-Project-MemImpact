@@ -1,0 +1,97 @@
+{
+  "scenario_id": "heldout_deletion_lecture_conflicting_high",
+  "base_scenario_id": "heldout_deletion_lecture",
+  "split": "heldout",
+  "task_family": "reminder_deletion",
+  "memory_condition": "conflicting",
+  "consequence_level": "high",
+  "action_consequence": 2.0,
+  "dependence_type": "indirect",
+  "current_time": "2026-01-01T00:00:00+08:00",
+  "user_prompt": "Delete the reminder to attend the guest lecture using the mapping stored in memory.",
+  "available_tools": [
+    "remove_reminder",
+    "search_reminder"
+  ],
+  "memories": [
+    {
+      "memory_id": "mem_other",
+      "claim": "The reminder to return the library book has ID 00000000-0000-4000-8000-000000006002.",
+      "entity": "current reminder",
+      "scope": "reminder_target",
+      "timestamp": "2025-01-10T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_rule",
+      "claim": "For the cleanup request to attend the guest lecture, delete the reminder to return the library book.",
+      "entity": "user",
+      "scope": "reminder_selection_rule",
+      "timestamp": "2025-01-05T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_rule_conflict",
+      "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+      "entity": "user",
+      "scope": "reminder_selection_rule",
+      "timestamp": "2025-03-10T10:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "current_reminders": [
+    {
+      "reminder_id": "00000000-0000-4000-8000-000000005002",
+      "content": "Attend the guest lecture",
+      "creation_timestamp": 1767225600.0,
+      "reminder_timestamp": 1773295200.0,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "reminder_id": "00000000-0000-4000-8000-000000006002",
+      "content": "Return the library book",
+      "creation_timestamp": 1767225600.0,
+      "reminder_timestamp": 1772694000.0,
+      "latitude": null,
+      "longitude": null
+    }
+  ],
+  "verification_overrides": {
+    "mem_target": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "authoritative_reminder_mapping",
+        "content": "Attend the guest lecture",
+        "reminder_id": "00000000-0000-4000-8000-000000005002"
+      }
+    },
+    "mem_other": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "authoritative_reminder_mapping",
+        "content": "Return the library book",
+        "reminder_id": "00000000-0000-4000-8000-000000006002"
+      }
+    },
+    "mem_rule": {
+      "status": "refuted",
+      "evidence": {
+        "type": "authoritative_reminder_mapping",
+        "content": "Attend the guest lecture",
+        "reminder_id": "00000000-0000-4000-8000-000000005002"
+      }
+    },
+    "mem_rule_conflict": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "authoritative_reminder_mapping",
+        "content": "Attend the guest lecture",
+        "reminder_id": "00000000-0000-4000-8000-000000005002"
+      }
+    }
+  },
+  "expected_outcome": {
+    "reminder_id": "00000000-0000-4000-8000-000000005002"
+  }
+}

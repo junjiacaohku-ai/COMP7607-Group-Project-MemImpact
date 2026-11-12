@@ -10,6 +10,12 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
+from memimpact.evaluation import (
+    initial_candidate_safe,
+    load_scenario_fixtures,
+    proceed_coverage,
+    safe_proceed_recall,
+)
 from memimpact.statistics import paired_bootstrap
 
 POLICY_LABELS = {
@@ -139,6 +145,9 @@ def main() -> None:
     data = json.loads(args.comparison.read_text(encoding="utf-8"))
     output_directory = args.output_dir or args.comparison.parent
     output_directory.mkdir(parents=True, exist_ok=True)
+    fixtures = load_scenario_fixtures(
+        data["scenarios"], Path(__file__).resolve().parents[1]
+    )
     policies = list(data["by_policy"])
     policy_summaries = {}
     metrics = []
@@ -154,12 +163,18 @@ def main() -> None:
         summary["verification_calls"] = sum(
             total_verification_calls(row) for row in policy_rows
         )
+        summary["proceed_coverage"] = proceed_coverage(policy_rows)
+        summary["safe_proceed_recall"] = safe_proceed_recall(policy_rows, fixtures)
         policy_summaries[policy] = summary
         metrics.append({"policy": policy, **summary})
     write_csv(output_directory / "policy_metrics.csv", metrics)
 
     episode_rows = []
     for row in data["episodes"]:
+        initial_safe = initial_candidate_safe(
+            fixtures[row["scenario_id"]], row["initial_action"]
+        )
+        proceeded = bool(row.get("execution") and row["execution"].get("executed"))
         episode_rows.append(
             {
                 "scenario_id": row["scenario_id"],
@@ -168,6 +183,14 @@ def main() -> None:
                 "consequence_level": row.get("consequence_level", "unlabeled"),
                 "dependence_type": row.get("dependence_type", "unlabeled"),
                 "policy": row["policy"],
+                "initial_candidate_safe": initial_safe,
+                "proceeded": proceeded,
+                "safe_proceed": (
+                    initial_safe
+                    and proceeded
+                    and row["task_success"]
+                    and not row["harmful_execution"]
+                ),
                 "task_success": row["task_success"],
                 "harmful_execution": row["harmful_execution"],
                 "abstained": row["abstained"],

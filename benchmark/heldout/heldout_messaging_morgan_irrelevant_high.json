@@ -1,0 +1,52 @@
+{
+  "scenario_id": "heldout_messaging_morgan_irrelevant_high",
+  "base_scenario_id": "heldout_messaging_morgan",
+  "split": "heldout",
+  "memory_condition": "irrelevant",
+  "consequence_level": "high",
+  "action_consequence": 2.0,
+  "dependence_type": "direct",
+  "current_time": "2026-01-01T00:00:00+08:00",
+  "user_prompt": "Send a message to Morgan Li saying: \"The design review starts at 11 AM.\"",
+  "available_tools": [
+    "search_contacts",
+    "send_message_with_phone_number"
+  ],
+  "memories": [
+    {
+      "memory_id": "mem_phone",
+      "claim": "Morgan Li's phone number is +85261010001.",
+      "entity": "Morgan Li",
+      "scope": "contact",
+      "timestamp": "2025-01-15T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_style",
+      "claim": "Morgan Li prefers brief messages.",
+      "entity": "Morgan Li",
+      "scope": "communication_preference",
+      "timestamp": "2025-02-10T10:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_coffee",
+      "claim": "The user likes coffee.",
+      "entity": "user",
+      "scope": "food_preference",
+      "timestamp": "2025-03-01T08:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "authoritative_contacts": [
+    {
+      "name": "Morgan Li",
+      "phone_number": "+85261010001"
+    }
+  ],
+  "expected_outcome": {
+    "phone_number": "+85261010001",
+    "content": "The design review starts at 11 AM."
+  },
+  "task_family": "messaging"
+}
