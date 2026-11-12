@@ -1,0 +1,182 @@
+[
+  {
+    "left_policy": "memimpact",
+    "right_policy": "amv_guard",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus amv_guard",
+    "observed_difference": 0.15,
+    "ci_95": [
+      -0.1,
+      0.4
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "amv_guard",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus amv_guard",
+    "observed_difference": -0.15,
+    "ci_95": [
+      -0.4,
+      0.1
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "amv_guard",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus amv_guard",
+    "observed_difference": 13776.9,
+    "ci_95": [
+      13252.15,
+      14217.85
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "static",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus static",
+    "observed_difference": 0.15,
+    "ci_95": [
+      -0.1,
+      0.4
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "static",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus static",
+    "observed_difference": -0.15,
+    "ci_95": [
+      -0.4,
+      0.1
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "static",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus static",
+    "observed_difference": 13616.3,
+    "ci_95": [
+      13097.6,
+      14135.0
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_verify",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus always_verify",
+    "observed_difference": -0.05,
+    "ci_95": [
+      -0.15,
+      0.0
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_verify",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus always_verify",
+    "observed_difference": 0.05,
+    "ci_95": [
+      0.0,
+      0.15
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_verify",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus always_verify",
+    "observed_difference": 13642.2,
+    "ci_95": [
+      13213.8,
+      14131.7
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_proceed",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus always_proceed",
+    "observed_difference": 0.25,
+    "ci_95": [
+      0.1,
+      0.4
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_proceed",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus always_proceed",
+    "observed_difference": -0.25,
+    "ci_95": [
+      -0.4,
+      -0.1
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_proceed",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus always_proceed",
+    "observed_difference": 13796.8,
+    "ci_95": [
+      13378.7,
+      14260.5
+    ],
+    "matched_episodes": 20,
+    "base_scenario_groups": 4,
+    "resamples": 2000,
+    "seed": 42
+  }
+]

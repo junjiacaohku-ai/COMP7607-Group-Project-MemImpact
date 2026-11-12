@@ -389,3 +389,19 @@
 - 所有场景均为 development、最多 3 条 Memory、工具均在导出的真实 schema 中；用户 Prompt 不含隐藏结果、Memory 条件或权威记录字段。
 - 配置明确标记 `status=development`、`frozen=false`，不是正式 held-out 或最终阈值冻结。
 - 下一步：真实运行该 pilot，检查失败 trace、场景区分度和实测成本后再冻结正式实验；根据既有删除矩阵粗略估计，本次实际共享调用的总规划量约 30–35 万 tokens，仅作预算参考。
+
+## 2026-11-13：20-episode LangGraph 开发 pilot 真实运行
+
+- 结果：`results/policy_comparison/dev_pilot_v1_langgraph_20261113_005405/`。元数据确认项目 commit `ee95240`、配置／Prompt／schema 哈希和 ToolSandbox commit 完整，运行时工作区干净。
+- MemImpact：成功率 0.95、危险执行率 0.05、23 次总验证（15 次显式 + 8 次查询）、253 次逻辑规划调用、257 attempts、314,900 tokens、约 1,291.8 秒。
+- Flip-only：成功率 0.85、危险执行率 0.15、311,793 tokens；Always Proceed：0.70 / 0.30；Static 与 AMV-style：均为 0.80 / 0.20。
+- Always Verify：成功率 1.0、危险执行率 0，但仅 42,056 tokens、约 142.8 秒；它仍是可靠性最高且远低于 MemImpact 规划成本的参照。
+- 间接依赖子集：MemImpact 成功率 1.0、危险执行率 0；flip-only 为 0.8 / 0.2，Static 与 AMV-style 均为 0.6 / 0.4。直接依赖子集中 Static 与 AMV-style 均为 1.0 / 0，MemImpact 为 0.9 / 0.1。
+- 正向案例：在 `dev_indirect_ava_stale_high` 和 `dev_indirect_ava_misattributed_high`，完整评分选择并反驳 `mem_rule`，随后正确使用个人号码；flip-only 分别选择 `mem_work` / `mem_personal`，确认具体号码后仍遵循错误规则。
+- 完整评分在这两个案例中通过不确定性等项打破 flip 并列，不能把结果解释为 action-flip 单独优于基线，也不能推广到更多任务。
+- 负向案例：`dev_direct_ava_misattributed_high` 中完整与 flip-only 均误选 `mem_coffee`。完整规划波动基线 \(F_0=0.667\)，`mem_phone` 校正后影响为 0，而 `mem_coffee` 为 0.333；验证 unknown 后仍执行错误号码。这是高 Planner 噪声导致的关键记忆漏选和无关验证。
+- Static / AMV-style 在多个间接失败场景中确认具体号码为当前有效，却没有检查路由规则，属于“验证了一个真实前提但仍执行错误动作”。
+- 四个共享规划调用发生可恢复格式错误并各重试一次，涉及无标准 tool call 或参数 JSON 解析失败；所有错误、重试和成本均保存在 trace。
+- 已生成 CSV、分组表、图和 paired bootstrap。MemImpact − AMV-style 成功率差 +0.15，95% CI [−0.10, 0.40]；危险执行差 −0.15，CI [−0.40, 0.10]；只有 4 个基础场景组，不声称统计显著。
+- 当前配置仍为 development、未冻结；真实离线标签尚未生成，识别指标暂不解释。
+- 下一步：生成该运行的离线标签并重新分析，确认标签与失败机制后，再冻结正式测试配置；不因本轮结果回调评分或阈值。
