@@ -1,3 +1,4 @@
+import copy
 import operator
 from typing import Annotated, Any, TypedDict
 
@@ -11,10 +12,9 @@ from memimpact.core import (
     noise_adjusted_impact,
     remove_memory,
 )
+from memimpact.policies import MEMIMPACT_POLICIES, POLICIES
 from memimpact.scoring import observable_uncertainty, verification_score
 from memimpact.verification import AuthoritativeContactVerifier
-
-MEMIMPACT_POLICIES = ("memimpact", "memimpact_flip")
 
 
 class GraphState(TypedDict, total=False):
@@ -64,7 +64,16 @@ def run_langgraph_episode(
     planner: Any,
     samples: int,
     executor: Any,
-) -> dict[str, Any]:
+    verification_budget: int = 1,
+    cached_full_runs: list[tuple[CandidateAction, dict[str, Any]]] | None = None,
+    cached_ablated_runs: dict[str, list[tuple[CandidateAction, dict[str, Any]]]]
+    | None = None,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    if policy not in POLICIES:
+        raise ValueError(f"Unknown policy: {policy}")
+    if samples < 1 or verification_budget < 0:
+        raise ValueError("samples must be positive and verification_budget non-negative")
+
     memories = [MemoryRecord(**memory) for memory in fixture["memories"]]
     verifier = AuthoritativeContactVerifier(
         fixture.get("authoritative_contacts", []),
@@ -92,19 +101,28 @@ def run_langgraph_episode(
         runs = []
         traces = []
         count = samples if policy in MEMIMPACT_POLICIES else 1
-        for sample_index in range(count):
-            action, trace = planner.plan(
-                fixture["user_prompt"], memories, fixture["available_tools"]
-            )
-            trace.update(
-                {
-                    "condition": "full",
-                    "removed_memory_id": None,
-                    "sample_index": sample_index,
-                }
-            )
-            runs.append(action)
-            traces.append(trace)
+        if cached_full_runs is None:
+            for sample_index in range(count):
+                action, trace = planner.plan(
+                    fixture["user_prompt"], memories, fixture["available_tools"]
+                )
+                trace.update(
+                    {
+                        "condition": "full",
+                        "removed_memory_id": None,
+                        "sample_index": sample_index,
+                    }
+                )
+                runs.append(action)
+                traces.append(trace)
+        else:
+            if len(cached_full_runs) < count:
+                raise ValueError("Not enough cached full-memory runs")
+            for action, trace in cached_full_runs[:count]:
+                cached_trace = copy.deepcopy(trace)
+                cached_trace["shared_across_policies"] = True
+                runs.append(action)
+                traces.append(cached_trace)
         return {
             "full_actions": runs,
             "initial_action": runs[0],
@@ -123,19 +141,29 @@ def run_langgraph_episode(
         for memory in memories:
             remaining = remove_memory(memories, memory.memory_id)
             ablated_actions = []
-            for sample_index in range(samples):
-                action, trace = planner.plan(
-                    fixture["user_prompt"], remaining, fixture["available_tools"]
-                )
-                trace.update(
-                    {
-                        "condition": "single_memory_removed",
-                        "removed_memory_id": memory.memory_id,
-                        "sample_index": sample_index,
-                    }
-                )
-                ablated_actions.append(action)
-                traces.append(trace)
+            if cached_ablated_runs is None:
+                for sample_index in range(samples):
+                    action, trace = planner.plan(
+                        fixture["user_prompt"], remaining, fixture["available_tools"]
+                    )
+                    trace.update(
+                        {
+                            "condition": "single_memory_removed",
+                            "removed_memory_id": memory.memory_id,
+                            "sample_index": sample_index,
+                        }
+                    )
+                    ablated_actions.append(action)
+                    traces.append(trace)
+            else:
+                cached_runs = cached_ablated_runs[memory.memory_id]
+                if len(cached_runs) < samples:
+                    raise ValueError("Not enough cached ablated runs")
+                for action, trace in cached_runs[:samples]:
+                    cached_trace = copy.deepcopy(trace)
+                    cached_trace["shared_across_policies"] = True
+                    ablated_actions.append(action)
+                    traces.append(cached_trace)
             raw_flip = action_flip_rate(state["full_actions"], ablated_actions)
             impact = noise_adjusted_impact(raw_flip, state["baseline_flip_rate"])
             uncertainty = observable_uncertainty(
@@ -179,11 +207,11 @@ def run_langgraph_episode(
                     if memory.scope in critical_scopes
                 ),
                 key=lambda memory: memory.timestamp,
-            )[:1]
+            )[:verification_budget]
         elif policy == "amv_guard":
             selected = candidate_conditioned_memories(
                 memories, state["initial_action"]
-            )[:1]
+            )[:verification_budget]
         else:
             ranked = [
                 item["removed_memory_id"]
@@ -195,7 +223,9 @@ def run_langgraph_episode(
                 if item["selection_score"] > 0
             ]
             by_id = {memory.memory_id: memory for memory in memories}
-            selected = [by_id[memory_id] for memory_id in ranked[:1]]
+            selected = [
+                by_id[memory_id] for memory_id in ranked[:verification_budget]
+            ]
         return {"selected_memories": selected}
 
     def verify(state: GraphState) -> GraphState:
@@ -356,7 +386,7 @@ def run_langgraph_episode(
         "temperature": planner.temperature,
         "thinking": planner.thinking,
         "paired_samples": samples if policy in MEMIMPACT_POLICIES else 1,
-        "verification_budget": 1,
+        "verification_budget": verification_budget,
         "planner_attempts": sum(trace["attempt_count"] for trace in traces),
         "initial_action": state["initial_action"].model_dump(),
         "baseline_flip_rate": state["baseline_flip_rate"],

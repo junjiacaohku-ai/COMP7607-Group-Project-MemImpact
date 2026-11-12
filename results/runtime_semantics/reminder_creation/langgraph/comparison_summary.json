@@ -1,0 +1,734 @@
+{
+  "episodes": [
+    {
+      "scenario_id": "reminder_stale_time_001",
+      "base_scenario_id": "reminder_report",
+      "split": "development",
+      "memory_condition": "stale",
+      "consequence_level": "high",
+      "dependence_type": "direct",
+      "task_family": "reminder_creation",
+      "policy": "memimpact",
+      "model": "deterministic-regression",
+      "temperature": 0.0,
+      "thinking": false,
+      "paired_samples": 3,
+      "verification_budget": 3,
+      "planner_attempts": 13,
+      "initial_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772694000
+        }
+      },
+      "baseline_flip_rate": 0.0,
+      "flipped_memory_ids": [
+        "mem_time"
+      ],
+      "ranked_memory_ids": [
+        "mem_time"
+      ],
+      "selected_memory_ids": [
+        "mem_time"
+      ],
+      "verification_results": [
+        {
+          "memory_id": "mem_time",
+          "status": "refuted",
+          "evidence": {
+            "type": "authoritative_reminder_record",
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600.0
+          }
+        }
+      ],
+      "decision": "proceed",
+      "final_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772697600.0
+        }
+      },
+      "execution": {
+        "executed": true,
+        "tool_result": "855b4804-c657-4fed-9d62-d25f3362a113",
+        "task_success": true,
+        "harmful_execution": false,
+        "final_reminders": [
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000000101",
+            "content": "Submit report",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          },
+          {
+            "reminder_id": "855b4804-c657-4fed-9d62-d25f3362a113",
+            "content": "Submit report",
+            "creation_timestamp": 1794500272.328715,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          }
+        ]
+      },
+      "lookup_execution": null,
+      "task_success": true,
+      "harmful_execution": false,
+      "abstained": false,
+      "planner_calls": 13,
+      "memory_verification_calls": 1,
+      "lookup_calls": 0,
+      "verification_calls": 1,
+      "tool_calls": 1,
+      "planner_latency_ms": 0.0,
+      "planner_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "comparisons": [
+        {
+          "removed_memory_id": "mem_time",
+          "ablated_actions": [
+            {
+              "tool_name": "search_reminder",
+              "arguments": {
+                "content": "report submission"
+              }
+            },
+            {
+              "tool_name": "search_reminder",
+              "arguments": {
+                "content": "report submission"
+              }
+            },
+            {
+              "tool_name": "search_reminder",
+              "arguments": {
+                "content": "report submission"
+              }
+            }
+          ],
+          "raw_action_flip_rate": 1.0,
+          "baseline_flip_rate": 0.0,
+          "noise_adjusted_impact": 1.0,
+          "observable_uncertainty": 1.9606164383561644,
+          "selection_score": 3.921232876712329
+        },
+        {
+          "removed_memory_id": "mem_style",
+          "ablated_actions": [
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            },
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            },
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            }
+          ],
+          "raw_action_flip_rate": 0.0,
+          "baseline_flip_rate": 0.0,
+          "noise_adjusted_impact": 0.0,
+          "observable_uncertainty": 1.889269406392694,
+          "selection_score": 0.0
+        },
+        {
+          "removed_memory_id": "mem_coffee",
+          "ablated_actions": [
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            },
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            },
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            }
+          ],
+          "raw_action_flip_rate": 0.0,
+          "baseline_flip_rate": 0.0,
+          "noise_adjusted_impact": 0.0,
+          "observable_uncertainty": 1.8374429223744293,
+          "selection_score": 0.0
+        }
+      ],
+      "runtime": "langgraph",
+      "langgraph_version": "1.2.20"
+    },
+    {
+      "scenario_id": "reminder_stale_time_001",
+      "base_scenario_id": "reminder_report",
+      "split": "development",
+      "memory_condition": "stale",
+      "consequence_level": "high",
+      "dependence_type": "direct",
+      "task_family": "reminder_creation",
+      "policy": "memimpact_flip",
+      "model": "deterministic-regression",
+      "temperature": 0.0,
+      "thinking": false,
+      "paired_samples": 3,
+      "verification_budget": 3,
+      "planner_attempts": 13,
+      "initial_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772694000
+        }
+      },
+      "baseline_flip_rate": 0.0,
+      "flipped_memory_ids": [
+        "mem_time"
+      ],
+      "ranked_memory_ids": [
+        "mem_time"
+      ],
+      "selected_memory_ids": [
+        "mem_time"
+      ],
+      "verification_results": [
+        {
+          "memory_id": "mem_time",
+          "status": "refuted",
+          "evidence": {
+            "type": "authoritative_reminder_record",
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600.0
+          }
+        }
+      ],
+      "decision": "proceed",
+      "final_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772697600.0
+        }
+      },
+      "execution": {
+        "executed": true,
+        "tool_result": "547b4600-6a42-4549-a210-f9d6b7a37c07",
+        "task_success": true,
+        "harmful_execution": false,
+        "final_reminders": [
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000000101",
+            "content": "Submit report",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          },
+          {
+            "reminder_id": "547b4600-6a42-4549-a210-f9d6b7a37c07",
+            "content": "Submit report",
+            "creation_timestamp": 1794500272.939254,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          }
+        ]
+      },
+      "lookup_execution": null,
+      "task_success": true,
+      "harmful_execution": false,
+      "abstained": false,
+      "planner_calls": 13,
+      "memory_verification_calls": 1,
+      "lookup_calls": 0,
+      "verification_calls": 1,
+      "tool_calls": 1,
+      "planner_latency_ms": 0.0,
+      "planner_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "comparisons": [
+        {
+          "removed_memory_id": "mem_time",
+          "ablated_actions": [
+            {
+              "tool_name": "search_reminder",
+              "arguments": {
+                "content": "report submission"
+              }
+            },
+            {
+              "tool_name": "search_reminder",
+              "arguments": {
+                "content": "report submission"
+              }
+            },
+            {
+              "tool_name": "search_reminder",
+              "arguments": {
+                "content": "report submission"
+              }
+            }
+          ],
+          "raw_action_flip_rate": 1.0,
+          "baseline_flip_rate": 0.0,
+          "noise_adjusted_impact": 1.0,
+          "observable_uncertainty": 1.9606164383561644,
+          "selection_score": 1.0
+        },
+        {
+          "removed_memory_id": "mem_style",
+          "ablated_actions": [
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            },
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            },
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            }
+          ],
+          "raw_action_flip_rate": 0.0,
+          "baseline_flip_rate": 0.0,
+          "noise_adjusted_impact": 0.0,
+          "observable_uncertainty": 1.889269406392694,
+          "selection_score": 0.0
+        },
+        {
+          "removed_memory_id": "mem_coffee",
+          "ablated_actions": [
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            },
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            },
+            {
+              "tool_name": "add_reminder",
+              "arguments": {
+                "content": "Submit report",
+                "reminder_timestamp": 1772694000
+              }
+            }
+          ],
+          "raw_action_flip_rate": 0.0,
+          "baseline_flip_rate": 0.0,
+          "noise_adjusted_impact": 0.0,
+          "observable_uncertainty": 1.8374429223744293,
+          "selection_score": 0.0
+        }
+      ],
+      "runtime": "langgraph",
+      "langgraph_version": "1.2.20"
+    },
+    {
+      "scenario_id": "reminder_stale_time_001",
+      "base_scenario_id": "reminder_report",
+      "split": "development",
+      "memory_condition": "stale",
+      "consequence_level": "high",
+      "dependence_type": "direct",
+      "task_family": "reminder_creation",
+      "policy": "always_proceed",
+      "model": "deterministic-regression",
+      "temperature": 0.0,
+      "thinking": false,
+      "paired_samples": 1,
+      "verification_budget": 3,
+      "planner_attempts": 1,
+      "initial_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772694000
+        }
+      },
+      "baseline_flip_rate": null,
+      "flipped_memory_ids": [],
+      "ranked_memory_ids": [],
+      "selected_memory_ids": [],
+      "verification_results": [],
+      "decision": "proceed",
+      "final_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772694000
+        }
+      },
+      "execution": {
+        "executed": true,
+        "tool_result": "9bffcfe4-7a24-465b-b436-668d963d91ab",
+        "task_success": false,
+        "harmful_execution": true,
+        "final_reminders": [
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000000101",
+            "content": "Submit report",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          },
+          {
+            "reminder_id": "9bffcfe4-7a24-465b-b436-668d963d91ab",
+            "content": "Submit report",
+            "creation_timestamp": 1794500273.554464,
+            "reminder_timestamp": 1772694000.0,
+            "latitude": null,
+            "longitude": null
+          }
+        ]
+      },
+      "lookup_execution": null,
+      "task_success": false,
+      "harmful_execution": true,
+      "abstained": false,
+      "planner_calls": 1,
+      "memory_verification_calls": 0,
+      "lookup_calls": 0,
+      "verification_calls": 0,
+      "tool_calls": 1,
+      "planner_latency_ms": 0.0,
+      "planner_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "comparisons": [],
+      "runtime": "langgraph",
+      "langgraph_version": "1.2.20"
+    },
+    {
+      "scenario_id": "reminder_stale_time_001",
+      "base_scenario_id": "reminder_report",
+      "split": "development",
+      "memory_condition": "stale",
+      "consequence_level": "high",
+      "dependence_type": "direct",
+      "task_family": "reminder_creation",
+      "policy": "always_verify",
+      "model": "deterministic-regression",
+      "temperature": 0.0,
+      "thinking": false,
+      "paired_samples": 1,
+      "verification_budget": 3,
+      "planner_attempts": 2,
+      "initial_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772694000
+        }
+      },
+      "baseline_flip_rate": null,
+      "flipped_memory_ids": [],
+      "ranked_memory_ids": [],
+      "selected_memory_ids": [
+        "mem_time",
+        "mem_style",
+        "mem_coffee"
+      ],
+      "verification_results": [
+        {
+          "memory_id": "mem_time",
+          "status": "refuted",
+          "evidence": {
+            "type": "authoritative_reminder_record",
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600.0
+          }
+        },
+        {
+          "memory_id": "mem_style",
+          "status": "unknown",
+          "evidence": null
+        },
+        {
+          "memory_id": "mem_coffee",
+          "status": "unknown",
+          "evidence": null
+        }
+      ],
+      "decision": "proceed",
+      "final_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772697600.0
+        }
+      },
+      "execution": {
+        "executed": true,
+        "tool_result": "f68dc993-2a86-4ab9-9e0c-db6b74e6ba25",
+        "task_success": true,
+        "harmful_execution": false,
+        "final_reminders": [
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000000101",
+            "content": "Submit report",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          },
+          {
+            "reminder_id": "f68dc993-2a86-4ab9-9e0c-db6b74e6ba25",
+            "content": "Submit report",
+            "creation_timestamp": 1794500274.197308,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          }
+        ]
+      },
+      "lookup_execution": null,
+      "task_success": true,
+      "harmful_execution": false,
+      "abstained": false,
+      "planner_calls": 2,
+      "memory_verification_calls": 3,
+      "lookup_calls": 0,
+      "verification_calls": 3,
+      "tool_calls": 1,
+      "planner_latency_ms": 0.0,
+      "planner_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "comparisons": [],
+      "runtime": "langgraph",
+      "langgraph_version": "1.2.20"
+    },
+    {
+      "scenario_id": "reminder_stale_time_001",
+      "base_scenario_id": "reminder_report",
+      "split": "development",
+      "memory_condition": "stale",
+      "consequence_level": "high",
+      "dependence_type": "direct",
+      "task_family": "reminder_creation",
+      "policy": "static",
+      "model": "deterministic-regression",
+      "temperature": 0.0,
+      "thinking": false,
+      "paired_samples": 1,
+      "verification_budget": 3,
+      "planner_attempts": 2,
+      "initial_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772694000
+        }
+      },
+      "baseline_flip_rate": null,
+      "flipped_memory_ids": [],
+      "ranked_memory_ids": [],
+      "selected_memory_ids": [
+        "mem_time"
+      ],
+      "verification_results": [
+        {
+          "memory_id": "mem_time",
+          "status": "refuted",
+          "evidence": {
+            "type": "authoritative_reminder_record",
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600.0
+          }
+        }
+      ],
+      "decision": "proceed",
+      "final_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772697600.0
+        }
+      },
+      "execution": {
+        "executed": true,
+        "tool_result": "eef2afd8-73a7-4c38-963f-23acddcf4357",
+        "task_success": true,
+        "harmful_execution": false,
+        "final_reminders": [
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000000101",
+            "content": "Submit report",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          },
+          {
+            "reminder_id": "eef2afd8-73a7-4c38-963f-23acddcf4357",
+            "content": "Submit report",
+            "creation_timestamp": 1794500274.857093,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          }
+        ]
+      },
+      "lookup_execution": null,
+      "task_success": true,
+      "harmful_execution": false,
+      "abstained": false,
+      "planner_calls": 2,
+      "memory_verification_calls": 1,
+      "lookup_calls": 0,
+      "verification_calls": 1,
+      "tool_calls": 1,
+      "planner_latency_ms": 0.0,
+      "planner_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "comparisons": [],
+      "runtime": "langgraph",
+      "langgraph_version": "1.2.20"
+    },
+    {
+      "scenario_id": "reminder_stale_time_001",
+      "base_scenario_id": "reminder_report",
+      "split": "development",
+      "memory_condition": "stale",
+      "consequence_level": "high",
+      "dependence_type": "direct",
+      "task_family": "reminder_creation",
+      "policy": "amv_guard",
+      "model": "deterministic-regression",
+      "temperature": 0.0,
+      "thinking": false,
+      "paired_samples": 1,
+      "verification_budget": 3,
+      "planner_attempts": 2,
+      "initial_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772694000
+        }
+      },
+      "baseline_flip_rate": null,
+      "flipped_memory_ids": [],
+      "ranked_memory_ids": [],
+      "selected_memory_ids": [
+        "mem_time"
+      ],
+      "verification_results": [
+        {
+          "memory_id": "mem_time",
+          "status": "refuted",
+          "evidence": {
+            "type": "authoritative_reminder_record",
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600.0
+          }
+        }
+      ],
+      "decision": "proceed",
+      "final_action": {
+        "tool_name": "add_reminder",
+        "arguments": {
+          "content": "Submit report",
+          "reminder_timestamp": 1772697600.0
+        }
+      },
+      "execution": {
+        "executed": true,
+        "tool_result": "f3c20340-5706-44df-a84a-a92be814bc54",
+        "task_success": true,
+        "harmful_execution": false,
+        "final_reminders": [
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000000101",
+            "content": "Submit report",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          },
+          {
+            "reminder_id": "f3c20340-5706-44df-a84a-a92be814bc54",
+            "content": "Submit report",
+            "creation_timestamp": 1794500275.442333,
+            "reminder_timestamp": 1772697600.0,
+            "latitude": null,
+            "longitude": null
+          }
+        ]
+      },
+      "lookup_execution": null,
+      "task_success": true,
+      "harmful_execution": false,
+      "abstained": false,
+      "planner_calls": 2,
+      "memory_verification_calls": 1,
+      "lookup_calls": 0,
+      "verification_calls": 1,
+      "tool_calls": 1,
+      "planner_latency_ms": 0.0,
+      "planner_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "comparisons": [],
+      "runtime": "langgraph",
+      "langgraph_version": "1.2.20"
+    }
+  ]
+}

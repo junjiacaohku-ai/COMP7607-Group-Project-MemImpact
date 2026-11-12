@@ -1,0 +1,18 @@
+{
+  "reference_run": "results/runtime_semantics/deletion_stale_offline/original",
+  "candidate_run": "results/runtime_semantics/deletion_stale_offline/langgraph",
+  "matched_episodes": 6,
+  "semantically_equal_episodes": 6,
+  "equivalent": true,
+  "missing": {
+    "reference_only": [],
+    "candidate_only": []
+  },
+  "differences": [],
+  "cost_fields_excluded": [
+    "planner_attempts",
+    "planner_latency_ms",
+    "planner_token_usage"
+  ],
+  "interpretation": "Strict equality is intended for matched deterministic planner inputs. Independent model calls can legitimately produce different decisions."
+}

@@ -11,19 +11,10 @@ from memimpact.core import (
     remove_memory,
 )
 from memimpact.planner import CandidatePlanner, PlannerError
+from memimpact.policies import MEMIMPACT_POLICIES, POLICIES
 from memimpact.scoring import observable_uncertainty, verification_score
 from memimpact.toolsandbox_adapter import execute_fixture_action
 from memimpact.verification import AuthoritativeContactVerifier
-
-POLICIES = (
-    "memimpact",
-    "memimpact_flip",
-    "always_proceed",
-    "always_verify",
-    "static",
-    "amv_guard",
-)
-MEMIMPACT_POLICIES = ("memimpact", "memimpact_flip")
 
 
 def candidate_conditioned_memories(

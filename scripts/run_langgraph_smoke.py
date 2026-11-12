@@ -4,18 +4,11 @@ import json
 from pathlib import Path
 
 from memimpact.langgraph_runtime import run_langgraph_episode
+from memimpact.policies import POLICIES
 from memimpact.process_adapter import ToolSandboxProcessExecutor
 from memimpact.schema_planner import SchemaCandidatePlanner
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-POLICIES = (
-    "memimpact",
-    "memimpact_flip",
-    "always_proceed",
-    "always_verify",
-    "static",
-    "amv_guard",
-)
 
 
 def main() -> None:
@@ -31,6 +24,7 @@ def main() -> None:
     parser.add_argument("--model", default="qwen3.8-flash")
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--samples", type=int, default=3)
+    parser.add_argument("--verification-budget", type=int, default=1)
     parser.add_argument("--max-planner-attempts", type=int, default=2)
     parser.add_argument("--disable-thinking", action="store_true")
     parser.add_argument(
@@ -50,6 +44,7 @@ def main() -> None:
         planner,
         args.samples,
         ToolSandboxProcessExecutor(),
+        verification_budget=args.verification_budget,
     )
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     output_directory = args.output_dir / f"{fixture['scenario_id']}_{args.policy}_{timestamp}"

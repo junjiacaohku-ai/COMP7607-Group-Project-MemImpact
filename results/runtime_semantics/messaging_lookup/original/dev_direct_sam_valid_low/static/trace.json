@@ -1,0 +1,50 @@
+[
+  {
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Sam Lee"
+      }
+    },
+    "attempt_count": 1,
+    "latency_ms": 0.0,
+    "usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "visible_memory_ids": [
+      "mem_coffee",
+      "mem_phone",
+      "mem_style"
+    ],
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85211112222",
+        "content": "Meeting moved to 3 PM."
+      }
+    },
+    "attempt_count": 1,
+    "latency_ms": 0.0,
+    "usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "visible_memory_ids": [
+      "mem_coffee",
+      "mem_phone",
+      "mem_style"
+    ],
+    "condition": "replan_after_lookup",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

@@ -342,3 +342,19 @@
 - `trace.json` 已核对完整条件、可见 Memory、验证证据和最终动作；结果明确记录 `runtime=langgraph` 与版本号。
 - 该结果证明真实 Qwen × LangGraph × 跨进程 ToolSandbox 链路在此场景端到端可用，不代表其他场景、策略或 held-out 已全部通过。
 - 下一步：提交迁移代码与结果，再将 LangGraph runner 接入冻结配置，与原 runner 做同场景语义对照。
+
+## 2026-11-13：LangGraph 冻结配置批量入口与语义回归
+
+- 新增 `scripts/run_langgraph_comparison.py`，直接读取既有冻结 YAML，沿用相同模型、解码、S、验证预算、策略、场景和 ToolSandbox commit 检查。
+- 批量输出包含原格式的 `run_metadata.json`、共享规划 trace、逐策略结果和 `comparison_summary.json`；新增 runtime、LangGraph 实际版本和工具 schema SHA-256。
+- LangGraph episode 新增可配置 `verification_budget`，并支持完整／移除规划的跨策略共享缓存；trace 标记和逻辑成本口径与原 runner 一致。
+- 抽取 `memimpact/policies.py` 与 `memimpact/experiment.py`，使主环境读取配置时无需导入 ToolSandbox，并复用策略集合和汇总口径。
+- 新增 `scripts/compare_runtime_results.py`，按 scenario × policy 比较评分、选择、验证、重规划后动作、任务结果、危险执行、abstention 和调用次数；排除 token 与延迟等成本字段。
+- 使用同一确定性 Planner、同一缓存和真实 ToolSandbox 执行完成三类离线语义回归：
+  - Reminder Deletion 过期目标：6/6 策略完全一致，预算 1。
+  - Messaging 只读查询后重规划：6/6 策略完全一致，预算 3。
+  - Reminder Creation 过期时间纠正：6/6 策略完全一致，预算 3。
+- 合计 18/18 matched policy episodes 语义相等，报告保存在 `results/runtime_semantics/`；这些结果是迁移回归，不是新的真实模型效果实验。
+- 两套环境 `pip check`、Ruff 和 Python 编译通过；项目实际依赖的 ToolSandbox contact/messaging/reminder/schema 测试 17/17 通过。
+- 额外执行上游 `execution_environment_test.py` 时有 2 个既有断言失败：Python 3.10 的 SyntaxError  caret 格式变化，以及并行工具调用顺序假设；其余 17 项通过。本轮未修改上游代码，这两个失败不涉及项目使用的单工具顺序执行路径。
+- 下一步：用真实 Qwen 对同一冻结配置运行 LangGraph 批量对照，再生成分析；独立模型调用的语义差异需结合 trace 解释，不能要求逐动作必然相同。

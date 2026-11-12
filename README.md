@@ -114,6 +114,13 @@ python scripts/run_memimpact_smoke.py \
   --max-planner-attempts 2
 ```
 
+使用冻结配置运行 LangGraph 批量对照；输出目录带 `langgraph` 标记，并额外记录工具 schema 哈希：
+
+```bash
+.venv/bin/python scripts/run_langgraph_comparison.py \
+  --config configs/validation_matrix_v1.yaml
+```
+
 生成开发集：
 
 ```bash
@@ -131,6 +138,13 @@ python scripts/run_policy_comparison.py \
   --policies memimpact memimpact_flip always_proceed always_verify static amv_guard \
   --samples 3 \
   --verification-budget 1
+```
+
+比较两套 runtime 的决策与结果语义。`--strict` 适用于共享确定性 Planner 输入的回归；独立真实模型调用可能合理产生差异：
+
+```bash
+.venv/bin/python scripts/compare_runtime_results.py \
+  path/to/original_run path/to/langgraph_run --strict
 ```
 
 生成分析表和可靠性—成本图：
