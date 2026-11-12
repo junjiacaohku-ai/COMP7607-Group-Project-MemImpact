@@ -5,6 +5,7 @@ from typing import Any
 from tool_sandbox.common.tool_conversion import convert_to_openai_tools
 from tool_sandbox.tools.contact import search_contacts
 from tool_sandbox.tools.messaging import send_message_with_phone_number
+from tool_sandbox.tools.reminder import add_reminder, remove_reminder, search_reminder
 
 from memimpact.core import CandidateAction, MemoryRecord
 from memimpact.qwen import make_qwen_client
@@ -12,6 +13,9 @@ from memimpact.qwen import make_qwen_client
 TOOL_REGISTRY = {
     "search_contacts": search_contacts,
     "send_message_with_phone_number": send_message_with_phone_number,
+    "add_reminder": add_reminder,
+    "search_reminder": search_reminder,
+    "remove_reminder": remove_reminder,
 }
 
 
@@ -55,8 +59,8 @@ class CandidatePlanner:
                 "content": (
                     "You are a planning-only agent. Propose exactly one next tool call "
                     "for the user's task. Use relevant retrieved memories, but do not "
-                    "assume missing tool arguments. If the recipient's current phone "
-                    "number is not available, propose search_contacts instead of sending. "
+                    "assume missing tool arguments. If required current information is "
+                    "missing, propose an available read-only search tool instead of guessing. "
                     "Verified current evidence takes precedence over conflicting memories. "
                     "Do not execute tools or describe actions in natural language."
                 ),

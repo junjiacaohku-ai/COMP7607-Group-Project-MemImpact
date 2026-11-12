@@ -7,6 +7,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 POLICY_LABELS = {
     "memimpact": "MemImpact",
@@ -24,16 +25,6 @@ POLICY_COLORS = {
     "static": "#CC79A7",
     "amv_guard": "#E69F00",
 }
-ANNOTATION_OFFSETS = {
-    "memimpact": (5, 10),
-    "memimpact_flip": (5, -14),
-    "always_proceed": (5, 8),
-    "always_verify": (5, 7),
-    "static": (5, 10),
-    "amv_guard": (5, -14),
-}
-
-
 def write_csv(path: Path, rows: list[dict]) -> None:
     if not rows:
         raise ValueError("No rows to write")
@@ -194,26 +185,12 @@ def main() -> None:
             s=70,
             zorder=3,
         )
-        axes[1].annotate(
-            POLICY_LABELS[policy],
-            (summary["total_tokens"], summary["task_success_rate"]),
-            xytext=ANNOTATION_OFFSETS[policy],
-            textcoords="offset points",
-            fontsize=9,
-        )
         axes[2].scatter(
             summary["verification_calls"],
             summary["task_success_rate"],
             color=POLICY_COLORS[policy],
             s=70,
             zorder=3,
-        )
-        axes[2].annotate(
-            POLICY_LABELS[policy],
-            (summary["verification_calls"], summary["task_success_rate"]),
-            xytext=ANNOTATION_OFFSETS[policy],
-            textcoords="offset points",
-            fontsize=9,
         )
     axes[1].set_title("Reliability vs. planning cost")
     axes[1].set_xlabel("Total planner tokens")
@@ -228,7 +205,25 @@ def main() -> None:
     fig.suptitle(
         f"MemImpact pilot | {data['model']} | {len(data['episodes'])} policy episodes"
     )
-    fig.tight_layout()
+    handles = [
+        Line2D(
+            [0],
+            [0],
+            marker="o",
+            color="none",
+            markerfacecolor=POLICY_COLORS[policy],
+            markersize=8,
+            label=POLICY_LABELS[policy],
+        )
+        for policy in policies
+    ]
+    fig.legend(
+        handles=handles,
+        loc="lower center",
+        ncol=len(policies),
+        frameon=False,
+    )
+    fig.tight_layout(rect=(0, 0.08, 1, 1))
     fig.savefig(output_directory / "reliability_cost.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
 

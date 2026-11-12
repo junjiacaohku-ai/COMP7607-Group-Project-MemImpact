@@ -1,0 +1,87 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2193.468,
+        "usage": {
+          "completion_tokens": 170,
+          "prompt_tokens": 1081,
+          "total_tokens": 1251,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1081
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 118,
+            "text_tokens": 170
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 2193.468,
+    "usage": {
+      "prompt_tokens": 1081,
+      "completion_tokens": 170,
+      "total_tokens": 1251
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  }
+]

@@ -13,7 +13,8 @@ MemImpact 研究规划器级反事实记忆审计：逐条移除检索到的 Mem
 - 已实现 MemImpact、flip-only 消融、Always Proceed、Always Verify、Static 和 AMV-Guard-style 适配基线；
 - 已生成 40 个带元数据的合成开发 episodes，并完成小规模真实模型对照；
 - 已保留正向、负向、失败与调试记录；
-- 尚未完成其他任务族、正式 held-out 测试、统计置信区间、最终报告和展示。
+- 已完成 Reminder Creation 的真实 Qwen pilot，并实现 Reminder Deletion validation pilot；
+- 尚未完成正式 held-out 测试、统计置信区间、最终报告和展示。
 
 详细过程和实验路径见 [WORKLOG.md](WORKLOG.md)。
 
@@ -24,6 +25,8 @@ memimpact/          核心数据结构、Planner、评分、验证、策略和 T
 scripts/            环境 smoke test、实验、数据生成和分析入口
 scenarios/pilot/    早期手工调试场景，保留用于追溯
 benchmark/dev/      40 个合成开发 episodes 与 manifest
+benchmark/reminder_pilot/  Reminder Creation 有效／过期时间场景
+benchmark/deletion_pilot/  Reminder Deletion validation 场景
 results/            原始轨迹、结果汇总、表格和图
 proposal/           中英文 LaTeX proposal、PDF 和参考文献
 docs/               实施计划、组会材料和评审意见

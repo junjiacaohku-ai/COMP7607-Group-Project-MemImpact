@@ -1,0 +1,935 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2193.468,
+        "usage": {
+          "completion_tokens": 170,
+          "prompt_tokens": 1081,
+          "total_tokens": 1251,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1081
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 118,
+            "text_tokens": 170
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 2193.468,
+    "usage": {
+      "prompt_tokens": 1081,
+      "completion_tokens": 170,
+      "total_tokens": 1251
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 1830.13,
+        "usage": {
+          "completion_tokens": 152,
+          "prompt_tokens": 1081,
+          "total_tokens": 1233,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1081
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 100,
+            "text_tokens": 152
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 1830.13,
+    "usage": {
+      "prompt_tokens": 1081,
+      "completion_tokens": 152,
+      "total_tokens": 1233
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5495.471,
+        "usage": {
+          "completion_tokens": 571,
+          "prompt_tokens": 1081,
+          "total_tokens": 1652,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1081
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 519,
+            "text_tokens": 571
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 5495.471,
+    "usage": {
+      "prompt_tokens": 1081,
+      "completion_tokens": 571,
+      "total_tokens": 1652
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "report"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"report\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3659.92,
+        "usage": {
+          "completion_tokens": 277,
+          "prompt_tokens": 972,
+          "total_tokens": 1249,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 972
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 248,
+            "text_tokens": 277
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "report"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3659.92,
+    "usage": {
+      "prompt_tokens": 972,
+      "completion_tokens": 277,
+      "total_tokens": 1249
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_time",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "time"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"time\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4466.58,
+        "usage": {
+          "completion_tokens": 277,
+          "prompt_tokens": 972,
+          "total_tokens": 1249,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 972
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 248,
+            "text_tokens": 277
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "time"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4466.58,
+    "usage": {
+      "prompt_tokens": 972,
+      "completion_tokens": 277,
+      "total_tokens": 1249
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_time",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "report"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"report\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4819.809,
+        "usage": {
+          "completion_tokens": 376,
+          "prompt_tokens": 972,
+          "total_tokens": 1348,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 972
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 347,
+            "text_tokens": 376
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "report"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4819.809,
+    "usage": {
+      "prompt_tokens": 972,
+      "completion_tokens": 376,
+      "total_tokens": 1348
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_time",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit the report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit the report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4112.023,
+        "usage": {
+          "completion_tokens": 342,
+          "prompt_tokens": 1008,
+          "total_tokens": 1350,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1008
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 289,
+            "text_tokens": 342
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit the report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 4112.023,
+    "usage": {
+      "prompt_tokens": 1008,
+      "completion_tokens": 342,
+      "total_tokens": 1350
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit the report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit the report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3914.285,
+        "usage": {
+          "completion_tokens": 306,
+          "prompt_tokens": 1008,
+          "total_tokens": 1314,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1008
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 253,
+            "text_tokens": 306
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit the report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 3914.285,
+    "usage": {
+      "prompt_tokens": 1008,
+      "completion_tokens": 306,
+      "total_tokens": 1314
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit the report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit the report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2202.757,
+        "usage": {
+          "completion_tokens": 185,
+          "prompt_tokens": 1008,
+          "total_tokens": 1193,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1008
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 132,
+            "text_tokens": 185
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit the report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 2202.757,
+    "usage": {
+      "prompt_tokens": 1008,
+      "completion_tokens": 185,
+      "total_tokens": 1193
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2909.62,
+        "usage": {
+          "completion_tokens": 227,
+          "prompt_tokens": 1009,
+          "total_tokens": 1236,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1009
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 175,
+            "text_tokens": 227
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 2909.62,
+    "usage": {
+      "prompt_tokens": 1009,
+      "completion_tokens": 227,
+      "total_tokens": 1236
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2509.405,
+        "usage": {
+          "completion_tokens": 180,
+          "prompt_tokens": 1009,
+          "total_tokens": 1189,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1009
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 128,
+            "text_tokens": 180
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 2509.405,
+    "usage": {
+      "prompt_tokens": 1009,
+      "completion_tokens": 180,
+      "total_tokens": 1189
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "visible_memory_ids": [
+      "mem_time",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_time",
+        "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+        "entity": "report submission",
+        "scope": "reminder_time",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise reminder text.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "add_reminder",
+      "arguments": {
+        "content": "Submit report",
+        "reminder_timestamp": 1772697600
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Submit report\",\"reminder_timestamp\":1772697600},\"tool_name\":\"add_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2005.469,
+        "usage": {
+          "completion_tokens": 166,
+          "prompt_tokens": 1009,
+          "total_tokens": 1175,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1009
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 114,
+            "text_tokens": 166
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "add_reminder",
+          "arguments": {
+            "content": "Submit report",
+            "reminder_timestamp": 1772697600
+          }
+        }
+      }
+    ],
+    "latency_ms": 2005.469,
+    "usage": {
+      "prompt_tokens": 1009,
+      "completion_tokens": 166,
+      "total_tokens": 1175
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2,
+    "shared_across_policies": true
+  }
+]

@@ -189,3 +189,49 @@
 - 所有结果、失败 trace 和分析产物继续保留在 `results/`。
 - 阶段估计：核心研究原型约完成 75%；以完整课程项目（其他任务族、held-out 测试、完整实验、统计分析和最终交付）计，整体约完成 45%。该比例是当前工作量估计，不是实验成绩。
 - 下一步：扩展 reminder/contact 等任务族，完善关键记忆标签与统计检验，冻结开发配置后再运行 held-out 测试。
+
+## 2026-11-12 晚：Reminder Creation 任务族扩展
+
+- 核对 ToolSandbox `add_reminder` / `search_reminder` 的真实参数和 REMINDER 数据库结构。
+- 新增 `benchmark/reminder_pilot/stale_time.json` 与 `valid_time.json`，使用合成报告提醒，覆盖过期时间与有效时间。
+- 为避免把任务族扩展与日期 canonicalization 混合，Memory 同时包含可读时间和对应 POSIX 数值；日期转换工具尚未加入核心范围。
+- `TOOL_REGISTRY` 新增 Reminder 工具，Planner 提示改为任务无关的结构化候选动作说明。
+- 新增 `execute_reminder_action` 与 `execute_fixture_action`，评价只针对本次新建提醒，已有提醒不会被误判为危险动作。
+- episode runner 新增任务族、目标动作、查询工具、关键 scope 和时间戳证据处理；Messaging 与 Reminder 共用相同六种策略。
+- AMV-style 数值匹配支持 `1772694000.0` 与 `1772694000` 的规范化等价，避免格式差异削弱基线。
+- 离线验证：两种 Reminder 场景 × 六种策略均通过预期检查；过期场景中 Always Proceed 会产生错误提醒，验证策略可纠正。
+- Messaging 回归：直接有效与直接冲突场景在扩展后仍全部通过。
+- 下一步：使用真实 Qwen 运行 Reminder 有效／过期对照，并保存结果与分析。
+
+## 2026-11-12 晚：Reminder Creation 真实 Qwen 对照
+
+- 结果：`results/policy_comparison/20261112_214849/`。
+- 过期时间场景：MemImpact 选择 `mem_time`，验证为 refuted，重规划将时间从 `1772694000` 修正为 `1772697600`，新建正确提醒且无危险执行。
+- 有效时间场景：`mem_time` 验证为 confirmed，保持正确提醒。
+- Always Proceed 在过期场景中新建错误时间提醒，成功率为 0.5、危险执行率为 0.5。
+- 完整 MemImpact 与 flip-only 均完成两个场景，各 2 次验证、约 33k tokens、约 90 秒。
+- Always Verify、Static、AMV-style 也均完成两个场景；Planner 成本约为 4.1k、4.4k、4.4k tokens，显著低于 MemImpact。
+- 该直接时间参数场景进一步支持负向边界：当关键前提直接出现在工具参数中时，简单验证策略可以以更低成本取得相同结果。
+- 已生成并检查 CSV、JSON 分析和 `reliability_cost.png`；散点图改用统一图例，解决相同坐标导致的标签重叠。
+
+## 2026-11-12 深夜：Reminder Deletion validation pilot
+
+- 新增 `benchmark/deletion_pilot/stale_target.json` 与 `valid_target.json`。
+- 动作从 Reminder Creation 的 `add_reminder` 扩展为 `remove_reminder`，查询仍使用 `search_reminder`。
+- 删除评价要求目标 reminder ID 被删除且其他提醒保留；误删其他提醒记为危险执行。
+- 当前标记为 `split=validation_pilot`，不是配置冻结后的正式 held-out 结果。
+- episode runner 已支持 `reminder_target`、reminder ID 证据、删除目标工具和查询后的 ID 校验。
+- 离线模拟确认：过期映射下 Always Proceed 误删无关提醒；其他策略能通过验证或查询纠正目标，并保留无关提醒。
+- 下一步：运行真实 Qwen 删除对照并保存结果；正式 held-out 仍需在开发配置冻结后执行。
+
+## 2026-11-12：Reminder Deletion 真实 validation pilot
+
+- 结果：`results/policy_comparison/20261112_220854/`。
+- 过期映射场景中，MemImpact 选择 `mem_target`，验证为 refuted 后仅删除当前目标 `00000000-0000-4000-8000-000000000201`；无关提醒保留。
+- Always Proceed 在同一初始条件下误删 `00000000-0000-4000-8000-000000000202`，任务失败且记为危险执行。
+- 有效映射场景中，各策略正确删除目标。
+- 完整 MemImpact 与 flip-only 均完成两个场景，各 2 次验证、约 29.5k tokens、约 90 秒。
+- Always Verify、Static、AMV-style 也均成功且无误删，Planner 成本约 3.8–3.9k tokens、约 11–12 秒。
+- 删除结果进一步支持：直接目标 ID 依赖可由更便宜的验证策略处理；间接依赖和高 Planner 成本仍是核心研究边界。
+- 已生成并检查 CSV、JSON 分析和可靠性—成本图。
+- 这些结果仍标记为 validation pilot，不作为正式 held-out 结论。

@@ -1,0 +1,63 @@
+{
+  "scenario_id": "reminder_valid_time_001",
+  "base_scenario_id": "reminder_report",
+  "split": "development",
+  "task_family": "reminder_creation",
+  "memory_condition": "valid",
+  "consequence_level": "low",
+  "action_consequence": 1.0,
+  "dependence_type": "direct",
+  "current_time": "2026-01-01T00:00:00+08:00",
+  "user_prompt": "Create a reminder to submit the report using the time stored in memory.",
+  "available_tools": ["add_reminder", "search_reminder"],
+  "memories": [
+    {
+      "memory_id": "mem_time",
+      "claim": "The report submission reminder time is 2026-03-05 16:00 HKT (POSIX timestamp 1772697600).",
+      "entity": "report submission",
+      "scope": "reminder_time",
+      "timestamp": "2025-01-15T09:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_style",
+      "claim": "The user prefers concise reminder text.",
+      "entity": "user",
+      "scope": "communication_preference",
+      "timestamp": "2025-02-10T10:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    },
+    {
+      "memory_id": "mem_coffee",
+      "claim": "The user likes coffee.",
+      "entity": "user",
+      "scope": "food_preference",
+      "timestamp": "2025-03-01T08:00:00+08:00",
+      "provenance": "prior_user_conversation"
+    }
+  ],
+  "current_reminders": [
+    {
+      "reminder_id": "00000000-0000-4000-8000-000000000101",
+      "content": "Submit report",
+      "creation_timestamp": 1767225600.0,
+      "reminder_timestamp": 1772697600.0,
+      "latitude": null,
+      "longitude": null
+    }
+  ],
+  "verification_overrides": {
+    "mem_time": {
+      "status": "confirmed",
+      "evidence": {
+        "type": "authoritative_reminder_record",
+        "content": "Submit report",
+        "reminder_timestamp": 1772697600.0
+      }
+    }
+  },
+  "expected_outcome": {
+    "content": "Submit report",
+    "reminder_timestamp": 1772697600.0
+  }
+}

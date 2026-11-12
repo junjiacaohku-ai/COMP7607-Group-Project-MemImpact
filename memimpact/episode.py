@@ -12,7 +12,7 @@ from memimpact.core import (
 )
 from memimpact.planner import CandidatePlanner, PlannerError
 from memimpact.scoring import observable_uncertainty, verification_score
-from memimpact.toolsandbox_adapter import execute_messaging_action
+from memimpact.toolsandbox_adapter import execute_fixture_action
 from memimpact.verification import AuthoritativeContactVerifier
 
 POLICIES = (
@@ -29,11 +29,13 @@ MEMIMPACT_POLICIES = ("memimpact", "memimpact_flip")
 def candidate_conditioned_memories(
     memories: list[MemoryRecord], action: Any
 ) -> list[MemoryRecord]:
-    argument_values = [
-        value.strip()
-        for value in action.arguments.values()
-        if isinstance(value, str) and len(value.strip()) >= 3
-    ]
+    argument_values = []
+    for value in action.arguments.values():
+        text = str(value).strip()
+        if len(text) >= 3:
+            argument_values.append(text)
+        if isinstance(value, float) and value.is_integer():
+            argument_values.append(str(int(value)))
     return [
         memory
         for memory in memories
@@ -202,13 +204,19 @@ def run_episode(
         if item["selection_score"] > 0
     ]
 
+    task_family = fixture.get("task_family", "messaging")
+    critical_scopes = (
+        {"contact"}
+        if task_family == "messaging"
+        else {"reminder", "reminder_time", "reminder_target"}
+    )
     if policy == "always_proceed":
         selected_memories = []
     elif policy == "always_verify":
         selected_memories = memories
     elif policy == "static":
         selected_memories = sorted(
-            (memory for memory in memories if memory.scope == "contact"),
+            (memory for memory in memories if memory.scope in critical_scopes),
             key=lambda memory: memory.timestamp,
         )[:verification_budget]
     elif policy == "amv_guard":
@@ -223,19 +231,29 @@ def run_episode(
         ]
 
     verifier = AuthoritativeContactVerifier(
-        fixture["authoritative_contacts"], fixture.get("verification_overrides")
+        fixture.get("authoritative_contacts", []),
+        fixture.get("verification_overrides"),
     )
     verification_results = []
     verified_evidence = []
-    unresolved_contact = False
+    unresolved_critical = False
     for memory in selected_memories:
         verification = verifier.verify(memory)
         verification_results.append(verification.model_dump())
         if verification.status == "refuted":
             verified_evidence.append(verification.evidence)
-        elif verification.status == "unknown" and memory.scope == "contact":
-            unresolved_contact = True
+        elif verification.status == "unknown" and memory.scope in critical_scopes:
+            unresolved_critical = True
 
+    if task_family == "messaging":
+        target_tool = "send_message_with_phone_number"
+    elif task_family == "reminder_creation":
+        target_tool = "add_reminder"
+    else:
+        target_tool = "remove_reminder"
+    lookup_tools = (
+        {"search_contacts"} if task_family == "messaging" else {"search_reminder"}
+    )
     final_action = initial_action
     decision = "proceed"
     if verified_evidence:
@@ -245,33 +263,31 @@ def run_episode(
             memories,
             verified_evidence=verified_evidence,
         )
-        verified_phones = {
-            evidence["phone_number"]
-            for evidence in verified_evidence
-            if "phone_number" in evidence
+        verified_values = {
+            key: {
+                evidence[key] for evidence in verified_evidence if key in evidence
+            }
+            for key in ("phone_number", "reminder_timestamp", "reminder_id")
         }
-        if final_action.tool_name != "send_message_with_phone_number" or (
-            verified_phones
-            and final_action.arguments.get("phone_number") not in verified_phones
-        ):
+        if final_action.tool_name not in {target_tool, *lookup_tools}:
             decision = "abstain"
-    elif unresolved_contact:
+        elif final_action.tool_name == target_tool:
+            for key, values in verified_values.items():
+                if values and final_action.arguments.get(key) not in values:
+                    decision = "abstain"
+    elif unresolved_critical:
         decision = "abstain"
 
     lookup_execution = None
-    if decision == "proceed" and final_action.tool_name == "search_contacts":
-        lookup_execution = execute_messaging_action(
-            final_action,
-            fixture["authoritative_contacts"],
-            fixture["expected_outcome"],
-        )
+    if decision == "proceed" and final_action.tool_name in lookup_tools:
+        lookup_execution = execute_fixture_action(final_action, fixture)
         lookup_records = lookup_execution["tool_result"]
         if not lookup_records:
             decision = "abstain"
         else:
             lookup_evidence = {
                 "type": "authoritative_tool_result",
-                "tool_name": "search_contacts",
+                "tool_name": final_action.tool_name,
                 "records": lookup_records,
             }
             final_action = call_planner(
@@ -280,23 +296,26 @@ def run_episode(
                 memories,
                 verified_evidence=[*verified_evidence, lookup_evidence],
             )
-            lookup_phones = {
-                record["phone_number"]
+            if task_family == "messaging":
+                lookup_field = "phone_number"
+            elif task_family == "reminder_creation":
+                lookup_field = "reminder_timestamp"
+            else:
+                lookup_field = "reminder_id"
+            lookup_values = {
+                record[lookup_field]
                 for record in lookup_records
-                if "phone_number" in record
+                if lookup_field in record
             }
-            if final_action.tool_name != "send_message_with_phone_number" or (
-                final_action.arguments.get("phone_number") not in lookup_phones
+            if final_action.tool_name != target_tool or (
+                lookup_values
+                and final_action.arguments.get(lookup_field) not in lookup_values
             ):
                 decision = "abstain"
 
     execution = None
     if decision == "proceed":
-        execution = execute_messaging_action(
-            final_action,
-            fixture["authoritative_contacts"],
-            fixture["expected_outcome"],
-        )
+        execution = execute_fixture_action(final_action, fixture)
         if lookup_execution is not None:
             execution["lookup"] = lookup_execution
 
@@ -311,6 +330,7 @@ def run_episode(
         "memory_condition": fixture.get("memory_condition", "unlabeled"),
         "consequence_level": fixture.get("consequence_level", "unlabeled"),
         "dependence_type": fixture.get("dependence_type", "unlabeled"),
+        "task_family": task_family,
         "policy": policy,
         "model": planner.model,
         "temperature": planner.temperature,
