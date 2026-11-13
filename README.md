@@ -1,86 +1,163 @@
+<div align="center">
+
 # COMP7607 Group Project — MemImpact
 
-MemImpact 研究规划器级反事实记忆审计：逐条移除检索到的 Memory，重新运行 Planner，观察候选动作是否改变，并据此分配在线验证预算。
+**When does counterfactual memory auditing justify its cost?**
 
-核心问题不是“MemImpact 是否一定优于所有方法”，而是：**Planner 重运行相对静态或候选动作条件信号有何增量价值，以及这种收益是否值得额外计算成本。**
+A reproducible study of planner-level memory removal, selective verification, and reliability–cost trade-offs in tool-using LLM agents.
 
-## 当前状态
+**[English](README.md) · [简体中文](README.zh-CN.md)**
 
-项目目前处于正式 held-out 评价阶段：
+[![HKU COMP7607](https://img.shields.io/badge/HKU-COMP7607-6E56CF)](https://github.com/junjiacaohku-ai/COMP7607-Group-Project-MemImpact)
+[![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![LangGraph](https://img.shields.io/badge/LangGraph-1.2.20-2AA887)](https://github.com/langchain-ai/langgraph)
+[![Evaluation](https://img.shields.io/badge/Evaluation-1%2C440_policy_episodes-0072B2)](#key-results)
+[![Report](https://img.shields.io/badge/Report-PDF-D55E00)](report/memimpact_report.pdf)
+[![GitHub stars](https://img.shields.io/github/stars/junjiacaohku-ai/COMP7607-Group-Project-MemImpact?style=social)](https://github.com/junjiacaohku-ai/COMP7607-Group-Project-MemImpact/stargazers)
 
-- 已跑通 Qwen × ToolSandbox 官方场景；
-- 已实现 Memory 移除、配对规划、动作规范化、噪声校正、验证、重规划和隔离执行；
-- 已实现 MemImpact、flip-only 消融、Always Proceed、Always Verify、Static 和 AMV-Guard-style 适配基线；
-- 已生成 40 个带元数据的合成开发 episodes，并完成小规模真实模型对照；
-- 已保留正向、负向、失败与调试记录；
-- 已完成 Reminder Creation 的真实 Qwen pilot，并实现 Reminder Deletion validation pilot；
-- 已实现显式 LangGraph 状态图和跨进程 ToolSandbox worker，并完成跨 runtime 语义检查；
-- 已完成 120 个 held-out 场景、六种策略的预算 1 与预算 3 正式运行，以及离线标签、识别指标和 paired bootstrap 分析；
-- 已完成按 scenario × policy 对齐的跨预算比较和按基础场景聚类的 bootstrap；两轮独立模型调用不被解释为严格的因果预算效应；
-- 已完成英文 LaTeX 报告初稿、三个典型案例和 claim-to-artifact 附录；尚需完成展示、短演示和团队确认的贡献记录；
-- 当前结论仅适用于该合成基准，不构成普遍安全保证。
+[Overview](#overview) · [Method](#method) · [Results](#key-results) · [Quick Start](#quick-start) · [Reproduction](#reproduction) · [Documentation](#documentation)
 
-详细过程和实验路径见 [WORKLOG.md](WORKLOG.md)。
+</div>
 
-## 仓库结构
+---
 
-```text
-memimpact/          核心数据结构、Planner、评分、验证、策略和 ToolSandbox 执行
-scripts/            环境 smoke test、实验、数据生成和分析入口
-scenarios/pilot/    早期手工调试场景，保留用于追溯
-benchmark/dev/      40 个合成开发 episodes 与 manifest
-benchmark/reminder_pilot/  Reminder Creation 有效／过期时间场景
-benchmark/deletion_pilot/  Reminder Deletion validation 场景
-benchmark/deletion_validation/  四组独立删除验证场景
-benchmark/heldout/  120 个正式 held-out episodes 与 manifest（budget 1/3 已完成）
-configs/            开发、validation 与冻结 held-out YAML 配置
-results/            原始轨迹、结果汇总、表格和图
-proposal/           中英文 LaTeX proposal、PDF 和参考文献
-report/             英文 LaTeX 项目报告与 PDF
-docs/               实施计划、组会材料和评审意见
-WORKLOG.md          持续工作日志
-third_party/        本地 ToolSandbox checkout，不提交到本仓库
+<a id="overview"></a>
+## 1. Overview
+
+Persistent memory helps LLM agents reuse contact details, preferences, and prior decisions across sessions. But a retrieved memory can be stale, misattributed, or irrelevant—and verifying every memory can be expensive.
+
+**MemImpact** investigates a simple counterfactual question:
+
+> If removing one memory changes the planner's proposed action, is that memory worth verifying before execution?
+
+For each retrieved memory, the system removes it, re-runs the planner, compares the canonical tool actions, and uses the resulting impact signal to prioritize verification. The project evaluates not only whether this signal works, but also whether its reliability benefit justifies the additional planning calls, tokens, and latency.
+
+> **Main finding:** Planner-level auditing has localized value for indirect action-selection errors, but we do **not** observe a stable overall reliability–cost advantage. Always Verify is more reliable in both held-out runs and uses roughly seven times fewer planner tokens than MemImpact.
+
+This is a controlled synthetic study, not a general safety guarantee or a claim of universal method superiority.
+
+## 2. What Is Included
+
+| Capability | Delivered implementation |
+|---|---|
+| **Counterfactual memory audit** | Three paired full-memory and single-memory-removal planner samples per memory |
+| **Noise-adjusted impact** | Canonical action comparison with a baseline estimated from full-memory planner variability |
+| **Six evaluation policies** | MemImpact, flip-only, Always Proceed, Always Verify, Static, and AMV-Guard-style |
+| **Executable benchmark** | 40 development episodes and 120 held-out episodes with five memory conditions |
+| **Real tool execution** | LangGraph workflow connected to Apple ToolSandbox through an isolated worker process |
+| **Offline critical-memory labels** | Forced verification-and-replanning trials based on outcome improvement, not action flips alone |
+| **Statistical analysis** | Scenario-matched comparisons and base-scenario-clustered paired bootstrap intervals |
+| **Full evidence trail** | Frozen configs, hashes, raw planner traces, failures, resumes, labels, CSV tables, and figures |
+| **Research deliverables** | English proposal, 10-page project report, case studies, and claim-to-artifact appendix |
+
+## 3. Method
+
+```mermaid
+flowchart TD
+    A[User task + three retrieved memories] --> B[Full-memory planner samples]
+    B --> C[Remove one memory at a time]
+    C --> D[Paired ablated planner samples]
+    B --> E[Canonical action comparison]
+    D --> E
+    E --> F[Noise-adjusted memory impact]
+    F --> G[Verification policy and budget]
+    G --> H{Proceed / Verify / Abstain}
+    H -->|Refuted evidence| I[Replan with corrected evidence]
+    I --> J[Approved action]
+    H -->|Approved action| J
+    J --> K[Isolated ToolSandbox execution]
+    K --> L[Task success + harmful execution + cost]
+    L --> M[Raw traces, labels, tables, and analysis]
 ```
 
-## 环境安装
+For memory $m_i$, the raw action-flip rate is measured over $S=3$ paired samples:
 
-需要 macOS 上可用的原生 Python 3.10。ToolSandbox 使用独立环境，避免旧依赖与后续 LangGraph 环境冲突。
+$$\widehat F_i=\frac{1}{S}\sum_{s=1}^{S}\mathbf{1}\left[\mathcal A(a^{+,(s)})\neq\mathcal A(a_i^{-,(s)})\right].$$
+
+Full-memory runs provide a planner-variability baseline $\widehat F_0$. MemImpact uses $\widetilde F_i=\max(0,\widehat F_i-\widehat F_0)$, together with memory age, provenance, and action consequence. The flip-only ablation ranks memories by $\widetilde F_i$ alone.
+
+All counterfactual branches are planning-only. They cannot modify the ToolSandbox world or execute tools.
+
+<a id="key-results"></a>
+## 4. Key Results
+
+Two frozen configurations evaluate the same 120 held-out scenarios with selective-verification budgets of one and three. Each run contains **120 scenarios × 6 policies = 720 policy episodes**.
+
+| Policy | Success: B1 / B3 | Harmful execution: B1 / B3 | Planner tokens: B1 / B3 |
+|---|---:|---:|---:|
+| **MemImpact** | 94.17% / 93.33% | 5.00% / 6.67% | 1,991,454 / 2,039,438 |
+| Flip-only | 84.17% / 92.50% | 15.00% / 6.67% | 1,970,405 / 2,043,155 |
+| Always Proceed | 63.33% / 65.00% | 35.83% / 34.17% | 229,934 / 249,094 |
+| **Always Verify** | **99.17% / 100%** | **0% / 0%** | **280,209 / 294,576** |
+| Static | 89.17% / 90.00% | 10.00% / 10.00% | 268,841 / 280,438 |
+| AMV-style | 80.83% / 82.50% | 18.33% / 17.50% | 249,486 / 261,984 |
+
+### What the experiments establish
+
+- **Full scoring is not consistently better than flip-only.** The paired success advantage is +10.00 percentage points in B1, but only +0.83 in B3.
+- **Indirect dependencies expose a real distinction.** Literal candidate-conditioned auditing is weaker when a routing or selection rule—not the final argument itself—is wrong.
+- **More verification capacity is not monotonically better.** Cross-budget success intervals for selective methods include zero; extra checks can be unnecessary.
+- **Verification count is not total cost.** MemImpact checks fewer memories than Always Verify but performs far more planner work.
+- **Negative results are preserved.** No held-out-driven prompt, threshold, score, or dataset retuning was performed.
+
+<img src="results/heldout/heldout_budget3_v1_langgraph_20261113_141753/reliability_cost.png" alt="Held-out reliability and cost comparison for six policies" width="100%">
+
+Detailed intervals, subgroup results, failure analysis, and three case studies are in the [project report](report/memimpact_report.pdf).
+
+## 5. Benchmark
+
+| Dimension | Held-out design |
+|---|---|
+| **Task families** | Messaging and reminder deletion |
+| **Memory conditions** | Valid, stale, conflicting, misattributed, irrelevant |
+| **Consequence levels** | Low and high |
+| **Dependence types** | Direct argument dependence and indirect action-selection dependence |
+| **Scale** | 120 episodes, 12 base-scenario groups, three memories per episode |
+| **Controls** | Frozen model, prompt, tools, decoding, scenarios, and policy order |
+| **Model** | `qwen3.8-flash`, temperature 0, thinking enabled, at most two planner attempts |
+| **Runtime** | `langgraph==1.2.20` with ToolSandbox in a separate Python environment |
+
+A memory is labelled verification-critical only when verifying it turns the shared initial failed or harmful outcome into a successful, non-harmful result. Offline label-generation costs are reported separately from online policy costs.
+
+<a id="quick-start"></a>
+## 6. Quick Start
+
+### Requirements
+
+- macOS with native **Python 3.10**
+- Two virtual environments: one for LangGraph and one for ToolSandbox
+- Alibaba Cloud Model Studio credentials for live model runs
+- Optional: [Tectonic](https://tectonic-typesetting.github.io/) for report compilation
+
+### Clone and pin ToolSandbox
 
 ```bash
+git clone https://github.com/junjiacaohku-ai/COMP7607-Group-Project-MemImpact.git
+cd COMP7607-Group-Project-MemImpact
+
 git clone https://github.com/apple-aiml-research/ToolSandbox.git third_party/ToolSandbox
-python3.10 -m venv .venv-toolsandbox
-source .venv-toolsandbox/bin/activate
-
-cd third_party/ToolSandbox
-python -m pip install '.[dev]'
-python -m pip install 'httpx==0.27.2'
-cd ../..
-
-python -m pip install -e . --no-deps
+git -C third_party/ToolSandbox checkout c8571d7854316d2e1c5f288e59fe1e34e53f6dd1
 ```
 
-当前固定 ToolSandbox commit：
-
-```text
-c8571d7854316d2e1c5f288e59fe1e34e53f6dd1
-```
-
-LangGraph 使用另一个独立环境，不要与 ToolSandbox 环境混装：
+### Install the isolated environments
 
 ```bash
+python3.10 -m venv .venv-toolsandbox
+cd third_party/ToolSandbox
+../../.venv-toolsandbox/bin/python -m pip install '.[dev]'
+../../.venv-toolsandbox/bin/python -m pip install 'httpx==0.27.2'
+cd ../..
+.venv-toolsandbox/bin/python -m pip install -e . --no-deps
+
 python3.10 -m venv .venv
 .venv/bin/python -m pip install -e . 'langgraph==1.2.20' 'PyYAML==6.0.1'
 ```
 
-`configs/toolsandbox_tools.json` 已包含真实工具 schema。只有工具注册表变化时才需重新导出：
+**Do not mix the two environments.** ToolSandbox's older dependencies conflict with the current LangGraph stack.
 
-```bash
-.venv-toolsandbox/bin/python scripts/export_tool_schemas.py
-```
+### Configure live model access
 
-## 模型配置
-
-当前使用百炼 `qwen3.8-flash` 和中国香港地域。请在本地终端设置环境变量，不要将凭据提交到仓库：
+Set credentials only in your local terminal. Never commit API keys or workspace credentials.
 
 ```zsh
 read -s "DASHSCOPE_API_KEY?DashScope API Key: "
@@ -91,23 +168,7 @@ export DASHSCOPE_WORKSPACE_ID
 export DASHSCOPE_REGION="cn-hongkong"
 ```
 
-## 常用命令
-
-运行 ToolSandbox 官方场景：
-
-```bash
-python scripts/run_qwen_toolsandbox.py --scenario wifi_off
-```
-
-运行单个 MemImpact 场景：
-
-```bash
-python scripts/run_memimpact_smoke.py \
-  --scenario scenarios/pilot/stale_phone.json \
-  --samples 3
-```
-
-运行真实 Qwen × LangGraph × ToolSandbox 删除场景：
+### Run one end-to-end episode
 
 ```bash
 .venv/bin/python scripts/run_langgraph_smoke.py \
@@ -119,21 +180,10 @@ python scripts/run_memimpact_smoke.py \
   --max-planner-attempts 2
 ```
 
-使用冻结配置运行 LangGraph 批量对照；输出目录带 `langgraph` 标记，并额外记录工具 schema 哈希：
+<a id="reproduction"></a>
+## 7. Reproduction
 
-```bash
-.venv/bin/python scripts/run_langgraph_comparison.py \
-  --config configs/validation_matrix_v1.yaml
-```
-
-运行分层 20-episode 开发 pilot（不是正式 held-out 配置）：
-
-```bash
-.venv/bin/python scripts/run_langgraph_comparison.py \
-  --config configs/dev_pilot_v1.yaml
-```
-
-正式 held-out 数据与配置已冻结；预算 1 和 3 均已完成。以下命令用于复现独立运行；新运行应保存为独立目录：
+### Frozen held-out runs
 
 ```bash
 .venv/bin/python scripts/run_langgraph_comparison.py \
@@ -143,7 +193,7 @@ python scripts/run_memimpact_smoke.py \
   --config configs/heldout_budget3_v1.yaml
 ```
 
-若批量运行中断，使用同一配置和原运行目录续跑。已完成的 policy 结果和共享规划样本会被复用，不会从头重跑：
+Each new run creates a separate timestamped directory. To resume an interrupted run without repeating saved results or shared planner samples:
 
 ```bash
 .venv/bin/python scripts/run_langgraph_comparison.py \
@@ -151,46 +201,16 @@ python scripts/run_memimpact_smoke.py \
   --resume results/heldout/heldout_budget1_v1_langgraph_20261113_013824
 ```
 
-为原 runner 或 LangGraph 运行生成独立离线关键记忆标签；runtime 默认从结果元数据识别：
+### Offline labels and analysis
 
 ```bash
-.venv/bin/python scripts/generate_critical_labels.py path/to/langgraph_run
-```
+.venv/bin/python scripts/generate_critical_labels.py RUN_DIRECTORY
 
-生成开发集：
-
-```bash
-python scripts/generate_dev_benchmark.py
-```
-
-默认比较全部开发集；实际运行时建议先明确选择少量审核过的场景：
-
-```bash
-python scripts/run_policy_comparison.py \
-  --scenarios \
-    benchmark/dev/dev_direct_sam_valid_low.json \
-    benchmark/dev/dev_direct_ava_stale_high.json \
-    benchmark/dev/dev_indirect_sam_stale_high.json \
-  --policies memimpact memimpact_flip always_proceed always_verify static amv_guard \
-  --samples 3 \
-  --verification-budget 1
-```
-
-比较两套 runtime 的决策与结果语义。`--strict` 适用于共享确定性 Planner 输入的回归；独立真实模型调用可能合理产生差异：
-
-```bash
-.venv/bin/python scripts/compare_runtime_results.py \
-  path/to/original_run path/to/langgraph_run --strict
-```
-
-生成分析表和可靠性—成本图：
-
-```bash
 .venv-toolsandbox/bin/python scripts/analyze_comparison.py \
-  path/to/comparison_summary.json
+  RUN_DIRECTORY/comparison_summary.json
 ```
 
-对两轮冻结实验做 matched 预算比较；默认将 JSON 和 CSV 保存到 candidate 运行目录：
+### Matched budget comparison
 
 ```bash
 .venv/bin/python scripts/compare_verification_budgets.py \
@@ -198,23 +218,76 @@ python scripts/run_policy_comparison.py \
   results/heldout/heldout_budget3_v1_langgraph_20261113_141753
 ```
 
-## 结果口径
-
-- `verification_calls` 包含显式 Memory 验证和作为权威证据使用的只读查询。
-- 共享缓存用于保证公平比较；每个策略仍记录独立部署时的逻辑成本，不代表整批实验的实际 API 支出。
-- `similarity` 是 ToolSandbox 连续评价分数，不是任务成功率。
-- ToolSandbox 的 `NoDataError` 会保存在 `execution.tool_result.error`；任务是否成功及是否有害仍按实际数据库变化计算。
-- 当前场景和结果均为合成基准，不构成普遍有效性或通用安全保证。
-
-## Proposal and Report
-
-- [English proposal](proposal/memimpact_proposal.pdf)
-- [中文 Proposal](proposal/memimpact_proposal_zh.pdf)
-- [English project report](report/memimpact_report.pdf)
-
-重新编译报告：
+### Compile the report
 
 ```bash
 cd report
 tectonic memimpact_report.tex
 ```
+
+## 8. Repository Structure
+
+```text
+memimpact/                 Core actions, scoring, policies, LangGraph runtime, and adapters
+scripts/                   Smoke tests, batch runs, dataset generation, and analysis
+benchmark/dev/             40 development episodes and manifest
+benchmark/heldout/         120 frozen held-out episodes and manifest
+configs/                   Frozen experiment configs and exported tool schemas
+results/heldout/           Raw traces, labels, metrics, bootstrap intervals, and figures
+proposal/                  Official English proposal, LaTeX source, and references
+report/                    English project report and compiled PDF
+docs/                      Implementation plan, meeting notes, and review material
+README.md                  English project homepage
+README.zh-CN.md            简体中文项目主页
+WORKLOG.md                 Chronological implementation and experiment record
+third_party/               Local ToolSandbox checkout; not committed
+```
+
+<a id="documentation"></a>
+## 9. Documentation and Evidence
+
+- [Project report PDF](report/memimpact_report.pdf)
+- [Report LaTeX source](report/memimpact_report.tex)
+- [Official English proposal](proposal/memimpact_proposal.pdf)
+- [Implementation plan](docs/imp_plan.md)
+- [Claim-to-artifact appendix](report/memimpact_report.tex#L360)
+- [Budget-1 results](results/heldout/heldout_budget1_v1_langgraph_20261113_013824)
+- [Budget-3 results](results/heldout/heldout_budget3_v1_langgraph_20261113_141753)
+- [Matched budget comparison](results/heldout/heldout_budget3_v1_langgraph_20261113_141753/budget_matched_comparison.json)
+- [Work log](WORKLOG.md)
+
+## 10. Limitations
+
+- Synthetic benchmark with only two held-out task families and twelve base-scenario clusters.
+- One hosted model, three retrieved memories, and at most one state-changing action per episode.
+- The AMV-style baseline is a simplified literal-argument-overlap adaptation, not a full AMV-Guard reproduction.
+- Independent model calls across budgets do not identify a strict causal budget effect.
+- Verification uses authoritative synthetic evidence; noisy or incomplete verifiers remain untested.
+- Token and latency measurements do not provide a monetary cost estimate.
+- Results do not establish general agent safety or transfer to open-ended real-world tasks.
+
+## 11. Team
+
+| Member | Student ID |
+|---|---|
+| Cao Junjia | 3036790730 |
+| Zhang Yankai | 3036806682 |
+| Wu Hongyao | 3036793196 |
+| Kwan Tsz Hong | 3036792350 |
+| Wang Zicheng | 3036790326 |
+
+## 12. Status and Acknowledgements
+
+The core implementation, frozen experiments, analysis, and report draft are complete. Presentation slides, a short demonstration, and the team-confirmed contribution record are delivery tasks remaining for the November 30 presentation.
+
+Built with [LangGraph](https://github.com/langchain-ai/langgraph), [Apple ToolSandbox](https://github.com/apple-aiml-research/ToolSandbox), and Alibaba Cloud Model Studio Qwen. See the [references](proposal/references.bib) for related research.
+
+---
+
+<div align="center">
+
+**MemImpact — Measure the memory's influence. Question whether the audit is worth it.**
+
+HKU COMP7607A · Natural Language Processing · Group Project
+
+</div>

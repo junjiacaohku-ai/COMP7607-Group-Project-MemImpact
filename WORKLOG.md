@@ -531,3 +531,12 @@
 - AMV-style 在报告中明确写为基于动作参数字面匹配的简化适配，不是对 AMV-Guard 的完整复现；跨预算差异也未被解释为严格因果效应。
 - 报告使用 Tectonic 成功编译，BibTeX 引用解析完整。逐页渲染检查修复了结果图浮动到参考文献之后、宏后空格丢失、长 URL／路径／哈希越界等问题；最终 PDF 无未解析引用、Markdown 残留或占位符，结果图位于实验结果章节。
 - README 已加入报告入口和编译命令。下一步为 11 月 30 日展示制作 slides、短演示和备份 trace／录屏，并由团队确认贡献记录。
+
+
+## 2026-11-13：双语项目主页与官方 Proposal 文件整理
+
+- 参考同账号 `COMP7506-Group-Project-SnapFix` 的主页结构，重写 `README.md` 为英文项目主页，并新增独立的 `README.zh-CN.md`，两份文件互相链接。
+- 新主页包含项目定位、交付能力、Mermaid 方法图、两轮核心结果、Benchmark 设计、双环境安装、真实模型配置、复现命令、仓库结构、证据链接、局限和团队信息。
+- 首页直接呈现实验负向结论和 Always Verify 对照，不把 MemImpact 包装为已证明优于基线的方法；结果表与已冻结的 `comparison_summary.json` 一致。
+- 中文 `memimpact_proposal_zh.tex` / `.pdf` 仅为本地辅助阅读材料，已从 Git 索引移除并加入 `.gitignore`；本地文件保留，GitHub 官方 Proposal 仅保留英文版本。
+- 已检查两份 README 的本地文档链接和图片路径，所有目标存在；没有中文 Proposal 链接、旧进度表述或空白占位符。
