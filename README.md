@@ -17,7 +17,8 @@ MemImpact 研究规划器级反事实记忆审计：逐条移除检索到的 Mem
 - 已实现显式 LangGraph 状态图和跨进程 ToolSandbox worker，并完成跨 runtime 语义检查；
 - 已完成 120 个 held-out 场景、六种策略的预算 1 与预算 3 正式运行，以及离线标签、识别指标和 paired bootstrap 分析；
 - 已完成按 scenario × policy 对齐的跨预算比较和按基础场景聚类的 bootstrap；两轮独立模型调用不被解释为严格的因果预算效应；
-- 尚需完成最终报告和展示；当前结论仅适用于该合成基准，不构成普遍安全保证。
+- 已完成英文 LaTeX 报告初稿、三个典型案例和 claim-to-artifact 附录；尚需完成展示、短演示和团队确认的贡献记录；
+- 当前结论仅适用于该合成基准，不构成普遍安全保证。
 
 详细过程和实验路径见 [WORKLOG.md](WORKLOG.md)。
 
@@ -35,6 +36,7 @@ benchmark/heldout/  120 个正式 held-out episodes 与 manifest（budget 1/3 �
 configs/            开发、validation 与冻结 held-out YAML 配置
 results/            原始轨迹、结果汇总、表格和图
 proposal/           中英文 LaTeX proposal、PDF 和参考文献
+report/             英文 LaTeX 项目报告与 PDF
 docs/               实施计划、组会材料和评审意见
 WORKLOG.md          持续工作日志
 third_party/        本地 ToolSandbox checkout，不提交到本仓库
@@ -204,7 +206,15 @@ python scripts/run_policy_comparison.py \
 - ToolSandbox 的 `NoDataError` 会保存在 `execution.tool_result.error`；任务是否成功及是否有害仍按实际数据库变化计算。
 - 当前场景和结果均为合成基准，不构成普遍有效性或通用安全保证。
 
-## Proposal
+## Proposal and Report
 
 - [English proposal](proposal/memimpact_proposal.pdf)
 - [中文 Proposal](proposal/memimpact_proposal_zh.pdf)
+- [English project report](report/memimpact_report.pdf)
+
+重新编译报告：
+
+```bash
+cd report
+tectonic memimpact_report.tex
+```

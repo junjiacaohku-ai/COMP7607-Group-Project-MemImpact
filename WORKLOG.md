@@ -519,3 +519,15 @@
 - Always Proceed：成功率 +0.01667；Always Verify：+0.00833；Static：+0.00833；AMV-style：+0.01667。Static 验证调用 +85，AMV-style +47；这些策略也保留为对照，避免只报告 MemImpact 系列的变化。
 - 两轮是独立真实模型调用，虽然场景与冻结设置相同，但初始 Planner trace 和离线标签并不完全相同。matched 对比描述两轮结果差异，不把全部差异解释为验证预算的因果效应，也不据此回调评分、阈值、Prompt 或 held-out 数据。
 - 下一步：完成最终报告、成功／失败／不必要验证案例、展示和 claim-to-artifact 对照；当前所有结论仅限于该合成聚类基准。
+
+
+## 2026-11-13：英文项目报告初稿与案例证据附录
+
+- 新增 `report/memimpact_report.tex` 和编译后的 `report/memimpact_report.pdf`，共 10 页。报告按实际实现撰写，包含方法、实验设计、两轮主结果、配对区间、直接与间接依赖、关键记忆识别、matched budget 对比、案例、局限、复现命令和 claim-to-artifact 附录。
+- 报告明确保留负向结论：完整评分相对 flip-only 的优势没有在两轮独立运行中稳定复现；Always Verify 在两轮中均更可靠且 Planner 成本远低于 MemImpact，因此不宣称整体可靠性—成本优势。
+- 成功案例为 budget 1 的 `heldout_deletion_lecture_stale_low`：完整评分利用年龄项打破 action-flip 并列，选择并反驳 `mem_rule` 后正确删除目标提醒；同时注明 Static 也以更低成本成功，避免把单案例解释为普遍优势。
+- 失败案例为 budget 3 的 `heldout_messaging_riley_misattributed_low`：高完整规划波动使 `mem_rule` 的噪声校正影响为 0，策略转而验证真实存在的 work number，却仍遵循错误路由规则并产生危险执行；Always Verify 通过反驳 `mem_rule` 正确完成。
+- 不必要验证案例为 budget 3 的 `heldout_messaging_morgan_irrelevant_low`：初始动作已经正确，但三条记忆均有正影响分数，MemImpact 用完三次预算；离线关键记忆为空。Always Proceed 以 1,315 tokens 完成同一任务，MemImpact 使用 14,782 tokens。
+- AMV-style 在报告中明确写为基于动作参数字面匹配的简化适配，不是对 AMV-Guard 的完整复现；跨预算差异也未被解释为严格因果效应。
+- 报告使用 Tectonic 成功编译，BibTeX 引用解析完整。逐页渲染检查修复了结果图浮动到参考文献之后、宏后空格丢失、长 URL／路径／哈希越界等问题；最终 PDF 无未解析引用、Markdown 残留或占位符，结果图位于实验结果章节。
+- README 已加入报告入口和编译命令。下一步为 11 月 30 日展示制作 slides、短演示和备份 trace／录屏，并由团队确认贡献记录。
