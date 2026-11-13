@@ -15,8 +15,9 @@ MemImpact 研究规划器级反事实记忆审计：逐条移除检索到的 Mem
 - 已保留正向、负向、失败与调试记录；
 - 已完成 Reminder Creation 的真实 Qwen pilot，并实现 Reminder Deletion validation pilot；
 - 已实现显式 LangGraph 状态图和跨进程 ToolSandbox worker，并完成跨 runtime 语义检查；
-- 已完成 120 个 held-out 场景、六种策略的预算 1 正式运行，以及离线标签、识别指标和 paired bootstrap 分析；
-- 尚需完成预算 3 对照、最终报告和展示；当前结论仅适用于该合成基准，不构成普遍安全保证。
+- 已完成 120 个 held-out 场景、六种策略的预算 1 与预算 3 正式运行，以及离线标签、识别指标和 paired bootstrap 分析；
+- 已完成按 scenario × policy 对齐的跨预算比较和按基础场景聚类的 bootstrap；两轮独立模型调用不被解释为严格的因果预算效应；
+- 尚需完成最终报告和展示；当前结论仅适用于该合成基准，不构成普遍安全保证。
 
 详细过程和实验路径见 [WORKLOG.md](WORKLOG.md)。
 
@@ -30,7 +31,7 @@ benchmark/dev/      40 个合成开发 episodes 与 manifest
 benchmark/reminder_pilot/  Reminder Creation 有效／过期时间场景
 benchmark/deletion_pilot/  Reminder Deletion validation 场景
 benchmark/deletion_validation/  四组独立删除验证场景
-benchmark/heldout/  120 个正式 held-out episodes 与 manifest（budget 1 已完成）
+benchmark/heldout/  120 个正式 held-out episodes 与 manifest（budget 1/3 已完成）
 configs/            开发、validation 与冻结 held-out YAML 配置
 results/            原始轨迹、结果汇总、表格和图
 proposal/           中英文 LaTeX proposal、PDF 和参考文献
@@ -130,7 +131,7 @@ python scripts/run_memimpact_smoke.py \
   --config configs/dev_pilot_v1.yaml
 ```
 
-正式 held-out 数据与配置已冻结；预算 1 已完成，预算 3 待运行。分别使用预算 1 和 3；新运行应保存为独立目录：
+正式 held-out 数据与配置已冻结；预算 1 和 3 均已完成。以下命令用于复现独立运行；新运行应保存为独立目录：
 
 ```bash
 .venv/bin/python scripts/run_langgraph_comparison.py \
@@ -183,7 +184,16 @@ python scripts/run_policy_comparison.py \
 生成分析表和可靠性—成本图：
 
 ```bash
-python scripts/analyze_comparison.py path/to/comparison_summary.json
+.venv-toolsandbox/bin/python scripts/analyze_comparison.py \
+  path/to/comparison_summary.json
+```
+
+对两轮冻结实验做 matched 预算比较；默认将 JSON 和 CSV 保存到 candidate 运行目录：
+
+```bash
+.venv/bin/python scripts/compare_verification_budgets.py \
+  results/heldout/heldout_budget1_v1_langgraph_20261113_013824 \
+  results/heldout/heldout_budget3_v1_langgraph_20261113_141753
 ```
 
 ## 结果口径

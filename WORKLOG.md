@@ -493,3 +493,29 @@
 - MemImpact − Always Verify：成功率差 −0.05，CI [−0.10, −0.00833]；危险执行差 +0.05，CI [0.00833, 0.10]，且 token 显著更多。
 - 已生成并核对 `analysis_summary.json`、3 份 CSV、15 项 paired bootstrap、`critical_memory_metrics.json` 和 `reliability_cost.png`。结论仅适用于当前合成基准和 12 个聚类场景组，不作普遍统计推广。
 - 下一步：使用相同 120 场景运行冻结的 budget 3 配置，与 budget 1 做 matched 预算比较；不根据 held-out 结果回调评分或数据。
+
+
+## 2026-11-13：120-episode held-out budget 3 正式结果与离线标签
+
+- 完整结果：`results/heldout/heldout_budget3_v1_langgraph_20261113_141753/`。120 个场景 × 6 策略 = 720 个 policy episodes 全部完成，无重复或缺失，逐条结果与汇总一致。
+- 配置 SHA-256 为 `c4719d8c1296e9e3fb7968c3214de281964543f2d761d52bb171bc10b16dd778`；模型、Prompt、工具 schema、S=3、场景顺序和 ToolSandbox commit 与 budget 1 匹配，仅选择性验证预算及配置标识不同。
+- 原始运行项目 commit 为 `dc4a6a0`，两次续跑均记录于 `resume_history.json`。两次 Planner 格式失败发生在 `heldout_deletion_lecture_stale_high` 的 AMV-style 重规划和 `heldout_deletion_lecture_conflicting_high` 的 shared-full 初始规划；失败 trace 均保留，未修改冻结配置或 Prompt。
+- MemImpact：成功率 0.933333、危险执行率 0.066667、0 abstention；167 次总验证（142 次显式 + 25 次查询）、1510 次逻辑规划调用、1543 attempts、2,039,438 tokens。
+- Flip-only：0.925 / 0.066667、1 次 abstention、2,043,155 tokens；Always Proceed：0.65 / 0.341667、1 次 abstention、249,094 tokens；Always Verify：1.0 / 0、294,576 tokens；Static：0.90 / 0.10、280,438 tokens；AMV-style：0.825 / 0.175、261,984 tokens。
+- 本轮没有工具执行错误。MemImpact 的 8 个失败全部来自 Messaging 危险执行；Reminder Deletion 为 60/60 成功。Always Verify 两个任务族均为 60/60 成功。
+- 依赖分层：直接依赖中 MemImpact / flip-only 均为 56/60，Static / AMV-style / Always Verify 均为 60/60；间接依赖中 MemImpact 56/60、flip-only 55/60、Static 48/60、AMV-style 39/60、Always Verify 60/60。
+- 同场景配对任务成功：MemImpact 相对 flip-only 1 胜 0 负；相对 Always Proceed 34 胜 0 负；相对 Static 8 胜 4 负；相对 AMV-style 18 胜 5 负；相对 Always Verify 0 胜 8 负。
+- 120 个场景均生成独立离线标签，41 个场景各有 1 条结果改善型关键记忆，其余 79 个为空；标注使用 154 次 Planner attempts、206,606 tokens，与在线成本分开。
+- 识别指标：MemImpact / flip-only 均为 precision=0.2324、recall=0.8049；Static precision=0.1422、recall=0.7073；AMV-style precision=0.1220、recall=0.4878；Always Verify precision=0.1139、recall=1.0。
+- Budget 3 的 MemImpact − flip-only 成功率差 +0.00833，95% CI [0, 0.025]；MemImpact − AMV-style 为 +0.10833，CI [0, 0.21667]；两者区间均包含 0，不声称明确优势。MemImpact − Static 为 +0.03333，CI [−0.04167, 0.125]；MemImpact − Always Verify 为 −0.06667，CI [−0.10833, −0.025]。
+- 已生成并检查本轮 `analysis_summary.json`、3 份 CSV、`critical_memory_metrics.json`、15 项 paired bootstrap 和 `reliability_cost.png`。Always Verify 仍以约 1/6.9 的 MemImpact Planner token 达到更高可靠性，不能宣称 MemImpact 改善整体可靠性—成本权衡。
+
+## 2026-11-13：held-out budget 1 / 3 matched 对比
+
+- 新增 `scripts/compare_verification_budgets.py`，校验两轮模型、解码、Prompt、工具 schema、场景、策略和聚类设置，按相同 `scenario_id × policy` 对齐 720 对 episodes。
+- 输出 `budget_matched_comparison.json` 和 `budget_matched_metrics.csv`：包含成功率、危险执行、abstention、验证次数、tokens、latency 的两轮数值和变化，以及每种策略 6 个指标的聚类 paired bootstrap。
+- MemImpact 从 budget 1 到 3：成功率 −0.00833，95% CI [−0.04167, 0.025]；危险执行 +0.01667，CI [−0.01667, 0.05]；总验证 +33 次，tokens +47,984，Planner latency +2,268.0 秒。4 个失败转为成功、5 个成功转为失败。
+- Flip-only：成功率 +0.08333，CI [−0.01667, 0.20]；危险执行 −0.08333，CI [−0.20, 0.01667]；总验证 +33 次，tokens +72,750。16 个失败转为成功、6 个成功转为失败，区间跨 0，不能据此声称提高预算有明确可靠性收益。
+- Always Proceed：成功率 +0.01667；Always Verify：+0.00833；Static：+0.00833；AMV-style：+0.01667。Static 验证调用 +85，AMV-style +47；这些策略也保留为对照，避免只报告 MemImpact 系列的变化。
+- 两轮是独立真实模型调用，虽然场景与冻结设置相同，但初始 Planner trace 和离线标签并不完全相同。matched 对比描述两轮结果差异，不把全部差异解释为验证预算的因果效应，也不据此回调评分、阈值、Prompt 或 held-out 数据。
+- 下一步：完成最终报告、成功／失败／不必要验证案例、展示和 claim-to-artifact 对照；当前所有结论仅限于该合成聚类基准。
