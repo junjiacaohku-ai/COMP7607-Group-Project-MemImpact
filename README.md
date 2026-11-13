@@ -6,7 +6,7 @@ MemImpact 研究规划器级反事实记忆审计：逐条移除检索到的 Mem
 
 ## 当前状态
 
-项目目前处于研究原型与开发集 pilot 阶段：
+项目目前处于正式 held-out 评价阶段：
 
 - 已跑通 Qwen × ToolSandbox 官方场景；
 - 已实现 Memory 移除、配对规划、动作规范化、噪声校正、验证、重规划和隔离执行；
@@ -14,8 +14,9 @@ MemImpact 研究规划器级反事实记忆审计：逐条移除检索到的 Mem
 - 已生成 40 个带元数据的合成开发 episodes，并完成小规模真实模型对照；
 - 已保留正向、负向、失败与调试记录；
 - 已完成 Reminder Creation 的真实 Qwen pilot，并实现 Reminder Deletion validation pilot；
-- 已实现显式 LangGraph 状态图和跨进程 ToolSandbox worker，并完成八场景真实 Qwen 批量对照与跨 runtime 语义检查；
-- 尚未完成正式 held-out 测试、最终报告和展示；现有 bootstrap 仅用于小规模 pilot 描述。
+- 已实现显式 LangGraph 状态图和跨进程 ToolSandbox worker，并完成跨 runtime 语义检查；
+- 已完成 120 个 held-out 场景、六种策略的预算 1 正式运行，以及离线标签、识别指标和 paired bootstrap 分析；
+- 尚需完成预算 3 对照、最终报告和展示；当前结论仅适用于该合成基准，不构成普遍安全保证。
 
 详细过程和实验路径见 [WORKLOG.md](WORKLOG.md)。
 
@@ -29,7 +30,7 @@ benchmark/dev/      40 个合成开发 episodes 与 manifest
 benchmark/reminder_pilot/  Reminder Creation 有效／过期时间场景
 benchmark/deletion_pilot/  Reminder Deletion validation 场景
 benchmark/deletion_validation/  四组独立删除验证场景
-benchmark/heldout/  120 个正式 held-out episodes 与 manifest（尚未运行）
+benchmark/heldout/  120 个正式 held-out episodes 与 manifest（budget 1 已完成）
 configs/            开发、validation 与冻结 held-out YAML 配置
 results/            原始轨迹、结果汇总、表格和图
 proposal/           中英文 LaTeX proposal、PDF 和参考文献
@@ -129,7 +130,7 @@ python scripts/run_memimpact_smoke.py \
   --config configs/dev_pilot_v1.yaml
 ```
 
-正式 held-out 数据与配置已冻结但尚未运行。分别使用预算 1 和 3；每次运行都应保存为独立目录：
+正式 held-out 数据与配置已冻结；预算 1 已完成，预算 3 待运行。分别使用预算 1 和 3；新运行应保存为独立目录：
 
 ```bash
 .venv/bin/python scripts/run_langgraph_comparison.py \
@@ -137,6 +138,14 @@ python scripts/run_memimpact_smoke.py \
 
 .venv/bin/python scripts/run_langgraph_comparison.py \
   --config configs/heldout_budget3_v1.yaml
+```
+
+若批量运行中断，使用同一配置和原运行目录续跑。已完成的 policy 结果和共享规划样本会被复用，不会从头重跑：
+
+```bash
+.venv/bin/python scripts/run_langgraph_comparison.py \
+  --config configs/heldout_budget1_v1.yaml \
+  --resume results/heldout/heldout_budget1_v1_langgraph_20261113_013824
 ```
 
 为原 runner 或 LangGraph 运行生成独立离线关键记忆标签；runtime 默认从结果元数据识别：
@@ -182,7 +191,8 @@ python scripts/analyze_comparison.py path/to/comparison_summary.json
 - `verification_calls` 包含显式 Memory 验证和作为权威证据使用的只读查询。
 - 共享缓存用于保证公平比较；每个策略仍记录独立部署时的逻辑成本，不代表整批实验的实际 API 支出。
 - `similarity` 是 ToolSandbox 连续评价分数，不是任务成功率。
-- 当前场景和结果均为合成 pilot，不构成普遍有效性或通用安全保证。
+- ToolSandbox 的 `NoDataError` 会保存在 `execution.tool_result.error`；任务是否成功及是否有害仍按实际数据库变化计算。
+- 当前场景和结果均为合成基准，不构成普遍有效性或通用安全保证。
 
 ## Proposal
 

@@ -1,0 +1,1042 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Taylor Ho",
+        "relationship": "contact"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Taylor Ho\",\"relationship\":\"contact\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3283.458,
+        "usage": {
+          "completion_tokens": 230,
+          "prompt_tokens": 915,
+          "total_tokens": 1145,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 915
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 190,
+            "text_tokens": 230
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Taylor Ho",
+            "relationship": "contact"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3283.458,
+    "usage": {
+      "prompt_tokens": 915,
+      "completion_tokens": 230,
+      "total_tokens": 1145
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Taylor Ho"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Taylor Ho\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 1909.469,
+        "usage": {
+          "completion_tokens": 116,
+          "prompt_tokens": 915,
+          "total_tokens": 1031,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 915
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 88,
+            "text_tokens": 116
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Taylor Ho"
+          }
+        }
+      }
+    ],
+    "latency_ms": 1909.469,
+    "usage": {
+      "prompt_tokens": 915,
+      "completion_tokens": 116,
+      "total_tokens": 1031
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Taylor Ho",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Taylor Ho\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 1805.536,
+        "usage": {
+          "completion_tokens": 135,
+          "prompt_tokens": 915,
+          "total_tokens": 1050,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 915
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 95,
+            "text_tokens": 135
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Taylor Ho",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 1805.536,
+    "usage": {
+      "prompt_tokens": 915,
+      "completion_tokens": 135,
+      "total_tokens": 1050
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Taylor Ho",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Taylor Ho\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4411.754,
+        "usage": {
+          "completion_tokens": 365,
+          "prompt_tokens": 830,
+          "total_tokens": 1195,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 830
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 325,
+            "text_tokens": 365
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Taylor Ho",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 4411.754,
+    "usage": {
+      "prompt_tokens": 830,
+      "completion_tokens": 365,
+      "total_tokens": 1195
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261010005",
+        "content": "Call me when the train arrives."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Call me when the train arrives.\",\"phone_number\":\"+85261010005\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7729.719,
+        "usage": {
+          "completion_tokens": 663,
+          "prompt_tokens": 830,
+          "total_tokens": 1493,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 830
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 601,
+            "text_tokens": 663
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261010005",
+            "content": "Call me when the train arrives."
+          }
+        }
+      }
+    ],
+    "latency_ms": 7729.719,
+    "usage": {
+      "prompt_tokens": 830,
+      "completion_tokens": 663,
+      "total_tokens": 1493
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Taylor Ho"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Taylor Ho\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4412.118,
+        "usage": {
+          "completion_tokens": 344,
+          "prompt_tokens": 830,
+          "total_tokens": 1174,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 830
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 316,
+            "text_tokens": 344
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Taylor Ho"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4412.118,
+    "usage": {
+      "prompt_tokens": 830,
+      "completion_tokens": 344,
+      "total_tokens": 1174
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010005",
+        "content": "Call me when the train arrives."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Call me when the train arrives.\",\"phone_number\":\"+85269010005\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4411.708,
+        "usage": {
+          "completion_tokens": 311,
+          "prompt_tokens": 828,
+          "total_tokens": 1139,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 828
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 249,
+            "text_tokens": 311
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010005",
+            "content": "Call me when the train arrives."
+          }
+        }
+      }
+    ],
+    "latency_ms": 4411.708,
+    "usage": {
+      "prompt_tokens": 828,
+      "completion_tokens": 311,
+      "total_tokens": 1139
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_conflict",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010005",
+        "content": "Call me when the train arrives."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Call me when the train arrives.\",\"phone_number\":\"+85269010005\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 11244.736,
+        "usage": {
+          "completion_tokens": 878,
+          "prompt_tokens": 828,
+          "total_tokens": 1706,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 828
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 816,
+            "text_tokens": 878
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010005",
+            "content": "Call me when the train arrives."
+          }
+        }
+      }
+    ],
+    "latency_ms": 11244.736,
+    "usage": {
+      "prompt_tokens": 828,
+      "completion_tokens": 878,
+      "total_tokens": 1706
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_conflict",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010005",
+        "content": "Call me when the train arrives."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Call me when the train arrives.\",\"phone_number\":\"+85269010005\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5616.766,
+        "usage": {
+          "completion_tokens": 428,
+          "prompt_tokens": 828,
+          "total_tokens": 1256,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 828
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 366,
+            "text_tokens": 428
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010005",
+            "content": "Call me when the train arrives."
+          }
+        }
+      }
+    ],
+    "latency_ms": 5616.766,
+    "usage": {
+      "prompt_tokens": 828,
+      "completion_tokens": 428,
+      "total_tokens": 1256
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_conflict",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Taylor Ho"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Taylor Ho\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2308.122,
+        "usage": {
+          "completion_tokens": 176,
+          "prompt_tokens": 843,
+          "total_tokens": 1019,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 843
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 148,
+            "text_tokens": 176
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Taylor Ho"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2308.122,
+    "usage": {
+      "prompt_tokens": 843,
+      "completion_tokens": 176,
+      "total_tokens": 1019
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Taylor Ho"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Taylor Ho\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2610.138,
+        "usage": {
+          "completion_tokens": 192,
+          "prompt_tokens": 843,
+          "total_tokens": 1035,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 843
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 164,
+            "text_tokens": 192
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Taylor Ho"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2610.138,
+    "usage": {
+      "prompt_tokens": 843,
+      "completion_tokens": 192,
+      "total_tokens": 1035
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Taylor Ho"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Taylor Ho\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3811.728,
+        "usage": {
+          "completion_tokens": 302,
+          "prompt_tokens": 843,
+          "total_tokens": 1145,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 843
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 274,
+            "text_tokens": 302
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Taylor Ho"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3811.728,
+    "usage": {
+      "prompt_tokens": 843,
+      "completion_tokens": 302,
+      "total_tokens": 1145
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Taylor Ho's phone number is +85269010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "Taylor Ho's current phone number is +85261010005.",
+        "entity": "Taylor Ho",
+        "scope": "contact",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "authoritative_tool_result",
+        "tool_name": "search_contacts",
+        "records": [
+          {
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "name": "Taylor Ho",
+            "phone_number": "+85261010005",
+            "relationship": "contact",
+            "is_self": false
+          }
+        ]
+      }
+    ],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261010005",
+        "content": "Call me when the train arrives."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Call me when the train arrives.\",\"phone_number\":\"+85261010005\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2499.259,
+        "usage": {
+          "completion_tokens": 175,
+          "prompt_tokens": 1013,
+          "total_tokens": 1188,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1013
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 113,
+            "text_tokens": 175
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261010005",
+            "content": "Call me when the train arrives."
+          }
+        }
+      }
+    ],
+    "latency_ms": 2499.259,
+    "usage": {
+      "prompt_tokens": 1013,
+      "completion_tokens": 175,
+      "total_tokens": 1188
+    },
+    "condition": "replan_after_lookup",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

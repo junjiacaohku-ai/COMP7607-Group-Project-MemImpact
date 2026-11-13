@@ -1,0 +1,688 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_coffee",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "attend the guest lecture"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"attend the guest lecture\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2907.015,
+        "usage": {
+          "completion_tokens": 167,
+          "prompt_tokens": 918,
+          "total_tokens": 1085,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 918
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 135,
+            "text_tokens": 167
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "attend the guest lecture"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2907.015,
+    "usage": {
+      "prompt_tokens": 918,
+      "completion_tokens": 167,
+      "total_tokens": 1085
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_coffee",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "attend the guest lecture"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"attend the guest lecture\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2793.948,
+        "usage": {
+          "completion_tokens": 185,
+          "prompt_tokens": 918,
+          "total_tokens": 1103,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 918
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 153,
+            "text_tokens": 185
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "attend the guest lecture"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2793.948,
+    "usage": {
+      "prompt_tokens": 918,
+      "completion_tokens": 185,
+      "total_tokens": 1103
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_coffee",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "attend the guest lecture"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"attend the guest lecture\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2820.029,
+        "usage": {
+          "completion_tokens": 156,
+          "prompt_tokens": 918,
+          "total_tokens": 1074,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 918
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 124,
+            "text_tokens": 156
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "attend the guest lecture"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2820.029,
+    "usage": {
+      "prompt_tokens": 918,
+      "completion_tokens": 156,
+      "total_tokens": 1074
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000005002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005002"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005002\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5616.446,
+        "usage": {
+          "completion_tokens": 362,
+          "prompt_tokens": 960,
+          "total_tokens": 1322,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 296,
+            "text_tokens": 362
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005002"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5616.446,
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 362,
+      "total_tokens": 1322
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000005002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005002"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005002\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5313.357,
+        "usage": {
+          "completion_tokens": 455,
+          "prompt_tokens": 960,
+          "total_tokens": 1415,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 389,
+            "text_tokens": 455
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005002"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5313.357,
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 455,
+      "total_tokens": 1415
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000005002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005002"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005002\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4414.597,
+        "usage": {
+          "completion_tokens": 342,
+          "prompt_tokens": 960,
+          "total_tokens": 1302,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 276,
+            "text_tokens": 342
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005002"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4414.597,
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 342,
+      "total_tokens": 1302
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000005002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005002"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005002\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 2,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 10029.03,
+        "usage": {
+          "completion_tokens": 836,
+          "prompt_tokens": 946,
+          "total_tokens": 1782,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 946
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 620,
+            "text_tokens": 836
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "attempt_index": 1,
+        "latency_ms": 3177.129,
+        "usage": {
+          "completion_tokens": 276,
+          "prompt_tokens": 946,
+          "total_tokens": 1222,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 946
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 210,
+            "text_tokens": 276
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005002"
+          }
+        }
+      }
+    ],
+    "latency_ms": 13206.159,
+    "usage": {
+      "prompt_tokens": 1892,
+      "completion_tokens": 1112,
+      "total_tokens": 3004
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000005002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005002"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005002\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4346.771,
+        "usage": {
+          "completion_tokens": 328,
+          "prompt_tokens": 946,
+          "total_tokens": 1274,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 946
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 262,
+            "text_tokens": 328
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005002"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4346.771,
+    "usage": {
+      "prompt_tokens": 946,
+      "completion_tokens": 328,
+      "total_tokens": 1274
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000005002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005002"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005002\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4374.532,
+        "usage": {
+          "completion_tokens": 364,
+          "prompt_tokens": 946,
+          "total_tokens": 1310,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 946
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 298,
+            "text_tokens": 364
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005002"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4374.532,
+    "usage": {
+      "prompt_tokens": 946,
+      "completion_tokens": 364,
+      "total_tokens": 1310
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 2
+  }
+]

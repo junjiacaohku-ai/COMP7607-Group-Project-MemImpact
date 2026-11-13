@@ -1,0 +1,192 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to submit the lab report has ID 00000000-0000-4000-8000-000000006005.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to submit the lab report has ID 00000000-0000-4000-8000-000000005005.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "submit the lab report"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"submit the lab report\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2286.211,
+        "usage": {
+          "completion_tokens": 213,
+          "prompt_tokens": 1062,
+          "total_tokens": 1275,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1062
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 181,
+            "text_tokens": 213
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "submit the lab report"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2286.211,
+    "usage": {
+      "prompt_tokens": 1062,
+      "completion_tokens": 213,
+      "total_tokens": 1275
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to submit the lab report has ID 00000000-0000-4000-8000-000000006005.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to submit the lab report has ID 00000000-0000-4000-8000-000000005005.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "authoritative_tool_result",
+        "tool_name": "search_reminder",
+        "records": [
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000005005",
+            "content": "Submit the lab report",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1773464400.0,
+            "latitude": null,
+            "longitude": null
+          },
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000006005",
+            "content": "Renew the passport",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1772694000.0,
+            "latitude": null,
+            "longitude": null
+          }
+        ]
+      }
+    ],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005005"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005005\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3482.489,
+        "usage": {
+          "completion_tokens": 303,
+          "prompt_tokens": 1277,
+          "total_tokens": 1580,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1277
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 237,
+            "text_tokens": 303
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005005"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3482.489,
+    "usage": {
+      "prompt_tokens": 1277,
+      "completion_tokens": 303,
+      "total_tokens": 1580
+    },
+    "condition": "replan_after_lookup",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

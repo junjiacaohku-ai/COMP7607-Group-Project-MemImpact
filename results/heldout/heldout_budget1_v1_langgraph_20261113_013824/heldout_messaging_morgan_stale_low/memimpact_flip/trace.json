@@ -1,0 +1,957 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Morgan Li's phone number is +85269010001.",
+        "entity": "Morgan Li",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Morgan Li prefers brief messages.",
+        "entity": "Morgan Li",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010001",
+        "content": "The design review starts at 11 AM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The design review starts at 11 AM.\",\"phone_number\":\"+85269010001\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 8832.212,
+        "usage": {
+          "completion_tokens": 549,
+          "prompt_tokens": 908,
+          "total_tokens": 1457,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 908
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 484,
+            "text_tokens": 549
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010001",
+            "content": "The design review starts at 11 AM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 8832.212,
+    "usage": {
+      "prompt_tokens": 908,
+      "completion_tokens": 549,
+      "total_tokens": 1457
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Morgan Li's phone number is +85269010001.",
+        "entity": "Morgan Li",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Morgan Li prefers brief messages.",
+        "entity": "Morgan Li",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Morgan Li"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Morgan Li\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 2,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 17267.92,
+        "usage": {
+          "completion_tokens": 991,
+          "prompt_tokens": 908,
+          "total_tokens": 1899,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 908
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 933,
+            "text_tokens": 991
+          }
+        },
+        "tool_call_count": 0,
+        "content": "<function call>\n{\"name\": \"send_message_with_phone_number\", \"arguments\": {\"phone_number\": \"+85269010001\", \"content\": \"The design review starts at 11 AM.\"}}\n</function call>",
+        "error": "Expected exactly one tool call"
+      },
+      {
+        "attempt_index": 1,
+        "latency_ms": 5287.179,
+        "usage": {
+          "completion_tokens": 311,
+          "prompt_tokens": 908,
+          "total_tokens": 1219,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 908
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 282,
+            "text_tokens": 311
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Morgan Li"
+          }
+        }
+      }
+    ],
+    "latency_ms": 22555.099,
+    "usage": {
+      "prompt_tokens": 1816,
+      "completion_tokens": 1302,
+      "total_tokens": 3118
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Morgan Li's phone number is +85269010001.",
+        "entity": "Morgan Li",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Morgan Li prefers brief messages.",
+        "entity": "Morgan Li",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Morgan Li"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Morgan Li\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4641.879,
+        "usage": {
+          "completion_tokens": 254,
+          "prompt_tokens": 908,
+          "total_tokens": 1162,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 908
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 225,
+            "text_tokens": 254
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Morgan Li"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4641.879,
+    "usage": {
+      "prompt_tokens": 908,
+      "completion_tokens": 254,
+      "total_tokens": 1162
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Morgan Li prefers brief messages.",
+        "entity": "Morgan Li",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Morgan Li"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Morgan Li\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2104.591,
+        "usage": {
+          "completion_tokens": 122,
+          "prompt_tokens": 821,
+          "total_tokens": 943,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 821
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 93,
+            "text_tokens": 122
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Morgan Li"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2104.591,
+    "usage": {
+      "prompt_tokens": 821,
+      "completion_tokens": 122,
+      "total_tokens": 943
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Morgan Li prefers brief messages.",
+        "entity": "Morgan Li",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Morgan Li"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Morgan Li\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2509.874,
+        "usage": {
+          "completion_tokens": 119,
+          "prompt_tokens": 821,
+          "total_tokens": 940,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 821
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 90,
+            "text_tokens": 119
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Morgan Li"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2509.874,
+    "usage": {
+      "prompt_tokens": 821,
+      "completion_tokens": 119,
+      "total_tokens": 940
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Morgan Li prefers brief messages.",
+        "entity": "Morgan Li",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Morgan Li"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Morgan Li\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2287.309,
+        "usage": {
+          "completion_tokens": 97,
+          "prompt_tokens": 821,
+          "total_tokens": 918,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 821
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 68,
+            "text_tokens": 97
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Morgan Li"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2287.309,
+    "usage": {
+      "prompt_tokens": 821,
+      "completion_tokens": 97,
+      "total_tokens": 918
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Morgan Li's phone number is +85269010001.",
+        "entity": "Morgan Li",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010001",
+        "content": "The design review starts at 11 AM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The design review starts at 11 AM.\",\"phone_number\":\"+85269010001\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7195.235,
+        "usage": {
+          "completion_tokens": 402,
+          "prompt_tokens": 833,
+          "total_tokens": 1235,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 833
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 337,
+            "text_tokens": 402
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010001",
+            "content": "The design review starts at 11 AM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 7195.235,
+    "usage": {
+      "prompt_tokens": 833,
+      "completion_tokens": 402,
+      "total_tokens": 1235
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Morgan Li's phone number is +85269010001.",
+        "entity": "Morgan Li",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Morgan Li"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Morgan Li\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4262.384,
+        "usage": {
+          "completion_tokens": 257,
+          "prompt_tokens": 833,
+          "total_tokens": 1090,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 833
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 228,
+            "text_tokens": 257
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Morgan Li"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4262.384,
+    "usage": {
+      "prompt_tokens": 833,
+      "completion_tokens": 257,
+      "total_tokens": 1090
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Morgan Li's phone number is +85269010001.",
+        "entity": "Morgan Li",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Morgan Li"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Morgan Li\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3892.785,
+        "usage": {
+          "completion_tokens": 253,
+          "prompt_tokens": 833,
+          "total_tokens": 1086,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 833
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 224,
+            "text_tokens": 253
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Morgan Li"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3892.785,
+    "usage": {
+      "prompt_tokens": 833,
+      "completion_tokens": 253,
+      "total_tokens": 1086
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Morgan Li's phone number is +85269010001.",
+        "entity": "Morgan Li",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Morgan Li prefers brief messages.",
+        "entity": "Morgan Li",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Morgan Li"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Morgan Li\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5182.274,
+        "usage": {
+          "completion_tokens": 267,
+          "prompt_tokens": 836,
+          "total_tokens": 1103,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 836
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 238,
+            "text_tokens": 267
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Morgan Li"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5182.274,
+    "usage": {
+      "prompt_tokens": 836,
+      "completion_tokens": 267,
+      "total_tokens": 1103
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Morgan Li's phone number is +85269010001.",
+        "entity": "Morgan Li",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Morgan Li prefers brief messages.",
+        "entity": "Morgan Li",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010001",
+        "content": "The design review starts at 11 AM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The design review starts at 11 AM.\",\"phone_number\":\"+85269010001\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7382.546,
+        "usage": {
+          "completion_tokens": 406,
+          "prompt_tokens": 836,
+          "total_tokens": 1242,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 836
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 341,
+            "text_tokens": 406
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010001",
+            "content": "The design review starts at 11 AM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 7382.546,
+    "usage": {
+      "prompt_tokens": 836,
+      "completion_tokens": 406,
+      "total_tokens": 1242
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Morgan Li's phone number is +85269010001.",
+        "entity": "Morgan Li",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Morgan Li prefers brief messages.",
+        "entity": "Morgan Li",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010001",
+        "content": "The design review starts at 11 AM."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The design review starts at 11 AM.\",\"phone_number\":\"+85269010001\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6591.648,
+        "usage": {
+          "completion_tokens": 465,
+          "prompt_tokens": 836,
+          "total_tokens": 1301,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 836
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 400,
+            "text_tokens": 465
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010001",
+            "content": "The design review starts at 11 AM."
+          }
+        }
+      }
+    ],
+    "latency_ms": 6591.648,
+    "usage": {
+      "prompt_tokens": 836,
+      "completion_tokens": 465,
+      "total_tokens": 1301
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2,
+    "shared_across_policies": true
+  }
+]

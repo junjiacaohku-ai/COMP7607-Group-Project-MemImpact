@@ -1,0 +1,1038 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010003",
+        "content": "The venue has changed to Room 402."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85269010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7805.795,
+        "usage": {
+          "completion_tokens": 529,
+          "prompt_tokens": 909,
+          "total_tokens": 1438,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 909
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 463,
+            "text_tokens": 529
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010003",
+            "content": "The venue has changed to Room 402."
+          }
+        }
+      }
+    ],
+    "latency_ms": 7805.795,
+    "usage": {
+      "prompt_tokens": 909,
+      "completion_tokens": 529,
+      "total_tokens": 1438
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010003",
+        "content": "The venue has changed to Room 402."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85269010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5847.932,
+        "usage": {
+          "completion_tokens": 435,
+          "prompt_tokens": 909,
+          "total_tokens": 1344,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 909
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 369,
+            "text_tokens": 435
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010003",
+            "content": "The venue has changed to Room 402."
+          }
+        }
+      }
+    ],
+    "latency_ms": 5847.932,
+    "usage": {
+      "prompt_tokens": 909,
+      "completion_tokens": 435,
+      "total_tokens": 1344
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010003",
+        "content": "The venue has changed to Room 402."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85269010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6235.134,
+        "usage": {
+          "completion_tokens": 453,
+          "prompt_tokens": 909,
+          "total_tokens": 1362,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 909
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 387,
+            "text_tokens": 453
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010003",
+            "content": "The venue has changed to Room 402."
+          }
+        }
+      }
+    ],
+    "latency_ms": 6235.134,
+    "usage": {
+      "prompt_tokens": 909,
+      "completion_tokens": 453,
+      "total_tokens": 1362
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 1397.28,
+        "usage": {
+          "completion_tokens": 67,
+          "prompt_tokens": 822,
+          "total_tokens": 889,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 822
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 38,
+            "text_tokens": 67
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 1397.28,
+    "usage": {
+      "prompt_tokens": 822,
+      "completion_tokens": 67,
+      "total_tokens": 889
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2771.02,
+        "usage": {
+          "completion_tokens": 194,
+          "prompt_tokens": 822,
+          "total_tokens": 1016,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 822
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 165,
+            "text_tokens": 194
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2771.02,
+    "usage": {
+      "prompt_tokens": 822,
+      "completion_tokens": 194,
+      "total_tokens": 1016
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2598.883,
+        "usage": {
+          "completion_tokens": 164,
+          "prompt_tokens": 822,
+          "total_tokens": 986,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 822
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 123,
+            "text_tokens": 164
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 2598.883,
+    "usage": {
+      "prompt_tokens": 822,
+      "completion_tokens": 164,
+      "total_tokens": 986
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010003",
+        "content": "The venue has changed to Room 402."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85269010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6331.123,
+        "usage": {
+          "completion_tokens": 560,
+          "prompt_tokens": 834,
+          "total_tokens": 1394,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 834
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 494,
+            "text_tokens": 560
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010003",
+            "content": "The venue has changed to Room 402."
+          }
+        }
+      }
+    ],
+    "latency_ms": 6331.123,
+    "usage": {
+      "prompt_tokens": 834,
+      "completion_tokens": 560,
+      "total_tokens": 1394
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010003",
+        "content": "The venue has changed to Room 402."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85269010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4819.198,
+        "usage": {
+          "completion_tokens": 387,
+          "prompt_tokens": 834,
+          "total_tokens": 1221,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 834
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 321,
+            "text_tokens": 387
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010003",
+            "content": "The venue has changed to Room 402."
+          }
+        }
+      }
+    ],
+    "latency_ms": 4819.198,
+    "usage": {
+      "prompt_tokens": 834,
+      "completion_tokens": 387,
+      "total_tokens": 1221
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010003",
+        "content": "The venue has changed to Room 402."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85269010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5017.955,
+        "usage": {
+          "completion_tokens": 403,
+          "prompt_tokens": 834,
+          "total_tokens": 1237,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 834
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 337,
+            "text_tokens": 403
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010003",
+            "content": "The venue has changed to Room 402."
+          }
+        }
+      }
+    ],
+    "latency_ms": 5017.955,
+    "usage": {
+      "prompt_tokens": 834,
+      "completion_tokens": 403,
+      "total_tokens": 1237
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3206.537,
+        "usage": {
+          "completion_tokens": 245,
+          "prompt_tokens": 837,
+          "total_tokens": 1082,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 837
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 216,
+            "text_tokens": 245
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3206.537,
+    "usage": {
+      "prompt_tokens": 837,
+      "completion_tokens": 245,
+      "total_tokens": 1082
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010003",
+        "content": "The venue has changed to Room 402."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85269010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 10566.802,
+        "usage": {
+          "completion_tokens": 792,
+          "prompt_tokens": 837,
+          "total_tokens": 1629,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 837
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 726,
+            "text_tokens": 792
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010003",
+            "content": "The venue has changed to Room 402."
+          }
+        }
+      }
+    ],
+    "latency_ms": 10566.802,
+    "usage": {
+      "prompt_tokens": 837,
+      "completion_tokens": 792,
+      "total_tokens": 1629
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85269010003",
+        "content": "The venue has changed to Room 402."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85269010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6996.229,
+        "usage": {
+          "completion_tokens": 627,
+          "prompt_tokens": 837,
+          "total_tokens": 1464,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 837
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 561,
+            "text_tokens": 627
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85269010003",
+            "content": "The venue has changed to Room 402."
+          }
+        }
+      }
+    ],
+    "latency_ms": 6996.229,
+    "usage": {
+      "prompt_tokens": 837,
+      "completion_tokens": 627,
+      "total_tokens": 1464
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "authoritative_contact_record",
+        "name": "Casey Lau",
+        "phone_number": "+85261010003"
+      }
+    ],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261010003",
+        "content": "The venue has changed to Room 402."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85261010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3938.894,
+        "usage": {
+          "completion_tokens": 262,
+          "prompt_tokens": 942,
+          "total_tokens": 1204,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 942
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 196,
+            "text_tokens": 262
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261010003",
+            "content": "The venue has changed to Room 402."
+          }
+        }
+      }
+    ],
+    "latency_ms": 3938.894,
+    "usage": {
+      "prompt_tokens": 942,
+      "completion_tokens": 262,
+      "total_tokens": 1204
+    },
+    "condition": "replan_after_refutation",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

@@ -1,0 +1,1035 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261020004",
+        "content": "The deadline is now Friday noon."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The deadline is now Friday noon.\",\"phone_number\":\"+85261020004\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4266.588,
+        "usage": {
+          "completion_tokens": 262,
+          "prompt_tokens": 930,
+          "total_tokens": 1192,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 930
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 200,
+            "text_tokens": 262
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261020004",
+            "content": "The deadline is now Friday noon."
+          }
+        }
+      }
+    ],
+    "latency_ms": 4266.588,
+    "usage": {
+      "prompt_tokens": 930,
+      "completion_tokens": 262,
+      "total_tokens": 1192
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261020004",
+        "content": "The deadline is now Friday noon."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The deadline is now Friday noon.\",\"phone_number\":\"+85261020004\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7408.769,
+        "usage": {
+          "completion_tokens": 611,
+          "prompt_tokens": 930,
+          "total_tokens": 1541,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 930
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 549,
+            "text_tokens": 611
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261020004",
+            "content": "The deadline is now Friday noon."
+          }
+        }
+      }
+    ],
+    "latency_ms": 7408.769,
+    "usage": {
+      "prompt_tokens": 930,
+      "completion_tokens": 611,
+      "total_tokens": 1541
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261020004",
+        "content": "The deadline is now Friday noon."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The deadline is now Friday noon.\",\"phone_number\":\"+85261020004\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6939.831,
+        "usage": {
+          "completion_tokens": 488,
+          "prompt_tokens": 930,
+          "total_tokens": 1418,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 930
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 426,
+            "text_tokens": 488
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261020004",
+            "content": "The deadline is now Friday noon."
+          }
+        }
+      }
+    ],
+    "latency_ms": 6939.831,
+    "usage": {
+      "prompt_tokens": 930,
+      "completion_tokens": 488,
+      "total_tokens": 1418
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Jordan Ng"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Jordan Ng\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2204.104,
+        "usage": {
+          "completion_tokens": 142,
+          "prompt_tokens": 845,
+          "total_tokens": 987,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 845
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 114,
+            "text_tokens": 142
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Jordan Ng"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2204.104,
+    "usage": {
+      "prompt_tokens": 845,
+      "completion_tokens": 142,
+      "total_tokens": 987
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Jordan Ng"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Jordan Ng\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2304.316,
+        "usage": {
+          "completion_tokens": 142,
+          "prompt_tokens": 845,
+          "total_tokens": 987,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 845
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 114,
+            "text_tokens": 142
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Jordan Ng"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2304.316,
+    "usage": {
+      "prompt_tokens": 845,
+      "completion_tokens": 142,
+      "total_tokens": 987
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Jordan Ng"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Jordan Ng\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3413.979,
+        "usage": {
+          "completion_tokens": 210,
+          "prompt_tokens": 845,
+          "total_tokens": 1055,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 845
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 182,
+            "text_tokens": 210
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Jordan Ng"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3413.979,
+    "usage": {
+      "prompt_tokens": 845,
+      "completion_tokens": 210,
+      "total_tokens": 1055
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261020004",
+        "content": "The deadline is now Friday noon."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The deadline is now Friday noon.\",\"phone_number\":\"+85261020004\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5119.223,
+        "usage": {
+          "completion_tokens": 418,
+          "prompt_tokens": 843,
+          "total_tokens": 1261,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 843
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 356,
+            "text_tokens": 418
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261020004",
+            "content": "The deadline is now Friday noon."
+          }
+        }
+      }
+    ],
+    "latency_ms": 5119.223,
+    "usage": {
+      "prompt_tokens": 843,
+      "completion_tokens": 418,
+      "total_tokens": 1261
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_personal",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261020004",
+        "content": "The deadline is now Friday noon."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The deadline is now Friday noon.\",\"phone_number\":\"+85261020004\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4614.611,
+        "usage": {
+          "completion_tokens": 400,
+          "prompt_tokens": 843,
+          "total_tokens": 1243,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 843
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 338,
+            "text_tokens": 400
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261020004",
+            "content": "The deadline is now Friday noon."
+          }
+        }
+      }
+    ],
+    "latency_ms": 4614.611,
+    "usage": {
+      "prompt_tokens": 843,
+      "completion_tokens": 400,
+      "total_tokens": 1243
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_personal",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261020004",
+        "content": "The deadline is now Friday noon."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The deadline is now Friday noon.\",\"phone_number\":\"+85261020004\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4718.038,
+        "usage": {
+          "completion_tokens": 375,
+          "prompt_tokens": 843,
+          "total_tokens": 1218,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 843
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 313,
+            "text_tokens": 375
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261020004",
+            "content": "The deadline is now Friday noon."
+          }
+        }
+      }
+    ],
+    "latency_ms": 4718.038,
+    "usage": {
+      "prompt_tokens": 843,
+      "completion_tokens": 375,
+      "total_tokens": 1218
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_personal",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Jordan Ng"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Jordan Ng\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3009.224,
+        "usage": {
+          "completion_tokens": 184,
+          "prompt_tokens": 843,
+          "total_tokens": 1027,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 843
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 156,
+            "text_tokens": 184
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Jordan Ng"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3009.224,
+    "usage": {
+      "prompt_tokens": 843,
+      "completion_tokens": 184,
+      "total_tokens": 1027
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Jordan Ng"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Jordan Ng\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2207.073,
+        "usage": {
+          "completion_tokens": 126,
+          "prompt_tokens": 843,
+          "total_tokens": 969,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 843
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 98,
+            "text_tokens": 126
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Jordan Ng"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2207.073,
+    "usage": {
+      "prompt_tokens": 843,
+      "completion_tokens": 126,
+      "total_tokens": 969
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Jordan Ng",
+        "is_self": false
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"is_self\":false,\"name\":\"Jordan Ng\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3011.269,
+        "usage": {
+          "completion_tokens": 250,
+          "prompt_tokens": 843,
+          "total_tokens": 1093,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 843
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 210,
+            "text_tokens": 250
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Jordan Ng",
+            "is_self": false
+          }
+        }
+      }
+    ],
+    "latency_ms": 3011.269,
+    "usage": {
+      "prompt_tokens": 843,
+      "completion_tokens": 250,
+      "total_tokens": 1093
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Jordan Ng, use the work contact channel instead of the personal contact channel.",
+        "entity": "Jordan Ng",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Jordan Ng's personal phone number is +85261010004.",
+        "entity": "Jordan Ng personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Jordan Ng's work phone number is +85261020004.",
+        "entity": "Jordan Ng work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "current_contact_routing_rule",
+        "name": "Jordan Ng",
+        "rule": "The work-channel rule belongs to another person. When contacting Jordan Ng, use the personal contact channel.",
+        "phone_number": "+85261010004"
+      }
+    ],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261010004",
+        "content": "The deadline is now Friday noon."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The deadline is now Friday noon.\",\"phone_number\":\"+85261010004\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2718.466,
+        "usage": {
+          "completion_tokens": 194,
+          "prompt_tokens": 986,
+          "total_tokens": 1180,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 986
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 132,
+            "text_tokens": 194
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261010004",
+            "content": "The deadline is now Friday noon."
+          }
+        }
+      }
+    ],
+    "latency_ms": 2718.466,
+    "usage": {
+      "prompt_tokens": 986,
+      "completion_tokens": 194,
+      "total_tokens": 1180
+    },
+    "condition": "replan_after_refutation",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

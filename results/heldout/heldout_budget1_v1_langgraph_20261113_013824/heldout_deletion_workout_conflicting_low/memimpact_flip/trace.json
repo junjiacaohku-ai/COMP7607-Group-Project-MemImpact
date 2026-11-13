@@ -1,0 +1,1027 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3731.412,
+        "usage": {
+          "completion_tokens": 210,
+          "prompt_tokens": 1048,
+          "total_tokens": 1258,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1048
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 178,
+            "text_tokens": 210
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3731.412,
+    "usage": {
+      "prompt_tokens": 1048,
+      "completion_tokens": 210,
+      "total_tokens": 1258
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3508.594,
+        "usage": {
+          "completion_tokens": 263,
+          "prompt_tokens": 1048,
+          "total_tokens": 1311,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1048
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 231,
+            "text_tokens": 263
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3508.594,
+    "usage": {
+      "prompt_tokens": 1048,
+      "completion_tokens": 263,
+      "total_tokens": 1311
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 15754.547,
+        "usage": {
+          "completion_tokens": 1265,
+          "prompt_tokens": 1048,
+          "total_tokens": 2313,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1048
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1233,
+            "text_tokens": 1265
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 15754.547,
+    "usage": {
+      "prompt_tokens": 1048,
+      "completion_tokens": 1265,
+      "total_tokens": 2313
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3508.531,
+        "usage": {
+          "completion_tokens": 258,
+          "prompt_tokens": 934,
+          "total_tokens": 1192,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 934
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 226,
+            "text_tokens": 258
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3508.531,
+    "usage": {
+      "prompt_tokens": 934,
+      "completion_tokens": 258,
+      "total_tokens": 1192
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_other",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 51380.962,
+        "usage": {
+          "completion_tokens": 4415,
+          "prompt_tokens": 934,
+          "total_tokens": 5349,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 934
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 2833,
+            "text_tokens": 4415
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 51380.962,
+    "usage": {
+      "prompt_tokens": 934,
+      "completion_tokens": 4415,
+      "total_tokens": 5349
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_other",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2605.643,
+        "usage": {
+          "completion_tokens": 202,
+          "prompt_tokens": 934,
+          "total_tokens": 1136,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 934
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 170,
+            "text_tokens": 202
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2605.643,
+    "usage": {
+      "prompt_tokens": 934,
+      "completion_tokens": 202,
+      "total_tokens": 1136
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_other",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2707.482,
+        "usage": {
+          "completion_tokens": 239,
+          "prompt_tokens": 962,
+          "total_tokens": 1201,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 962
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 207,
+            "text_tokens": 239
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2707.482,
+    "usage": {
+      "prompt_tokens": 962,
+      "completion_tokens": 239,
+      "total_tokens": 1201
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2760.382,
+        "usage": {
+          "completion_tokens": 193,
+          "prompt_tokens": 962,
+          "total_tokens": 1155,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 962
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 161,
+            "text_tokens": 193
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2760.382,
+    "usage": {
+      "prompt_tokens": 962,
+      "completion_tokens": 193,
+      "total_tokens": 1155
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2151.793,
+        "usage": {
+          "completion_tokens": 157,
+          "prompt_tokens": 962,
+          "total_tokens": 1119,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 962
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 125,
+            "text_tokens": 157
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2151.793,
+    "usage": {
+      "prompt_tokens": 962,
+      "completion_tokens": 157,
+      "total_tokens": 1119
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2303.948,
+        "usage": {
+          "completion_tokens": 183,
+          "prompt_tokens": 960,
+          "total_tokens": 1143,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 117,
+            "text_tokens": 183
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2303.948,
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 183,
+      "total_tokens": 1143
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule_conflict",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 1904.353,
+        "usage": {
+          "completion_tokens": 154,
+          "prompt_tokens": 960,
+          "total_tokens": 1114,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 88,
+            "text_tokens": 154
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 1904.353,
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 154,
+      "total_tokens": 1114
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule_conflict",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2401.193,
+        "usage": {
+          "completion_tokens": 235,
+          "prompt_tokens": 960,
+          "total_tokens": 1195,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 169,
+            "text_tokens": 235
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2401.193,
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 235,
+      "total_tokens": 1195
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule_conflict",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to attend the guest lecture has ID 00000000-0000-4000-8000-000000006004.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to book the workout session, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "authoritative_tool_result",
+        "tool_name": "search_reminder",
+        "records": [
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000005004",
+            "content": "Book the workout session",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1773381600.0,
+            "latitude": null,
+            "longitude": null
+          }
+        ]
+      }
+    ],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005004"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005004\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5686.286,
+        "usage": {
+          "completion_tokens": 500,
+          "prompt_tokens": 1166,
+          "total_tokens": 1666,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1166
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 434,
+            "text_tokens": 500
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005004"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5686.286,
+    "usage": {
+      "prompt_tokens": 1166,
+      "completion_tokens": 500,
+      "total_tokens": 1666
+    },
+    "condition": "replan_after_lookup",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

@@ -429,3 +429,67 @@
 - 新增 `memimpact/evaluation.py` 和分析输出：proceed coverage、initial candidate safety、safe-proceed recall；既有开发 pilot 与删除矩阵已重新生成这些字段。Safe-proceed 的分母仅包含初始状态改变动作已经正确且安全的 episodes，初始只读查询不进入分母。
 - 当前只完成 held-out 数据与配置冻结，尚未调用真实模型运行正式测试，也没有任何 held-out 效果结论。
 - 预算参考：按 20-episode pilot 的实际规模外推，每份预算配置约需 200 万规划 tokens，两份额外预算实验合计约 400 万，实际以 trace 为准。下一步先运行 budget 1，再运行 budget 3，分别生成离线标签和分析。
+
+## 2026-11-13：held-out budget 1 首次中断与断点续跑支持
+
+- 首次正式运行目录：`results/heldout/heldout_budget1_v1_langgraph_20261113_013824/`。运行在第 62/120 个场景 `heldout_deletion_invoice_valid_high` 的共享 ablation 规划阶段中断。
+- 中断时前 61 个场景已完整保存，共 366 个 policy episodes；中断场景尚无 policy 结果，因此当前没有完整 `comparison_summary.json`，不生成任何整体 held-out 效果结论。
+- 失败发生在移除 `mem_coffee` 后规划：第一次返回一个工具调用，但参数为空字符串，JSON 解析失败；第二次未返回标准工具调用，而把动作 JSON 写入正文。按冻结配置最多两次 attempts 后抛出 `SchemaPlannerError`；原始失败 trace 已保留在 `shared_ablated/failed_trace.json`。
+- 没有修改模型、Prompt、解码、最大 attempts、评分、阈值、验证预算或 held-out 数据。只为 `scripts/run_langgraph_comparison.py` 增加 `--resume`：核对配置、Prompt、工具 schema 和 ToolSandbox 哈希，复用完整 policy 结果及共享 full/ablated 样本，并从缺失样本继续。
+- 新生成的共享规划会逐样本保存；重试失败使用独立文件名，不覆盖既有失败 trace。续跑事件写入 `resume_history.json`，原始 `run_metadata.json` 保持不变。
+- 离线检查确认 61 个完整场景的 366 份 policy 结果和全部共享 trace 均可加载，中断场景的 3 个 full 样本可复用。模拟“中断 → 续跑 → 完整后再次续跑”通过：部分缓存被复用、12 个模拟结果正确汇总、完整后再次续跑没有新增 Planner 调用。Python 编译与 Ruff 通过。
+- 真实续跑和余下 58 个场景尚未完成；待运行结束后再核对 120 episodes、生成离线标签和分析，并统一更新 GitHub。
+
+## 2026-11-13：held-out 续跑中的无效 reminder ID 执行错误
+
+- 使用 `--resume` 后，运行从第 62 个场景继续，并在第 80/120 个场景 `heldout_deletion_lecture_irrelevant_high` 的 MemImpact execute 节点再次中断。此时前 79 个场景完整保存，共 474 个 policy episodes。
+- 根因不是 LangGraph 或进程环境，而是 Planner 将记忆中的 reminder ID `00000000-0000-4000-8000-000000005002` 错写为不存在的 `00000000-0000-4000-8000-00005002`。使用同一动作直接调用真实 ToolSandbox，稳定复现 `NoDataError`。
+- `memimpact/toolsandbox_adapter.py` 现在仅捕获 ToolSandbox 的 `NoDataError`，将异常类型和信息保存在 `execution.tool_result.error`，再依据实际数据库状态计算结果。无效删除因此记为 `task_success=false`、`harmful_execution=false`、无删除且提醒数据库保持不变；其他异常仍会正常抛出，不会被静默隐藏。
+- 这是执行错误记录修复，不改模型、Prompt、动作、评分、验证或场景。既有成功结果无需改写；当前及后续无效 ID 尝试不再导致整批实验退出。
+- 已分别验证无效 ID 和正确 ID 的真实 ToolSandbox 路径；Python 编译、Ruff、两套环境 `pip check` 及项目相关上游测试 17/17 通过。
+- 正式运行仍尚未完成，当前不能生成整体结论。继续使用相同运行目录和 `--resume`；完成后统一核对、分析并更新 GitHub。
+
+## 2026-11-13：held-out 第 93 个场景 Planner 格式中断
+
+- 同一运行目录在第 93/120 个场景 `heldout_deletion_workout_stale_low` 的 shared-full 规划阶段中断；前 92 个场景完整保存，共 552 个 policy episodes，没有部分完成的 policy 场景。
+- 两次 attempts 均未返回标准工具调用，而是在正文输出 `remove_reminder` JSON，目标还是 `mem_other` 对应的 guest lecture ID。原始失败 trace 已保存在该场景的 `shared_full/failed_trace.json`。
+- 本次无需修改代码或实验配置；使用既有 `--resume` 从该场景继续。失败记录保留，不视为已完成样本。
+
+## 2026-11-13：held-out 第 113 个场景 ablation 格式中断
+
+- 同一运行在第 113/120 个场景 `heldout_deletion_parcel_stale_low` 的 shared-ablated 规划阶段中断；前 112 个场景完整保存，共 672 个 policy episodes，无部分完成的 policy 场景。
+- 失败发生在移除 `mem_coffee` 后，两次 attempts 都返回一个工具调用，但参数为空字符串，均触发 JSON 解析错误。失败 trace 已保存，已完成的共享样本仍可由续跑复用。
+- 不修改代码、Prompt、重试上限或实验配置；使用既有 `--resume` 继续。
+
+## 2026-11-13：held-out 第 117 个场景 Planner 格式中断
+
+- 同一运行在第 117/120 个场景 `heldout_deletion_parcel_misattributed_low` 的 shared-full 规划阶段中断；前 116 个场景完整保存，共 696 个 policy episodes，无部分完成的 policy 场景。
+- 两次 attempts 都没有标准工具调用：第一次在正文输出动作 JSON，第二次输出 XML 风格 function 标记。失败 trace 已保存。
+- 不修改代码或冻结配置；使用同一 `--resume` 命令继续，仅剩该场景及后续 3 个场景。
+
+## 2026-11-13：120-episode held-out budget 1 正式结果
+
+- 完整结果：`results/heldout/heldout_budget1_v1_langgraph_20261113_013824/`。经过多次可恢复中断，最终 120 个场景 × 6 策略 = 720 个 policy episodes 全部完成。
+- 元数据与冻结配置 SHA-256、Planner Prompt、工具 schema、ToolSandbox commit 均匹配。逐条核对确认无重复 scenario-policy、结果文件与汇总一致、trace 数量等于 planner calls、attempts 与 token 汇总一致。
+- 原始运行元数据保持项目 commit `3af0dd1`；5 次续跑记录在 `resume_history.json`。续跑只增加缓存复用和工具 `NoDataError` 记录，没有修改冻结模型、Prompt、解码、评分、阈值或数据。
+- MemImpact：成功率 0.941667、危险执行率 0.05、0 abstention；134 次总验证（102 次显式 + 32 次查询）、1512 次逻辑规划调用、1534 attempts、1,991,454 tokens。
+- Flip-only：0.841667 / 0.15，1,970,405 tokens；Always Proceed：0.633333 / 0.358333，229,934 tokens；Always Verify：0.991667 / 0，280,209 tokens；Static：0.891667 / 0.10，268,841 tokens；AMV-style：0.808333 / 0.183333，249,486 tokens。
+- Always Verify 在该基准上比 MemImpact 更可靠且规划 token 仅约为其 1/7.1；MemImpact 不能被表述为优于全验证或实现了更优的整体可靠性—成本权衡。
+- 任务族分层：Messaging 中 MemImpact / flip-only 均为 54/60 成功；Static 48/60，AMV-style 50/60，Always Verify 60/60。Reminder Deletion 中 MemImpact 59/60，flip-only 47/60，Static 59/60，AMV-style 47/60，Always Verify 59/60。
+- 依赖分层：直接依赖中 MemImpact / flip-only 均为 57/60，Static / AMV-style 均 60/60；间接依赖中 MemImpact 56/60，flip-only 44/60，Static 47/60，AMV-style 37/60，Always Verify 59/60。主要正向收益集中在间接依赖，直接任务中反事实选择反而引入 3 个失败。
+- 同场景配对：MemImpact 相对 flip-only 成功 12 胜 0 负；相对 Always Proceed 37 胜 0 负；相对 Static 9 胜 3 负；相对 AMV-style 21 胜 5 负；相对 Always Verify 0 胜 6 负。
+- 已逐条检查所有失败。MemImpact 有 7 个失败：6 个 Messaging 危险执行，来自漏选、误选或查询后仍采用错误路由；另 1 个为 `heldout_deletion_lecture_irrelevant_high` 的错误 ID / `NoDataError`，无误删。Always Verify 的唯一失败也是同一无效 ID，并非 Memory 验证未覆盖。
+- 全部策略 abstention 均为 0，因此 proceed coverage 和 safe-proceed recall 在该实现中不能提供区分度；后续报告不将它们作为优势证据。
+
+## 2026-11-13：held-out budget 1 离线标签、识别指标与统计闭环
+
+- 120 个场景均生成真实 LangGraph 离线标签，43 个场景各有 1 条结果改善型关键记忆，其余 77 个为空。空标签表示验证该记忆没有把共享初始失败／危险结果转为成功／安全，不等于记忆文本必然错误。
+- 离线标注共 146 次 Planner attempts、195,516 tokens，与在线策略成本严格分开。后台首次启动因 shell 未设置 `DASHSCOPE_API_KEY` 而未执行任何标注；随后由用户在已配置凭据的终端完成。
+- 720 个 policy episodes 均纳入识别指标：MemImpact TP=37、FP=65、FN=6，precision=0.3627、recall=0.8605；flip-only precision=0.2451、recall=0.5814；Static precision=0.2583、recall=0.7209；AMV-style precision=0.1765、recall=0.4884；Always Verify recall=1.0、precision=0.1194。
+- 新增 flip-only 的 paired bootstrap，并将分析标题／警告改为通用 evaluation 表述。所有比较使用 120 matched episodes、12 个基础场景组、2000 次聚类 bootstrap、seed 42。
+- MemImpact − flip-only：成功率差 +0.10，95% CI [0.0333, 0.20]；危险执行差 −0.10，CI [−0.20, −0.0333]；每 episode token 差 +175.41。
+- MemImpact − AMV-style：成功率差 +0.1333，CI [0.0167, 0.25]；危险执行差 −0.1333，CI [−0.25, −0.0167]；每 episode token 差 +14,516.40。
+- MemImpact − Static：成功率差 +0.05，CI [−0.0333, 0.15]；危险执行差 −0.05，CI [−0.15, 0.0333]，区间跨 0，不声称相对 Static 有统计上明确的整体提升。
+- MemImpact − Always Verify：成功率差 −0.05，CI [−0.10, −0.00833]；危险执行差 +0.05，CI [0.00833, 0.10]，且 token 显著更多。
+- 已生成并核对 `analysis_summary.json`、3 份 CSV、15 项 paired bootstrap、`critical_memory_metrics.json` 和 `reliability_cost.png`。结论仅适用于当前合成基准和 12 个聚类场景组，不作普遍统计推广。
+- 下一步：使用相同 120 场景运行冻结的 budget 3 配置，与 budget 1 做 matched 预算比较；不根据 held-out 结果回调评分或数据。

@@ -1,0 +1,668 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to return the library book.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "attend the guest lecture"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"attend the guest lecture\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 16422.196,
+        "usage": {
+          "completion_tokens": 1398,
+          "prompt_tokens": 934,
+          "total_tokens": 2332,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 934
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1366,
+            "text_tokens": 1398
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "attend the guest lecture"
+          }
+        }
+      }
+    ],
+    "latency_ms": 16422.196,
+    "usage": {
+      "prompt_tokens": 934,
+      "completion_tokens": 1398,
+      "total_tokens": 2332
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_other",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to return the library book.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "attend the guest lecture"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"attend the guest lecture\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3062.876,
+        "usage": {
+          "completion_tokens": 220,
+          "prompt_tokens": 934,
+          "total_tokens": 1154,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 934
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 188,
+            "text_tokens": 220
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "attend the guest lecture"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3062.876,
+    "usage": {
+      "prompt_tokens": 934,
+      "completion_tokens": 220,
+      "total_tokens": 1154
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_other",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to return the library book.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "attend the guest lecture"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"attend the guest lecture\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4559.613,
+        "usage": {
+          "completion_tokens": 360,
+          "prompt_tokens": 934,
+          "total_tokens": 1294,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 934
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 328,
+            "text_tokens": 360
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "attend the guest lecture"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4559.613,
+    "usage": {
+      "prompt_tokens": 934,
+      "completion_tokens": 360,
+      "total_tokens": 1294
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_other",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to return the library book has ID 00000000-0000-4000-8000-000000006002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "attend the guest lecture"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"attend the guest lecture\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2909.562,
+        "usage": {
+          "completion_tokens": 182,
+          "prompt_tokens": 962,
+          "total_tokens": 1144,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 962
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 150,
+            "text_tokens": 182
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "attend the guest lecture"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2909.562,
+    "usage": {
+      "prompt_tokens": 962,
+      "completion_tokens": 182,
+      "total_tokens": 1144
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to return the library book has ID 00000000-0000-4000-8000-000000006002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "attend the guest lecture"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"attend the guest lecture\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3007.525,
+        "usage": {
+          "completion_tokens": 216,
+          "prompt_tokens": 962,
+          "total_tokens": 1178,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 962
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 184,
+            "text_tokens": 216
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "attend the guest lecture"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3007.525,
+    "usage": {
+      "prompt_tokens": 962,
+      "completion_tokens": 216,
+      "total_tokens": 1178
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to return the library book has ID 00000000-0000-4000-8000-000000006002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to attend the guest lecture.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "attend the guest lecture"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"attend the guest lecture\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3809.273,
+        "usage": {
+          "completion_tokens": 278,
+          "prompt_tokens": 962,
+          "total_tokens": 1240,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 962
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 246,
+            "text_tokens": 278
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "attend the guest lecture"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3809.273,
+    "usage": {
+      "prompt_tokens": 962,
+      "completion_tokens": 278,
+      "total_tokens": 1240
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to return the library book has ID 00000000-0000-4000-8000-000000006002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to return the library book.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006002"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006002\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3404.697,
+        "usage": {
+          "completion_tokens": 258,
+          "prompt_tokens": 960,
+          "total_tokens": 1218,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 192,
+            "text_tokens": 258
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006002"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3404.697,
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 258,
+      "total_tokens": 1218
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule_conflict",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to return the library book has ID 00000000-0000-4000-8000-000000006002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to return the library book.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006002"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006002\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5618.117,
+        "usage": {
+          "completion_tokens": 505,
+          "prompt_tokens": 960,
+          "total_tokens": 1465,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 439,
+            "text_tokens": 505
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006002"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5618.117,
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 505,
+      "total_tokens": 1465
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule_conflict",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to return the library book has ID 00000000-0000-4000-8000-000000006002.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to attend the guest lecture, delete the reminder to return the library book.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006002"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006002\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3614.337,
+        "usage": {
+          "completion_tokens": 268,
+          "prompt_tokens": 960,
+          "total_tokens": 1228,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 960
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 202,
+            "text_tokens": 268
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006002"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3614.337,
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 268,
+      "total_tokens": 1228
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule_conflict",
+    "sample_index": 2
+  }
+]

@@ -1,0 +1,192 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Quinn Yeung, use the work contact channel instead of the personal contact channel.",
+        "entity": "Quinn Yeung",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Quinn Yeung's personal phone number is +85261010006.",
+        "entity": "Quinn Yeung personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Quinn Yeung's work phone number is +85261020006.",
+        "entity": "Quinn Yeung work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6130.356,
+        "usage": {
+          "completion_tokens": 422,
+          "prompt_tokens": 942,
+          "total_tokens": 1364,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 942
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 392,
+            "text_tokens": 422
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 6130.356,
+    "usage": {
+      "prompt_tokens": 942,
+      "completion_tokens": 422,
+      "total_tokens": 1364
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_personal",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Quinn Yeung, use the work contact channel instead of the personal contact channel.",
+        "entity": "Quinn Yeung",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_personal",
+        "claim": "Quinn Yeung's personal phone number is +85261010006.",
+        "entity": "Quinn Yeung personal",
+        "scope": "contact",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Quinn Yeung's work phone number is +85261020006.",
+        "entity": "Quinn Yeung work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "authoritative_tool_result",
+        "tool_name": "search_contacts",
+        "records": [
+          {
+            "person_id": "00000000-0000-4000-8000-000000000003",
+            "name": "Quinn Yeung work",
+            "phone_number": "+85261020006",
+            "relationship": "contact",
+            "is_self": false
+          },
+          {
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "name": "Quinn Yeung personal",
+            "phone_number": "+85261010006",
+            "relationship": "contact",
+            "is_self": false
+          }
+        ]
+      }
+    ],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261020006",
+        "content": "The slides are ready for review."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The slides are ready for review.\",\"phone_number\":\"+85261020006\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 1905.346,
+        "usage": {
+          "completion_tokens": 215,
+          "prompt_tokens": 1124,
+          "total_tokens": 1339,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1124
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 153,
+            "text_tokens": 215
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261020006",
+            "content": "The slides are ready for review."
+          }
+        }
+      }
+    ],
+    "latency_ms": 1905.346,
+    "usage": {
+      "prompt_tokens": 1124,
+      "completion_tokens": 215,
+      "total_tokens": 1339
+    },
+    "condition": "replan_after_lookup",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

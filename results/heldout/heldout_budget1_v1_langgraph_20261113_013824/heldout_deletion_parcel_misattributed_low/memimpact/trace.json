@@ -1,0 +1,1038 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 2,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 14368.475,
+        "usage": {
+          "completion_tokens": 1412,
+          "prompt_tokens": 1071,
+          "total_tokens": 2483,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1071
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1288,
+            "text_tokens": 1412
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "attempt_index": 1,
+        "latency_ms": 4311.837,
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 1071,
+          "total_tokens": 1455,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1071
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 318,
+            "text_tokens": 384
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 18680.312,
+    "usage": {
+      "prompt_tokens": 2142,
+      "completion_tokens": 1796,
+      "total_tokens": 3938
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3507.273,
+        "usage": {
+          "completion_tokens": 323,
+          "prompt_tokens": 1071,
+          "total_tokens": 1394,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1071
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 257,
+            "text_tokens": 323
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3507.273,
+    "usage": {
+      "prompt_tokens": 1071,
+      "completion_tokens": 323,
+      "total_tokens": 1394
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 9038.038,
+        "usage": {
+          "completion_tokens": 853,
+          "prompt_tokens": 1071,
+          "total_tokens": 1924,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1071
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 787,
+            "text_tokens": 853
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 9038.038,
+    "usage": {
+      "prompt_tokens": 1071,
+      "completion_tokens": 853,
+      "total_tokens": 1924
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3707.4,
+        "usage": {
+          "completion_tokens": 321,
+          "prompt_tokens": 957,
+          "total_tokens": 1278,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 957
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 290,
+            "text_tokens": 321
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3707.4,
+    "usage": {
+      "prompt_tokens": 957,
+      "completion_tokens": 321,
+      "total_tokens": 1278
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_other",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005006\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 25421.118,
+        "usage": {
+          "completion_tokens": 2330,
+          "prompt_tokens": 957,
+          "total_tokens": 3287,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 957
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 2265,
+            "text_tokens": 2330
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 25421.118,
+    "usage": {
+      "prompt_tokens": 957,
+      "completion_tokens": 2330,
+      "total_tokens": 3287
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_other",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "book the workout session"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"book the workout session\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 15619.421,
+        "usage": {
+          "completion_tokens": 1625,
+          "prompt_tokens": 957,
+          "total_tokens": 2582,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 957
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1593,
+            "text_tokens": 1625
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "book the workout session"
+          }
+        }
+      }
+    ],
+    "latency_ms": 15619.421,
+    "usage": {
+      "prompt_tokens": 957,
+      "completion_tokens": 1625,
+      "total_tokens": 2582
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_other",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4210.02,
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 958,
+          "total_tokens": 1342,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 958
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 318,
+            "text_tokens": 384
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4210.02,
+    "usage": {
+      "prompt_tokens": 958,
+      "completion_tokens": 384,
+      "total_tokens": 1342
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2406.528,
+        "usage": {
+          "completion_tokens": 210,
+          "prompt_tokens": 958,
+          "total_tokens": 1168,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 958
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 144,
+            "text_tokens": 210
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2406.528,
+    "usage": {
+      "prompt_tokens": 958,
+      "completion_tokens": 210,
+      "total_tokens": 1168
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4110.76,
+        "usage": {
+          "completion_tokens": 384,
+          "prompt_tokens": 958,
+          "total_tokens": 1342,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 958
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 318,
+            "text_tokens": 384
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4110.76,
+    "usage": {
+      "prompt_tokens": 958,
+      "completion_tokens": 384,
+      "total_tokens": 1342
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_target"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2905.317,
+        "usage": {
+          "completion_tokens": 210,
+          "prompt_tokens": 986,
+          "total_tokens": 1196,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 986
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 144,
+            "text_tokens": 210
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2905.317,
+    "usage": {
+      "prompt_tokens": 986,
+      "completion_tokens": 210,
+      "total_tokens": 1196
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_target"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3207.626,
+        "usage": {
+          "completion_tokens": 288,
+          "prompt_tokens": 986,
+          "total_tokens": 1274,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 986
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 222,
+            "text_tokens": 288
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3207.626,
+    "usage": {
+      "prompt_tokens": 986,
+      "completion_tokens": 288,
+      "total_tokens": 1274
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_target"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3373.174,
+        "usage": {
+          "completion_tokens": 309,
+          "prompt_tokens": 986,
+          "total_tokens": 1295,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 986
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 243,
+            "text_tokens": 309
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3373.174,
+    "usage": {
+      "prompt_tokens": 986,
+      "completion_tokens": 309,
+      "total_tokens": 1295
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_other",
+      "mem_target",
+      "mem_rule"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_other",
+        "claim": "The reminder to book the workout session has ID 00000000-0000-4000-8000-000000006006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to collect the parcel has ID 00000000-0000-4000-8000-000000005006.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule",
+        "claim": "For the cleanup request to collect the parcel, delete the reminder to book the workout session.",
+        "entity": "user",
+        "scope": "reminder_selection_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "authoritative_reminder_mapping",
+        "content": "Collect the parcel",
+        "reminder_id": "00000000-0000-4000-8000-000000005006"
+      }
+    ],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005006"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005006\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3026.412,
+        "usage": {
+          "completion_tokens": 288,
+          "prompt_tokens": 1130,
+          "total_tokens": 1418,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1130
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 222,
+            "text_tokens": 288
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005006"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3026.412,
+    "usage": {
+      "prompt_tokens": 1130,
+      "completion_tokens": 288,
+      "total_tokens": 1418
+    },
+    "condition": "replan_after_refutation",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

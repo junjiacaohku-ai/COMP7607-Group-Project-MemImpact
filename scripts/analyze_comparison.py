@@ -261,7 +261,8 @@ def main() -> None:
     axes[2].set_ylim(-0.05, 1.1)
     axes[2].grid(alpha=0.2)
     fig.suptitle(
-        f"MemImpact pilot | {data['model']} | {len(data['episodes'])} policy episodes"
+        f"MemImpact evaluation | {data['model']} | "
+        f"{len(data['episodes'])} policy episodes"
     )
     handles = [
         Line2D(
@@ -293,7 +294,13 @@ def main() -> None:
     )
     bootstrap_results = []
     if "memimpact" in policies:
-        for other in ("amv_guard", "static", "always_verify", "always_proceed"):
+        for other in (
+            "memimpact_flip",
+            "amv_guard",
+            "static",
+            "always_verify",
+            "always_proceed",
+        ):
             if other not in policies:
                 continue
             for metric in ("task_success", "harmful_execution", "total_tokens"):
@@ -319,7 +326,10 @@ def main() -> None:
         "policy_metrics": policy_summaries,
         "critical_memory_metrics_file": "critical_memory_metrics.json",
         "paired_bootstrap_file": "paired_bootstrap.json",
-        "warning": "Small synthetic pilot; no statistical generalization is claimed.",
+        "warning": (
+            "Synthetic benchmark with clustered scenario variants; "
+            "no broad statistical generalization is claimed."
+        ),
     }
     (output_directory / "analysis_summary.json").write_text(
         json.dumps(analysis, indent=2, ensure_ascii=False), encoding="utf-8"

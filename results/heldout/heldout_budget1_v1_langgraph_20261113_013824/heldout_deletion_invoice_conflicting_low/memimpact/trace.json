@@ -1,0 +1,1047 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "pay the invoice"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"pay the invoice\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3643.876,
+        "usage": {
+          "completion_tokens": 274,
+          "prompt_tokens": 1059,
+          "total_tokens": 1333,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 1059
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 243,
+            "text_tokens": 274
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "pay the invoice"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3643.876,
+    "usage": {
+      "prompt_tokens": 1059,
+      "completion_tokens": 274,
+      "total_tokens": 1333
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "pay the invoice"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"pay the invoice\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4918.587,
+        "usage": {
+          "completion_tokens": 348,
+          "prompt_tokens": 1059,
+          "total_tokens": 1407,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1059
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 317,
+            "text_tokens": 348
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "pay the invoice"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4918.587,
+    "usage": {
+      "prompt_tokens": 1059,
+      "completion_tokens": 348,
+      "total_tokens": 1407
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "pay the invoice"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"pay the invoice\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3815.005,
+        "usage": {
+          "completion_tokens": 278,
+          "prompt_tokens": 1059,
+          "total_tokens": 1337,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1059
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 247,
+            "text_tokens": 278
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "pay the invoice"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3815.005,
+    "usage": {
+      "prompt_tokens": 1059,
+      "completion_tokens": 278,
+      "total_tokens": 1337
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005001"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005001\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6917.781,
+        "usage": {
+          "completion_tokens": 571,
+          "prompt_tokens": 946,
+          "total_tokens": 1517,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 946
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 505,
+            "text_tokens": 571
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005001"
+          }
+        }
+      }
+    ],
+    "latency_ms": 6917.781,
+    "usage": {
+      "prompt_tokens": 946,
+      "completion_tokens": 571,
+      "total_tokens": 1517
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "pay the invoice"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"pay the invoice\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2515.259,
+        "usage": {
+          "completion_tokens": 194,
+          "prompt_tokens": 946,
+          "total_tokens": 1140,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 946
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 163,
+            "text_tokens": 194
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "pay the invoice"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2515.259,
+    "usage": {
+      "prompt_tokens": 946,
+      "completion_tokens": 194,
+      "total_tokens": 1140
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "pay the invoice"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"pay the invoice\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 2,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 9326.224,
+        "usage": {
+          "completion_tokens": 882,
+          "prompt_tokens": 946,
+          "total_tokens": 1828,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 946
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 540,
+            "text_tokens": 882
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "attempt_index": 1,
+        "latency_ms": 4816.756,
+        "usage": {
+          "completion_tokens": 418,
+          "prompt_tokens": 946,
+          "total_tokens": 1364,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 946
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 387,
+            "text_tokens": 418
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "pay the invoice"
+          }
+        }
+      }
+    ],
+    "latency_ms": 14142.98,
+    "usage": {
+      "prompt_tokens": 1892,
+      "completion_tokens": 1300,
+      "total_tokens": 3192
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006001"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006001\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 1902.616,
+        "usage": {
+          "completion_tokens": 161,
+          "prompt_tokens": 944,
+          "total_tokens": 1105,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 944
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 95,
+            "text_tokens": 161
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006001"
+          }
+        }
+      }
+    ],
+    "latency_ms": 1902.616,
+    "usage": {
+      "prompt_tokens": 944,
+      "completion_tokens": 161,
+      "total_tokens": 1105
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_conflict",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006001"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006001\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3812.062,
+        "usage": {
+          "completion_tokens": 324,
+          "prompt_tokens": 944,
+          "total_tokens": 1268,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 944
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 258,
+            "text_tokens": 324
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006001"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3812.062,
+    "usage": {
+      "prompt_tokens": 944,
+      "completion_tokens": 324,
+      "total_tokens": 1268
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_conflict",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006001"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006001\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3606.132,
+        "usage": {
+          "completion_tokens": 284,
+          "prompt_tokens": 944,
+          "total_tokens": 1228,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 944
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 218,
+            "text_tokens": 284
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006001"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3606.132,
+    "usage": {
+      "prompt_tokens": 944,
+      "completion_tokens": 284,
+      "total_tokens": 1228
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_conflict",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "pay the invoice"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"pay the invoice\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4311.35,
+        "usage": {
+          "completion_tokens": 326,
+          "prompt_tokens": 987,
+          "total_tokens": 1313,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 987
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 295,
+            "text_tokens": 326
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "pay the invoice"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4311.35,
+    "usage": {
+      "prompt_tokens": 987,
+      "completion_tokens": 326,
+      "total_tokens": 1313
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "pay the invoice"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"pay the invoice\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2904.439,
+        "usage": {
+          "completion_tokens": 202,
+          "prompt_tokens": 987,
+          "total_tokens": 1189,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 987
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 171,
+            "text_tokens": 202
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "pay the invoice"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2904.439,
+    "usage": {
+      "prompt_tokens": 987,
+      "completion_tokens": 202,
+      "total_tokens": 1189
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "pay the invoice"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"pay the invoice\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4618.441,
+        "usage": {
+          "completion_tokens": 303,
+          "prompt_tokens": 987,
+          "total_tokens": 1290,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 987
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 272,
+            "text_tokens": 303
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "pay the invoice"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4618.441,
+    "usage": {
+      "prompt_tokens": 987,
+      "completion_tokens": 303,
+      "total_tokens": 1290
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_conflict",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to pay the invoice has ID 00000000-0000-4000-8000-000000006001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_conflict",
+        "claim": "The current reminder to pay the invoice has ID 00000000-0000-4000-8000-000000005001.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-03-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "authoritative_tool_result",
+        "tool_name": "search_reminder",
+        "records": [
+          {
+            "reminder_id": "00000000-0000-4000-8000-000000005001",
+            "content": "Pay the invoice",
+            "creation_timestamp": 1767225600.0,
+            "reminder_timestamp": 1773291600.0,
+            "latitude": null,
+            "longitude": null
+          }
+        ]
+      }
+    ],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000005001"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000005001\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2962.177,
+        "usage": {
+          "completion_tokens": 205,
+          "prompt_tokens": 1176,
+          "total_tokens": 1381,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024,
+            "text_tokens": 1176
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 139,
+            "text_tokens": 205
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000005001"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2962.177,
+    "usage": {
+      "prompt_tokens": 1176,
+      "completion_tokens": 205,
+      "total_tokens": 1381
+    },
+    "condition": "replan_after_lookup",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

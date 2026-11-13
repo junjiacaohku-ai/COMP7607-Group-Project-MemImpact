@@ -1,0 +1,227 @@
+[
+  {
+    "left_policy": "memimpact",
+    "right_policy": "memimpact_flip",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus memimpact_flip",
+    "observed_difference": 0.1,
+    "ci_95": [
+      0.03333333333333333,
+      0.2
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "memimpact_flip",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus memimpact_flip",
+    "observed_difference": -0.1,
+    "ci_95": [
+      -0.2,
+      -0.03333333333333333
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "memimpact_flip",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus memimpact_flip",
+    "observed_difference": 175.40833333333333,
+    "ci_95": [
+      36.425,
+      344.475
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "amv_guard",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus amv_guard",
+    "observed_difference": 0.13333333333333333,
+    "ci_95": [
+      0.016666666666666666,
+      0.25
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "amv_guard",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus amv_guard",
+    "observed_difference": -0.13333333333333333,
+    "ci_95": [
+      -0.25,
+      -0.016666666666666666
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "amv_guard",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus amv_guard",
+    "observed_difference": 14516.4,
+    "ci_95": [
+      13753.808333333332,
+      15419.541666666666
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "static",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus static",
+    "observed_difference": 0.05,
+    "ci_95": [
+      -0.03333333333333333,
+      0.15
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "static",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus static",
+    "observed_difference": -0.05,
+    "ci_95": [
+      -0.15,
+      0.03333333333333333
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "static",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus static",
+    "observed_difference": 14355.108333333334,
+    "ci_95": [
+      13704.25,
+      15125.825
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_verify",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus always_verify",
+    "observed_difference": -0.05,
+    "ci_95": [
+      -0.1,
+      -0.008333333333333333
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_verify",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus always_verify",
+    "observed_difference": 0.05,
+    "ci_95": [
+      0.008333333333333333,
+      0.1
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_verify",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus always_verify",
+    "observed_difference": 14260.375,
+    "ci_95": [
+      13592.591666666667,
+      15054.558333333332
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_proceed",
+    "metric": "task_success",
+    "effect_definition": "memimpact minus always_proceed",
+    "observed_difference": 0.30833333333333335,
+    "ci_95": [
+      0.225,
+      0.375
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_proceed",
+    "metric": "harmful_execution",
+    "effect_definition": "memimpact minus always_proceed",
+    "observed_difference": -0.30833333333333335,
+    "ci_95": [
+      -0.375,
+      -0.225
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  },
+  {
+    "left_policy": "memimpact",
+    "right_policy": "always_proceed",
+    "metric": "total_tokens",
+    "effect_definition": "memimpact minus always_proceed",
+    "observed_difference": 14679.333333333334,
+    "ci_95": [
+      13952.416666666666,
+      15523.783333333333
+    ],
+    "matched_episodes": 120,
+    "base_scenario_groups": 12,
+    "resamples": 2000,
+    "seed": 42
+  }
+]

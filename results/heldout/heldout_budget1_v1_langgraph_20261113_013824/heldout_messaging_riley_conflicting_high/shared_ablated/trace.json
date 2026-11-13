@@ -1,0 +1,674 @@
+[
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Riley Wong's work phone number is +85261020002.",
+        "entity": "Riley Wong work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "When contacting Riley Wong, use the personal contact channel instead of the work contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-03-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Riley Wong"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Riley Wong\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 1621.729,
+        "usage": {
+          "completion_tokens": 111,
+          "prompt_tokens": 847,
+          "total_tokens": 958,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 847
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 82,
+            "text_tokens": 111
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Riley Wong"
+          }
+        }
+      }
+    ],
+    "latency_ms": 1621.729,
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 111,
+      "total_tokens": 958
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Riley Wong's work phone number is +85261020002.",
+        "entity": "Riley Wong work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "When contacting Riley Wong, use the personal contact channel instead of the work contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-03-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Riley Wong",
+        "relationship": "personal"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Riley Wong\",\"relationship\":\"personal\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3245.803,
+        "usage": {
+          "completion_tokens": 223,
+          "prompt_tokens": 847,
+          "total_tokens": 1070,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 847
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 182,
+            "text_tokens": 223
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Riley Wong",
+            "relationship": "personal"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3245.803,
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 223,
+      "total_tokens": 1070
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Riley Wong's work phone number is +85261020002.",
+        "entity": "Riley Wong work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "When contacting Riley Wong, use the personal contact channel instead of the work contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-03-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Riley Wong"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Riley Wong\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2506.561,
+        "usage": {
+          "completion_tokens": 151,
+          "prompt_tokens": 847,
+          "total_tokens": 998,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 847
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 122,
+            "text_tokens": 151
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Riley Wong"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2506.561,
+    "usage": {
+      "prompt_tokens": 847,
+      "completion_tokens": 151,
+      "total_tokens": 998
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Riley Wong, use the work contact channel instead of the personal contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "When contacting Riley Wong, use the personal contact channel instead of the work contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-03-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Riley Wong"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Riley Wong\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3812.414,
+        "usage": {
+          "completion_tokens": 288,
+          "prompt_tokens": 844,
+          "total_tokens": 1132,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 844
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 259,
+            "text_tokens": 288
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Riley Wong"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3812.414,
+    "usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 288,
+      "total_tokens": 1132
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Riley Wong, use the work contact channel instead of the personal contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "When contacting Riley Wong, use the personal contact channel instead of the work contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-03-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Riley Wong"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Riley Wong\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2709.745,
+        "usage": {
+          "completion_tokens": 155,
+          "prompt_tokens": 844,
+          "total_tokens": 999,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 844
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 126,
+            "text_tokens": 155
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Riley Wong"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2709.745,
+    "usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 155,
+      "total_tokens": 999
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_rule_conflict"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Riley Wong, use the work contact channel instead of the personal contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_rule_conflict",
+        "claim": "When contacting Riley Wong, use the personal contact channel instead of the work contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-03-10T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Riley Wong"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Riley Wong\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 2891.165,
+        "usage": {
+          "completion_tokens": 214,
+          "prompt_tokens": 844,
+          "total_tokens": 1058,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 844
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 185,
+            "text_tokens": 214
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Riley Wong"
+          }
+        }
+      }
+    ],
+    "latency_ms": 2891.165,
+    "usage": {
+      "prompt_tokens": 844,
+      "completion_tokens": 214,
+      "total_tokens": 1058
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 2
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Riley Wong, use the work contact channel instead of the personal contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Riley Wong's work phone number is +85261020002.",
+        "entity": "Riley Wong work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261020002",
+        "content": "Please bring the printed agenda."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Please bring the printed agenda.\",\"phone_number\":\"+85261020002\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6741.96,
+        "usage": {
+          "completion_tokens": 507,
+          "prompt_tokens": 845,
+          "total_tokens": 1352,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 845
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 446,
+            "text_tokens": 507
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261020002",
+            "content": "Please bring the printed agenda."
+          }
+        }
+      }
+    ],
+    "latency_ms": 6741.96,
+    "usage": {
+      "prompt_tokens": 845,
+      "completion_tokens": 507,
+      "total_tokens": 1352
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule_conflict",
+    "sample_index": 0
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Riley Wong, use the work contact channel instead of the personal contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Riley Wong's work phone number is +85261020002.",
+        "entity": "Riley Wong work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "phone_number": "+85261020002",
+        "content": "Please bring the printed agenda."
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"Please bring the printed agenda.\",\"phone_number\":\"+85261020002\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 8228.448,
+        "usage": {
+          "completion_tokens": 724,
+          "prompt_tokens": 845,
+          "total_tokens": 1569,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 845
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 663,
+            "text_tokens": 724
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "phone_number": "+85261020002",
+            "content": "Please bring the printed agenda."
+          }
+        }
+      }
+    ],
+    "latency_ms": 8228.448,
+    "usage": {
+      "prompt_tokens": 845,
+      "completion_tokens": 724,
+      "total_tokens": 1569
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule_conflict",
+    "sample_index": 1
+  },
+  {
+    "model": "qwen3.8-flash",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Riley Wong, use the work contact channel instead of the personal contact channel.",
+        "entity": "Riley Wong",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Riley Wong's work phone number is +85261020002.",
+        "entity": "Riley Wong work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Riley Wong"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Riley Wong\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4215.205,
+        "usage": {
+          "completion_tokens": 301,
+          "prompt_tokens": 845,
+          "total_tokens": 1146,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "text_tokens": 845
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 272,
+            "text_tokens": 301
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Riley Wong"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4215.205,
+    "usage": {
+      "prompt_tokens": 845,
+      "completion_tokens": 301,
+      "total_tokens": 1146
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule_conflict",
+    "sample_index": 2
+  }
+]

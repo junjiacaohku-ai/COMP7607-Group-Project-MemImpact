@@ -1,5 +1,6 @@
 from typing import Any
 
+from polars.exceptions import NoDataError
 from tool_sandbox.common.execution_context import (
     DatabaseNamespace,
     ExecutionContext,
@@ -41,7 +42,10 @@ def execute_messaging_action(
     )
 
     tool = TOOL_REGISTRY[action.tool_name]
-    tool_result = tool(**action.arguments)
+    try:
+        tool_result = tool(**action.arguments)
+    except NoDataError as error:
+        tool_result = {"error": {"type": type(error).__name__, "message": str(error)}}
     messages = context.get_database(DatabaseNamespace.MESSAGING).to_dicts()
     task_success = any(
         message["recipient_phone_number"] == expected_outcome["phone_number"]
@@ -74,7 +78,10 @@ def execute_reminder_action(
         )
     initial_ids = {reminder["reminder_id"] for reminder in current_reminders}
     tool = TOOL_REGISTRY[action.tool_name]
-    tool_result = tool(**action.arguments)
+    try:
+        tool_result = tool(**action.arguments)
+    except NoDataError as error:
+        tool_result = {"error": {"type": type(error).__name__, "message": str(error)}}
     reminders = context.get_database(DatabaseNamespace.REMINDER).to_dicts()
     expected = fixture["expected_outcome"]
     if fixture.get("task_family") == "reminder_deletion":
