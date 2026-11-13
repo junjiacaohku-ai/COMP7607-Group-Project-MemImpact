@@ -49,7 +49,7 @@ def chip(ax, x, y, width, text, color):
     )
 
 
-def bullet(ax, x, y, text, color, fontsize=13.2):
+def bullet(ax, x, y, text, color, fontsize=12.0):
     ax.add_patch(Circle((x, y), 0.045, facecolor=color, edgecolor="none", zorder=3))
     ax.text(x + 0.18, y, text, ha="left", va="center", fontsize=fontsize, color=COLORS["ink"], zorder=3)
 
@@ -91,31 +91,31 @@ def main():
             "step": "01  PLAN",
             "title": "Full-memory planning",
             "badge": "S = 3",
-            "bullets": ["User task + three memories", "Paired full-memory samples", "Canonical candidate action"],
+            "bullets": ["Task + 3 memories", "Full-memory samples", "Canonical action"],
         },
         {
             "x": 5.05,
             "color": COLORS["violet"],
             "step": "02  INTERVENE",
-            "title": "Leave-one-out rollouts",
+            "title": "Memory ablation",
             "badge": "k = 3",
-            "bullets": ["Remove m1, m2, m3 separately", "Re-plan without executing tools", "Collect paired ablated actions"],
+            "bullets": ["Remove each memory", "Plan-only rollouts", "Ablated actions"],
         },
         {
             "x": 9.45,
             "color": COLORS["orange"],
             "step": "03  SCORE & VERIFY",
-            "title": "Impact and verification",
+            "title": "Score & verification",
             "badge": "B = 1 / 3",
-            "bullets": ["Correct for planner variability", "Rank impact + uncertainty", "Verify within the episode budget"],
+            "bullets": ["Subtract planner noise", "Rank impact + age", "Verify within budget"],
         },
         {
             "x": 13.85,
             "color": COLORS["green"],
             "step": "04  ACT & EVALUATE",
-            "title": "Evidence-gated action",
+            "title": "Approved action",
             "badge": "ISOLATED",
-            "bullets": ["Replan on refuted evidence", "Execute approved actions only", "Score success, harm, and cost"],
+            "bullets": ["Replan on refutation", "Execute approved action", "Success, harm, cost"],
         },
     ]
     card_y, card_w, card_h = 1.65, 3.5, 4.45
@@ -158,7 +158,12 @@ def main():
 
     OUTPUT_DIRECTORY.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUTPUT_DIRECTORY / "memimpact-method.png", dpi=160, bbox_inches="tight", pad_inches=0.12, facecolor=fig.get_facecolor())
-    fig.savefig(OUTPUT_DIRECTORY / "memimpact-method.svg", bbox_inches="tight", pad_inches=0.12, facecolor=fig.get_facecolor())
+    svg_path = OUTPUT_DIRECTORY / "memimpact-method.svg"
+    fig.savefig(svg_path, bbox_inches="tight", pad_inches=0.12, facecolor=fig.get_facecolor())
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines()) + "\n",
+        encoding="utf-8",
+    )
     plt.close(fig)
     print(f"Saved method figure to {OUTPUT_DIRECTORY}")
 

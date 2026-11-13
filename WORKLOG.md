@@ -547,3 +547,5 @@
 - 将两份 README 中的纵向 Mermaid 流程图替换为 `docs/assets/memimpact-method.png`，解决图中节点过长、留白过多和首页阅读体验不佳的问题。
 - 新图采用约 2.1:1 的横版布局，将方法压缩为 Plan、Intervene、Score & Verify、Act & Evaluate 四阶段；保留配对重规划、噪声校正公式、预算验证、证据门控执行和完整 trace 等核心信息。
 - 新增可编辑矢量版本 `docs/assets/memimpact-method.svg` 和复现脚本 `scripts/generate_method_figure.py`。已实际渲染并检查 PNG，修复初版标题、徽标和卡片文字重叠。
+
+- 根据 GitHub 实际截图复查，进一步精简四张卡片的标题和正文、降低正文字号并缩短末张卡片标题，解决中间卡片文字越界及末张卡片右边距不足；最终 PNG/SVG 已重新渲染检查。
