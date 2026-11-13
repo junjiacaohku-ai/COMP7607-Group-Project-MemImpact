@@ -52,23 +52,9 @@
 
 ## 3. 方法
 
-```mermaid
-flowchart TD
-    A[用户任务 + 三条检索 Memory] --> B[完整 Memory Planner 样本]
-    B --> C[每次移除一条 Memory]
-    C --> D[配对移除 Planner 样本]
-    B --> E[规范化动作比较]
-    D --> E
-    E --> F[噪声校正 Memory 影响力]
-    F --> G[验证策略与预算]
-    G --> H{Proceed / Verify / Abstain}
-    H -->|证据反驳| I[使用纠正证据重新规划]
-    I --> J[获批动作]
-    H -->|获批动作| J
-    J --> K[隔离 ToolSandbox 执行]
-    K --> L[任务成功 + 危险执行 + 成本]
-    L --> M[原始 trace、标签、表格与分析]
-```
+<div align="center">
+<img src="docs/assets/memimpact-method.png" alt="MemImpact 四阶段方法：完整记忆规划、逐条移除重规划、影响力评分与验证、证据门控执行" width="100%">
+</div>
 
 对 Memory $m_i$，使用 $S=3$ 组配对样本计算原始动作翻转率：
 

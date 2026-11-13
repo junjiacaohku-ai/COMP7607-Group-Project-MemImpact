@@ -52,23 +52,9 @@ This is a controlled synthetic study, not a general safety guarantee or a claim 
 
 ## 3. Method
 
-```mermaid
-flowchart TD
-    A[User task + three retrieved memories] --> B[Full-memory planner samples]
-    B --> C[Remove one memory at a time]
-    C --> D[Paired ablated planner samples]
-    B --> E[Canonical action comparison]
-    D --> E
-    E --> F[Noise-adjusted memory impact]
-    F --> G[Verification policy and budget]
-    G --> H{Proceed / Verify / Abstain}
-    H -->|Refuted evidence| I[Replan with corrected evidence]
-    I --> J[Approved action]
-    H -->|Approved action| J
-    J --> K[Isolated ToolSandbox execution]
-    K --> L[Task success + harmful execution + cost]
-    L --> M[Raw traces, labels, tables, and analysis]
-```
+<div align="center">
+<img src="docs/assets/memimpact-method.png" alt="MemImpact four-stage method: full-memory planning, leave-one-out rollouts, impact and verification, evidence-gated action" width="100%">
+</div>
 
 For memory $m_i$, the raw action-flip rate is measured over $S=3$ paired samples:
 

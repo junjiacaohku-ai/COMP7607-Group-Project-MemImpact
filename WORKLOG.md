@@ -540,3 +540,10 @@
 - 首页直接呈现实验负向结论和 Always Verify 对照，不把 MemImpact 包装为已证明优于基线的方法；结果表与已冻结的 `comparison_summary.json` 一致。
 - 中文 `memimpact_proposal_zh.tex` / `.pdf` 仅为本地辅助阅读材料，已从 Git 索引移除并加入 `.gitignore`；本地文件保留，GitHub 官方 Proposal 仅保留英文版本。
 - 已检查两份 README 的本地文档链接和图片路径，所有目标存在；没有中文 Proposal 链接、旧进度表述或空白占位符。
+
+
+## 2026-11-13：重绘 README 横版方法图
+
+- 将两份 README 中的纵向 Mermaid 流程图替换为 `docs/assets/memimpact-method.png`，解决图中节点过长、留白过多和首页阅读体验不佳的问题。
+- 新图采用约 2.1:1 的横版布局，将方法压缩为 Plan、Intervene、Score & Verify、Act & Evaluate 四阶段；保留配对重规划、噪声校正公式、预算验证、证据门控执行和完整 trace 等核心信息。
+- 新增可编辑矢量版本 `docs/assets/memimpact-method.svg` 和复现脚本 `scripts/generate_method_figure.py`。已实际渲染并检查 PNG，修复初版标题、徽标和卡片文字重叠。
