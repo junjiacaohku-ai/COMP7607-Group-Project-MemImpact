@@ -234,7 +234,7 @@ third_party/               Local ToolSandbox checkout; not committed
 
 - [Project report PDF](report/memimpact_report.pdf)
 - [Report LaTeX source](report/memimpact_report.tex)
-- [Official English proposal](proposal/memimpact_proposal.pdf)
+- [Official English proposal](proposal/COMP7607A_MemImpact_Proposal.pdf)
 - [Implementation plan](docs/imp_plan.md)
 - [Claim-to-artifact appendix](report/memimpact_report.tex#L360)
 - [Budget-1 results](results/heldout/heldout_budget1_v1_langgraph_20261113_013824)

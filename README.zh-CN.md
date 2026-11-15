@@ -234,7 +234,7 @@ third_party/               本地 ToolSandbox checkout，不提交到仓库
 
 - [项目报告 PDF](report/memimpact_report.pdf)
 - [报告 LaTeX 源码](report/memimpact_report.tex)
-- [官方英文 Proposal](proposal/memimpact_proposal.pdf)
+- [官方英文 Proposal](proposal/COMP7607A_MemImpact_Proposal.pdf)
 - [实施计划](docs/imp_plan.md)
 - [Claim-to-artifact 附录](report/memimpact_report.tex#L360)
 - [Budget-1 结果](results/heldout/heldout_budget1_v1_langgraph_20261113_013824)

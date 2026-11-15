@@ -557,3 +557,9 @@
 - 新版明确 literal argument-overlap 只是 AMV-inspired 的简化候选动作基线，不是 AMV-Guard 完整复现；同时加入两轮独立运行、真实负向结论和剩余展示任务，删除未实施的 joint-removal 等核心实验承诺。
 - 逐项核对代码、正式报告和冻结结果：团队成员与学号、120 个 held-out episodes、S=3、评分公式、六种策略、budget 1/3 数值及成本结论均一致。逐页渲染检查 9 页 PDF，无文字越界、缺失引用或明显排版问题。
 - 已将 `proposal/memimpact_proposal.tex` 同步到组员修订内容，并用 Tectonic 重新编译；编译版与桌面修订版的文本提取 diff 完全一致，BibTeX 引用解析成功。最终提交文件为桌面 `COMP7607_MemImpact_Proposal_Final.pdf`，仓库官方 PDF 同步更新。
+
+
+## 2026-11-15：统一正式 Proposal 提交文件名
+
+- 将英文 Proposal 的 LaTeX 和 PDF 统一重命名为 `COMP7607A_MemImpact_Proposal.tex` / `.pdf`，正式提交文件保留在项目 `proposal/` 目录。
+- 更新双语 README 的官方 Proposal 链接，删除桌面临时副本；中文辅助阅读版不变。
