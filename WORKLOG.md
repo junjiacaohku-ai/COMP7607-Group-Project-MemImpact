@@ -549,3 +549,11 @@
 - 新增可编辑矢量版本 `docs/assets/memimpact-method.svg` 和复现脚本 `scripts/generate_method_figure.py`。已实际渲染并检查 PNG，修复初版标题、徽标和卡片文字重叠。
 
 - 根据 GitHub 实际截图复查，进一步精简四张卡片的标题和正文、降低正文字号并缩短末张卡片标题，解决中间卡片文字越界及末张卡片右边距不足；最终 PNG/SVG 已重新渲染检查。
+
+
+## 2026-11-15：组员修订版 Proposal 核对与提交版整理
+
+- 对比桌面 `memimpact_proposal_revised.pdf` 与仓库原英文 Proposal。新版将未来时态的研究计划改为已实现的系统和真实实验结果，重写摘要、研究问题、方法、基线、指标、统计控制、局限和工作计划。
+- 新版明确 literal argument-overlap 只是 AMV-inspired 的简化候选动作基线，不是 AMV-Guard 完整复现；同时加入两轮独立运行、真实负向结论和剩余展示任务，删除未实施的 joint-removal 等核心实验承诺。
+- 逐项核对代码、正式报告和冻结结果：团队成员与学号、120 个 held-out episodes、S=3、评分公式、六种策略、budget 1/3 数值及成本结论均一致。逐页渲染检查 9 页 PDF，无文字越界、缺失引用或明显排版问题。
+- 已将 `proposal/memimpact_proposal.tex` 同步到组员修订内容，并用 Tectonic 重新编译；编译版与桌面修订版的文本提取 diff 完全一致，BibTeX 引用解析成功。最终提交文件为桌面 `COMP7607_MemImpact_Proposal_Final.pdf`，仓库官方 PDF 同步更新。
