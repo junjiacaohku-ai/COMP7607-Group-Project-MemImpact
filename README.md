@@ -143,16 +143,15 @@ python3.10 -m venv .venv
 
 ### Configure live model access
 
-Set credentials only in your local terminal. Never commit API keys or workspace credentials.
+Copy the example env file and fill in your DashScope credentials. Never commit `.env`.
 
-```zsh
-read -s "DASHSCOPE_API_KEY?DashScope API Key: "
-echo
-read "DASHSCOPE_WORKSPACE_ID?Workspace ID: "
-export DASHSCOPE_API_KEY
-export DASHSCOPE_WORKSPACE_ID
-export DASHSCOPE_REGION="cn-hongkong"
+```bash
+cp .env.example .env
+# Edit .env and set DASHSCOPE_API_KEY, DASHSCOPE_WORKSPACE_ID
+# Optional: DASHSCOPE_REGION (default cn-hongkong) or DASHSCOPE_BASE_URL
 ```
+
+Live scripts load `.env` automatically via `python-dotenv`. After pulling this change, re-run `pip install -e .` in `.venv` if `python-dotenv` is missing.
 
 ### Run one end-to-end episode
 

@@ -1,9 +1,11 @@
 import os
 
+from dotenv import load_dotenv
 from openai import OpenAI
 
 
 def make_qwen_client() -> OpenAI:
+    load_dotenv()
     api_key = os.environ.get("DASHSCOPE_API_KEY")
     if not api_key:
         raise RuntimeError("DASHSCOPE_API_KEY is not set")

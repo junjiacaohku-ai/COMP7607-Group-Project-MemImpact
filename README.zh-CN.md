@@ -143,16 +143,15 @@ python3.10 -m venv .venv
 
 ### 配置真实模型
 
-只在本地终端设置凭据，不要提交 API Key 或 Workspace 信息。
+复制示例环境文件并填入 DashScope 凭据。不要提交 `.env`。
 
-```zsh
-read -s "DASHSCOPE_API_KEY?DashScope API Key: "
-echo
-read "DASHSCOPE_WORKSPACE_ID?Workspace ID: "
-export DASHSCOPE_API_KEY
-export DASHSCOPE_WORKSPACE_ID
-export DASHSCOPE_REGION="cn-hongkong"
+```bash
+cp .env.example .env
+# 编辑 .env，设置 DASHSCOPE_API_KEY、DASHSCOPE_WORKSPACE_ID
+# 可选：DASHSCOPE_REGION（默认 cn-hongkong）或 DASHSCOPE_BASE_URL
 ```
+
+在线脚本会通过 `python-dotenv` 自动加载 `.env`。拉取本改动后，若 `.venv` 中缺少 `python-dotenv`，请重新执行 `pip install -e .`。
 
 ### 运行一个端到端 Episode
 
