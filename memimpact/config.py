@@ -16,6 +16,7 @@ class ExperimentConfig(BaseModel):
     status: Literal["development", "validation_pilot", "heldout"]
     frozen: bool
     model: str
+    provider: Literal["qwen", "ollama", "openai"] | None = None
     temperature: float
     samples: int = Field(ge=1)
     thinking: bool

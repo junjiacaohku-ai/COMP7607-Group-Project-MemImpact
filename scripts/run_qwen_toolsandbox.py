@@ -12,22 +12,27 @@ from tool_sandbox.roles.execution_environment import ExecutionEnvironment
 from tool_sandbox.roles.openai_api_agent import OpenAIAPIAgent
 from tool_sandbox.roles.openai_api_user import OpenAIAPIUser
 
-from memimpact.qwen import make_qwen_client
+from memimpact.providers import (
+    PROVIDER_NAMES,
+    create_provider,
+    resolve_model,
+    resolve_provider,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TOOLSANDBOX_ROOT = PROJECT_ROOT / "third_party" / "ToolSandbox"
 
 
-class QwenAgent(OpenAIAPIAgent):
-    def __init__(self, model_name: str) -> None:
+class CompatibleOpenAIAgent(OpenAIAPIAgent):
+    def __init__(self, model_name: str, openai_client) -> None:
         self.model_name = model_name
-        self.openai_client = make_qwen_client()
+        self.openai_client = openai_client
 
 
-class QwenUser(OpenAIAPIUser):
-    def __init__(self, model_name: str) -> None:
+class CompatibleOpenAIUser(OpenAIAPIUser):
+    def __init__(self, model_name: str, openai_client) -> None:
         self.model_name = model_name
-        self.openai_client = make_qwen_client()
+        self.openai_client = openai_client
 
 
 def toolsandbox_revision() -> str:
@@ -38,16 +43,23 @@ def toolsandbox_revision() -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Run one ToolSandbox scenario with Qwen via DashScope"
+        description=(
+            "Run one ToolSandbox scenario with an OpenAI-compatible provider "
+            "(DashScope Qwen or local Ollama)"
+        )
     )
     parser.add_argument("--scenario", default="wifi_off")
-    parser.add_argument("--model", default="qwen3.8-flash")
+    parser.add_argument("--provider", choices=PROVIDER_NAMES, default=None)
+    parser.add_argument("--model", default=None)
     parser.add_argument(
         "--output-dir",
         type=Path,
         default=PROJECT_ROOT / "results" / "toolsandbox_smoke",
     )
     args = parser.parse_args()
+    provider_name = resolve_provider(args.provider)
+    model = resolve_model(provider_name, args.model)
+    client = create_provider(provider_name).as_openai_client()
 
     scenarios = resolve_scenarios(
         desired_scenario_names=[args.scenario],
@@ -55,12 +67,14 @@ def main() -> None:
     )
     scenario = scenarios[args.scenario]
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_directory = args.output_dir / f"{args.model}_{args.scenario}_{timestamp}"
+    output_directory = (
+        args.output_dir / f"{provider_name}_{model}_{args.scenario}_{timestamp}"
+    )
 
     roles = {
-        RoleType.USER: QwenUser(args.model),
+        RoleType.USER: CompatibleOpenAIUser(model, client),
         RoleType.EXECUTION_ENVIRONMENT: ExecutionEnvironment(),
-        RoleType.AGENT: QwenAgent(args.model),
+        RoleType.AGENT: CompatibleOpenAIAgent(model, client),
     }
     try:
         result = scenario.play_and_evaluate(
@@ -71,7 +85,8 @@ def main() -> None:
         evaluation = result.evaluation_result
         summary = {
             "name": args.scenario,
-            "model": args.model,
+            "provider": provider_name,
+            "model": model,
             "similarity": evaluation.similarity,
             "milestone_similarity": evaluation.milestone_similarity,
             "minefield_similarity": evaluation.minefield_similarity,

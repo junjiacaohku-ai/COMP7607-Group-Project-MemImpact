@@ -8,7 +8,7 @@ from tool_sandbox.common.execution_context import (
 )
 
 from memimpact.core import CandidateAction
-from memimpact.planner import TOOL_REGISTRY
+from memimpact.tool_registry import TOOL_REGISTRY
 
 
 def execute_messaging_action(

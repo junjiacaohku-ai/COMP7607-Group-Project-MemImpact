@@ -13,6 +13,7 @@ from memimpact.langgraph_runtime import run_langgraph_episode
 from memimpact.policies import MEMIMPACT_POLICIES
 from memimpact.process_adapter import ToolSandboxProcessExecutor
 from memimpact.prompts import PLANNER_PROMPT_SHA256
+from memimpact.providers import create_provider, resolve_model, resolve_provider
 from memimpact.schema_planner import SchemaCandidatePlanner, SchemaPlannerError
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -97,15 +98,24 @@ def main() -> None:
     if actual_toolsandbox_sha != config.toolsandbox_git_sha:
         raise RuntimeError("ToolSandbox revision does not match the frozen config")
 
+    provider_name = resolve_provider(None, fallback=config.provider)
+    model = resolve_model(provider_name, None, fallback=config.model)
     planner = SchemaCandidatePlanner(
-        config.model,
+        model,
         config.temperature,
         thinking=config.thinking,
         max_attempts=config.max_planner_attempts,
+        provider=create_provider(provider_name),
     )
     resolved_config = config.model_dump()
+    resolved_config["provider"] = provider_name
+    resolved_config["model"] = model
+    # Keep historical Qwen-run hashes stable: provider was implicit before this field existed.
+    hash_config = dict(resolved_config)
+    if hash_config.get("provider") == "qwen":
+        hash_config.pop("provider", None)
     config_sha = hashlib.sha256(
-        json.dumps(resolved_config, sort_keys=True).encode()
+        json.dumps(hash_config, sort_keys=True).encode()
     ).hexdigest()
     tool_schema_sha = hashlib.sha256(TOOL_SCHEMA_PATH.read_bytes()).hexdigest()
     if args.resume:
@@ -315,7 +325,8 @@ def main() -> None:
         "tool_schema_sha256": metadata["tool_schema_sha256"],
         "project_git_sha": metadata["project_git_sha"],
         "toolsandbox_git_sha": actual_toolsandbox_sha,
-        "model": config.model,
+        "provider": provider_name,
+        "model": model,
         "temperature": config.temperature,
         "thinking": config.thinking,
         "paired_samples": config.samples,

@@ -335,6 +335,7 @@ def run_episode(
         "dependence_type": fixture.get("dependence_type", "unlabeled"),
         "task_family": task_family,
         "policy": policy,
+        "provider": planner.provider.name,
         "model": planner.model,
         "temperature": planner.temperature,
         "thinking": planner.thinking,
