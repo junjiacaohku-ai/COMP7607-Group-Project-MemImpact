@@ -53,8 +53,12 @@ def main() -> None:
             return getattr(config, name)
         return default
 
-    provider_name = resolve_provider(setting("provider", args.provider, None))
-    model = resolve_model(provider_name, setting("model", args.model, None))
+    provider_name = resolve_provider(
+        args.provider, fallback=setting("provider", None, None)
+    )
+    model = resolve_model(
+        provider_name, args.model, fallback=setting("model", None, None)
+    )
     temperature = setting("temperature", args.temperature, 0.0)
     samples = setting("samples", args.samples, 3)
     verification_budget = setting(

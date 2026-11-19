@@ -98,8 +98,8 @@ def main() -> None:
     if actual_toolsandbox_sha != config.toolsandbox_git_sha:
         raise RuntimeError("ToolSandbox revision does not match the frozen config")
 
-    provider_name = resolve_provider(config.provider)
-    model = resolve_model(provider_name, config.model)
+    provider_name = resolve_provider(None, fallback=config.provider)
+    model = resolve_model(provider_name, None, fallback=config.model)
     planner = SchemaCandidatePlanner(
         model,
         config.temperature,

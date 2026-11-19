@@ -149,7 +149,7 @@ python3.10 -m venv .venv
 cp .env.example .env
 ```
 
-脚本通过 `python-dotenv` 加载 `.env`。未传 CLI 时，provider / model 来自环境变量：
+脚本通过 `python-dotenv` 加载 `.env`。解析顺序为 **CLI**（smoke / policy 参数）→ **已设置的环境变量** → **实验 YAML**（comparison 回退）→ 内置默认：
 
 | 变量 | 作用 | 默认 |
 |---|---|---|
@@ -157,6 +157,8 @@ cp .env.example .env
 | `QWEN_MODEL` | provider 为 `qwen` 时的模型 | `qwen3.8-flash` |
 | `OLLAMA_MODEL` | provider 为 `ollama` 时的模型 | `qwen3.8:27b` |
 | `OPENAI_MODEL` | provider 为 `openai` 时的模型 | `gpt-6-luna` |
+
+Comparison 脚本（`run_langgraph_comparison.py`、`run_policy_comparison.py --config`）在 dotenv 已设置时使用环境变量；否则回退到实验 YAML 的 `provider` / `model`。
 
 **Qwen：** 设置 `DASHSCOPE_API_KEY` 与 `DASHSCOPE_WORKSPACE_ID`。可选：`DASHSCOPE_REGION`（默认 `cn-hongkong`）或 `DASHSCOPE_BASE_URL`。
 

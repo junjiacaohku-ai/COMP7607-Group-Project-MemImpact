@@ -152,7 +152,7 @@ Copy the example env file. Never commit `.env`.
 cp .env.example .env
 ```
 
-Scripts load `.env` via `python-dotenv`. Provider and model come from env unless you override them on the CLI:
+Scripts load `.env` via `python-dotenv`. Resolution order is **CLI** (smoke / policy flags) → **env if set** → **experiment YAML** (comparison fallback) → built-in defaults:
 
 | Variable             | Role                                     | Default         |
 | -------------------- | ---------------------------------------- | --------------- |
@@ -160,6 +160,8 @@ Scripts load `.env` via `python-dotenv`. Provider and model come from env unless
 | `QWEN_MODEL`         | DashScope model when provider is `qwen`  | `qwen3.8-flash` |
 | `OLLAMA_MODEL`       | Local model when provider is `ollama`    | `qwen3.8:27b`   |
 | `OPENAI_MODEL`       | OpenAI model when provider is `openai`   | `gpt-6-luna`    |
+
+Comparison scripts (`run_langgraph_comparison.py`, `run_policy_comparison.py --config`) use dotenv when set; otherwise they fall back to the experiment YAML `provider` / `model`.
 
 **Qwen:** set `DASHSCOPE_API_KEY` and `DASHSCOPE_WORKSPACE_ID`. Optional: `DASHSCOPE_REGION` (default `cn-hongkong`) or `DASHSCOPE_BASE_URL`.
 
