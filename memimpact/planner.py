@@ -3,21 +3,14 @@ import time
 from typing import Any
 
 from tool_sandbox.common.tool_conversion import convert_to_openai_tools
-from tool_sandbox.tools.contact import search_contacts
-from tool_sandbox.tools.messaging import send_message_with_phone_number
-from tool_sandbox.tools.reminder import add_reminder, remove_reminder, search_reminder
 
 from memimpact.core import CandidateAction, MemoryRecord
 from memimpact.prompts import PLANNER_PROMPT_SHA256, PLANNER_SYSTEM_PROMPT
-from memimpact.qwen import make_qwen_client
+from memimpact.providers import LLMProvider, create_provider
+from memimpact.tool_registry import TOOL_REGISTRY
 
-TOOL_REGISTRY = {
-    "search_contacts": search_contacts,
-    "send_message_with_phone_number": send_message_with_phone_number,
-    "add_reminder": add_reminder,
-    "search_reminder": search_reminder,
-    "remove_reminder": remove_reminder,
-}
+# Re-export for existing importers that expect TOOL_REGISTRY on this module.
+__all__ = ["TOOL_REGISTRY", "CandidatePlanner", "PlannerError"]
 
 
 class PlannerError(ValueError):
@@ -33,6 +26,7 @@ class CandidatePlanner:
         temperature: float,
         thinking: bool = True,
         max_attempts: int = 2,
+        provider: LLMProvider | None = None,
     ) -> None:
         if max_attempts < 1:
             raise ValueError("max_attempts must be at least 1")
@@ -40,7 +34,7 @@ class CandidatePlanner:
         self.temperature = temperature
         self.thinking = thinking
         self.max_attempts = max_attempts
-        self.client = make_qwen_client()
+        self.provider = provider or create_provider("qwen")
 
     def plan(
         self,
@@ -71,30 +65,26 @@ class CandidatePlanner:
                 ),
             },
         ]
-        request: dict[str, Any] = {
-            "model": self.model,
-            "messages": messages,
-            "tools": tools,
-            "temperature": self.temperature,
-            "extra_body": {"parallel_tool_calls": False},
-        }
-        if not self.thinking:
-            request["extra_body"]["enable_thinking"] = False
 
         attempts = []
         final_action = None
         for attempt_index in range(self.max_attempts):
             started = time.perf_counter()
-            response = self.client.chat.completions.create(**request)
+            completion = self.provider.complete(
+                self.model,
+                messages,
+                tools,
+                self.temperature,
+                thinking=self.thinking,
+            )
             latency_ms = round((time.perf_counter() - started) * 1000, 3)
-            message = response.choices[0].message
-            tool_calls = message.tool_calls or []
+            tool_calls = completion.tool_calls
             attempt = {
                 "attempt_index": attempt_index,
                 "latency_ms": latency_ms,
-                "usage": response.usage.model_dump() if response.usage else None,
+                "usage": completion.usage,
                 "tool_call_count": len(tool_calls),
-                "content": message.content,
+                "content": completion.content,
                 "error": None,
             }
             attempts.append(attempt)
@@ -103,8 +93,8 @@ class CandidatePlanner:
                 continue
             try:
                 action = CandidateAction(
-                    tool_name=tool_calls[0].function.name,
-                    arguments=json.loads(tool_calls[0].function.arguments),
+                    tool_name=tool_calls[0].name,
+                    arguments=json.loads(tool_calls[0].arguments_json),
                 )
             except (ValueError, TypeError) as error:
                 attempt["error"] = str(error)
@@ -114,6 +104,7 @@ class CandidatePlanner:
             break
 
         trace = {
+            "provider": self.provider.name,
             "model": self.model,
             "temperature": self.temperature,
             "thinking": self.thinking,

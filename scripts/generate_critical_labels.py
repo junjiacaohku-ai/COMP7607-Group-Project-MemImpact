@@ -33,6 +33,9 @@ def main() -> None:
     comparison_path = args.run_directory / "comparison_summary.json"
     comparison = json.loads(comparison_path.read_text(encoding="utf-8"))
     runtime = args.runtime or comparison.get("runtime", "original")
+    from memimpact.providers import create_provider
+
+    provider = create_provider(comparison.get("provider", "qwen"))
     if runtime == "langgraph":
         from memimpact.langgraph_runtime import run_langgraph_episode
         from memimpact.process_adapter import ToolSandboxProcessExecutor
@@ -43,6 +46,7 @@ def main() -> None:
             comparison["temperature"],
             thinking=comparison["thinking"],
             max_attempts=comparison.get("max_planner_attempts", 2),
+            provider=provider,
         )
         executor = ToolSandboxProcessExecutor()
     else:
@@ -54,6 +58,7 @@ def main() -> None:
             comparison["temperature"],
             thinking=comparison["thinking"],
             max_attempts=comparison.get("max_planner_attempts", 2),
+            provider=provider,
         )
 
     def run_label_episode(

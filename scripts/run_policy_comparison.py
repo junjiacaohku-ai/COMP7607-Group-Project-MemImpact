@@ -16,6 +16,12 @@ from memimpact.planner import (
     PlannerError,
 )
 from memimpact.policies import MEMIMPACT_POLICIES, POLICIES
+from memimpact.providers import (
+    PROVIDER_NAMES,
+    create_provider,
+    resolve_model,
+    resolve_provider,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TOOLSANDBOX_ROOT = PROJECT_ROOT / "third_party" / "ToolSandbox"
@@ -28,6 +34,7 @@ def main() -> None:
     parser.add_argument("--config", type=Path)
     parser.add_argument("--scenarios", nargs="+", type=Path)
     parser.add_argument("--policies", nargs="+", choices=POLICIES)
+    parser.add_argument("--provider", choices=PROVIDER_NAMES)
     parser.add_argument("--model")
     parser.add_argument("--temperature", type=float)
     parser.add_argument("--samples", type=int)
@@ -46,7 +53,8 @@ def main() -> None:
             return getattr(config, name)
         return default
 
-    model = setting("model", args.model, "qwen3.8-flash")
+    provider_name = resolve_provider(setting("provider", args.provider, None))
+    model = resolve_model(provider_name, setting("model", args.model, None))
     temperature = setting("temperature", args.temperature, 0.0)
     samples = setting("samples", args.samples, 3)
     verification_budget = setting(
@@ -77,18 +85,22 @@ def main() -> None:
         temperature,
         thinking=thinking,
         max_attempts=max_attempts,
+        provider=create_provider(provider_name),
     )
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     config_prefix = f"{config.config_id}_" if config else ""
     run_directory = output_base / f"{config_prefix}{timestamp}"
     run_directory.mkdir(parents=True, exist_ok=True)
-    resolved_config = (
-        config.model_dump()
-        if config
-        else {
+    if config:
+        resolved_config = config.model_dump()
+        resolved_config["provider"] = provider_name
+        resolved_config["model"] = model
+    else:
+        resolved_config = {
             "config_id": "ad_hoc",
             "status": "development",
             "frozen": False,
+            "provider": provider_name,
             "model": model,
             "temperature": temperature,
             "samples": samples,
@@ -99,9 +111,11 @@ def main() -> None:
             "scenarios": [str(path) for path in scenario_paths],
             "output_dir": str(output_base),
         }
-    )
+    hash_config = dict(resolved_config)
+    if hash_config.get("provider") == "qwen":
+        hash_config.pop("provider", None)
     config_sha = hashlib.sha256(
-        json.dumps(resolved_config, sort_keys=True).encode()
+        json.dumps(hash_config, sort_keys=True).encode()
     ).hexdigest()
     metadata = {
         "resolved_config": resolved_config,
@@ -226,6 +240,7 @@ def main() -> None:
         "planner_prompt_sha256": PLANNER_PROMPT_SHA256,
         "project_git_sha": metadata["project_git_sha"],
         "toolsandbox_git_sha": actual_toolsandbox_sha,
+        "provider": provider_name,
         "model": model,
         "temperature": temperature,
         "thinking": thinking,

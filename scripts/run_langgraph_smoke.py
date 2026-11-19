@@ -6,6 +6,12 @@ from pathlib import Path
 from memimpact.langgraph_runtime import run_langgraph_episode
 from memimpact.policies import POLICIES
 from memimpact.process_adapter import ToolSandboxProcessExecutor
+from memimpact.providers import (
+    PROVIDER_NAMES,
+    create_provider,
+    resolve_model,
+    resolve_provider,
+)
 from memimpact.schema_planner import SchemaCandidatePlanner
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -21,7 +27,8 @@ def main() -> None:
         default=PROJECT_ROOT / "benchmark" / "deletion_pilot" / "stale_target.json",
     )
     parser.add_argument("--policy", choices=POLICIES, default="memimpact")
-    parser.add_argument("--model", default="qwen3.8-flash")
+    parser.add_argument("--provider", choices=PROVIDER_NAMES, default=None)
+    parser.add_argument("--model", default=None)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--samples", type=int, default=3)
     parser.add_argument("--verification-budget", type=int, default=1)
@@ -31,12 +38,15 @@ def main() -> None:
         "--output-dir", type=Path, default=PROJECT_ROOT / "results" / "langgraph_smoke"
     )
     args = parser.parse_args()
+    provider_name = resolve_provider(args.provider)
+    model = resolve_model(provider_name, args.model)
     fixture = json.loads(args.scenario.read_text(encoding="utf-8"))
     planner = SchemaCandidatePlanner(
-        args.model,
+        model,
         args.temperature,
         thinking=not args.disable_thinking,
         max_attempts=args.max_planner_attempts,
+        provider=create_provider(provider_name),
     )
     result, traces = run_langgraph_episode(
         fixture,

@@ -22,6 +22,7 @@ A reproducible study of planner-level memory removal, selective verification, an
 ---
 
 <a id="overview"></a>
+
 ## 1. Overview
 
 Persistent memory helps LLM agents reuse contact details, preferences, and prior decisions across sessions. But a retrieved memory can be stale, misattributed, or irrelevant—and verifying every memory can be expensive.
@@ -38,17 +39,17 @@ This is a controlled synthetic study, not a general safety guarantee or a claim 
 
 ## 2. What Is Included
 
-| Capability | Delivered implementation |
-|---|---|
-| **Counterfactual memory audit** | Three paired full-memory and single-memory-removal planner samples per memory |
-| **Noise-adjusted impact** | Canonical action comparison with a baseline estimated from full-memory planner variability |
-| **Six evaluation policies** | MemImpact, flip-only, Always Proceed, Always Verify, Static, and AMV-Guard-style |
-| **Executable benchmark** | 40 development episodes and 120 held-out episodes with five memory conditions |
-| **Real tool execution** | LangGraph workflow connected to Apple ToolSandbox through an isolated worker process |
+| Capability                         | Delivered implementation                                                                       |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Counterfactual memory audit**    | Three paired full-memory and single-memory-removal planner samples per memory                  |
+| **Noise-adjusted impact**          | Canonical action comparison with a baseline estimated from full-memory planner variability     |
+| **Six evaluation policies**        | MemImpact, flip-only, Always Proceed, Always Verify, Static, and AMV-Guard-style               |
+| **Executable benchmark**           | 40 development episodes and 120 held-out episodes with five memory conditions                  |
+| **Real tool execution**            | LangGraph workflow connected to Apple ToolSandbox through an isolated worker process           |
 | **Offline critical-memory labels** | Forced verification-and-replanning trials based on outcome improvement, not action flips alone |
-| **Statistical analysis** | Scenario-matched comparisons and base-scenario-clustered paired bootstrap intervals |
-| **Full evidence trail** | Frozen configs, hashes, raw planner traces, failures, resumes, labels, CSV tables, and figures |
-| **Research deliverables** | English proposal, 10-page project report, case studies, and claim-to-artifact appendix |
+| **Statistical analysis**           | Scenario-matched comparisons and base-scenario-clustered paired bootstrap intervals            |
+| **Full evidence trail**            | Frozen configs, hashes, raw planner traces, failures, resumes, labels, CSV tables, and figures |
+| **Research deliverables**          | English proposal, 10-page project report, case studies, and claim-to-artifact appendix         |
 
 ## 3. Method
 
@@ -65,18 +66,19 @@ Full-memory runs provide a planner-variability baseline $\widehat F_0$. MemImpac
 All counterfactual branches are planning-only. They cannot modify the ToolSandbox world or execute tools.
 
 <a id="key-results"></a>
+
 ## 4. Key Results
 
 Two frozen configurations evaluate the same 120 held-out scenarios with selective-verification budgets of one and three. Each run contains **120 scenarios × 6 policies = 720 policy episodes**.
 
-| Policy | Success: B1 / B3 | Harmful execution: B1 / B3 | Planner tokens: B1 / B3 |
-|---|---:|---:|---:|
-| **MemImpact** | 94.17% / 93.33% | 5.00% / 6.67% | 1,991,454 / 2,039,438 |
-| Flip-only | 84.17% / 92.50% | 15.00% / 6.67% | 1,970,405 / 2,043,155 |
-| Always Proceed | 63.33% / 65.00% | 35.83% / 34.17% | 229,934 / 249,094 |
-| **Always Verify** | **99.17% / 100%** | **0% / 0%** | **280,209 / 294,576** |
-| Static | 89.17% / 90.00% | 10.00% / 10.00% | 268,841 / 280,438 |
-| AMV-style | 80.83% / 82.50% | 18.33% / 17.50% | 249,486 / 261,984 |
+| Policy            |  Success: B1 / B3 | Harmful execution: B1 / B3 | Planner tokens: B1 / B3 |
+| ----------------- | ----------------: | -------------------------: | ----------------------: |
+| **MemImpact**     |   94.17% / 93.33% |              5.00% / 6.67% |   1,991,454 / 2,039,438 |
+| Flip-only         |   84.17% / 92.50% |             15.00% / 6.67% |   1,970,405 / 2,043,155 |
+| Always Proceed    |   63.33% / 65.00% |            35.83% / 34.17% |       229,934 / 249,094 |
+| **Always Verify** | **99.17% / 100%** |                **0% / 0%** |   **280,209 / 294,576** |
+| Static            |   89.17% / 90.00% |            10.00% / 10.00% |       268,841 / 280,438 |
+| AMV-style         |   80.83% / 82.50% |            18.33% / 17.50% |       249,486 / 261,984 |
 
 ### What the experiments establish
 
@@ -92,27 +94,28 @@ Detailed intervals, subgroup results, failure analysis, and three case studies a
 
 ## 5. Benchmark
 
-| Dimension | Held-out design |
-|---|---|
-| **Task families** | Messaging and reminder deletion |
-| **Memory conditions** | Valid, stale, conflicting, misattributed, irrelevant |
-| **Consequence levels** | Low and high |
-| **Dependence types** | Direct argument dependence and indirect action-selection dependence |
-| **Scale** | 120 episodes, 12 base-scenario groups, three memories per episode |
-| **Controls** | Frozen model, prompt, tools, decoding, scenarios, and policy order |
-| **Model** | `qwen3.8-flash`, temperature 0, thinking enabled, at most two planner attempts |
-| **Runtime** | `langgraph==1.2.20` with ToolSandbox in a separate Python environment |
+| Dimension              | Held-out design                                                                |
+| ---------------------- | ------------------------------------------------------------------------------ |
+| **Task families**      | Messaging and reminder deletion                                                |
+| **Memory conditions**  | Valid, stale, conflicting, misattributed, irrelevant                           |
+| **Consequence levels** | Low and high                                                                   |
+| **Dependence types**   | Direct argument dependence and indirect action-selection dependence            |
+| **Scale**              | 120 episodes, 12 base-scenario groups, three memories per episode              |
+| **Controls**           | Frozen model, prompt, tools, decoding, scenarios, and policy order             |
+| **Model**              | `qwen3.8-flash`, temperature 0, thinking enabled, at most two planner attempts |
+| **Runtime**            | `langgraph==1.2.20` with ToolSandbox in a separate Python environment          |
 
 A memory is labelled verification-critical only when verifying it turns the shared initial failed or harmful outcome into a successful, non-harmful result. Offline label-generation costs are reported separately from online policy costs.
 
 <a id="quick-start"></a>
+
 ## 6. Quick Start
 
 ### Requirements
 
 - macOS with native **Python 3.10**
 - Two virtual environments: one for LangGraph and one for ToolSandbox
-- Alibaba Cloud Model Studio credentials for live model runs
+- Alibaba Cloud Model Studio credentials for live Qwen runs, **or** a local [Ollama](https://ollama.com/) install for offline testing
 - Optional: [Tectonic](https://tectonic-typesetting.github.io/) for report compilation
 
 ### Clone and pin ToolSandbox
@@ -141,31 +144,53 @@ python3.10 -m venv .venv
 
 **Do not mix the two environments.** ToolSandbox's older dependencies conflict with the current LangGraph stack.
 
-### Configure live model access
+### Configure model access
 
-Copy the example env file and fill in your DashScope credentials. Never commit `.env`.
+Copy the example env file. Never commit `.env`.
 
 ```bash
 cp .env.example .env
-# Edit .env and set DASHSCOPE_API_KEY, DASHSCOPE_WORKSPACE_ID
-# Optional: DASHSCOPE_REGION (default cn-hongkong) or DASHSCOPE_BASE_URL
 ```
 
-Live scripts load `.env` automatically via `python-dotenv`. After pulling this change, re-run `pip install -e .` in `.venv` if `python-dotenv` is missing.
+Scripts load `.env` via `python-dotenv`. Provider and model come from env unless you override them on the CLI:
+
+| Variable             | Role                                    | Default         |
+| -------------------- | --------------------------------------- | --------------- |
+| `MEMIMPACT_PROVIDER` | `qwen` or `ollama`                      | `qwen`          |
+| `QWEN_MODEL`         | DashScope model when provider is `qwen` | `qwen3.8-flash` |
+| `OLLAMA_MODEL`       | Local model when provider is `ollama`   | `qwen3.8:27b`   |
+
+**Qwen:** set `DASHSCOPE_API_KEY` and `DASHSCOPE_WORKSPACE_ID`. Optional: `DASHSCOPE_REGION` (default `cn-hongkong`) or `DASHSCOPE_BASE_URL`.
+
+**Ollama:** install Ollama, pull the model, then set `MEMIMPACT_PROVIDER=ollama` in `.env`:
+
+```bash
+ollama pull qwen3.8:27b
+```
+
+After pulling this change, re-run `pip install -e .` in `.venv` if `python-dotenv` is missing.
 
 ### Run one end-to-end episode
+
+With `.env` configured, smoke scripts need no provider/model flags:
 
 ```bash
 .venv/bin/python scripts/run_langgraph_smoke.py \
   --scenario benchmark/deletion_pilot/stale_target.json \
   --policy memimpact \
-  --model qwen3.8-flash \
   --temperature 0 \
-  --samples 3 \
-  --max-planner-attempts 2
+  --samples 1 \
+  --max-planner-attempts 1
+```
+
+CLI still wins when you pass `--provider` / `--model`. Full-agent ToolSandbox smoke:
+
+```bash
+.venv-toolsandbox/bin/python scripts/run_qwen_toolsandbox.py --scenario wifi_off
 ```
 
 <a id="reproduction"></a>
+
 ## 7. Reproduction
 
 ### Frozen held-out runs
@@ -229,6 +254,7 @@ third_party/               Local ToolSandbox checkout; not committed
 ```
 
 <a id="documentation"></a>
+
 ## 9. Documentation and Evidence
 
 - [Project report PDF](report/memimpact_report.pdf)
@@ -253,13 +279,13 @@ third_party/               Local ToolSandbox checkout; not committed
 
 ## 11. Team
 
-| Member | Student ID |
-|---|---|
-| Cao Junjia | 3036790730 |
-| Zhang Yankai | 3036806682 |
-| Wu Hongyao | 3036793196 |
+| Member        | Student ID |
+| ------------- | ---------- |
+| Cao Junjia    | 3036790730 |
+| Zhang Yankai  | 3036806682 |
+| Wu Hongyao    | 3036793196 |
 | Kwan Tsz Hong | 3036792350 |
-| Wang Zicheng | 3036790326 |
+| Wang Zicheng  | 3036790326 |
 
 ## 12. Status and Acknowledgements
 

@@ -112,7 +112,7 @@ $$\widehat F_i=\frac{1}{S}\sum_{s=1}^{S}\mathbf{1}\left[\mathcal A(a^{+,(s)})\ne
 
 - macOS 原生 **Python 3.10**
 - 两个虚拟环境：LangGraph 与 ToolSandbox 分开
-- 真实模型运行需要阿里云百炼凭据
+- 真实 Qwen 运行需要阿里云百炼凭据，或使用本地 [Ollama](https://ollama.com/) 做离线测试
 - 可选：使用 [Tectonic](https://tectonic-typesetting.github.io/) 编译报告
 
 ### 克隆项目并固定 ToolSandbox
@@ -141,28 +141,49 @@ python3.10 -m venv .venv
 
 **不要混装两个环境。** ToolSandbox 的旧依赖与当前 LangGraph 依赖存在冲突。
 
-### 配置真实模型
+### 配置模型访问
 
-复制示例环境文件并填入 DashScope 凭据。不要提交 `.env`。
+复制示例环境文件。不要提交 `.env`。
 
 ```bash
 cp .env.example .env
-# 编辑 .env，设置 DASHSCOPE_API_KEY、DASHSCOPE_WORKSPACE_ID
-# 可选：DASHSCOPE_REGION（默认 cn-hongkong）或 DASHSCOPE_BASE_URL
 ```
 
-在线脚本会通过 `python-dotenv` 自动加载 `.env`。拉取本改动后，若 `.venv` 中缺少 `python-dotenv`，请重新执行 `pip install -e .`。
+脚本通过 `python-dotenv` 加载 `.env`。未传 CLI 时，provider / model 来自环境变量：
+
+| 变量 | 作用 | 默认 |
+|---|---|---|
+| `MEMIMPACT_PROVIDER` | `qwen` 或 `ollama` | `qwen` |
+| `QWEN_MODEL` | provider 为 `qwen` 时的模型 | `qwen3.8-flash` |
+| `OLLAMA_MODEL` | provider 为 `ollama` 时的模型 | `qwen3.8:27b` |
+
+**Qwen：** 设置 `DASHSCOPE_API_KEY` 与 `DASHSCOPE_WORKSPACE_ID`。可选：`DASHSCOPE_REGION`（默认 `cn-hongkong`）或 `DASHSCOPE_BASE_URL`。
+
+**Ollama：** 安装 Ollama，拉取模型，并在 `.env` 中设置 `MEMIMPACT_PROVIDER=ollama`：
+
+```bash
+ollama pull qwen3.8:27b
+```
+
+拉取本改动后，若 `.venv` 中缺少 `python-dotenv`，请重新执行 `pip install -e .`。
 
 ### 运行一个端到端 Episode
+
+配置好 `.env` 后，smoke 脚本不必再写 provider/model：
 
 ```bash
 .venv/bin/python scripts/run_langgraph_smoke.py \
   --scenario benchmark/deletion_pilot/stale_target.json \
   --policy memimpact \
-  --model qwen3.8-flash \
   --temperature 0 \
   --samples 3 \
   --max-planner-attempts 2
+```
+
+仍可用 `--provider` / `--model` 覆盖。完整 ToolSandbox Agent smoke：
+
+```bash
+.venv-toolsandbox/bin/python scripts/run_qwen_toolsandbox.py --scenario wifi_off
 ```
 
 <a id="复现"></a>

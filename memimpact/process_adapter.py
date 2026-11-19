@@ -24,7 +24,7 @@ class ToolSandboxProcessExecutor:
                 ),
                 encoding="utf-8",
             )
-            subprocess.run(
+            completed = subprocess.run(
                 [
                     str(self.python),
                     str(self.worker),
@@ -33,8 +33,13 @@ class ToolSandboxProcessExecutor:
                     "--response",
                     str(response),
                 ],
-                check=True,
                 capture_output=True,
                 text=True,
             )
+            if completed.returncode != 0:
+                detail = (completed.stderr or completed.stdout or "").strip()
+                raise RuntimeError(
+                    f"ToolSandbox worker failed with exit {completed.returncode}"
+                    + (f":\n{detail}" if detail else "")
+                )
             return json.loads(response.read_text(encoding="utf-8"))
