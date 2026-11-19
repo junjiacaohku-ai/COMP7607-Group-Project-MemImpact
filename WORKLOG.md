@@ -563,3 +563,10 @@
 
 - 将英文 Proposal 的 LaTeX 和 PDF 统一重命名为 `COMP7607A_MemImpact_Proposal.tex` / `.pdf`，正式提交文件保留在项目 `proposal/` 目录。
 - 更新双语 README 的官方 Proposal 链接，删除桌面临时副本；中文辅助阅读版不变。
+
+
+## 2026-11-20：Provider Adapter（dotenv / Ollama / OpenAI）
+
+- 将模型与凭据配置迁到 `.env`（`python-dotenv`），CLI `--provider` / `--model` 仍可覆盖；默认 provider 仍为 `qwen`。
+- 抽出统一 `LLMProvider` 接口与 factory：`qwen`、`ollama`；Planner / ToolSandbox 通过 `complete()` 或 `as_openai_client()` 接入。
+- 新增官方 OpenAI adapter（`memimpact/providers/openai.py`），默认模型 `gpt-6-luna`。按文档，未指定时 `reasoning_effort` 默认为 `medium`；Chat Completions 工具调用需 `reasoning_effort=none`，adapter 的 `complete()` 已显式设置。
