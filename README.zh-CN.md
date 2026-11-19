@@ -153,9 +153,10 @@ cp .env.example .env
 
 | 变量 | 作用 | 默认 |
 |---|---|---|
-| `MEMIMPACT_PROVIDER` | `qwen` 或 `ollama` | `qwen` |
+| `MEMIMPACT_PROVIDER` | `qwen`、`ollama` 或 `openai` | `qwen` |
 | `QWEN_MODEL` | provider 为 `qwen` 时的模型 | `qwen3.8-flash` |
 | `OLLAMA_MODEL` | provider 为 `ollama` 时的模型 | `qwen3.8:27b` |
+| `OPENAI_MODEL` | provider 为 `openai` 时的模型 | `gpt-6-luna` |
 
 **Qwen：** 设置 `DASHSCOPE_API_KEY` 与 `DASHSCOPE_WORKSPACE_ID`。可选：`DASHSCOPE_REGION`（默认 `cn-hongkong`）或 `DASHSCOPE_BASE_URL`。
 
@@ -164,6 +165,8 @@ cp .env.example .env
 ```bash
 ollama pull qwen3.8:27b
 ```
+
+**OpenAI：** 设置 `OPENAI_API_KEY` 与 `MEMIMPACT_PROVIDER=openai`。可选：`OPENAI_BASE_URL` 或 `OPENAI_MODEL`。
 
 拉取本改动后，若 `.venv` 中缺少 `python-dotenv`，请重新执行 `pip install -e .`。
 

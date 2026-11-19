@@ -1,6 +1,7 @@
 from memimpact.providers.base import LLMProvider, ToolCall, ToolCallCompletion
 from memimpact.providers.factory import (
     DEFAULT_OLLAMA_MODEL,
+    DEFAULT_OPENAI_MODEL,
     DEFAULT_PROVIDER,
     DEFAULT_QWEN_MODEL,
     PROVIDER_ENV,
@@ -12,6 +13,7 @@ from memimpact.providers.factory import (
 
 __all__ = [
     "DEFAULT_OLLAMA_MODEL",
+    "DEFAULT_OPENAI_MODEL",
     "DEFAULT_PROVIDER",
     "DEFAULT_QWEN_MODEL",
     "LLMProvider",

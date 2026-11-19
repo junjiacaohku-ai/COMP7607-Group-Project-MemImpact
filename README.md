@@ -154,11 +154,12 @@ cp .env.example .env
 
 Scripts load `.env` via `python-dotenv`. Provider and model come from env unless you override them on the CLI:
 
-| Variable             | Role                                    | Default         |
-| -------------------- | --------------------------------------- | --------------- |
-| `MEMIMPACT_PROVIDER` | `qwen` or `ollama`                      | `qwen`          |
-| `QWEN_MODEL`         | DashScope model when provider is `qwen` | `qwen3.8-flash` |
-| `OLLAMA_MODEL`       | Local model when provider is `ollama`   | `qwen3.8:27b`   |
+| Variable             | Role                                     | Default         |
+| -------------------- | ---------------------------------------- | --------------- |
+| `MEMIMPACT_PROVIDER` | `qwen`, `ollama`, or `openai`            | `qwen`          |
+| `QWEN_MODEL`         | DashScope model when provider is `qwen`  | `qwen3.8-flash` |
+| `OLLAMA_MODEL`       | Local model when provider is `ollama`    | `qwen3.8:27b`   |
+| `OPENAI_MODEL`       | OpenAI model when provider is `openai`   | `gpt-6-luna`    |
 
 **Qwen:** set `DASHSCOPE_API_KEY` and `DASHSCOPE_WORKSPACE_ID`. Optional: `DASHSCOPE_REGION` (default `cn-hongkong`) or `DASHSCOPE_BASE_URL`.
 
@@ -167,6 +168,8 @@ Scripts load `.env` via `python-dotenv`. Provider and model come from env unless
 ```bash
 ollama pull qwen3.8:27b
 ```
+
+**OpenAI:** set `OPENAI_API_KEY` and `MEMIMPACT_PROVIDER=openai`. Optional: `OPENAI_BASE_URL` or `OPENAI_MODEL`.
 
 After pulling this change, re-run `pip install -e .` in `.venv` if `python-dotenv` is missing.
 
