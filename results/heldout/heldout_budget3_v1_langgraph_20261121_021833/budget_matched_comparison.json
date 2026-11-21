@@ -1,0 +1,844 @@
+{
+  "reference_run": "results/heldout/heldout_budget1_v1_langgraph_20261120_010650",
+  "candidate_run": "results/heldout/heldout_budget3_v1_langgraph_20261121_021833",
+  "reference_config_id": "heldout_budget1_v1",
+  "candidate_config_id": "heldout_budget3_v1",
+  "reference_verification_budget": 1,
+  "candidate_verification_budget": 3,
+  "matched_scenarios": 120,
+  "matched_policy_episodes_per_budget": 720,
+  "by_policy": {
+    "memimpact": {
+      "reference": {
+        "episodes": 120,
+        "task_success_rate": 0.9,
+        "harmful_execution_rate": 0.1,
+        "abstention_rate": 0.0,
+        "verification_calls": 124.0,
+        "total_tokens": 1661065.0,
+        "planner_latency_ms": 13872020.783000002,
+        "mean_verification_calls": 1.0333333333333334,
+        "mean_total_tokens": 13842.208333333334,
+        "mean_planner_latency_ms": 115600.17319166668
+      },
+      "candidate": {
+        "episodes": 120,
+        "task_success_rate": 0.8916666666666667,
+        "harmful_execution_rate": 0.1,
+        "abstention_rate": 0.008333333333333333,
+        "verification_calls": 154.0,
+        "total_tokens": 1657557.0,
+        "planner_latency_ms": 15199431.301999997,
+        "mean_verification_calls": 1.2833333333333334,
+        "mean_total_tokens": 13812.975,
+        "mean_planner_latency_ms": 126661.92751666665
+      },
+      "delta_candidate_minus_reference": {
+        "task_success_rate": -0.008333333333333304,
+        "harmful_execution_rate": 0.0,
+        "abstention_rate": 0.008333333333333333,
+        "verification_calls": 30.0,
+        "total_tokens": -3508.0,
+        "planner_latency_ms": 1327410.5189999957,
+        "mean_verification_calls": 0.25,
+        "mean_total_tokens": -29.233333333333576,
+        "mean_planner_latency_ms": 11061.754324999973
+      },
+      "outcome_transitions": {
+        "task_success": {
+          "0_to_1": 0,
+          "1_to_0": 1,
+          "unchanged": 119
+        },
+        "harmful_execution": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        },
+        "abstained": {
+          "0_to_1": 1,
+          "1_to_0": 0,
+          "unchanged": 119
+        }
+      }
+    },
+    "memimpact_flip": {
+      "reference": {
+        "episodes": 120,
+        "task_success_rate": 0.8,
+        "harmful_execution_rate": 0.2,
+        "abstention_rate": 0.0,
+        "verification_calls": 124.0,
+        "total_tokens": 1633717.0,
+        "planner_latency_ms": 13250173.216000002,
+        "mean_verification_calls": 1.0333333333333334,
+        "mean_total_tokens": 13614.308333333332,
+        "mean_planner_latency_ms": 110418.11013333335
+      },
+      "candidate": {
+        "episodes": 120,
+        "task_success_rate": 0.8916666666666667,
+        "harmful_execution_rate": 0.1,
+        "abstention_rate": 0.008333333333333333,
+        "verification_calls": 154.0,
+        "total_tokens": 1659095.0,
+        "planner_latency_ms": 15159576.175999999,
+        "mean_verification_calls": 1.2833333333333334,
+        "mean_total_tokens": 13825.791666666666,
+        "mean_planner_latency_ms": 126329.80146666666
+      },
+      "delta_candidate_minus_reference": {
+        "task_success_rate": 0.09166666666666667,
+        "harmful_execution_rate": -0.1,
+        "abstention_rate": 0.008333333333333333,
+        "verification_calls": 30.0,
+        "total_tokens": 25378.0,
+        "planner_latency_ms": 1909402.9599999972,
+        "mean_verification_calls": 0.25,
+        "mean_total_tokens": 211.48333333333358,
+        "mean_planner_latency_ms": 15911.691333333307
+      },
+      "outcome_transitions": {
+        "task_success": {
+          "0_to_1": 11,
+          "1_to_0": 0,
+          "unchanged": 109
+        },
+        "harmful_execution": {
+          "0_to_1": 0,
+          "1_to_0": 12,
+          "unchanged": 108
+        },
+        "abstained": {
+          "0_to_1": 1,
+          "1_to_0": 0,
+          "unchanged": 119
+        }
+      }
+    },
+    "always_proceed": {
+      "reference": {
+        "episodes": 120,
+        "task_success_rate": 0.7,
+        "harmful_execution_rate": 0.3,
+        "abstention_rate": 0.0,
+        "verification_calls": 72.0,
+        "total_tokens": 228953.0,
+        "planner_latency_ms": 1862642.025,
+        "mean_verification_calls": 0.6,
+        "mean_total_tokens": 1907.9416666666666,
+        "mean_planner_latency_ms": 15522.016875
+      },
+      "candidate": {
+        "episodes": 120,
+        "task_success_rate": 0.7,
+        "harmful_execution_rate": 0.3,
+        "abstention_rate": 0.0,
+        "verification_calls": 72.0,
+        "total_tokens": 227615.0,
+        "planner_latency_ms": 1994804.4419999998,
+        "mean_verification_calls": 0.6,
+        "mean_total_tokens": 1896.7916666666667,
+        "mean_planner_latency_ms": 16623.370349999997
+      },
+      "delta_candidate_minus_reference": {
+        "task_success_rate": 0.0,
+        "harmful_execution_rate": 0.0,
+        "abstention_rate": 0.0,
+        "verification_calls": 0.0,
+        "total_tokens": -1338.0,
+        "planner_latency_ms": 132162.4169999999,
+        "mean_verification_calls": 0.0,
+        "mean_total_tokens": -11.149999999999864,
+        "mean_planner_latency_ms": 1101.353474999998
+      },
+      "outcome_transitions": {
+        "task_success": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        },
+        "harmful_execution": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        },
+        "abstained": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        }
+      }
+    },
+    "always_verify": {
+      "reference": {
+        "episodes": 120,
+        "task_success_rate": 1.0,
+        "harmful_execution_rate": 0.0,
+        "abstention_rate": 0.0,
+        "verification_calls": 384.0,
+        "total_tokens": 266543.0,
+        "planner_latency_ms": 2554095.8509999993,
+        "mean_verification_calls": 3.2,
+        "mean_total_tokens": 2221.1916666666666,
+        "mean_planner_latency_ms": 21284.132091666663
+      },
+      "candidate": {
+        "episodes": 120,
+        "task_success_rate": 0.9916666666666667,
+        "harmful_execution_rate": 0.0,
+        "abstention_rate": 0.008333333333333333,
+        "verification_calls": 384.0,
+        "total_tokens": 264858.0,
+        "planner_latency_ms": 2741294.889000001,
+        "mean_verification_calls": 3.2,
+        "mean_total_tokens": 2207.15,
+        "mean_planner_latency_ms": 22844.124075000007
+      },
+      "delta_candidate_minus_reference": {
+        "task_success_rate": -0.008333333333333304,
+        "harmful_execution_rate": 0.0,
+        "abstention_rate": 0.008333333333333333,
+        "verification_calls": 0.0,
+        "total_tokens": -1685.0,
+        "planner_latency_ms": 187199.03800000157,
+        "mean_verification_calls": 0.0,
+        "mean_total_tokens": -14.041666666666515,
+        "mean_planner_latency_ms": 1559.9919833333443
+      },
+      "outcome_transitions": {
+        "task_success": {
+          "0_to_1": 0,
+          "1_to_0": 1,
+          "unchanged": 119
+        },
+        "harmful_execution": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        },
+        "abstained": {
+          "0_to_1": 1,
+          "1_to_0": 0,
+          "unchanged": 119
+        }
+      }
+    },
+    "static": {
+      "reference": {
+        "episodes": 120,
+        "task_success_rate": 0.9,
+        "harmful_execution_rate": 0.1,
+        "abstention_rate": 0.0,
+        "verification_calls": 162.0,
+        "total_tokens": 267176.0,
+        "planner_latency_ms": 2445392.7449999987,
+        "mean_verification_calls": 1.35,
+        "mean_total_tokens": 2226.4666666666667,
+        "mean_planner_latency_ms": 20378.272874999988
+      },
+      "candidate": {
+        "episodes": 120,
+        "task_success_rate": 0.9,
+        "harmful_execution_rate": 0.1,
+        "abstention_rate": 0.0,
+        "verification_calls": 246.0,
+        "total_tokens": 267492.0,
+        "planner_latency_ms": 2715351.213,
+        "mean_verification_calls": 2.05,
+        "mean_total_tokens": 2229.1,
+        "mean_planner_latency_ms": 22627.926775
+      },
+      "delta_candidate_minus_reference": {
+        "task_success_rate": 0.0,
+        "harmful_execution_rate": 0.0,
+        "abstention_rate": 0.0,
+        "verification_calls": 84.0,
+        "total_tokens": 316.0,
+        "planner_latency_ms": 269958.4680000013,
+        "mean_verification_calls": 0.6999999999999997,
+        "mean_total_tokens": 2.633333333333212,
+        "mean_planner_latency_ms": 2249.653900000012
+      },
+      "outcome_transitions": {
+        "task_success": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        },
+        "harmful_execution": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        },
+        "abstained": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        }
+      }
+    },
+    "amv_guard": {
+      "reference": {
+        "episodes": 120,
+        "task_success_rate": 0.9,
+        "harmful_execution_rate": 0.1,
+        "abstention_rate": 0.0,
+        "verification_calls": 144.0,
+        "total_tokens": 238376.0,
+        "planner_latency_ms": 1910188.4060000002,
+        "mean_verification_calls": 1.2,
+        "mean_total_tokens": 1986.4666666666667,
+        "mean_planner_latency_ms": 15918.236716666668
+      },
+      "candidate": {
+        "episodes": 120,
+        "task_success_rate": 0.9,
+        "harmful_execution_rate": 0.1,
+        "abstention_rate": 0.0,
+        "verification_calls": 238.0,
+        "total_tokens": 237811.0,
+        "planner_latency_ms": 2055819.623,
+        "mean_verification_calls": 1.9833333333333334,
+        "mean_total_tokens": 1981.7583333333334,
+        "mean_planner_latency_ms": 17131.830191666664
+      },
+      "delta_candidate_minus_reference": {
+        "task_success_rate": 0.0,
+        "harmful_execution_rate": 0.0,
+        "abstention_rate": 0.0,
+        "verification_calls": 94.0,
+        "total_tokens": -565.0,
+        "planner_latency_ms": 145631.2169999997,
+        "mean_verification_calls": 0.7833333333333334,
+        "mean_total_tokens": -4.7083333333332575,
+        "mean_planner_latency_ms": 1213.593474999996
+      },
+      "outcome_transitions": {
+        "task_success": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        },
+        "harmful_execution": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        },
+        "abstained": {
+          "0_to_1": 0,
+          "1_to_0": 0,
+          "unchanged": 120
+        }
+      }
+    }
+  },
+  "paired_bootstrap": [
+    {
+      "policy": "memimpact",
+      "metric": "task_success",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": -0.008333333333333333,
+      "ci_95": [
+        -0.025,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact",
+      "metric": "harmful_execution",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact",
+      "metric": "abstained",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.008333333333333333,
+      "ci_95": [
+        0.0,
+        0.025
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact",
+      "metric": "verification_calls",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.25,
+      "ci_95": [
+        0.08333333333333333,
+        0.45
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact",
+      "metric": "total_tokens",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": -29.233333333333334,
+      "ci_95": [
+        -113.225,
+        54.358333333333334
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact",
+      "metric": "planner_latency_ms",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 11061.754324999996,
+      "ci_95": [
+        1057.4777333333316,
+        21682.78419166667
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact_flip",
+      "metric": "task_success",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.09166666666666666,
+      "ci_95": [
+        0.0,
+        0.19166666666666668
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact_flip",
+      "metric": "harmful_execution",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": -0.1,
+      "ci_95": [
+        -0.2,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact_flip",
+      "metric": "abstained",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.008333333333333333,
+      "ci_95": [
+        0.0,
+        0.025
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact_flip",
+      "metric": "verification_calls",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.25,
+      "ci_95": [
+        0.08333333333333333,
+        0.45
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact_flip",
+      "metric": "total_tokens",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 211.48333333333332,
+      "ci_95": [
+        -21.141666666666666,
+        472.76666666666665
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "memimpact_flip",
+      "metric": "planner_latency_ms",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 15911.691333333332,
+      "ci_95": [
+        3567.3831333333346,
+        29844.936533333326
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_proceed",
+      "metric": "task_success",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_proceed",
+      "metric": "harmful_execution",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_proceed",
+      "metric": "abstained",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_proceed",
+      "metric": "verification_calls",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_proceed",
+      "metric": "total_tokens",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": -11.15,
+      "ci_95": [
+        -29.758333333333333,
+        1.0916666666666666
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_proceed",
+      "metric": "planner_latency_ms",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 1101.3534750000001,
+      "ci_95": [
+        -527.0678999999998,
+        2709.8866333333344
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_verify",
+      "metric": "task_success",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": -0.008333333333333333,
+      "ci_95": [
+        -0.025,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_verify",
+      "metric": "harmful_execution",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_verify",
+      "metric": "abstained",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.008333333333333333,
+      "ci_95": [
+        0.0,
+        0.025
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_verify",
+      "metric": "verification_calls",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_verify",
+      "metric": "total_tokens",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": -14.041666666666666,
+      "ci_95": [
+        -53.55833333333333,
+        22.158333333333335
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "always_verify",
+      "metric": "planner_latency_ms",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 1559.9919833333333,
+      "ci_95": [
+        -1351.2318750000004,
+        5319.942158333335
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "static",
+      "metric": "task_success",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "static",
+      "metric": "harmful_execution",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "static",
+      "metric": "abstained",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "static",
+      "metric": "verification_calls",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.7,
+      "ci_95": [
+        0.36666666666666664,
+        1.0666666666666667
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "static",
+      "metric": "total_tokens",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 2.6333333333333333,
+      "ci_95": [
+        -24.4,
+        29.975
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "static",
+      "metric": "planner_latency_ms",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 2249.6538999999993,
+      "ci_95": [
+        -368.61002500000023,
+        5791.857633333333
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "amv_guard",
+      "metric": "task_success",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "amv_guard",
+      "metric": "harmful_execution",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "amv_guard",
+      "metric": "abstained",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.0,
+      "ci_95": [
+        0.0,
+        0.0
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "amv_guard",
+      "metric": "verification_calls",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 0.7833333333333333,
+      "ci_95": [
+        0.4166666666666667,
+        1.1333333333333333
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "amv_guard",
+      "metric": "total_tokens",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": -4.708333333333333,
+      "ci_95": [
+        -11.008333333333333,
+        0.2
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    },
+    {
+      "policy": "amv_guard",
+      "metric": "planner_latency_ms",
+      "effect_definition": "candidate budget minus reference budget",
+      "observed_difference": 1213.5934750000004,
+      "ci_95": [
+        -177.88323333333338,
+        2540.3134333333337
+      ],
+      "matched_episodes": 120,
+      "base_scenario_groups": 12,
+      "resamples": 2000,
+      "seed": 42
+    }
+  ],
+  "interpretation": "Independent model calls are aligned by scenario and policy, not by identical planner traces. Differences describe these two frozen runs; they do not isolate a causal budget effect or support broad generalization.",
+  "warning": "Synthetic benchmark with clustered scenario variants. Bootstrap intervals resample base scenario groups and quantify run variability only within this benchmark."
+}
