@@ -11,6 +11,7 @@ from memimpact.core import (
     remove_memory,
 )
 from memimpact.planner import CandidatePlanner, PlannerError
+from memimpact.providers.reasoning import recorded_thinking
 from memimpact.policies import MEMIMPACT_POLICIES, POLICIES
 from memimpact.scoring import observable_uncertainty, verification_score
 from memimpact.toolsandbox_adapter import execute_fixture_action
@@ -326,6 +327,9 @@ def run_episode(
         key: sum(trace["usage"][key] for trace in traces)
         for key in ("prompt_tokens", "completion_tokens", "total_tokens")
     }
+    traced_thinking, reasoning_effort = recorded_thinking(
+        planner.provider.name, planner.thinking
+    )
     result = {
         "scenario_id": fixture["scenario_id"],
         "base_scenario_id": fixture.get("base_scenario_id", fixture["scenario_id"]),
@@ -338,7 +342,8 @@ def run_episode(
         "provider": planner.provider.name,
         "model": planner.model,
         "temperature": planner.temperature,
-        "thinking": planner.thinking,
+        "thinking": traced_thinking,
+        "reasoning_effort": reasoning_effort,
         "paired_samples": samples if policy in MEMIMPACT_POLICIES else 1,
         "verification_budget": verification_budget,
         "planner_attempts": sum(trace["attempt_count"] for trace in traces),
