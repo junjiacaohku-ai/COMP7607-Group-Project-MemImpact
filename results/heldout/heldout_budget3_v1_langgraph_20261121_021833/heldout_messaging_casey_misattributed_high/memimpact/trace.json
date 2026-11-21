@@ -1,0 +1,976 @@
+[
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5107.281,
+        "usage": {
+          "completion_tokens": 134,
+          "prompt_tokens": 865,
+          "total_tokens": 999,
+          "prompt_tokens_details": {
+            "cached_tokens": 860
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5107.281,
+    "usage": {
+      "prompt_tokens": 865,
+      "completion_tokens": 134,
+      "total_tokens": 999
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5466.703,
+        "usage": {
+          "completion_tokens": 134,
+          "prompt_tokens": 865,
+          "total_tokens": 999,
+          "prompt_tokens_details": {
+            "cached_tokens": 860
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5466.703,
+    "usage": {
+      "prompt_tokens": 865,
+      "completion_tokens": 134,
+      "total_tokens": 999
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5468.815,
+        "usage": {
+          "completion_tokens": 134,
+          "prompt_tokens": 865,
+          "total_tokens": 999,
+          "prompt_tokens_details": {
+            "cached_tokens": 860
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5468.815,
+    "usage": {
+      "prompt_tokens": 865,
+      "completion_tokens": 134,
+      "total_tokens": 999
+    },
+    "condition": "full",
+    "removed_memory_id": null,
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3604.713,
+        "usage": {
+          "completion_tokens": 79,
+          "prompt_tokens": 778,
+          "total_tokens": 857,
+          "prompt_tokens_details": {
+            "cached_tokens": 773
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3604.713,
+    "usage": {
+      "prompt_tokens": 778,
+      "completion_tokens": 79,
+      "total_tokens": 857
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3630.123,
+        "usage": {
+          "completion_tokens": 79,
+          "prompt_tokens": 778,
+          "total_tokens": 857,
+          "prompt_tokens_details": {
+            "cached_tokens": 773
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3630.123,
+    "usage": {
+      "prompt_tokens": 778,
+      "completion_tokens": 79,
+      "total_tokens": 857
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 3599.169,
+        "usage": {
+          "completion_tokens": 79,
+          "prompt_tokens": 778,
+          "total_tokens": 857,
+          "prompt_tokens_details": {
+            "cached_tokens": 773
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 3599.169,
+    "usage": {
+      "prompt_tokens": 778,
+      "completion_tokens": 79,
+      "total_tokens": 857
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_phone",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4963.575,
+        "usage": {
+          "completion_tokens": 114,
+          "prompt_tokens": 790,
+          "total_tokens": 904,
+          "prompt_tokens_details": {
+            "cached_tokens": 789
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4963.575,
+    "usage": {
+      "prompt_tokens": 790,
+      "completion_tokens": 114,
+      "total_tokens": 904
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4684.376,
+        "usage": {
+          "completion_tokens": 114,
+          "prompt_tokens": 790,
+          "total_tokens": 904,
+          "prompt_tokens_details": {
+            "cached_tokens": 789
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4684.376,
+    "usage": {
+      "prompt_tokens": 790,
+      "completion_tokens": 114,
+      "total_tokens": 904
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4701.413,
+        "usage": {
+          "completion_tokens": 114,
+          "prompt_tokens": 790,
+          "total_tokens": 904,
+          "prompt_tokens_details": {
+            "cached_tokens": 789
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4701.413,
+    "usage": {
+      "prompt_tokens": 790,
+      "completion_tokens": 114,
+      "total_tokens": 904
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4493.814,
+        "usage": {
+          "completion_tokens": 123,
+          "prompt_tokens": 793,
+          "total_tokens": 916,
+          "prompt_tokens_details": {
+            "cached_tokens": 792
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4493.814,
+    "usage": {
+      "prompt_tokens": 793,
+      "completion_tokens": 123,
+      "total_tokens": 916
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4462.701,
+        "usage": {
+          "completion_tokens": 123,
+          "prompt_tokens": 793,
+          "total_tokens": 916,
+          "prompt_tokens_details": {
+            "cached_tokens": 792
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4462.701,
+    "usage": {
+      "prompt_tokens": 793,
+      "completion_tokens": 123,
+      "total_tokens": 916
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Casey Lau"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Casey Lau\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 4487.646,
+        "usage": {
+          "completion_tokens": 123,
+          "prompt_tokens": 793,
+          "total_tokens": 916,
+          "prompt_tokens_details": {
+            "cached_tokens": 792
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Casey Lau"
+          }
+        }
+      }
+    ],
+    "latency_ms": 4487.646,
+    "usage": {
+      "prompt_tokens": 793,
+      "completion_tokens": 123,
+      "total_tokens": 916
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2,
+    "shared_across_policies": true
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_phone",
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_phone",
+        "claim": "Casey Lau's phone number is +85269010003.",
+        "entity": "Casey Lau",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "Casey Lau prefers brief messages.",
+        "entity": "Casey Lau",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [
+      {
+        "type": "authoritative_tool_result",
+        "tool_name": "search_contacts",
+        "records": [
+          {
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "name": "Casey Lau",
+            "phone_number": "+85261010003",
+            "relationship": "contact",
+            "is_self": false
+          }
+        ]
+      }
+    ],
+    "action": {
+      "tool_name": "send_message_with_phone_number",
+      "arguments": {
+        "content": "The venue has changed to Room 402.",
+        "phone_number": "+85261010003"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"The venue has changed to Room 402.\",\"phone_number\":\"+85261010003\"},\"tool_name\":\"send_message_with_phone_number\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5460.441,
+        "usage": {
+          "completion_tokens": 186,
+          "prompt_tokens": 964,
+          "total_tokens": 1150,
+          "prompt_tokens_details": {
+            "cached_tokens": 963
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "send_message_with_phone_number",
+          "arguments": {
+            "content": "The venue has changed to Room 402.",
+            "phone_number": "+85261010003"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5460.441,
+    "usage": {
+      "prompt_tokens": 964,
+      "completion_tokens": 186,
+      "total_tokens": 1150
+    },
+    "condition": "replan_after_lookup",
+    "removed_memory_id": null,
+    "sample_index": null
+  }
+]

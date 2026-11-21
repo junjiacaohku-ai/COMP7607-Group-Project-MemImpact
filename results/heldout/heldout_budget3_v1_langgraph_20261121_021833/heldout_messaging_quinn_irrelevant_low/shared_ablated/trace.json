@@ -1,0 +1,632 @@
+[
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Quinn Yeung's work phone number is +85261020006.",
+        "entity": "Quinn Yeung work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 14531.646,
+        "usage": {
+          "completion_tokens": 262,
+          "prompt_tokens": 791,
+          "total_tokens": 1053,
+          "prompt_tokens_details": {
+            "cached_tokens": 618
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 14531.646,
+    "usage": {
+      "prompt_tokens": 791,
+      "completion_tokens": 262,
+      "total_tokens": 1053
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 0
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Quinn Yeung's work phone number is +85261020006.",
+        "entity": "Quinn Yeung work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 13141.246,
+        "usage": {
+          "completion_tokens": 262,
+          "prompt_tokens": 791,
+          "total_tokens": 1053,
+          "prompt_tokens_details": {
+            "cached_tokens": 786
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 13141.246,
+    "usage": {
+      "prompt_tokens": 791,
+      "completion_tokens": 262,
+      "total_tokens": 1053
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 1
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_work",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_work",
+        "claim": "Quinn Yeung's work phone number is +85261020006.",
+        "entity": "Quinn Yeung work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 12952.362,
+        "usage": {
+          "completion_tokens": 262,
+          "prompt_tokens": 791,
+          "total_tokens": 1053,
+          "prompt_tokens_details": {
+            "cached_tokens": 786
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 12952.362,
+    "usage": {
+      "prompt_tokens": 791,
+      "completion_tokens": 262,
+      "total_tokens": 1053
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_rule",
+    "sample_index": 2
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Quinn Yeung, use the work contact channel instead of the personal contact channel.",
+        "entity": "Quinn Yeung",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5255.754,
+        "usage": {
+          "completion_tokens": 91,
+          "prompt_tokens": 788,
+          "total_tokens": 879,
+          "prompt_tokens_details": {
+            "cached_tokens": 706
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5255.754,
+    "usage": {
+      "prompt_tokens": 788,
+      "completion_tokens": 91,
+      "total_tokens": 879
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 0
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Quinn Yeung, use the work contact channel instead of the personal contact channel.",
+        "entity": "Quinn Yeung",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5935.738,
+        "usage": {
+          "completion_tokens": 128,
+          "prompt_tokens": 788,
+          "total_tokens": 916,
+          "prompt_tokens_details": {
+            "cached_tokens": 783
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5935.738,
+    "usage": {
+      "prompt_tokens": 788,
+      "completion_tokens": 128,
+      "total_tokens": 916
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 1
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Quinn Yeung, use the work contact channel instead of the personal contact channel.",
+        "entity": "Quinn Yeung",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6062.531,
+        "usage": {
+          "completion_tokens": 128,
+          "prompt_tokens": 788,
+          "total_tokens": 916,
+          "prompt_tokens_details": {
+            "cached_tokens": 787
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 6062.531,
+    "usage": {
+      "prompt_tokens": 788,
+      "completion_tokens": 128,
+      "total_tokens": 916
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_work",
+    "sample_index": 2
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Quinn Yeung, use the work contact channel instead of the personal contact channel.",
+        "entity": "Quinn Yeung",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Quinn Yeung's work phone number is +85261020006.",
+        "entity": "Quinn Yeung work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7603.806,
+        "usage": {
+          "completion_tokens": 147,
+          "prompt_tokens": 807,
+          "total_tokens": 954,
+          "prompt_tokens_details": {
+            "cached_tokens": 806
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 7603.806,
+    "usage": {
+      "prompt_tokens": 807,
+      "completion_tokens": 147,
+      "total_tokens": 954
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Quinn Yeung, use the work contact channel instead of the personal contact channel.",
+        "entity": "Quinn Yeung",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Quinn Yeung's work phone number is +85261020006.",
+        "entity": "Quinn Yeung work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6967.952,
+        "usage": {
+          "completion_tokens": 147,
+          "prompt_tokens": 807,
+          "total_tokens": 954,
+          "prompt_tokens_details": {
+            "cached_tokens": 806
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 6967.952,
+    "usage": {
+      "prompt_tokens": 807,
+      "completion_tokens": 147,
+      "total_tokens": 954
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_rule",
+      "mem_work"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_rule",
+        "claim": "When contacting Quinn Yeung, use the work contact channel instead of the personal contact channel.",
+        "entity": "Quinn Yeung",
+        "scope": "contact_routing_rule",
+        "timestamp": "2025-01-05T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_work",
+        "claim": "Quinn Yeung's work phone number is +85261020006.",
+        "entity": "Quinn Yeung work",
+        "scope": "contact",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_contacts",
+      "arguments": {
+        "name": "Quinn Yeung"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"name\":\"Quinn Yeung\"},\"tool_name\":\"search_contacts\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 7332.089,
+        "usage": {
+          "completion_tokens": 147,
+          "prompt_tokens": 807,
+          "total_tokens": 954,
+          "prompt_tokens_details": {
+            "cached_tokens": 806
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_contacts",
+          "arguments": {
+            "name": "Quinn Yeung"
+          }
+        }
+      }
+    ],
+    "latency_ms": 7332.089,
+    "usage": {
+      "prompt_tokens": 807,
+      "completion_tokens": 147,
+      "total_tokens": 954
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2
+  }
+]

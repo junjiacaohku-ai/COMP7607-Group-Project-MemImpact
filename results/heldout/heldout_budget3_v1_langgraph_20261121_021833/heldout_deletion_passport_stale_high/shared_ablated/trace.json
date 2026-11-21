@@ -1,0 +1,632 @@
+[
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "renew passport"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"renew passport\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 6488.847,
+        "usage": {
+          "completion_tokens": 99,
+          "prompt_tokens": 861,
+          "total_tokens": 960,
+          "prompt_tokens_details": {
+            "cached_tokens": 856
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "renew passport"
+          }
+        }
+      }
+    ],
+    "latency_ms": 6488.847,
+    "usage": {
+      "prompt_tokens": 861,
+      "completion_tokens": 99,
+      "total_tokens": 960
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 0
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "renew passport"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"renew passport\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5498.246,
+        "usage": {
+          "completion_tokens": 99,
+          "prompt_tokens": 861,
+          "total_tokens": 960,
+          "prompt_tokens_details": {
+            "cached_tokens": 856
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "renew passport"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5498.246,
+    "usage": {
+      "prompt_tokens": 861,
+      "completion_tokens": 99,
+      "total_tokens": 960
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 1
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_style",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "search_reminder",
+      "arguments": {
+        "content": "renew passport"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"content\":\"renew passport\"},\"tool_name\":\"search_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 5462.82,
+        "usage": {
+          "completion_tokens": 99,
+          "prompt_tokens": 861,
+          "total_tokens": 960,
+          "prompt_tokens_details": {
+            "cached_tokens": 856
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "search_reminder",
+          "arguments": {
+            "content": "renew passport"
+          }
+        }
+      }
+    ],
+    "latency_ms": 5462.82,
+    "usage": {
+      "prompt_tokens": 861,
+      "completion_tokens": 99,
+      "total_tokens": 960
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_target",
+    "sample_index": 2
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to renew the passport has ID 00000000-0000-4000-8000-000000006003.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006003"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006003\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 21727.228,
+        "usage": {
+          "completion_tokens": 374,
+          "prompt_tokens": 901,
+          "total_tokens": 1275,
+          "prompt_tokens_details": {
+            "cached_tokens": 900
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006003"
+          }
+        }
+      }
+    ],
+    "latency_ms": 21727.228,
+    "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 374,
+      "total_tokens": 1275
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 0
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to renew the passport has ID 00000000-0000-4000-8000-000000006003.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006003"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006003\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 30040.766,
+        "usage": {
+          "completion_tokens": 404,
+          "prompt_tokens": 901,
+          "total_tokens": 1305,
+          "prompt_tokens_details": {
+            "cached_tokens": 900
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006003"
+          }
+        }
+      }
+    ],
+    "latency_ms": 30040.766,
+    "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 404,
+      "total_tokens": 1305
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 1
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_coffee"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to renew the passport has ID 00000000-0000-4000-8000-000000006003.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_coffee",
+        "claim": "The user likes coffee.",
+        "entity": "user",
+        "scope": "food_preference",
+        "timestamp": "2025-03-01T08:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006003"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006003\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 27139.317,
+        "usage": {
+          "completion_tokens": 374,
+          "prompt_tokens": 901,
+          "total_tokens": 1275,
+          "prompt_tokens_details": {
+            "cached_tokens": 900
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006003"
+          }
+        }
+      }
+    ],
+    "latency_ms": 27139.317,
+    "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 374,
+      "total_tokens": 1275
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_style",
+    "sample_index": 2
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to renew the passport has ID 00000000-0000-4000-8000-000000006003.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006003"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006003\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 14258.29,
+        "usage": {
+          "completion_tokens": 256,
+          "prompt_tokens": 902,
+          "total_tokens": 1158,
+          "prompt_tokens_details": {
+            "cached_tokens": 897
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006003"
+          }
+        }
+      }
+    ],
+    "latency_ms": 14258.29,
+    "usage": {
+      "prompt_tokens": 902,
+      "completion_tokens": 256,
+      "total_tokens": 1158
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 0
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to renew the passport has ID 00000000-0000-4000-8000-000000006003.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006003"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006003\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 13602.11,
+        "usage": {
+          "completion_tokens": 256,
+          "prompt_tokens": 902,
+          "total_tokens": 1158,
+          "prompt_tokens_details": {
+            "cached_tokens": 901
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006003"
+          }
+        }
+      }
+    ],
+    "latency_ms": 13602.11,
+    "usage": {
+      "prompt_tokens": 902,
+      "completion_tokens": 256,
+      "total_tokens": 1158
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 1
+  },
+  {
+    "provider": "ollama",
+    "model": "qwen3.8:27b",
+    "temperature": 0.0,
+    "thinking": true,
+    "planner_prompt_sha256": "a38e1fe7a2ca480989e962418d4b66d6e7e5aa44d3aa2a6544cf8b30ff568093",
+    "visible_memory_ids": [
+      "mem_target",
+      "mem_style"
+    ],
+    "visible_memories": [
+      {
+        "memory_id": "mem_target",
+        "claim": "The reminder to renew the passport has ID 00000000-0000-4000-8000-000000006003.",
+        "entity": "current reminder",
+        "scope": "reminder_target",
+        "timestamp": "2025-01-15T09:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      },
+      {
+        "memory_id": "mem_style",
+        "claim": "The user prefers concise confirmations.",
+        "entity": "user",
+        "scope": "communication_preference",
+        "timestamp": "2025-02-10T10:00:00+08:00",
+        "provenance": "prior_user_conversation"
+      }
+    ],
+    "verified_evidence": [],
+    "action": {
+      "tool_name": "remove_reminder",
+      "arguments": {
+        "reminder_id": "00000000-0000-4000-8000-000000006003"
+      }
+    },
+    "canonical_action": "{\"arguments\":{\"reminder_id\":\"00000000-0000-4000-8000-000000006003\"},\"tool_name\":\"remove_reminder\"}",
+    "attempt_count": 1,
+    "attempts": [
+      {
+        "attempt_index": 0,
+        "latency_ms": 21360.716,
+        "usage": {
+          "completion_tokens": 379,
+          "prompt_tokens": 902,
+          "total_tokens": 1281,
+          "prompt_tokens_details": {
+            "cached_tokens": 901
+          }
+        },
+        "tool_call_count": 1,
+        "content": "",
+        "error": null,
+        "action": {
+          "tool_name": "remove_reminder",
+          "arguments": {
+            "reminder_id": "00000000-0000-4000-8000-000000006003"
+          }
+        }
+      }
+    ],
+    "latency_ms": 21360.716,
+    "usage": {
+      "prompt_tokens": 902,
+      "completion_tokens": 379,
+      "total_tokens": 1281
+    },
+    "condition": "single_memory_removed",
+    "removed_memory_id": "mem_coffee",
+    "sample_index": 2
+  }
+]
