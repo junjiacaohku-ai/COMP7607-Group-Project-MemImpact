@@ -6,6 +6,22 @@ from openai import OpenAI
 
 from memimpact.providers.base import ToolCall, ToolCallCompletion
 
+REASONING_EFFORT_ENV = "MEMIMPACT_REASONING_EFFORT"
+
+
+def reasoning_effort_value(thinking: bool) -> str | None:
+    """Map the project thinking flag onto OpenAI's reasoning_effort field.
+
+    Thinking off always requests ``none``. Thinking on uses
+    ``MEMIMPACT_REASONING_EFFORT`` when set, and otherwise leaves the field
+    unset so the model default applies.
+    """
+    if not thinking:
+        return "none"
+    load_dotenv()
+    effort = os.environ.get(REASONING_EFFORT_ENV, "").strip()
+    return effort or None
+
 
 def make_openai_client() -> OpenAI:
     load_dotenv()
@@ -34,18 +50,16 @@ class OpenAIProvider:
         *,
         thinking: bool,
     ) -> ToolCallCompletion:
-        del thinking  # Recorded by callers; OpenAI has no DashScope thinking flag.
-        # gpt-6-luna defaults to reasoning_effort=medium, but Chat Completions
-        # function calling only works with reasoning_effort=none.
+        extra_body: dict[str, Any] = {"parallel_tool_calls": False}
+        effort = reasoning_effort_value(thinking)
+        if effort is not None:
+            extra_body["reasoning_effort"] = effort
         response = self._client.chat.completions.create(
             model=model,
             messages=messages,
             tools=tools,
             temperature=temperature,
-            extra_body={
-                "parallel_tool_calls": False,
-                "reasoning_effort": "none",
-            },
+            extra_body=extra_body,
         )
         message = response.choices[0].message
         tool_calls = [

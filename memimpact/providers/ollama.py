@@ -7,6 +7,21 @@ from openai import OpenAI
 from memimpact.providers.base import ToolCall, ToolCallCompletion
 
 DEFAULT_OLLAMA_BASE_URL = "http://127.0.0.1:11434/v1"
+REASONING_EFFORT_ENV = "MEMIMPACT_REASONING_EFFORT"
+
+
+def reasoning_effort_value(thinking: bool) -> str | None:
+    """Map the project thinking flag onto Ollama's reasoning_effort field.
+
+    Thinking off always requests ``none``. Thinking on uses
+    ``MEMIMPACT_REASONING_EFFORT`` when set, and otherwise leaves the field
+    unset so the model default applies.
+    """
+    if not thinking:
+        return "none"
+    load_dotenv()
+    effort = os.environ.get(REASONING_EFFORT_ENV, "").strip()
+    return effort or None
 
 
 def make_ollama_client() -> OpenAI:
@@ -31,13 +46,17 @@ class OllamaProvider:
         *,
         thinking: bool,
     ) -> ToolCallCompletion:
-        del thinking  # Recorded by callers; Ollama has no DashScope thinking flag.
-        response = self._client.chat.completions.create(
-            model=model,
-            messages=messages,
-            tools=tools,
-            temperature=temperature,
-        )
+        # /v1 has no enable_thinking. reasoning_effort "none" maps to think=false.
+        request: dict[str, Any] = {
+            "model": model,
+            "messages": messages,
+            "tools": tools,
+            "temperature": temperature,
+        }
+        effort = reasoning_effort_value(thinking)
+        if effort is not None:
+            request["extra_body"] = {"reasoning_effort": effort}
+        response = self._client.chat.completions.create(**request)
         message = response.choices[0].message
         tool_calls = [
             ToolCall(
