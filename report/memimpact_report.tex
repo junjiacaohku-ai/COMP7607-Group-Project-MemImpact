@@ -43,7 +43,7 @@ Wang Zicheng & 3036790326
 \maketitle
 
 \begin{abstract}
-Retrieved persistent memories can make tool-using agents act on stale, misattributed, or irrelevant information. We implement and evaluate \method, a verification gate that temporarily removes each retrieved memory, re-runs the planner, and uses changes in the proposed tool action to prioritize verification. The study isolates the incremental value of planner re-execution over static memory features, candidate-conditioned auditing, and an action-flip-only ablation. Using Qwen, LangGraph, and Apple ToolSandbox, we evaluate six policies on 120 held-out synthetic episodes spanning messaging and reminder deletion, five memory conditions, two consequence levels, and direct or indirect memory dependence. Each frozen configuration is evaluated with selective-verification budgets of one and three. Under \BOne, \method achieves 94.17\% task success and 5.00\% harmful execution, compared with 84.17\% and 15.00\% for flip-only; under \BThree, however, the corresponding results are 93.33\% and 6.67\% versus 92.50\% and 6.67\%. Thus, the full-score advantage over flip-only is not stable across the two independent runs. Always Verify is more reliable in both runs and uses only about $1/7.1$ and $1/6.9$ as many planner tokens as \method. Planner-level auditing can correct indirect routing errors, but we do not find evidence that it improves the overall reliability--cost trade-off on this benchmark. We release the configurations, raw traces, offline labels, analysis scripts, and case-level evidence.
+Retrieved persistent memories can make tool-using agents act on stale, misattributed, or irrelevant information. We implement and evaluate \method, a verification gate that temporarily removes each retrieved memory, re-runs the planner, and uses changes in the proposed tool action to prioritize verification. The study isolates the incremental value of planner re-execution over static memory features, candidate-conditioned auditing, and an action-flip-only ablation. Using Qwen, LangGraph, and Apple ToolSandbox, we evaluate six policies on 120 held-out synthetic episodes spanning messaging and reminder deletion, five memory conditions, two consequence levels, and direct or indirect memory dependence. Each frozen configuration is evaluated with selective-verification budgets of one and three. Under \BOne, \method achieves 94.17\% task success and 5.00\% harmful execution, compared with 84.17\% and 15.00\% for flip-only; under \BThree, however, the corresponding results are 93.33\% and 6.67\% versus 92.50\% and 6.67\%. Thus, the full-score advantage over flip-only is not stable across the two independent runs. Always Verify is more reliable in both runs and uses only about $1/7.1$ and $1/6.9$ as many planner tokens as \method. A descriptive replication with local Ollama \texttt{qwen3.8:27b} shows the same overall direction: Always Verify reaches 99.17--100\% task success with zero harmful execution and substantially lower planner cost. Planner-level auditing can correct indirect routing errors, but we do not find evidence that it improves the overall reliability--cost trade-off on this benchmark. We release the configurations, raw traces, offline labels, analysis scripts, and case-level evidence.
 \end{abstract}
 
 \section{Introduction}
@@ -262,6 +262,33 @@ AMV-style & +1.67 [$-$1.67, 5.00] & +47 & +12,498 \\
 
 Abstention is almost absent: all \BOne policies abstain on zero episodes, while \BThree has one flip-only and one Always Proceed abstention. Proceed coverage and safe-proceed recall therefore provide little discrimination in this implementation. We do not use them as evidence of superiority.
 
+\subsection{Descriptive Cross-Model Replication with Ollama}
+
+We repeated the complete held-out matrix with local Ollama \texttt{qwen3.8:27b}, preserving the scenario matrix, prompts, tool schemas, policy order, and budget definitions. This extension adds 1,440 policy episodes across the two budgets. Table~\ref{tab:ollama} shows that the main reliability--cost conclusion has the same direction as in the hosted-Qwen runs. Always Verify achieves 100\% and 99.17\% success with zero harmful execution, while \method achieves 90.00\% and 89.17\% success with 10.00\% harmful execution. The full-score advantage over flip-only is again 10.00 percentage points in \BOne and disappears in \BThree. Always Verify uses only about $1/6.2$ as many planner tokens as \method in either run.
+
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Ollama \texttt{qwen3.8:27b} replication. Tokens are per-episode means; each budget contains 120 episodes per policy.}
+\label{tab:ollama}
+\begin{tabular}{lrrrrrr}
+\toprule
+& \multicolumn{2}{c}{\BOne} & \multicolumn{2}{c}{\BThree} & \multicolumn{2}{c}{Tokens} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Policy & Success \% & Harm \% & Success \% & Harm \% & \BOne & \BThree \\
+\midrule
+\method & 90.00 & 10.00 & 89.17 & 10.00 & 13,842 & 13,813 \\
+Flip-only & 80.00 & 20.00 & 89.17 & 10.00 & 13,614 & 13,826 \\
+Always Proceed & 70.00 & 30.00 & 70.00 & 30.00 & 1,908 & 1,897 \\
+Always Verify & 100.00 & 0.00 & 99.17 & 0.00 & 2,221 & 2,207 \\
+Static & 90.00 & 10.00 & 90.00 & 10.00 & 2,226 & 2,229 \\
+AMV-style & 90.00 & 10.00 & 90.00 & 10.00 & 1,986 & 1,982 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The historical Ollama metadata does not establish the effective reasoning effort. \BOne records uncommitted code changes, and the revision recorded for \BThree did not explicitly transmit \path{reasoning_effort}; the original traces instead contain only \path{thinking: true}. We therefore mark the effective setting as unconfirmed rather than assuming that it was \texttt{medium}. Subsequent provider revisions explicitly record the requested reasoning effort, while the historical raw traces remain unchanged. Because decoding behavior is not fully established, this replication is a descriptive robustness check, not a decoding-matched causal comparison of model providers.
+
 \section{Case Studies}
 
 \subsection{Success: Verifying an Indirect Selection Rule}
@@ -292,7 +319,9 @@ The final message is correct, but the episode uses three verification calls and 
 
 \section{Limitations}
 
-The benchmark is synthetic and contains only two held-out task families and twelve base-scenario clusters. Results from one hosted model do not establish transfer to other planners. Three fixed memories, authoritative verification overrides, and at most one state-changing action simplify real memory and tool-use settings. The verifier supplies correct evidence by construction; noisy or incomplete verification remains untested.
+The benchmark is synthetic and contains only two held-out task families and twelve base-scenario clusters. Three fixed memories, authoritative verification overrides, and at most one state-changing action simplify real memory and tool-use settings. The verifier supplies correct evidence by construction; noisy or incomplete verification remains untested.
+
+The Ollama extension probes robustness under a second planner, but the hosted and local runs differ in provider and model scale, and the historical Ollama reasoning configuration is incompletely recorded. The cross-model comparison is therefore descriptive and does not identify a controlled model effect or establish broad transfer to other planners.
 
 The AMV-style baseline uses literal argument overlap rather than AMV-Guard's full method, and Static uses task-relevant scopes and age. Conclusions about these baselines apply only to these adaptations. The full score's age/provenance weighting is only one instantiation, so the flip-only comparison does not evaluate all possible scoring functions. Leave-one-out removal can miss redundant or interacting memories, and noise subtraction can hide a critical memory when baseline variability is high.
 
@@ -300,7 +329,7 @@ The two budgets were run independently rather than with shared traces across bud
 
 \section{Conclusion}
 
-We implemented a reproducible planner-level counterfactual memory-auditing pipeline and compared it with five alternatives on two frozen 120-episode evaluations. The method can identify and correct indirect memory-driven errors, but its benefits are inconsistent across independent runs and its planning overhead is substantial. Always Verify provides the strongest reliability at far lower planner cost, while Static remains a strong low-cost comparator. The main answer to our research question is therefore negative for the overall benchmark: planner re-execution has localized value, but we do not observe a reliable overall reliability--cost improvement. Future work should test learned verification value, redundant-memory interventions, noisier evidence, and shared-trace budget controls before recommending planner-level auditing for deployment.
+We implemented a reproducible planner-level counterfactual memory-auditing pipeline and compared it with five alternatives on two frozen 120-episode evaluations, followed by a two-budget Ollama replication. The method can identify and correct indirect memory-driven errors, but its benefits are inconsistent across independent runs and its planning overhead is substantial. In both model settings, Always Verify provides the strongest reliability at far lower planner cost, while Static remains a strong low-cost comparator. The main answer to our research question is therefore negative for the overall benchmark: planner re-execution has localized value, but we do not observe a reliable overall reliability--cost improvement. Future work should test learned verification value, redundant-memory interventions, noisier evidence, explicitly recorded decoding configurations, and shared-trace budget controls before recommending planner-level auditing for deployment.
 
 \section*{Reproducibility}
 
@@ -360,7 +389,14 @@ High & 95.0 / 95.0 & 85.0 / 93.3 & 61.7 / 63.3 & 98.3 / 100 & 88.3 / 90.0 & 78.3
 \section{Claim-to-Artifact Appendix}
 
 \begingroup\footnotesize
-All paths below are relative to the repository root. In Table~\ref{tab:artifacts}, \path{B1/} denotes \path{results/heldout/heldout_budget1_v1_langgraph_20261113_013824/}, and \path{B3/} denotes \path{results/heldout/heldout_budget3_v1_langgraph_20261113_141753/}. Raw per-scenario traces provide the underlying planner calls and attempts.\par
+All paths below are relative to the repository root. Table~\ref{tab:artifacts} uses these abbreviations:
+\begin{itemize}
+\item \path{B1/}: \path{results/heldout/heldout_budget1_v1_langgraph_20261113_013824/}
+\item \path{B3/}: \path{results/heldout/heldout_budget3_v1_langgraph_20261113_141753/}
+\item \path{O1/}: \path{results/heldout/heldout_budget1_v1_langgraph_20261120_010650/}
+\item \path{O3/}: \path{results/heldout/heldout_budget3_v1_langgraph_20261121_021833/}
+\end{itemize}
+Raw per-scenario traces provide the underlying planner calls and attempts.\par
 \endgroup
 
 \begin{table}[h]
@@ -372,11 +408,12 @@ All paths below are relative to the repository root. In Table~\ref{tab:artifacts
 \toprule
 Claim or output & Evidence \\
 \midrule
-Overall metrics, both budgets & \path{B1/comparison_summary.json} and \path{B3/comparison_summary.json} \\
+Qwen metrics, both budgets & \path{B1/comparison_summary.json} and \path{B3/comparison_summary.json} \\
+Ollama replication & \path{O1/comparison_summary.json} and \path{O3/comparison_summary.json} \\
 Grouped success and cost & \path{grouped_metrics.csv} and \path{per_episode_metrics.csv} in each run directory \\
 Paired policy intervals & \path{paired_bootstrap.json} in each run directory \\
 Critical-memory metrics & \path{critical_memory_metrics.json} and per-scenario \path{critical_labels.json} \\
-Matched budget changes & \path{B3/budget_matched_comparison.json} \\
+Matched budget changes & \path{B3/budget_matched_comparison.json} and \path{O3/budget_matched_comparison.json} \\
 Successful indirect case & \path{B1/heldout_deletion_lecture_stale_low/memimpact/result_summary.json} \\
 Wrong-premise failure & \path{B3/heldout_messaging_riley_misattributed_low/memimpact/result_summary.json} \\
 Unnecessary verification & \path{B3/heldout_messaging_morgan_irrelevant_low/memimpact/result_summary.json} \\
@@ -389,12 +426,14 @@ Implementation & \path{memimpact/langgraph_runtime.py}, \path{memimpact/core.py}
 The configuration and environment hashes are:
 \begingroup\footnotesize
 \begin{verbatim}
-Budget-1 config: 54665697d88417deb40b27534ea4b6da2e0347f2f0253733c0f8a3afc037a50f
-Budget-3 config: c4719d8c1296e9e3fb7968c3214de281964543f2d761d52bb171bc10b16dd778
+Qwen Budget-1:   54665697d88417deb40b27534ea4b6da2e0347f2f0253733c0f8a3afc037a50f
+Qwen Budget-3:   c4719d8c1296e9e3fb7968c3214de281964543f2d761d52bb171bc10b16dd778
+Ollama Budget-1: 251695cdeb167b0d06b6c95a17717ff2ce1d3d995fff42cd9d1493ae19de56ee
+Ollama Budget-3: 1ca3a46f7ecad07cd7080eb46bf194604c06a021ff019779a742dae735ebb512
 ToolSandbox:     c8571d7854316d2e1c5f288e59fe1e34e53f6dd1
 \end{verbatim}
 \endgroup
-Both runs record the same planner-prompt and tool-schema hashes. Offline labeling uses 146 attempts and 195,516 tokens for \BOne, and 154 attempts and 206,606 tokens for \BThree; these costs are separate from Table~\ref{tab:main}.
+All four runs record the same planner-prompt and tool-schema hashes. For hosted Qwen, offline labeling uses 146 attempts and 195,516 tokens for \BOne, and 154 attempts and 206,606 tokens for \BThree; these costs are separate from Table~\ref{tab:main}.
 
 \bibliographystyle{plainnat}
 \bibliography{../proposal/references}
