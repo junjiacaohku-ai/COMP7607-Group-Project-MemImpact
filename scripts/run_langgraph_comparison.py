@@ -14,6 +14,7 @@ from memimpact.policies import MEMIMPACT_POLICIES
 from memimpact.process_adapter import ToolSandboxProcessExecutor
 from memimpact.prompts import PLANNER_PROMPT_SHA256
 from memimpact.providers import create_provider, resolve_model, resolve_provider
+from memimpact.providers.reasoning import recorded_thinking
 from memimpact.schema_planner import SchemaCandidatePlanner, SchemaPlannerError
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -314,6 +315,9 @@ def main() -> None:
             write_json(output_directory / "trace.json", traces)
             rows.append(result)
 
+    traced_thinking, reasoning_effort = recorded_thinking(
+        provider_name, config.thinking
+    )
     comparison = {
         "config_id": config.config_id,
         "status": config.status,
@@ -328,7 +332,8 @@ def main() -> None:
         "provider": provider_name,
         "model": model,
         "temperature": config.temperature,
-        "thinking": config.thinking,
+        "thinking": traced_thinking,
+        "reasoning_effort": reasoning_effort,
         "paired_samples": config.samples,
         "verification_budget": config.verification_budget,
         "max_planner_attempts": config.max_planner_attempts,

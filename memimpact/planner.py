@@ -7,6 +7,7 @@ from tool_sandbox.common.tool_conversion import convert_to_openai_tools
 from memimpact.core import CandidateAction, MemoryRecord
 from memimpact.prompts import PLANNER_PROMPT_SHA256, PLANNER_SYSTEM_PROMPT
 from memimpact.providers import LLMProvider, create_provider
+from memimpact.providers.reasoning import recorded_thinking
 from memimpact.tool_registry import TOOL_REGISTRY
 
 # Re-export for existing importers that expect TOOL_REGISTRY on this module.
@@ -103,11 +104,15 @@ class CandidatePlanner:
             attempt["action"] = action.model_dump()
             break
 
+        traced_thinking, reasoning_effort = recorded_thinking(
+            self.provider.name, self.thinking
+        )
         trace = {
             "provider": self.provider.name,
             "model": self.model,
             "temperature": self.temperature,
-            "thinking": self.thinking,
+            "thinking": traced_thinking,
+            "reasoning_effort": reasoning_effort,
             "planner_prompt_sha256": PLANNER_PROMPT_SHA256,
             "visible_memory_ids": [memory.memory_id for memory in memories],
             "visible_memories": memory_payload,

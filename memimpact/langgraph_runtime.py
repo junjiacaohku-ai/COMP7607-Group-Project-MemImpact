@@ -13,6 +13,7 @@ from memimpact.core import (
     remove_memory,
 )
 from memimpact.policies import MEMIMPACT_POLICIES, POLICIES
+from memimpact.providers.reasoning import recorded_thinking
 from memimpact.scoring import observable_uncertainty, verification_score
 from memimpact.verification import AuthoritativeContactVerifier
 
@@ -385,6 +386,9 @@ def run_langgraph_episode(
         for key in ("prompt_tokens", "completion_tokens", "total_tokens")
     }
     execution = state.get("execution")
+    traced_thinking, reasoning_effort = recorded_thinking(
+        planner.provider.name, planner.thinking
+    )
     result = {
         "scenario_id": fixture["scenario_id"],
         "base_scenario_id": fixture.get("base_scenario_id", fixture["scenario_id"]),
@@ -397,7 +401,8 @@ def run_langgraph_episode(
         "provider": planner.provider.name,
         "model": planner.model,
         "temperature": planner.temperature,
-        "thinking": planner.thinking,
+        "thinking": traced_thinking,
+        "reasoning_effort": reasoning_effort,
         "paired_samples": samples if policy in MEMIMPACT_POLICIES else 1,
         "verification_budget": verification_budget,
         "planner_attempts": sum(trace["attempt_count"] for trace in traces),

@@ -6,6 +6,7 @@ from typing import Any
 from memimpact.core import CandidateAction, MemoryRecord
 from memimpact.prompts import PLANNER_PROMPT_SHA256, PLANNER_SYSTEM_PROMPT
 from memimpact.providers import LLMProvider, create_provider
+from memimpact.providers.reasoning import recorded_thinking
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -94,11 +95,15 @@ class SchemaCandidatePlanner:
             attempt["action"] = action.model_dump()
             break
 
+        traced_thinking, reasoning_effort = recorded_thinking(
+            self.provider.name, self.thinking
+        )
         trace = {
             "provider": self.provider.name,
             "model": self.model,
             "temperature": self.temperature,
-            "thinking": self.thinking,
+            "thinking": traced_thinking,
+            "reasoning_effort": reasoning_effort,
             "planner_prompt_sha256": PLANNER_PROMPT_SHA256,
             "visible_memory_ids": [memory.memory_id for memory in memories],
             "visible_memories": memory_payload,

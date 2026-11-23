@@ -22,6 +22,7 @@ from memimpact.providers import (
     resolve_model,
     resolve_provider,
 )
+from memimpact.providers.reasoning import recorded_thinking
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TOOLSANDBOX_ROOT = PROJECT_ROOT / "third_party" / "ToolSandbox"
@@ -236,6 +237,7 @@ def main() -> None:
             )
             rows.append(result)
 
+    traced_thinking, reasoning_effort = recorded_thinking(provider_name, thinking)
     comparison = {
         "config_id": config.config_id if config else "ad_hoc",
         "status": config.status if config else "development",
@@ -247,7 +249,8 @@ def main() -> None:
         "provider": provider_name,
         "model": model,
         "temperature": temperature,
-        "thinking": thinking,
+        "thinking": traced_thinking,
+        "reasoning_effort": reasoning_effort,
         "paired_samples": samples,
         "verification_budget": verification_budget,
         "bootstrap_resamples": setting("bootstrap_resamples", None, 2000),

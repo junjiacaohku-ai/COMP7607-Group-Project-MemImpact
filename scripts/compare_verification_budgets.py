@@ -29,6 +29,7 @@ COMPATIBILITY_FIELDS = (
     "model",
     "temperature",
     "thinking",
+    "reasoning_effort",
     "paired_samples",
     "max_planner_attempts",
     "planner_prompt_sha256",
