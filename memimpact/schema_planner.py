@@ -5,7 +5,7 @@ from typing import Any
 
 from memimpact.core import CandidateAction, MemoryRecord
 from memimpact.prompts import PLANNER_PROMPT_SHA256, PLANNER_SYSTEM_PROMPT
-from memimpact.qwen import make_qwen_client
+from memimpact.providers import LLMProvider, create_provider
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -24,13 +24,14 @@ class SchemaCandidatePlanner:
         thinking: bool = True,
         max_attempts: int = 2,
         schema_path: Path = PROJECT_ROOT / "configs" / "toolsandbox_tools.json",
+        provider: LLMProvider | None = None,
     ) -> None:
         self.model = model
         self.temperature = temperature
         self.thinking = thinking
         self.max_attempts = max_attempts
         self.tool_schemas = json.loads(schema_path.read_text(encoding="utf-8"))
-        self.client = make_qwen_client()
+        self.provider = provider or create_provider("qwen")
 
     def plan(
         self,
@@ -56,29 +57,25 @@ class SchemaCandidatePlanner:
                 ),
             },
         ]
-        request: dict[str, Any] = {
-            "model": self.model,
-            "messages": messages,
-            "tools": tools,
-            "temperature": self.temperature,
-            "extra_body": {"parallel_tool_calls": False},
-        }
-        if not self.thinking:
-            request["extra_body"]["enable_thinking"] = False
 
         attempts = []
         final_action = None
         for attempt_index in range(self.max_attempts):
             started = time.perf_counter()
-            response = self.client.chat.completions.create(**request)
-            message = response.choices[0].message
-            tool_calls = message.tool_calls or []
+            completion = self.provider.complete(
+                self.model,
+                messages,
+                tools,
+                self.temperature,
+                thinking=self.thinking,
+            )
+            tool_calls = completion.tool_calls
             attempt = {
                 "attempt_index": attempt_index,
                 "latency_ms": round((time.perf_counter() - started) * 1000, 3),
-                "usage": response.usage.model_dump() if response.usage else None,
+                "usage": completion.usage,
                 "tool_call_count": len(tool_calls),
-                "content": message.content,
+                "content": completion.content,
                 "error": None,
             }
             attempts.append(attempt)
@@ -87,8 +84,8 @@ class SchemaCandidatePlanner:
                 continue
             try:
                 action = CandidateAction(
-                    tool_name=tool_calls[0].function.name,
-                    arguments=json.loads(tool_calls[0].function.arguments),
+                    tool_name=tool_calls[0].name,
+                    arguments=json.loads(tool_calls[0].arguments_json),
                 )
             except (ValueError, TypeError) as error:
                 attempt["error"] = str(error)
@@ -98,6 +95,7 @@ class SchemaCandidatePlanner:
             break
 
         trace = {
+            "provider": self.provider.name,
             "model": self.model,
             "temperature": self.temperature,
             "thinking": self.thinking,

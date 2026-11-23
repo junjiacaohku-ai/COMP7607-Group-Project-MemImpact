@@ -5,6 +5,12 @@ from pathlib import Path
 
 from memimpact.episode import run_episode
 from memimpact.planner import TOOL_REGISTRY, CandidatePlanner
+from memimpact.providers import (
+    PROVIDER_NAMES,
+    create_provider,
+    resolve_model,
+    resolve_provider,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -16,7 +22,8 @@ def main() -> None:
     parser.add_argument(
         "--scenario", type=Path, default=PROJECT_ROOT / "scenarios" / "pilot" / "stale_phone.json"
     )
-    parser.add_argument("--model", default="qwen3.8-flash")
+    parser.add_argument("--provider", choices=PROVIDER_NAMES, default=None)
+    parser.add_argument("--model", default=None)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--samples", type=int, default=3)
     parser.add_argument("--verification-budget", type=int, default=1)
@@ -29,6 +36,8 @@ def main() -> None:
     if args.samples < 1:
         raise ValueError("--samples must be at least 1")
 
+    provider_name = resolve_provider(args.provider)
+    model = resolve_model(provider_name, args.model)
     fixture = json.loads(args.scenario.read_text(encoding="utf-8"))
     unknown_tools = set(fixture["available_tools"]) - set(TOOL_REGISTRY)
     if unknown_tools:
@@ -38,10 +47,11 @@ def main() -> None:
     output_directory = args.output_dir / f"{fixture['scenario_id']}_{timestamp}"
     output_directory.mkdir(parents=True, exist_ok=True)
     planner = CandidatePlanner(
-        args.model,
+        model,
         args.temperature,
         thinking=not args.disable_thinking,
         max_attempts=args.max_planner_attempts,
+        provider=create_provider(provider_name),
     )
     result, traces = run_episode(
         fixture,
